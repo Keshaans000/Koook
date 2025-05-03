@@ -85,14 +85,14 @@ const Team = () => {
             <div className="absolute top-12 left-6">
               <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
                 <div className="w-full h-full bg-[#FFD700] rounded-full flex items-center justify-center text-[#003366]">
-                  <span className="text-2xl font-bold">SC</span>
+                  <span className="text-2xl font-bold">YM</span>
                 </div>
               </div>
             </div>
           </div>
           <div className="p-6 pt-16">
             <div className="flex items-center mb-1">
-              <h3 className="font-bold text-lg text-gray-800">Shradda Chelluri</h3>
+              <h3 className="font-bold text-lg text-gray-800">Yuv Magan</h3>
               <span className="ml-2 bg-[#FFD700] text-[#003366] text-xs px-2 py-0.5 rounded-full">President</span>
             </div>
             <p className="text-gray-600 text-sm mb-4">DECA Chapter President & Student Leader</p>

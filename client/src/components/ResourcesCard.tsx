@@ -1,10 +1,12 @@
 const ResourcesCard = () => {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 overflow-hidden relative">
-      {/* Decorative Trophy */}
+      {/* Decorative elements */}
       <div className="absolute top-3 right-3 text-[#FFD700] opacity-20">
         <i className="ri-trophy-fill text-4xl"></i>
       </div>
+      <div className="absolute -left-4 -bottom-4 h-16 w-16 bg-[#003366] opacity-5 rounded-full"></div>
+      <div className="absolute right-[40%] -top-6 h-12 w-24 bg-[#E63946] opacity-5 transform rotate-45"></div>
       
       <div className="p-4 border-b border-gray-200 flex items-center">
         <i className="ri-folder-5-line text-[#003366] mr-2 text-xl"></i>

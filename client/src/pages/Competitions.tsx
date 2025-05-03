@@ -7,13 +7,25 @@ const Competitions = () => {
       {/* Decorative elements */}
       <div className="absolute -right-16 top-0 h-32 w-48 bg-[#FFD700] opacity-5 transform rotate-12"></div>
       <div className="absolute -left-20 -bottom-10 h-20 w-40 bg-[#003366] opacity-5 rounded-full"></div>
+      <div className="absolute right-[30%] -top-10 h-20 w-20 bg-[#E63946] opacity-5 rounded-full"></div>
+      <div className="absolute left-[40%] -bottom-20 h-40 w-40 bg-[#2C7BE5] opacity-5 rounded-full"></div>
+      <div className="absolute right-[60%] top-40 h-16 w-32 bg-white opacity-5 transform -rotate-12"></div>
       
       {/* Trophy decorations */}
-      <div className="absolute right-[5%] top-20 text-[#FFD700] opacity-10">
+      <div className="absolute right-[5%] top-20 text-[#FFD700] opacity-15">
         <i className="ri-trophy-fill text-5xl"></i>
       </div>
-      <div className="absolute left-[30%] bottom-10 text-[#003366] opacity-10 transform -rotate-12">
+      <div className="absolute left-[30%] bottom-10 text-[#003366] opacity-15 transform -rotate-12">
         <i className="ri-award-line text-4xl"></i>
+      </div>
+      <div className="absolute right-[25%] top-40 text-[#2C7BE5] opacity-10">
+        <i className="ri-medal-fill text-3xl"></i>
+      </div>
+      <div className="absolute left-[15%] top-20 text-[#FFD700] opacity-10 transform rotate-12">
+        <i className="ri-cup-fill text-3xl"></i>
+      </div>
+      <div className="absolute right-[45%] bottom-20 text-[#E63946] opacity-10">
+        <i className="ri-award-fill text-4xl"></i>
       </div>
       
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 relative z-10">
