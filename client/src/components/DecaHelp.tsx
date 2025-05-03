@@ -63,7 +63,7 @@ const DecaHelp = () => {
         <ul className="space-y-3">
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/wp-content/uploads/2022/07/DECA_HS_WrittenProject_Template_0722.docx" 
+              href="https://www.deca.org/compete/guidelines" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -78,7 +78,7 @@ const DecaHelp = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/high-school-programs/high-school-competitive-events/written-events" 
+              href="https://www.deca.org/compete/preparing-written-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
