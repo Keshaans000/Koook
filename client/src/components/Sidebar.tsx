@@ -43,10 +43,16 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
               </Link>
             </li>
             <li>
-              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
-                <i className="ri-trophy-line text-xl"></i>
-                <span>Competitions</span>
-              </button>
+              <Link href="/competitions">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/competitions" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-trophy-line text-xl"></i>
+                  <span>Competitions</span>
+                </div>
+              </Link>
             </li>
             <li>
               <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
@@ -61,10 +67,16 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
               </button>
             </li>
             <li>
-              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
-                <i className="ri-group-line text-xl"></i>
-                <span>My Team</span>
-              </button>
+              <Link href="/team">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/team" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-group-line text-xl"></i>
+                  <span>My Team</span>
+                </div>
+              </Link>
             </li>
             <li>
               <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
