@@ -90,6 +90,18 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                 </div>
               </Link>
             </li>
+            <li>
+              <Link href="/deca-help">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/deca-help" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-question-answer-line text-xl"></i>
+                  <span>DECA Help</span>
+                </div>
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
