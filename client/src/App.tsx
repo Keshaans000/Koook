@@ -85,21 +85,27 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen max-w-full overflow-x-hidden">
           <Header />
           <div className="flex flex-1 overflow-hidden">
-            <Sidebar 
-              eventFilters={eventFilters} 
-              toggleFilter={toggleFilter}
-            />
-            <div className="flex-1 overflow-auto">
-              <main className="p-4 md:p-6">
+            {/* Sidebar only visible on medium screens and larger */}
+            <div className="hidden md:block">
+              <Sidebar 
+                eventFilters={eventFilters} 
+                toggleFilter={toggleFilter}
+              />
+            </div>
+            <div className="flex-1 overflow-auto w-full">
+              <main className="p-3 md:p-6 max-w-full">
                 <Router />
               </main>
             </div>
           </div>
           <Footer />
-          <MobileNav />
+          {/* Mobile navigation only visible on small screens */}
+          <div className="block md:hidden">
+            <MobileNav />
+          </div>
         </div>
         <Toaster />
       </TooltipProvider>

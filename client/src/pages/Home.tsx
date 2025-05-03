@@ -93,14 +93,18 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
       {/* Event Reminders - will only display if there are upcoming deadline events */}
       <EventReminders events={events} daysThreshold={7} />
       
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="lg:w-3/4">
-          <EventCalendar 
-            events={events} 
-            selectedDate={selectedDate} 
-            setSelectedDate={setSelectedDate} 
-            eventFilters={eventFilters}
-          />
+      <div className="flex flex-col lg:flex-row gap-4 md:gap-6">
+        {/* Main content - calendar and day view */}
+        <div className="lg:w-3/4 overflow-x-auto">
+          {/* Calendar with horizontal scrolling on small screens */}
+          <div className="min-w-full overflow-x-auto pb-2">
+            <EventCalendar 
+              events={events} 
+              selectedDate={selectedDate} 
+              setSelectedDate={setSelectedDate} 
+              eventFilters={eventFilters}
+            />
+          </div>
           
           <DayEventsView 
             selectedDate={selectedDate} 
@@ -110,11 +114,25 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
           />
         </div>
         
+        {/* Sidebar content */}
         <div className="lg:w-1/4">
+          {/* Mobile order: QuickAddEvent first, then resources */}
+          <div className="block lg:hidden mb-4">
+            <QuickAddEvent defaultDate={selectedDate} />
+          </div>
+          
           <UpcomingEvents events={events} eventFilters={eventFilters} />
-          <QuickAddEvent defaultDate={selectedDate} />
+          
+          {/* Desktop order: QuickAddEvent after upcoming events */}
+          <div className="hidden lg:block">
+            <QuickAddEvent defaultDate={selectedDate} />
+          </div>
+          
           <ResourcesCard />
           <TeachersCorner />
+          
+          {/* Add extra padding at bottom on mobile for the navigation bar */}
+          <div className="h-16 md:h-0 block md:hidden"></div>
         </div>
       </div>
     </>
