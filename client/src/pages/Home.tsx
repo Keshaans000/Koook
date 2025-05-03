@@ -7,6 +7,7 @@ import QuickAddEvent from "@/components/QuickAddEvent";
 import ResourcesCard from "@/components/ResourcesCard";
 import EventReminders from "@/components/EventReminders";
 import AnnouncementsBanner from "@/components/AnnouncementsBanner";
+import TeachersCorner from "@/components/TeachersCorner";
 import { Event } from "@shared/schema";
 
 export interface HomeProps {
@@ -113,6 +114,7 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
           <UpcomingEvents events={events} eventFilters={eventFilters} />
           <QuickAddEvent defaultDate={selectedDate} />
           <ResourcesCard />
+          <TeachersCorner />
         </div>
       </div>
     </>

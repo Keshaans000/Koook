@@ -13,6 +13,7 @@ import EventsCategory from "@/pages/EventsCategory";
 import DecaHelp from "@/pages/DecaHelp";
 import Meetings from "@/pages/Meetings";
 import Deadlines from "@/pages/Deadlines";
+import TeacherCorner from "@/pages/TeacherCorner";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -52,6 +53,7 @@ function Router() {
       <Route path="/deca-help" component={DecaHelp} />
       <Route path="/meetings" component={Meetings} />
       <Route path="/deadlines" component={Deadlines} />
+      <Route path="/teacher-corner" component={TeacherCorner} />
       <Route component={NotFound} />
     </Switch>
   );
