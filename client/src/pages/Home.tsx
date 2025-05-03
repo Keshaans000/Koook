@@ -45,12 +45,23 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
   return (
     <>
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 relative">
+        {/* Decorative elements */}
+        <div className="absolute -left-8 -top-6 h-20 w-20 bg-[#FFD700] opacity-5 rounded-full"></div>
+        <div className="absolute right-[20%] -bottom-8 h-24 w-24 bg-[#003366] opacity-5 rounded-full"></div>
+        <div className="absolute left-[30%] -top-10 h-16 w-40 bg-[#E63946] opacity-5 transform rotate-45"></div>
+        
         {/* Decorative trophy icons */}
-        <div className="absolute -left-2 top-0 text-[#FFD700] opacity-10 transform rotate-12">
+        <div className="absolute -left-2 top-0 text-[#FFD700] opacity-15 transform rotate-12">
           <i className="ri-trophy-fill text-5xl"></i>
         </div>
-        <div className="absolute right-10 bottom-0 text-[#003366] opacity-10 transform -rotate-12">
+        <div className="absolute right-10 bottom-0 text-[#003366] opacity-15 transform -rotate-12">
           <i className="ri-medal-line text-4xl"></i>
+        </div>
+        <div className="absolute right-[40%] top-2 text-[#2C7BE5] opacity-10">
+          <i className="ri-medal-fill text-3xl"></i>
+        </div>
+        <div className="absolute left-[40%] -bottom-2 text-[#FFD700] opacity-10 transform rotate-45">
+          <i className="ri-government-line text-3xl"></i>
         </div>
         
         <div className="relative z-10">

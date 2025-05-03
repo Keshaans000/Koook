@@ -7,13 +7,21 @@ const Header = () => {
       <div className="absolute -right-16 top-0 h-full w-64 bg-[#FFD700] opacity-10 transform rotate-12"></div>
       <div className="absolute -left-20 -bottom-8 h-16 w-40 bg-[#FFD700] opacity-10 rounded-full"></div>
       <div className="absolute right-[25%] -bottom-10 h-16 w-16 bg-[#E63946] opacity-10 rounded-full"></div>
+      <div className="absolute left-[15%] -top-5 h-14 w-14 bg-[#2C7BE5] opacity-10 rounded-full"></div>
+      <div className="absolute right-[40%] top-0 h-10 w-40 bg-white opacity-5 transform -rotate-12"></div>
       
       {/* Trophy decorations */}
-      <div className="absolute right-[10%] top-1 text-[#FFD700] opacity-10">
+      <div className="absolute right-[10%] top-1 text-[#FFD700] opacity-15">
         <i className="ri-trophy-line text-xl"></i>
       </div>
-      <div className="absolute left-[30%] top-2 text-[#FFD700] opacity-10">
+      <div className="absolute left-[30%] top-2 text-[#FFD700] opacity-15">
         <i className="ri-medal-line text-xl"></i>
+      </div>
+      <div className="absolute right-[60%] bottom-1 text-[#FFD700] opacity-10">
+        <i className="ri-award-fill text-lg"></i>
+      </div>
+      <div className="absolute right-[20%] bottom-0 text-white opacity-5">
+        <i className="ri-building-4-line text-2xl"></i>
       </div>
       
       <div className="container mx-auto px-4 py-3 flex justify-between items-center relative">
