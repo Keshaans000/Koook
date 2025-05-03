@@ -196,60 +196,7 @@ const Team = () => {
         </div>
       </div>
       
-      {/* Additional Officers */}
-      <div className="mt-8">
-        <h2 className="text-xl font-bold text-gray-800 mb-4 relative z-10 flex items-center">
-          <span>DECA Officer Team</span>
-          <div className="ml-2 h-px bg-gray-200 flex-grow"></div>
-          <i className="ri-trophy-line text-[#FFD700] ml-2"></i>
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Additional Officer 1 */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#E63946] bg-opacity-10 rounded-full flex items-center justify-center text-[#E63946]">
-              <span className="font-bold">JD</span>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">James Dawson</h3>
-              <p className="text-xs text-gray-500">Competition Coordinator</p>
-            </div>
-          </div>
-          
-          {/* Additional Officer 2 */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#2C7BE5] bg-opacity-10 rounded-full flex items-center justify-center text-[#2C7BE5]">
-              <span className="font-bold">AK</span>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">Alicia Kim</h3>
-              <p className="text-xs text-gray-500">Secretary</p>
-            </div>
-          </div>
-          
-          {/* Additional Officer 3 */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#003366] bg-opacity-10 rounded-full flex items-center justify-center text-[#003366]">
-              <span className="font-bold">RM</span>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">Ryan Miller</h3>
-              <p className="text-xs text-gray-500">Treasurer</p>
-            </div>
-          </div>
-          
-          {/* Additional Officer 4 */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex items-center gap-4">
-            <div className="w-12 h-12 bg-[#FFD700] bg-opacity-10 rounded-full flex items-center justify-center text-[#003366]">
-              <span className="font-bold">TN</span>
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-800">Taylor Nguyen</h3>
-              <p className="text-xs text-gray-500">Marketing Director</p>
-            </div>
-          </div>
-        </div>
-      </div>
+
       
       <div className="mt-10 bg-gradient-to-r from-[#003366] to-[#004080] rounded-xl shadow-sm overflow-hidden">
         <div className="p-8 text-white relative">

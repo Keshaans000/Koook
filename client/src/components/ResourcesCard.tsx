@@ -62,7 +62,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://WayzataDECAshcools.com" 
+              href="https://wayzataschools.org/clubs/wayzata-deca" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -70,7 +70,7 @@ const ResourcesCard = () => {
               <div className="bg-[#003366] text-white p-2 rounded-md mr-3">
                 <i className="ri-school-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">WayzataDECAshcools.com</span>
+              <span className="font-medium text-[#003366]">Wayzata DECA School Page</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
@@ -107,7 +107,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://decahive.com" 
+              href="https://decaconnect.org/resources/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
@@ -115,7 +115,7 @@ const ResourcesCard = () => {
               <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
                 <i className="ri-stack-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">DECAhive Resources</span>
+              <span className="font-medium text-[#003366]">DECA Connect Resources</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>

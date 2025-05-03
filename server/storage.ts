@@ -51,28 +51,38 @@ export class MemStorage implements IStorage {
         imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80"
       },
       {
-        title: "Project Submission Due",
-        description: "Final deadline for submitting your business project documentation through the DECA portal.",
+        title: "Be The One",
+        description: "DECA's annual motivational kickoff - Elevate your DECA experience and prepare to be the difference-maker in this year's competitions.",
+        location: "School Auditorium",
+        organizer: "DECA Executive Team",
+        startTime: new Date(todayStart.getTime() + 3 * 24 * 60 * 60 * 1000 + 14 * 60 * 60 * 1000), // 2:00 PM in 3 days
+        endTime: new Date(todayStart.getTime() + 3 * 24 * 60 * 60 * 1000 + 16 * 60 * 60 * 1000), // 4:00 PM in 3 days
+        type: "meeting",
+        imageUrl: "https://www.deca.org/wp-content/uploads/2018/07/icdc_trophy-768x1024.jpg"
+      },
+      {
+        title: "ICDC Written Entry Deadline",
+        description: "Final deadline for ICDC written entry submissions. All papers must be submitted via the DECA portal.",
         location: "Online",
-        organizer: "DECA Advisor",
-        startTime: new Date(todayStart.getTime() + 23 * 60 * 60 * 59 * 60 * 1000), // 11:59 PM today
-        endTime: new Date(todayStart.getTime() + 23 * 60 * 60 * 59 * 60 * 1000), // 11:59 PM today
+        organizer: "DECA International",
+        startTime: new Date(2025, 2, 1, 23, 59, 59), // March 1, 2025 at 11:59 PM
+        endTime: new Date(2025, 2, 1, 23, 59, 59), 
         type: "deadline",
         imageUrl: ""
       },
       {
-        title: "State Competition Registration",
-        description: "Registration deadline for the state competition",
-        location: "Online Portal",
-        organizer: "DECA Advisor",
-        startTime: new Date(todayStart.getTime() + 13 * 24 * 60 * 60 * 1000), // 13 days from now
-        endTime: new Date(todayStart.getTime() + 13 * 24 * 60 * 60 * 1000), // 13 days from now
+        title: "State Career Development Conference",
+        description: "State competition for all competitive events. Winners advance to ICDC.",
+        location: "State Convention Center",
+        organizer: "State DECA",
+        startTime: new Date(2025, 1, 15, 8, 0, 0), // February 15, 2025 at 8:00 AM
+        endTime: new Date(2025, 1, 17, 17, 0, 0), // February 17, 2025 at 5:00 PM
         type: "competition",
         imageUrl: ""
       },
       {
-        title: "Chapter Meeting",
-        description: "Monthly chapter meeting with guest speaker",
+        title: "Chapter Meeting - Competition Prep",
+        description: "Monthly chapter meeting with workshop on competition preparation strategies",
         location: "Room 204",
         organizer: "Chapter President",
         startTime: new Date(todayStart.getTime() + 7 * 24 * 60 * 60 * 1000 + 15.5 * 60 * 60 * 1000), // 3:30 PM in 7 days
@@ -81,22 +91,22 @@ export class MemStorage implements IStorage {
         imageUrl: ""
       },
       {
-        title: "Holiday Networking Event",
-        description: "Connect with business professionals and alumni",
-        location: "Community Center",
-        organizer: "DECA Club",
+        title: "DECA Business Networking Night",
+        description: "Connect with business professionals and DECA alumni. Professional attire required.",
+        location: "Community Business Center",
+        organizer: "DECA Alumni Association",
         startTime: new Date(todayStart.getTime() + 21 * 24 * 60 * 60 * 1000 + 18 * 60 * 60 * 1000), // 6:00 PM in 21 days
         endTime: new Date(todayStart.getTime() + 21 * 24 * 60 * 60 * 1000 + 20 * 60 * 60 * 1000), // 8:00 PM in 21 days
         type: "social",
         imageUrl: ""
       },
       {
-        title: "Regional Leadership Conference",
-        description: "Annual leadership conference for all DECA members",
-        location: "Downtown Convention Center",
-        organizer: "Regional DECA Board",
-        startTime: new Date(todayStart.getTime() + 30 * 24 * 60 * 60 * 1000 + 8 * 60 * 60 * 1000), // 8:00 AM in 30 days
-        endTime: new Date(todayStart.getTime() + 31 * 24 * 60 * 60 * 1000 + 17 * 60 * 60 * 1000), // 5:00 PM next day
+        title: "ICDC Competition",
+        description: "DECA International Career Development Conference - Global competition and leadership conference",
+        location: "Orlando, Florida",
+        organizer: "DECA Inc.",
+        startTime: new Date(2025, 3, 26, 8, 0, 0), // April 26, 2025 at 8:00 AM
+        endTime: new Date(2025, 3, 30, 17, 0, 0), // April 30, 2025 at 5:00 PM 
         type: "competition",
         imageUrl: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80"
       }
