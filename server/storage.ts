@@ -58,7 +58,7 @@ export class MemStorage implements IStorage {
         startTime: new Date(todayStart.getTime() + 3 * 24 * 60 * 60 * 1000 + 14 * 60 * 60 * 1000), // 2:00 PM in 3 days
         endTime: new Date(todayStart.getTime() + 3 * 24 * 60 * 60 * 1000 + 16 * 60 * 60 * 1000), // 4:00 PM in 3 days
         type: "meeting",
-        imageUrl: "https://www.deca.org/wp-content/uploads/2018/07/icdc_trophy-768x1024.jpg"
+        imageUrl: "https://glass-award.com/cdn/shop/products/bz-1_1024x1024.jpg?v=1571710249"
       },
       {
         title: "ICDC Written Entry Deadline",
