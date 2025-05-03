@@ -106,45 +106,48 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   };
   
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const shortWeekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-      <div className="p-4 flex items-center justify-between border-b border-gray-200">
-        <div className="flex items-center space-x-2">
+      <div className="p-2 sm:p-4 flex items-center justify-between border-b border-gray-200">
+        <div className="flex items-center gap-1 sm:space-x-2">
           <Button 
             variant="ghost" 
             size="icon"
             onClick={prevMonth}
-            className="p-1.5 rounded-lg hover:bg-gray-100"
+            className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
           >
-            <i className="ri-arrow-left-s-line text-gray-700 text-xl"></i>
+            <i className="ri-arrow-left-s-line text-gray-700 text-lg sm:text-xl"></i>
           </Button>
-          <h2 className="text-lg font-semibold text-gray-800">
-            {format(currentMonth, 'MMMM yyyy')}
+          <h2 className="text-sm sm:text-lg font-semibold text-gray-800">
+            {format(currentMonth, 'MMM yyyy')}
+            <span className="hidden sm:inline"> {format(currentMonth, 'MMMM').slice(3)}</span>
           </h2>
           <Button 
             variant="ghost" 
             size="icon"
             onClick={nextMonth}
-            className="p-1.5 rounded-lg hover:bg-gray-100"
+            className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
           >
-            <i className="ri-arrow-right-s-line text-gray-700 text-xl"></i>
+            <i className="ri-arrow-right-s-line text-gray-700 text-lg sm:text-xl"></i>
           </Button>
         </div>
         <Button 
           variant="link" 
           onClick={goToToday}
-          className="text-sm text-[#003366] font-medium hover:underline"
+          className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
         >
           Today
         </Button>
       </div>
       
       <div className="calendar-grid grid border-b border-gray-200">
-        {/* Calendar header */}
+        {/* Calendar header - full day names on desktop, abbreviated on mobile */}
         {weekdays.map((day, index) => (
-          <div key={index} className="text-gray-600 font-medium text-center py-3 text-sm">
-            {day}
+          <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm">
+            <span className="hidden sm:inline">{day}</span>
+            <span className="inline sm:hidden">{shortWeekdays[index]}</span>
           </div>
         ))}
         
@@ -161,29 +164,35 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
                 key={`${weekIndex}-${dayIndex}`}
                 onClick={() => setSelectedDate(day)}
                 className={cn(
-                  "calendar-day border-t border-r last:border-r-0 border-gray-200 p-1 cursor-pointer",
+                  "calendar-day border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
                   !isCurrentMonth && "bg-gray-100 text-gray-400",
                   isSelected && "bg-[#003366] bg-opacity-5",
                   isToday && !isSelected && "font-medium"
                 )}
               >
                 <div className={cn(
-                  "p-1 text-right",
+                  "p-0.5 sm:p-1 text-right",
                   isSelected && "font-medium text-[#003366]",
                   isToday && !isSelected && "font-semibold"
                 )}>
                   {format(day, 'd')}
                 </div>
                 {dayEvents.length > 0 && (
-                  <div className="flex justify-center mt-1">
-                    {dayEvents.slice(0, 3).map((event, index) => (
-                      <div 
-                        key={index} 
-                        className={cn("event-dot", getEventColorClass(event.type))}
-                      />
-                    ))}
+                  <div className="flex justify-center mt-0 sm:mt-1">
+                    {/* Show event dots on both mobile and desktop */}
+                    <div className="flex flex-wrap justify-center gap-[2px]">
+                      {dayEvents.slice(0, 3).map((event, index) => (
+                        <div 
+                          key={index} 
+                          className={cn(
+                            "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
+                            getEventColorClass(event.type)
+                          )}
+                        />
+                      ))}
+                    </div>
                     {dayEvents.length > 3 && (
-                      <div className="text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
                     )}
                   </div>
                 )}
@@ -193,22 +202,23 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         ))}
       </div>
       
-      <div className="p-4 flex justify-end">
-        <div className="flex items-center space-x-4 text-sm flex-wrap">
-          <div className="flex items-center mr-4 mb-2">
-            <div className="w-3 h-3 rounded-full bg-[#003366] mr-2"></div>
+      {/* Legend - rearranged for mobile */}
+      <div className="p-2 sm:p-4">
+        <div className="flex flex-wrap justify-center sm:justify-end gap-x-3 sm:gap-x-4 gap-y-1 text-xs sm:text-sm">
+          <div className="flex items-center">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#003366] mr-1.5"></div>
             <span className="text-gray-600">Competition</span>
           </div>
-          <div className="flex items-center mr-4 mb-2">
-            <div className="w-3 h-3 rounded-full bg-[#2C7BE5] mr-2"></div>
+          <div className="flex items-center">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#2C7BE5] mr-1.5"></div>
             <span className="text-gray-600">Meeting</span>
           </div>
-          <div className="flex items-center mr-4 mb-2">
-            <div className="w-3 h-3 rounded-full bg-[#E63946] mr-2"></div>
+          <div className="flex items-center">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#E63946] mr-1.5"></div>
             <span className="text-gray-600">Deadline</span>
           </div>
-          <div className="flex items-center mb-2">
-            <div className="w-3 h-3 rounded-full bg-[#FFD700] mr-2"></div>
+          <div className="flex items-center">
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#FFD700] mr-1.5"></div>
             <span className="text-gray-600">Social</span>
           </div>
         </div>
