@@ -9,7 +9,7 @@ import EventReminders from "@/components/EventReminders";
 import AnnouncementsBanner from "@/components/AnnouncementsBanner";
 import { Event } from "@shared/schema";
 
-interface HomeProps {
+export interface HomeProps {
   eventFilters?: {
     competition: boolean;
     meeting: boolean;
