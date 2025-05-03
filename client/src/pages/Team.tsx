@@ -75,7 +75,47 @@ const Team = () => {
           </div>
         </div>
         
-        {/* Officer Card - Shradda */}
+        {/* Officer Card - Shrada */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#E63946] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#E63946] to-[#D62B39]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#E63946] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">SC</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Shrada Chelluri</h3>
+              <span className="ml-2 bg-[#E63946] text-white text-xs px-2 py-0.5 rounded-full">Vice President</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA Chapter VP & Competition Leader</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-mail-line text-[#003366] mr-2"></i>
+                <a href="mailto:shrada.chelluri@wayzataschools.org" className="text-[#003366] hover:underline text-sm">
+                  shrada.chelluri@wayzataschools.org
+                </a>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-trophy-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">ICDC Qualifier 2023-2024</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Business Services Specialist</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Officer Card - Yuv */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-20 h-20">
             <div className="absolute top-0 right-0 w-full h-full bg-[#FFD700] opacity-5 transform rotate-45"></div>
@@ -99,8 +139,8 @@ const Team = () => {
             <div className="space-y-2">
               <div className="flex items-center">
                 <i className="ri-mail-line text-[#003366] mr-2"></i>
-                <a href="mailto:chellshr000@isd284.com" className="text-[#003366] hover:underline text-sm">
-                  chellshr000@isd284.com
+                <a href="mailto:yuv.magan@wayzataschools.org" className="text-[#003366] hover:underline text-sm">
+                  yuv.magan@wayzataschools.org
                 </a>
               </div>
               <div className="flex items-center">
@@ -172,7 +212,7 @@ const Team = () => {
             </div>
             <div>
               <h3 className="font-medium text-gray-800">James Dawson</h3>
-              <p className="text-xs text-gray-500">Vice President</p>
+              <p className="text-xs text-gray-500">Competition Coordinator</p>
             </div>
           </div>
           
