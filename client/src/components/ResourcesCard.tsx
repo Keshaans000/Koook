@@ -122,7 +122,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/page/examresources" 
+              href="https://www.deca.org/compete/exam-prep" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
