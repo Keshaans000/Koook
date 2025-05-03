@@ -93,7 +93,7 @@ const DecaHelp = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/wp-content/uploads/2022/07/DECA_Guide_2022_23.pdf" 
+              href="https://www.deca.org/publications/chapter-campaigns-programs-guide" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
