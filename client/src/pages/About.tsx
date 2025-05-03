@@ -134,6 +134,49 @@ const About = () => {
         </div>
       </div>
       
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 mt-8 overflow-hidden">
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-800">DECA Advisor Contact</h2>
+        </div>
+        <div className="p-6">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="bg-gray-100 p-5 rounded-lg flex-1">
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-[#003366] rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white text-xl font-bold">PK</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg text-gray-800">Paul Kimbler</h3>
+                  <p className="text-gray-600">DECA Advisor</p>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <i className="ri-mail-line text-[#003366] mr-2"></i>
+                  <a href="mailto:paul.kimbler@wayzataschools.org" className="text-[#003366] hover:underline">
+                    paul.kimbler@wayzataschools.org
+                  </a>
+                </div>
+                <div className="flex items-center">
+                  <i className="ri-map-pin-line text-[#003366] mr-2"></i>
+                  <span className="text-gray-700">Room 256, Wayzata High School</span>
+                </div>
+                <div className="flex items-center">
+                  <i className="ri-time-line text-[#003366] mr-2"></i>
+                  <span className="text-gray-700">Office Hours: School days 7:30am - 3:30pm</span>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-gray-200">
+                <p className="text-gray-700">
+                  For questions about DECA membership, competitions, or events, please 
+                  contact Mr. Kimbler via email or stop by his classroom during office hours.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <DecaFAQ />
       
       <div className="mt-10 text-center">

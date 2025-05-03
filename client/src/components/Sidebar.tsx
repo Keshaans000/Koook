@@ -7,7 +7,7 @@ interface SidebarProps {
     deadline: boolean;
     social: boolean;
   };
-  toggleFilter: (type: keyof typeof eventFilters) => void;
+  toggleFilter: (type: "competition" | "meeting" | "deadline" | "social") => void;
 }
 
 const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {

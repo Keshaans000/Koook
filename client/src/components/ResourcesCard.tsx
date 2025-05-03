@@ -1,75 +1,105 @@
 const ResourcesCard = () => {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 overflow-hidden">
-      <div className="p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-800">Quick Resources</h2>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 mt-6 overflow-hidden relative">
+      {/* Decorative Trophy */}
+      <div className="absolute top-3 right-3 text-[#FFD700] opacity-20">
+        <i className="ri-trophy-fill text-4xl"></i>
       </div>
-      <div className="p-4">
-        <ul className="space-y-2">
-          <li>
+      
+      <div className="p-4 border-b border-gray-200 flex items-center">
+        <i className="ri-folder-5-line text-[#003366] mr-2 text-xl"></i>
+        <h2 className="text-lg font-semibold text-gray-800">Essential DECA Resources</h2>
+      </div>
+      
+      <div className="p-4 bg-gradient-to-b from-white to-blue-50">
+        <ul className="space-y-3">
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.deca.org/wp-content/uploads/2023/08/HS_Competitive_Events_Guide.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
             >
-              <i className="ri-file-text-line"></i>
-              <span>DECA Competition Guidelines</span>
+              <div className="bg-[#003366] text-white p-2 rounded-md mr-3">
+                <i className="ri-file-text-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#003366]">DECA Competition Guidelines</span>
+              <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
-          <li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.deca.org/wp-content/uploads/2023/07/HS_DECA_ICDC_TravelCalendar24.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
             >
-              <i className="ri-calendar-check-line"></i>
-              <span>DECA Conference Calendar</span>
+              <div className="bg-[#2C7BE5] text-white p-2 rounded-md mr-3">
+                <i className="ri-calendar-check-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#2C7BE5]">DECA Conference Calendar</span>
+              <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
             </a>
           </li>
-          <li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.deca.org/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
             >
-              <i className="ri-link"></i>
-              <span>DECA Official Website</span>
+              <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
+                <i className="ri-global-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#003366]">DECA Official Website</span>
+              <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
-          <li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.wayzataschools.org/whs" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
             >
-              <i className="ri-school-line"></i>
-              <span>Wayzata High School</span>
+              <div className="bg-[#003366] text-white p-2 rounded-md mr-3">
+                <i className="ri-school-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#003366]">Wayzata High School</span>
+              <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
-          <li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.mndeca.org/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
             >
-              <i className="ri-government-line"></i>
-              <span>Minnesota DECA</span>
+              <div className="bg-[#E63946] text-white p-2 rounded-md mr-3">
+                <i className="ri-government-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#E63946]">Minnesota DECA</span>
+              <i className="ri-external-link-line ml-auto text-[#E63946]"></i>
             </a>
           </li>
-          <li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
               href="https://www.deca.org/wp-content/uploads/2023/12/2024-ICDC-Dress-Code.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="flex items-center space-x-2 text-[#003366] hover:underline"
+              className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
             >
-              <i className="ri-user-settings-line"></i>
-              <span>DECA Dress Code</span>
+              <div className="bg-[#2C7BE5] text-white p-2 rounded-md mr-3">
+                <i className="ri-user-settings-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#2C7BE5]">DECA Dress Code</span>
+              <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
             </a>
           </li>
         </ul>
