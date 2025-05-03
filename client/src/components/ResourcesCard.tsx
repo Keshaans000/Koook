@@ -62,7 +62,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.wayzataschools.org/whs" 
+              href="https://WayzataDECAshcools.com" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -70,7 +70,7 @@ const ResourcesCard = () => {
               <div className="bg-[#003366] text-white p-2 rounded-md mr-3">
                 <i className="ri-school-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">Wayzata High School</span>
+              <span className="font-medium text-[#003366]">WayzataDECAshcools.com</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
@@ -102,6 +102,36 @@ const ResourcesCard = () => {
               </div>
               <span className="font-medium text-[#2C7BE5]">DECA Dress Code</span>
               <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
+            </a>
+          </li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
+            <a 
+              href="https://decahive.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
+            >
+              <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
+                <i className="ri-stack-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#003366]">DECAhive Resources</span>
+              <i className="ri-external-link-line ml-auto text-[#003366]"></i>
+            </a>
+          </li>
+          
+          <li className="transform transition-transform duration-200 hover:translate-x-1">
+            <a 
+              href="https://decapracticeexams.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
+            >
+              <div className="bg-[#E63946] text-white p-2 rounded-md mr-3">
+                <i className="ri-file-list-3-line text-lg"></i>
+              </div>
+              <span className="font-medium text-[#E63946]">DECA Practice Exams</span>
+              <i className="ri-external-link-line ml-auto text-[#E63946]"></i>
             </a>
           </li>
         </ul>

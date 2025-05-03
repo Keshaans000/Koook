@@ -36,8 +36,8 @@ const Footer = () => {
           <a href="https://www.mndeca.org/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#003366] text-xs">
             Minnesota DECA
           </a>
-          <a href="https://WayzataDECAschools.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#003366] text-xs font-medium">
-            WayzataDECAschools.com
+          <a href="https://WayzataDECAshcools.com" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-[#003366] text-xs font-medium">
+            WayzataDECAshcools.com
           </a>
           <div className="h-3 w-px bg-gray-300 mx-1"></div>
           <div className="flex space-x-4">
