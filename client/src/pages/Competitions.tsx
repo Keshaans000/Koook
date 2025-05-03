@@ -251,7 +251,7 @@ const Competitions = () => {
             
             <div className="mt-6 flex flex-wrap gap-4">
               <a 
-                href="https://www.deca.org/wp-content/uploads/2023/08/HS_Competitive_Events_Guide.pdf" 
+                href="https://www.deca.org/compete/guidelines" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-[#003366] text-white px-4 py-2 rounded text-sm flex items-center"

@@ -11,6 +11,8 @@ import Team from "@/pages/Team";
 import Competitions from "@/pages/Competitions";
 import EventsCategory from "@/pages/EventsCategory";
 import DecaHelp from "@/pages/DecaHelp";
+import Meetings from "@/pages/Meetings";
+import Deadlines from "@/pages/Deadlines";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -48,6 +50,8 @@ function Router() {
       <Route path="/competitions" component={Competitions} />
       <Route path="/events-category" component={EventsCategory} />
       <Route path="/deca-help" component={DecaHelp} />
+      <Route path="/meetings" component={Meetings} />
+      <Route path="/deadlines" component={Deadlines} />
       <Route component={NotFound} />
     </Switch>
   );

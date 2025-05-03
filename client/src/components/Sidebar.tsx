@@ -55,16 +55,28 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
               </Link>
             </li>
             <li>
-              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
-                <i className="ri-team-line text-xl"></i>
-                <span>Meetings</span>
-              </button>
+              <Link href="/meetings">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/meetings" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-team-line text-xl"></i>
+                  <span>Meetings</span>
+                </div>
+              </Link>
             </li>
             <li>
-              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
-                <i className="ri-alarm-line text-xl"></i>
-                <span>Deadlines</span>
-              </button>
+              <Link href="/deadlines">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/deadlines" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-alarm-line text-xl"></i>
+                  <span>Deadlines</span>
+                </div>
+              </Link>
             </li>
             <li>
               <Link href="/team">
