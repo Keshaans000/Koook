@@ -79,10 +79,16 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
               </Link>
             </li>
             <li>
-              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
-                <i className="ri-file-list-3-line text-xl"></i>
-                <span>Resources</span>
-              </button>
+              <Link href="/events-category">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/events-category" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-file-list-3-line text-xl"></i>
+                  <span>Event Categories</span>
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>

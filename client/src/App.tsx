@@ -9,6 +9,7 @@ import EventManagement from "@/pages/EventManagement";
 import About from "@/pages/About";
 import Team from "@/pages/Team";
 import Competitions from "@/pages/Competitions";
+import EventsCategory from "@/pages/EventsCategory";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
       <Route path="/competitions" component={Competitions} />
+      <Route path="/events-category" component={EventsCategory} />
       <Route component={NotFound} />
     </Switch>
   );
