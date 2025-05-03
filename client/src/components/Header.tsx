@@ -6,12 +6,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/">
-            <a className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-[#FFD700] flex items-center justify-center rounded-md">
                 <span className="text-[#003366] font-bold text-lg">W</span>
               </div>
               <h1 className="text-white font-bold text-xl hidden md:block">Wayzata DECA</h1>
-            </a>
+            </div>
           </Link>
         </div>
         <div className="flex items-center space-x-4">
