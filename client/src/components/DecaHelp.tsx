@@ -63,7 +63,7 @@ const DecaHelp = () => {
         <ul className="space-y-3">
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/compete/guidelines" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events/guidelines" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -71,14 +71,14 @@ const DecaHelp = () => {
               <div className="bg-[#2C7BE5] text-white p-2 rounded-md mr-3">
                 <i className="ri-file-text-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#2C7BE5]">Written Project Template</span>
+              <span className="font-medium text-[#2C7BE5]">Written Project Guidelines</span>
               <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/compete/preparing-written-events" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
@@ -86,14 +86,14 @@ const DecaHelp = () => {
               <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
                 <i className="ri-lightbulb-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">Written Event Tips</span>
+              <span className="font-medium text-[#003366]">Written Event Resources</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/publications/chapter-campaigns-programs-guide" 
+              href="https://www.deca.org/impact/classroom" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -101,7 +101,7 @@ const DecaHelp = () => {
               <div className="bg-[#E63946] text-white p-2 rounded-md mr-3">
                 <i className="ri-book-2-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#E63946]">DECA Comprehensive Guide</span>
+              <span className="font-medium text-[#E63946]">DECA Classroom Resources</span>
               <i className="ri-external-link-line ml-auto text-[#E63946]"></i>
             </a>
           </li>

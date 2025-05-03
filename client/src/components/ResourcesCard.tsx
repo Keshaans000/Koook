@@ -17,7 +17,7 @@ const ResourcesCard = () => {
         <ul className="space-y-3">
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/compete" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -62,7 +62,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://wayzataschools.org/clubs/wayzata-deca" 
+              href="https://www.wayzataschools.org/schools/wayzata-high-school/activities-athletics/activities" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -70,14 +70,14 @@ const ResourcesCard = () => {
               <div className="bg-[#003366] text-white p-2 rounded-md mr-3">
                 <i className="ri-school-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">Wayzata DECA School Page</span>
+              <span className="font-medium text-[#003366]">Wayzata High School Activities</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.mndeca.org/" 
+              href="https://mndeca.org/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -92,7 +92,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/compete/guidelines" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events/guidelines" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -100,14 +100,14 @@ const ResourcesCard = () => {
               <div className="bg-[#2C7BE5] text-white p-2 rounded-md mr-3">
                 <i className="ri-user-settings-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#2C7BE5]">DECA Dress Code</span>
+              <span className="font-medium text-[#2C7BE5]">DECA Competitive Event Guidelines</span>
               <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/resources" 
+              href="https://www.deca.org/publications" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
@@ -115,14 +115,14 @@ const ResourcesCard = () => {
               <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
                 <i className="ri-stack-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">DECA Connect Resources</span>
+              <span className="font-medium text-[#003366]">DECA Publications</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/compete/exam-prep" 
+              href="https://learn.deca.org/" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -130,7 +130,7 @@ const ResourcesCard = () => {
               <div className="bg-[#E63946] text-white p-2 rounded-md mr-3">
                 <i className="ri-file-list-3-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#E63946]">DECA Practice Exams</span>
+              <span className="font-medium text-[#E63946]">DECA Learn (Practice Resources)</span>
               <i className="ri-external-link-line ml-auto text-[#E63946]"></i>
             </a>
           </li>
