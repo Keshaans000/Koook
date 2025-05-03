@@ -6,6 +6,7 @@ import UpcomingEvents from "@/components/UpcomingEvents";
 import QuickAddEvent from "@/components/QuickAddEvent";
 import ResourcesCard from "@/components/ResourcesCard";
 import EventReminders from "@/components/EventReminders";
+import AnnouncementsBanner from "@/components/AnnouncementsBanner";
 import { Event } from "@shared/schema";
 
 interface HomeProps {
@@ -60,6 +61,9 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
           </div>
         </div>
       </div>
+      
+      {/* Announcements Banner */}
+      <AnnouncementsBanner />
       
       {/* Event Reminders - will only display if there are upcoming deadline events */}
       <EventReminders events={events} daysThreshold={7} />

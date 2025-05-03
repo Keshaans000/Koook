@@ -20,45 +20,57 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
           <ul className="space-y-2">
             <li>
               <Link href="/">
-                <a className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
                   location === "/" 
                     ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                     : "hover:bg-gray-100 text-gray-700"
                 }`}>
                   <i className="ri-calendar-line text-xl"></i>
                   <span>Events Calendar</span>
-                </a>
+                </div>
               </Link>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700">
+              <Link href="/about">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/about" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-information-line text-xl"></i>
+                  <span>About DECA</span>
+                </div>
+              </Link>
+            </li>
+            <li>
+              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
                 <i className="ri-trophy-line text-xl"></i>
                 <span>Competitions</span>
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700">
+              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
                 <i className="ri-team-line text-xl"></i>
                 <span>Meetings</span>
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700">
+              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
                 <i className="ri-alarm-line text-xl"></i>
                 <span>Deadlines</span>
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700">
+              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
                 <i className="ri-group-line text-xl"></i>
                 <span>My Team</span>
-              </a>
+              </button>
             </li>
             <li>
-              <a href="#" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700">
+              <button className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 w-full text-left">
                 <i className="ri-file-list-3-line text-xl"></i>
                 <span>Resources</span>
-              </a>
+              </button>
             </li>
           </ul>
         </nav>
@@ -108,9 +120,9 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
         <div className="bg-gray-100 p-3 rounded-lg">
           <h3 className="font-medium text-gray-800 text-sm mb-1">Admin Controls</h3>
           <Link href="/manage">
-            <a className="bg-[#003366] text-white text-sm py-2 px-3 rounded flex items-center justify-center w-full mt-2">
+            <div className="bg-[#003366] text-white text-sm py-2 px-3 rounded flex items-center justify-center w-full mt-2 cursor-pointer">
               <i className="ri-add-line mr-1"></i> Manage Events
-            </a>
+            </div>
           </Link>
         </div>
       </div>
