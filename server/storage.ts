@@ -151,7 +151,16 @@ export class MemStorage implements IStorage {
   async createEvent(insertEvent: InsertEvent): Promise<Event> {
     const id = this.eventCurrentId++;
     const createdAt = new Date();
-    const event: Event = { ...insertEvent, id, createdAt };
+    // Ensure all fields are properly set to avoid type issues
+    const event: Event = { 
+      ...insertEvent, 
+      id, 
+      createdAt,
+      description: insertEvent.description || null,
+      location: insertEvent.location || null,
+      organizer: insertEvent.organizer || null,
+      imageUrl: insertEvent.imageUrl || null
+    };
     this.events.set(id, event);
     return event;
   }

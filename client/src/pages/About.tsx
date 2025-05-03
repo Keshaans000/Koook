@@ -60,6 +60,61 @@ const About = () => {
         </Card>
       </div>
       
+      {/* Be The One Section */}
+      <div className="mb-10 relative overflow-hidden">
+        <div className="absolute -right-20 -top-10 opacity-5">
+          <i className="ri-trophy-fill text-9xl text-[#FFD700]"></i>
+        </div>
+        <div className="absolute -left-10 -bottom-10 opacity-5">
+          <i className="ri-award-fill text-8xl text-[#003366]"></i>
+        </div>
+        
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 relative z-10">Be The One</h2>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 relative z-10">
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="md:w-2/3">
+              <p className="text-gray-700 mb-4">
+                <span className="font-bold text-[#003366]">Be The One</span> is DECA's inspirational call to action, 
+                challenging each member to step up and make a difference. It's about embodying the entrepreneurial 
+                and leadership spirit that defines DECA.
+              </p>
+              <p className="text-gray-700 mb-4">
+                As a DECA member, you're encouraged to:
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start">
+                  <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
+                  <span>Be the one to inspire others through your achievements and character</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
+                  <span>Be the one to innovate new ideas and solutions in business</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
+                  <span>Be the one to take initiative in your chapter and community</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
+                  <span>Be the one who makes a lasting impact in your DECA journey</span>
+                </li>
+              </ul>
+              <p className="text-gray-700">
+                This mindset prepares you not just for DECA competitions, but for success in business 
+                and leadership throughout your future career.
+              </p>
+            </div>
+            <div className="md:w-1/3 flex justify-center items-center">
+              <img 
+                src="https://www.deca.org/wp-content/uploads/2018/07/icdc_trophy-768x1024.jpg" 
+                alt="DECA Glass Trophy" 
+                className="rounded-lg shadow-md max-h-64 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
         <div>
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Chapter History</h2>

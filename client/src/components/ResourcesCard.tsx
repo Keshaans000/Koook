@@ -17,7 +17,7 @@ const ResourcesCard = () => {
         <ul className="space-y-3">
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/wp-content/uploads/2023/08/HS_Competitive_Events_Guide.pdf" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#003366] bg-opacity-5 rounded-lg border border-[#003366] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -32,7 +32,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/wp-content/uploads/2023/07/HS_DECA_ICDC_TravelCalendar24.pdf" 
+              href="https://www.deca.org/conferences" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -92,7 +92,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/wp-content/uploads/2023/12/2024-ICDC-Dress-Code.pdf" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events/guidelines" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -122,7 +122,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://decapracticeexams.com" 
+              href="https://www.deca.org/page/examresources" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
