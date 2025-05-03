@@ -84,17 +84,34 @@ const EventManagement = () => {
     : events.filter(event => event.type === filter);
   
   return (
-    <div>
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
+    <div className="relative">
+      {/* Decorative elements */}
+      <div className="absolute -right-16 top-0 h-32 w-48 bg-[#FFD700] opacity-5 transform rotate-12"></div>
+      <div className="absolute -left-20 -bottom-10 h-20 w-40 bg-[#003366] opacity-5 rounded-full"></div>
+      
+      {/* Trophy decorations */}
+      <div className="absolute right-[5%] top-20 text-[#FFD700] opacity-10">
+        <i className="ri-trophy-fill text-5xl"></i>
+      </div>
+      <div className="absolute left-[30%] top-[70%] text-[#003366] opacity-10 transform -rotate-12">
+        <i className="ri-award-line text-4xl"></i>
+      </div>
+      
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 relative z-10">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Event Management</h1>
+          <div className="flex items-center">
+            <h1 className="text-2xl font-bold text-gray-800">Event Management</h1>
+            <div className="ml-2 bg-[#003366] bg-opacity-10 rounded-full px-2 py-0.5 text-xs text-[#003366] font-medium">
+              ADMIN
+            </div>
+          </div>
           <p className="text-gray-600 mt-1">Add, edit, and manage Wayzata DECA events</p>
         </div>
         <div className="flex items-center mt-4 md:mt-0 space-x-3">
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003366]"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003366] shadow-sm"
           >
             <option value="all">All Events</option>
             {eventTypes.map((type) => (
@@ -117,20 +134,48 @@ const EventManagement = () => {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#003366]"></div>
         </div>
       ) : filteredEvents.length === 0 ? (
-        <div className="bg-white rounded-xl shadow p-8 text-center">
-          <i className="ri-calendar-line text-5xl text-gray-300 mb-4"></i>
-          <h3 className="text-xl font-medium text-gray-700">No events found</h3>
-          <p className="text-gray-500 mt-2">
-            {filter === "all" 
-              ? "Start by adding your first event" 
-              : `No ${filter} events found. Try a different filter or add a new event.`}
-          </p>
-          <Button
-            className="mt-4 bg-[#003366] hover:bg-[#00264d]"
-            onClick={() => setIsAddEventOpen(true)}
-          >
-            <i className="ri-add-line mr-1"></i> Add New Event
-          </Button>
+        <div className="bg-white rounded-xl shadow p-8 text-center relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute -right-16 -bottom-16 w-32 h-32 bg-[#FFD700] opacity-5 rounded-full"></div>
+          <div className="absolute -left-16 -top-16 w-32 h-32 bg-[#003366] opacity-5 rounded-full"></div>
+          
+          <div className="relative z-10">
+            <div className="inline-block bg-gray-100 p-4 rounded-full mb-4 relative">
+              <i className="ri-calendar-line text-5xl text-[#003366] opacity-40"></i>
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#FFD700] rounded-full flex items-center justify-center">
+                <i className="ri-add-line text-[#003366] text-sm"></i>
+              </div>
+            </div>
+            
+            <h3 className="text-xl font-medium text-gray-700">No events found</h3>
+            <p className="text-gray-500 mt-2 mb-4 max-w-md mx-auto">
+              {filter === "all" 
+                ? "Start by adding your first event to the Wayzata DECA calendar. Track competitions, meetings, deadlines, and social events." 
+                : `No ${filter} events found. Try a different filter or add a new ${filter} event to the calendar.`}
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-3 mt-4 mb-6">
+              <span className="inline-flex items-center gap-1 text-xs px-2 py-1 bg-[#003366] bg-opacity-10 text-[#003366] rounded-full">
+                <i className="ri-trophy-line"></i> Competitions
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs px-2 py-1 bg-[#2C7BE5] bg-opacity-10 text-[#2C7BE5] rounded-full">
+                <i className="ri-team-line"></i> Meetings
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs px-2 py-1 bg-[#E63946] bg-opacity-10 text-[#E63946] rounded-full">
+                <i className="ri-alarm-line"></i> Deadlines
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs px-2 py-1 bg-[#FFD700] bg-opacity-10 text-[#003366] rounded-full">
+                <i className="ri-group-line"></i> Social
+              </span>
+            </div>
+            
+            <Button
+              className="mt-2 bg-gradient-to-r from-[#003366] to-[#003f7e] hover:from-[#00264d] hover:to-[#00336b] shadow-sm"
+              onClick={() => setIsAddEventOpen(true)}
+            >
+              <i className="ri-add-line mr-1"></i> Add New Event
+            </Button>
+          </div>
         </div>
       ) : (
         <div className="bg-white rounded-xl shadow overflow-hidden">
