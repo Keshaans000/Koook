@@ -106,9 +106,9 @@ const About = () => {
             </div>
             <div className="md:w-1/3 flex justify-center items-center">
               <img 
-                src="https://glass-award.com/cdn/shop/products/bz-1_1024x1024.jpg?v=1571710249" 
-                alt="DECA Glass Trophy" 
-                className="rounded-lg shadow-md max-h-64 object-contain"
+                src="/deca-trophy.svg" 
+                alt="DECA Trophy" 
+                className="max-h-64 object-contain"
               />
             </div>
           </div>
