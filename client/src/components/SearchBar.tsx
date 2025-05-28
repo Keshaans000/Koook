@@ -207,7 +207,7 @@ const SearchBar = () => {
             placeholder="Search events, pages, and resources..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e as any)}
+            onKeyDown={handleKeyDown}
             className="flex-1 outline-none text-gray-900 placeholder-gray-500"
           />
           <button
