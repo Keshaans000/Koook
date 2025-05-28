@@ -63,7 +63,7 @@ const DecaHelp = () => {
         <ul className="space-y-3">
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/high-school-programs/high-school-competitive-events/guidelines" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"

@@ -107,7 +107,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/publications" 
+              href="https://www.deca.org/high-school-programs" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#FFD700] bg-opacity-10 rounded-lg border border-[#FFD700] border-opacity-30 hover:bg-opacity-20 transition-all"
@@ -115,14 +115,14 @@ const ResourcesCard = () => {
               <div className="bg-[#FFD700] text-[#003366] p-2 rounded-md mr-3">
                 <i className="ri-stack-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#003366]">DECA Publications</span>
+              <span className="font-medium text-[#003366]">DECA High School Programs</span>
               <i className="ri-external-link-line ml-auto text-[#003366]"></i>
             </a>
           </li>
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://learn.deca.org/" 
+              href="https://www.deca.org/resources" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#E63946] bg-opacity-5 rounded-lg border border-[#E63946] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -130,7 +130,7 @@ const ResourcesCard = () => {
               <div className="bg-[#E63946] text-white p-2 rounded-md mr-3">
                 <i className="ri-file-list-3-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#E63946]">DECA Learn (Practice Resources)</span>
+              <span className="font-medium text-[#E63946]">DECA Resources & Tools</span>
               <i className="ri-external-link-line ml-auto text-[#E63946]"></i>
             </a>
           </li>
