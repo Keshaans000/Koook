@@ -227,6 +227,234 @@ const Team = () => {
           </div>
         </div>
 
+        {/* Officer Card - Rahul (VP Community Involvement) */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#FF6B35] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#FF6B35] to-[#E55A2F]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#FF6B35] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">RB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Rahul Billakanti</h3>
+              <span className="ml-2 bg-[#FF6B35] text-white text-xs px-2 py-0.5 rounded-full">VP of Community Involvement</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA Community Outreach & Service Leader</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-heart-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Community Service</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Volunteer Coordination</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-community-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Outreach Programs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Officer Card - Sarayu (VP Competition) */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#8E44AD] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#8E44AD] to-[#7D3C98]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#8E44AD] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">SG</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Sarayu Gundla</h3>
+              <span className="ml-2 bg-[#8E44AD] text-white text-xs px-2 py-0.5 rounded-full">VP of Competition</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA Competition Strategy & Training Leader</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-trophy-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Competition Prep</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Training Programs</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-presentation-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Event Coordination</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Officer Card - Joy (VP Communications) */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#F39C12] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#F39C12] to-[#E67E22]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#F39C12] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">JZ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Joy Zhou</h3>
+              <span className="ml-2 bg-[#F39C12] text-white text-xs px-2 py-0.5 rounded-full">VP of Communications</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA Communications & Marketing Leader</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-message-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Internal Communications</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Social Media</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-megaphone-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Chapter Promotion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Officer Card - Anjali (VP Trojan Locker Room) */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#16A085] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#16A085] to-[#138D75]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#16A085] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">AS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Anjali Suresh</h3>
+              <span className="ml-2 bg-[#16A085] text-white text-xs px-2 py-0.5 rounded-full">VP of Trojan Locker Room</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA School Store Operations Leader</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-store-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Store Operations</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Inventory Management</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-shopping-bag-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Customer Service</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Manager Card - Ameya */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#34495E] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#34495E] to-[#2C3E50]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#34495E] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">AR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Ameya Rauniyar</h3>
+              <span className="ml-2 bg-[#34495E] text-white text-xs px-2 py-0.5 rounded-full">Manager - Trojan Locker Room</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA School Store Manager & Operations</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-settings-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Daily Operations</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Staff Coordination</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-pie-chart-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Sales Analytics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Manager Card - Louis */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#E74C3C] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#E74C3C] to-[#C0392B]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#E74C3C] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">LD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Louis Dang</h3>
+              <span className="ml-2 bg-[#E74C3C] text-white text-xs px-2 py-0.5 rounded-full">Manager - Trojan Locker Room</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">DECA School Store Manager & Support</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-customer-service-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Customer Relations</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-briefcase-4-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Product Management</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-team-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Team Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Officer Card - Michelle */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-20 h-20">
