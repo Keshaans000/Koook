@@ -139,7 +139,7 @@ const SearchBar = () => {
         description: event.description || `${event.type} event`,
         type: "event" as const,
         url: `/`,
-        date: event.date
+        date: event.startTime.toString()
       }));
 
     // Search static content
@@ -154,7 +154,7 @@ const SearchBar = () => {
   }, [searchQuery, events]);
 
   // Handle keyboard navigation
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen) return;
 
     if (e.key === "ArrowDown") {
