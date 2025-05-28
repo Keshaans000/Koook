@@ -92,7 +92,7 @@ const ResourcesCard = () => {
           
           <li className="transform transition-transform duration-200 hover:translate-x-1">
             <a 
-              href="https://www.deca.org/high-school-programs/high-school-competitive-events/guidelines" 
+              href="https://www.deca.org/high-school-programs/high-school-competitive-events" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex items-center p-2 bg-[#2C7BE5] bg-opacity-5 rounded-lg border border-[#2C7BE5] border-opacity-20 hover:bg-opacity-10 transition-all"
@@ -100,7 +100,7 @@ const ResourcesCard = () => {
               <div className="bg-[#2C7BE5] text-white p-2 rounded-md mr-3">
                 <i className="ri-user-settings-line text-lg"></i>
               </div>
-              <span className="font-medium text-[#2C7BE5]">DECA Competitive Event Guidelines</span>
+              <span className="font-medium text-[#2C7BE5]">DECA Competitive Events</span>
               <i className="ri-external-link-line ml-auto text-[#2C7BE5]"></i>
             </a>
           </li>
