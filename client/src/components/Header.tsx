@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -54,45 +55,8 @@ const Header = () => {
         </div>
         
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Expandable search on mobile */}
-          {showSearch ? (
-            <div className="absolute inset-0 bg-[#003366] p-2 z-30 flex items-center justify-between">
-              <Input 
-                type="text" 
-                placeholder="Search events..." 
-                className="flex-1 mr-2 bg-white h-9"
-                autoFocus
-              />
-              <Button 
-                size="sm" 
-                variant="ghost" 
-                className="text-white h-9 p-0 px-2"
-                onClick={() => setShowSearch(false)}
-              >
-                <i className="ri-close-line text-xl"></i>
-              </Button>
-            </div>
-          ) : (
-            // Mobile search button
-            <button 
-              className="text-white p-2 rounded-full hover:bg-blue-900 md:hidden"
-              onClick={() => setShowSearch(true)}
-            >
-              <i className="ri-search-line text-xl"></i>
-            </button>
-          )}
-          
-          {/* Desktop search */}
-          <div className="relative hidden md:block">
-            <Input 
-              type="text" 
-              placeholder="Search events..." 
-              className="w-64 h-9 bg-white"
-            />
-            <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-              <i className="ri-search-line"></i>
-            </div>
-          </div>
+          {/* Command+K Style Search */}
+          <SearchBar />
           
           {/* Notifications button */}
           <button className="text-white p-2 rounded-full hover:bg-blue-900 relative" aria-label="Notifications">
