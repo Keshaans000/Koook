@@ -8,6 +8,7 @@ import Home, { HomeProps } from "@/pages/Home";
 import EventManagement from "@/pages/EventManagement";
 import About from "@/pages/About";
 import Team from "@/pages/Team";
+import CurrentWinners from "@/pages/CurrentWinners";
 import Competitions from "@/pages/Competitions";
 import EventsCategory from "@/pages/EventsCategory";
 import DecaHelp from "@/pages/DecaHelp";
@@ -48,6 +49,7 @@ function Router() {
       <Route path="/manage" component={EventManagement} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
+      <Route path="/current-winners" component={CurrentWinners} />
       <Route path="/competitions" component={Competitions} />
       <Route path="/events-category" component={EventsCategory} />
       <Route path="/deca-help" component={DecaHelp} />

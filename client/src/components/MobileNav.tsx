@@ -55,6 +55,13 @@ const MobileNav = () => {
                     </div>
                   </Link>
                   
+                  <Link href="/current-winners" onClick={() => setIsMenuOpen(false)}>
+                    <div className={`flex flex-col items-center p-3 rounded-lg ${location === "/current-winners" ? "bg-blue-50 text-[#003366]" : "bg-gray-50 text-gray-700"}`}>
+                      <i className="ri-trophy-fill text-2xl mb-1 text-[#FFD700]"></i>
+                      <span className="text-xs text-center">Winners</span>
+                    </div>
+                  </Link>
+                  
                   <Link href="/events-category" onClick={() => setIsMenuOpen(false)}>
                     <div className={`flex flex-col items-center p-3 rounded-lg ${location === "/events-category" ? "bg-blue-50 text-[#003366]" : "bg-gray-50 text-gray-700"}`}>
                       <i className="ri-file-list-3-line text-2xl mb-1"></i>
