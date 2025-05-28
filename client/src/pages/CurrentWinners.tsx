@@ -39,7 +39,7 @@ const CurrentWinners = () => {
           <div className="relative z-10">
             <div className="text-6xl mb-4">🏆</div>
             <h2 className="text-3xl font-bold text-[#003366] mb-2">
-              ICDC Winners 2024-2025
+              ICDC Winners 2025
             </h2>
             <p className="text-[#003366] text-lg font-medium">
               Congrats to Wayzata DECA's newest ICDC winners!
@@ -121,7 +121,7 @@ const CurrentWinners = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div className="flex items-center">
                   <i className="ri-calendar-line text-[#003366] mr-2"></i>
-                  <span>Competition Date: April 2024</span>
+                  <span>Competition Date: April 2025</span>
                 </div>
                 <div className="flex items-center">
                   <i className="ri-map-pin-line text-[#003366] mr-2"></i>
@@ -162,7 +162,7 @@ const CurrentWinners = () => {
         
         <Card className="text-center">
           <CardContent className="p-6">
-            <div className="text-3xl font-bold text-[#28A745] mb-2">2024</div>
+            <div className="text-3xl font-bold text-[#28A745] mb-2">2025</div>
             <p className="text-gray-600">Competition Year</p>
           </CardContent>
         </Card>

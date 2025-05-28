@@ -21,7 +21,7 @@ const Team = () => {
           <div className="flex items-center">
             <h1 className="text-2xl font-bold text-gray-800">DECA Leadership Team</h1>
             <div className="ml-2 bg-[#FFD700] bg-opacity-20 rounded-full px-2 py-0.5 text-xs text-[#003366] font-medium border border-[#FFD700] border-opacity-30">
-              2024-2025
+              2025-2026
             </div>
           </div>
           <p className="text-gray-600 mt-1">Meet the dedicated team behind Wayzata DECA</p>
