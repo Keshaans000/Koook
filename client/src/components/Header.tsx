@@ -84,10 +84,14 @@ const Header = () => {
                     <h3 className="font-semibold">DECA Member</h3>
                     <p className="text-sm text-gray-500">Wayzata High School</p>
                   </div>
-                  <div className="pt-4 space-y-2">
-                    <Button className="w-full bg-[#003366]">View Profile</Button>
-                    <Button variant="outline" className="w-full">Settings</Button>
-                    <Button variant="outline" className="w-full text-[#E63946] border-[#E63946]">Logout</Button>
+                  <div className="pt-6">
+                    <div className="bg-gradient-to-r from-[#003366] to-[#004080] p-4 rounded-lg text-white text-center">
+                      <p className="text-sm font-medium mb-2">💼 DECA Inspiration</p>
+                      <p className="text-xs italic leading-relaxed">
+                        "Success in business requires training and discipline and hard work. But if you're not frightened by these things, the opportunities are just as great today as they ever were."
+                      </p>
+                      <p className="text-xs mt-2 text-[#FFD700]">- David Rockefeller</p>
+                    </div>
                   </div>
                 </div>
               </div>
