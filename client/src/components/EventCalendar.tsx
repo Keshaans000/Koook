@@ -18,7 +18,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [viewMode, setViewMode] = useState<'month' | 'list'>('month');
+
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -145,131 +145,71 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
           </Button>
         </div>
         
-        {/* View mode buttons */}
-        <div className="flex items-center justify-center gap-1">
-          <Button
-            onClick={() => {
-              console.log('Month button clicked');
-              setViewMode('month');
-            }}
-            variant={viewMode === 'month' ? 'default' : 'outline'}
-            size="sm"
-            className={cn(
-              "text-xs px-3 py-1.5",
-              viewMode === 'month' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
-            )}
-          >
-            Month
-          </Button>
-          <Button
-            onClick={() => {
-              console.log('List button clicked');
-              setViewMode('list');
-            }}
-            variant={viewMode === 'list' ? 'default' : 'outline'}
-            size="sm"
-            className={cn(
-              "text-xs px-3 py-1.5",
-              viewMode === 'list' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
-            )}
-          >
-            List
-          </Button>
-        </div>
+
       </div>
       
-      {/* Conditional rendering based on view mode */}
-      {viewMode === 'month' && (
-        <>
-          <div className="grid grid-cols-7 border-b border-gray-200">
-            {/* Calendar header - full day names on desktop, abbreviated on mobile */}
-            {weekdays.map((day, index) => (
-              <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm border-r border-gray-200 last:border-r-0">
-                <span className="hidden sm:inline">{day}</span>
-                <span className="inline sm:hidden">{shortWeekdays[index]}</span>
-              </div>
-            ))}
+      {/* Calendar display - always show month view */}
+      <div className="grid grid-cols-7 border-b border-gray-200">
+        {/* Calendar header - full day names on desktop, abbreviated on mobile */}
+        {weekdays.map((day, index) => (
+          <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm border-r border-gray-200 last:border-r-0">
+            <span className="hidden sm:inline">{day}</span>
+            <span className="inline sm:hidden">{shortWeekdays[index]}</span>
           </div>
-          
-          {/* Calendar grid */}
-          <div className="grid grid-cols-7">
-            {daysByWeek.map((week, weekIndex) => (
-              week.map((day, dayIndex) => {
-                const dayEvents = getEventsForDay(day);
-                const isCurrentMonth = isSameMonth(day, currentMonth);
-                const isSelected = isSameDay(day, selectedDate);
-                const isToday = isSameDay(day, new Date());
-                
-                return (
-                  <div 
-                    key={`${weekIndex}-${dayIndex}`}
-                    onClick={() => setSelectedDate(day)}
-                    className={cn(
-                      "border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
-                      !isCurrentMonth && "bg-gray-100 text-gray-400",
-                      isSelected && "bg-[#003366] bg-opacity-5",
-                      isToday && !isSelected && "font-medium"
-                    )}
-                  >
-                    <div className={cn(
-                      "p-0.5 sm:p-1 text-right",
-                      isSelected && "font-medium text-[#003366]",
-                      isToday && !isSelected && "font-semibold"
-                    )}>
-                      {format(day, 'd')}
-                    </div>
-                    {dayEvents.length > 0 && (
-                      <div className="flex justify-center mt-0 sm:mt-1">
-                        {/* Show event dots on both mobile and desktop */}
-                        <div className="flex flex-wrap justify-center gap-[2px]">
-                          {dayEvents.slice(0, 3).map((event, index) => (
-                            <div 
-                              key={index} 
-                              className={cn(
-                                "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
-                                getEventColorClass(event.type)
-                              )}
-                            />
-                          ))}
-                        </div>
-                        {dayEvents.length > 3 && (
-                          <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            ))}
-          </div>
-        </>
-      )}
-
-
-
-      {viewMode === 'list' && (
-        <div className="p-4">
-          <div className="space-y-2">
-            {events
-              .filter(event => {
-                const eventType = event.type as EventType;
-                return eventFilters[eventType as keyof typeof eventFilters];
-              })
-              .slice(0, 10)
-              .map((event) => (
-                <div key={event.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center">
-                    <div className={cn("w-3 h-3 rounded-full mr-3", getEventColorClass(event.type))}></div>
-                    <div>
-                      <p className="font-medium text-gray-800">{event.title}</p>
-                      <p className="text-sm text-gray-600">{format(new Date(event.startTime), 'MMM d, yyyy')}</p>
-                    </div>
-                  </div>
+        ))}
+      </div>
+      
+      {/* Calendar grid */}
+      <div className="grid grid-cols-7">
+        {daysByWeek.map((week, weekIndex) => (
+          week.map((day, dayIndex) => {
+            const dayEvents = getEventsForDay(day);
+            const isCurrentMonth = isSameMonth(day, currentMonth);
+            const isSelected = isSameDay(day, selectedDate);
+            const isToday = isSameDay(day, new Date());
+            
+            return (
+              <div 
+                key={`${weekIndex}-${dayIndex}`}
+                onClick={() => setSelectedDate(day)}
+                className={cn(
+                  "border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
+                  !isCurrentMonth && "bg-gray-100 text-gray-400",
+                  isSelected && "bg-[#003366] bg-opacity-5",
+                  isToday && !isSelected && "font-medium"
+                )}
+              >
+                <div className={cn(
+                  "p-0.5 sm:p-1 text-right",
+                  isSelected && "font-medium text-[#003366]",
+                  isToday && !isSelected && "font-semibold"
+                )}>
+                  {format(day, 'd')}
                 </div>
-              ))}
-          </div>
-        </div>
-      )}
+                {dayEvents.length > 0 && (
+                  <div className="flex justify-center mt-0 sm:mt-1">
+                    {/* Show event dots on both mobile and desktop */}
+                    <div className="flex flex-wrap justify-center gap-[2px]">
+                      {dayEvents.slice(0, 3).map((event, index) => (
+                        <div 
+                          key={index} 
+                          className={cn(
+                            "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
+                            getEventColorClass(event.type)
+                          )}
+                        />
+                      ))}
+                    </div>
+                    {dayEvents.length > 3 && (
+                      <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })
+        ))}
+      </div>
       
       {/* Legend - rearranged for mobile */}
       <div className="p-2 sm:p-4">
