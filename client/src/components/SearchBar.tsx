@@ -141,6 +141,12 @@ const SearchBar = () => {
 
     const query = searchQuery.toLowerCase();
     
+    // Search static content first (prioritize homepage for site searches)
+    const pageResults = staticContent.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query)
+    );
+
     // Search events
     const eventResults: SearchResult[] = events
       .filter((event: Event) => 
@@ -154,14 +160,8 @@ const SearchBar = () => {
         description: event.description || `${event.type} event`,
         type: "event" as const,
         url: `/`,
-        date: event.startTime.toString()
+        date: new Date(event.date).toLocaleDateString()
       }));
-
-    // Search static content
-    const pageResults = staticContent.filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query)
-    );
 
     const allResults = [...pageResults, ...eventResults];
     setResults(allResults.slice(0, 8)); // Limit to 8 results
