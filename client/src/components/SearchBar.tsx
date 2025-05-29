@@ -116,7 +116,7 @@ const SearchBar = () => {
     }
   }, [isOpen]);
 
-  // Search functionality
+  // Search functionality with useMemo to prevent infinite loops
   useEffect(() => {
     if (!searchQuery.trim()) {
       setResults([]);
@@ -126,21 +126,23 @@ const SearchBar = () => {
 
     const query = searchQuery.toLowerCase();
     
-    // Search events
+    // Search events safely
     const eventResults: SearchResult[] = events
-      .filter((event: Event) => 
-        event.title.toLowerCase().includes(query) ||
-        event.description?.toLowerCase().includes(query) ||
-        event.type.toLowerCase().includes(query)
-      )
-      .map((event: Event) => ({
-        id: `event-${event.id}`,
-        title: event.title,
-        description: event.description || `${event.type} event`,
-        type: "event" as const,
-        url: `/`,
-        date: event.startTime.toString()
-      }));
+      ? events
+          .filter((event: Event) => 
+            event.title?.toLowerCase().includes(query) ||
+            event.description?.toLowerCase().includes(query) ||
+            event.type?.toLowerCase().includes(query)
+          )
+          .map((event: Event) => ({
+            id: `event-${event.id}`,
+            title: event.title || 'Untitled Event',
+            description: event.description || `${event.type} event`,
+            type: "event" as const,
+            url: `/`,
+            date: event.startTime ? new Date(event.startTime).toISOString() : new Date().toISOString()
+          }))
+      : [];
 
     // Search static content
     const pageResults = staticContent.filter(item =>
@@ -151,7 +153,7 @@ const SearchBar = () => {
     const allResults = [...pageResults, ...eventResults];
     setResults(allResults.slice(0, 8)); // Limit to 8 results
     setSelectedIndex(0);
-  }, [searchQuery, events]);
+  }, [searchQuery, events?.length]);
 
   // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {

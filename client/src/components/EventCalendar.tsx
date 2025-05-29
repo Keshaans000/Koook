@@ -99,13 +99,22 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   
   // Filter events for the current day
   const getEventsForDay = (day: Date) => {
+    if (!events || !Array.isArray(events)) return [];
+    
     return events.filter(event => {
-      // Skip events that don't match active filters
-      const eventType = event.type as EventType;
-      if (!eventFilters[eventType as keyof typeof eventFilters]) return false;
+      if (!event || !event.type || !event.startTime) return false;
       
-      const eventDate = new Date(event.startTime);
-      return isSameDay(eventDate, day);
+      // Check if event type matches active filters
+      const eventType = event.type as EventType;
+      if (!eventFilters || !eventFilters[eventType]) return false;
+      
+      // Check if event is on the same day
+      try {
+        const eventDate = new Date(event.startTime);
+        return isSameDay(eventDate, day);
+      } catch {
+        return false;
+      }
     });
   };
   
@@ -205,7 +214,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         </div>
       </div>
       
-      <div className="calendar-grid grid border-b border-gray-200">
+      <div className="calendar-grid grid grid-cols-7 border-b border-gray-200">
         {/* Calendar header - full day names on desktop, abbreviated on mobile */}
         {weekdays.map((day, index) => (
           <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm">

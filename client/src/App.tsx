@@ -24,31 +24,17 @@ import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import { useState } from "react";
 
-// Route wrapper components
-const HomeWrapper = (props: RouteComponentProps) => {
-  // Extract the eventFilters from the parent App component's state
-  const { eventFilters } = useAppState();
-  return <Home eventFilters={eventFilters} />;
+// Route wrapper components - simplified to pass filters correctly
+const HomeWrapper = (props: RouteComponentProps & { eventFilters: any }) => {
+  return <Home eventFilters={props.eventFilters} />;
 };
 
-// App state context
-const useAppState = () => {
-  // This is a simplified approach - we're using the parent component state directly
-  const app = document.getElementById('root')?.__REACT_APP_STATE as { 
-    eventFilters: { competition: boolean; meeting: boolean; deadline: boolean; social: boolean };
-    toggleFilter: (type: "competition" | "meeting" | "deadline" | "social") => void; 
-  } | undefined;
-  
-  return {
-    eventFilters: app?.eventFilters || { competition: true, meeting: true, deadline: true, social: true },
-    toggleFilter: app?.toggleFilter || (() => {})
-  };
-};
-
-function Router() {
+function Router({ eventFilters }: { eventFilters: any }) {
   return (
     <Switch>
-      <Route path="/" component={HomeWrapper} />
+      <Route path="/">
+        {() => <Home eventFilters={eventFilters} />}
+      </Route>
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/profile" component={Profile} />
@@ -105,7 +91,7 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto w-full">
               <main className="p-3 md:p-6 max-w-full">
-                <Router />
+                <Router eventFilters={eventFilters} />
               </main>
             </div>
           </div>

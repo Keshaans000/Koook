@@ -71,7 +71,11 @@ const Header = () => {
           <SearchBar />
           
           {/* Notifications button */}
-          <button className="text-white p-2 rounded-full hover:bg-blue-900 relative" aria-label="Notifications">
+          <button 
+            onClick={() => alert('Notifications feature coming soon! You will be notified about upcoming events and deadlines.')}
+            className="text-white p-2 rounded-full hover:bg-blue-900 relative" 
+            aria-label="Notifications"
+          >
             <i className="ri-notification-3-line text-xl"></i>
             <span className="absolute -top-1 -right-1 bg-[#E63946] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
           </button>
