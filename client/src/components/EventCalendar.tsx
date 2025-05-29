@@ -187,9 +187,9 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
                   <div className="text-xs text-gray-500 capitalize">{user?.role}</div>
                 </div>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem className="cursor-pointer" onClick={() => window.alert('Profile page coming soon!')}>
                   <Settings className="w-4 h-4 mr-2" />
-                  Profile Settings
+                  View Profile
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem 
