@@ -17,6 +17,7 @@ import Deadlines from "@/pages/Deadlines";
 import TeacherCorner from "@/pages/TeacherCorner";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import Profile from "@/pages/Profile";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/" component={HomeWrapper} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/profile" component={Profile} />
       <Route path="/manage" component={EventManagement} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />

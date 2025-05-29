@@ -105,8 +105,9 @@ const Header = () => {
                       <p className="text-sm text-gray-500 capitalize">{user?.role} • Wayzata High School</p>
                     </div>
                     <div className="pt-4 space-y-2">
-                      <Button className="w-full bg-[#003366]" onClick={() => alert('Profile page coming soon!')}>View Profile</Button>
-                      <Button variant="outline" className="w-full" onClick={() => alert('Settings coming soon!')}>Settings</Button>
+                      <Link href="/profile">
+                        <Button className="w-full bg-[#003366]">View Profile</Button>
+                      </Link>
                       <Button 
                         variant="outline" 
                         className="w-full text-[#E63946] border-[#E63946]"
