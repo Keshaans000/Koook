@@ -205,6 +205,9 @@ const Homepage = () => {
               <p className="text-blue-200 text-sm">
                 Wayzata DECA Member & Web Developer
               </p>
+              <p className="text-blue-200 text-xs mt-2">
+                Built with React, TypeScript & Tailwind CSS
+              </p>
             </div>
           </div>
         </CardContent>
