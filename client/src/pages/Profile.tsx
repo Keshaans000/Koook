@@ -145,7 +145,7 @@ export default function Profile() {
                 </Label>
                 <Input 
                   id="graduationYear" 
-                  value={user.graduationYear} 
+                  value={(user as any).graduationYear || "2025"} 
                   readOnly 
                   className="bg-gray-50"
                 />
