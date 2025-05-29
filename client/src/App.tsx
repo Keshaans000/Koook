@@ -44,8 +44,8 @@ const useAppState = () => {
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={HomeWrapper} />
-      <Route path="/homepage" component={Homepage} />
+      <Route path="/" component={Homepage} />
+      <Route path="/calendar" component={HomeWrapper} />
       <Route path="/manage" component={EventManagement} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />

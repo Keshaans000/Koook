@@ -160,7 +160,7 @@ const SearchBar = () => {
         description: event.description || `${event.type} event`,
         type: "event" as const,
         url: `/`,
-        date: new Date(event.date).toLocaleDateString()
+        date: new Date(event.startTime).toLocaleDateString()
       }));
 
     const allResults = [...pageResults, ...eventResults];

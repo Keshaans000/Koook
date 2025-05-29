@@ -19,9 +19,9 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
         <nav>
           <ul className="space-y-2">
             <li>
-              <Link href="/homepage">
+              <Link href="/">
                 <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/homepage" 
+                  location === "/" 
                     ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                     : "hover:bg-gray-100 text-gray-700"
                 }`}>
@@ -31,9 +31,9 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/calendar">
                 <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/" 
+                  location === "/calendar" 
                     ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                     : "hover:bg-gray-100 text-gray-700"
                 }`}>

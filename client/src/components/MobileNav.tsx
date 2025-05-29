@@ -12,7 +12,7 @@ const MobileNav = () => {
         <div className="flex justify-around">
           <Link href="/">
             <div className={`flex flex-col items-center py-2 px-3 ${location === "/" ? "text-[#003366] font-medium" : "text-gray-600"}`}>
-              <i className="ri-calendar-line text-xl"></i>
+              <i className="ri-home-4-line text-xl"></i>
               <span className="text-xs mt-1">Home</span>
             </div>
           </Link>
