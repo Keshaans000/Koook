@@ -5,7 +5,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { Link } from "wouter";
-import { User, Calendar } from "lucide-react";
+import { User, LogOut, Settings } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
+import { apiRequest } from "@/lib/queryClient";
 
 interface EventCalendarProps {
   events: Event[];
@@ -22,6 +24,15 @@ interface EventCalendarProps {
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const { user, isAuthenticated, isLoading } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await apiRequest("POST", "/api/auth/logout");
+      window.location.reload(); // Refresh to update auth state
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -158,14 +169,38 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
               </Button>
             </Link>
           ) : (
-            <div className="flex items-center gap-2">
-              <div className="text-xs text-gray-600 hidden sm:block">
-                Hi, {user?.firstName}!
-              </div>
-              <div className="w-6 h-6 bg-[#003366] text-white rounded-full flex items-center justify-center text-xs font-semibold">
-                {user?.firstName?.[0]?.toUpperCase()}
-              </div>
-            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="flex items-center gap-2 p-2 h-auto">
+                  <div className="text-xs text-gray-600 hidden sm:block">
+                    Hi, {user?.firstName}!
+                  </div>
+                  <div className="w-6 h-6 bg-[#003366] text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                    {user?.firstName?.[0]?.toUpperCase()}
+                  </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <div className="px-2 py-1.5 text-sm">
+                  <div className="font-medium">{user?.firstName} {user?.lastName}</div>
+                  <div className="text-xs text-gray-500">{user?.email}</div>
+                  <div className="text-xs text-gray-500 capitalize">{user?.role}</div>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="cursor-pointer">
+                  <Settings className="w-4 h-4 mr-2" />
+                  Profile Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem 
+                  className="cursor-pointer text-red-600 focus:text-red-600"
+                  onClick={handleLogout}
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           )}
         </div>
       </div>

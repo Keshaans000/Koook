@@ -1,4 +1,4 @@
-import { events, type Event, type InsertEvent, users, type User, type InsertUser } from "@shared/schema";
+import { events, type Event, type InsertEvent, users, type User, type InsertUser, userEvents, type UserEvent, type InsertUserEvent } from "@shared/schema";
 import { db } from "./db";
 import { eq, and, gte, lte } from "drizzle-orm";
 import bcrypt from "bcryptjs";
@@ -16,6 +16,12 @@ export interface IStorage {
   createEvent(event: InsertEvent): Promise<Event>;
   updateEvent(id: number, event: Partial<InsertEvent>): Promise<Event | undefined>;
   deleteEvent(id: number): Promise<boolean>;
+  
+  // Personal events operations
+  getUserEvents(userId: number): Promise<UserEvent[]>;
+  createUserEvent(userId: number, event: InsertUserEvent): Promise<UserEvent>;
+  updateUserEvent(userId: number, eventId: number, event: Partial<InsertUserEvent>): Promise<UserEvent | undefined>;
+  deleteUserEvent(userId: number, eventId: number): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -93,6 +99,35 @@ export class DatabaseStorage implements IStorage {
 
   async deleteEvent(id: number): Promise<boolean> {
     const result = await db.delete(events).where(eq(events.id, id));
+    return result.rowCount ? result.rowCount > 0 : false;
+  }
+
+  // Personal events operations - only visible to the user who created them
+  async getUserEvents(userId: number): Promise<UserEvent[]> {
+    return await db.select().from(userEvents).where(eq(userEvents.userId, userId));
+  }
+
+  async createUserEvent(userId: number, eventData: InsertUserEvent): Promise<UserEvent> {
+    const [userEvent] = await db
+      .insert(userEvents)
+      .values({ ...eventData, userId })
+      .returning();
+    return userEvent;
+  }
+
+  async updateUserEvent(userId: number, eventId: number, eventData: Partial<InsertUserEvent>): Promise<UserEvent | undefined> {
+    const [userEvent] = await db
+      .update(userEvents)
+      .set(eventData)
+      .where(and(eq(userEvents.id, eventId), eq(userEvents.userId, userId)))
+      .returning();
+    return userEvent;
+  }
+
+  async deleteUserEvent(userId: number, eventId: number): Promise<boolean> {
+    const result = await db
+      .delete(userEvents)
+      .where(and(eq(userEvents.id, eventId), eq(userEvents.userId, userId)));
     return result.rowCount ? result.rowCount > 0 : false;
   }
 }
