@@ -18,7 +18,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-
+  const [viewMode, setViewMode] = useState<'month' | 'week' | 'list'>('month');
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -39,12 +39,11 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   const startDate = monthStart;
   const endDate = monthEnd;
   
-  const daysByWeek = [];
+  const daysByWeek: Date[][] = [];
   let startingDayOfWeek = getDay(startDate);
-  let currentDay = startDate;
   
   // Add previous month's days
-  const prevMonthDays = [];
+  const prevMonthDays: Date[] = [];
   for (let i = 0; i < startingDayOfWeek; i++) {
     prevMonthDays.unshift(addDays(startDate, -i - 1));
   }
@@ -76,7 +75,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   // Add one more week if needed to make 6 rows
   if (daysByWeek.length < 6) {
     const lastDay = daysByWeek[daysByWeek.length - 1][6];
-    const nextWeek = [];
+    const nextWeek: Date[] = [];
     for (let i = 1; i <= 7; i++) {
       nextWeek.push(addDays(lastDay, i));
     }
@@ -112,7 +111,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-2 sm:p-4 border-b border-gray-200">
-        {/* Top row with navigation and view buttons */}
+        {/* Top row with navigation */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1 sm:space-x-2">
             <Button 
@@ -145,71 +144,141 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
           </Button>
         </div>
         
-
+        {/* View mode buttons */}
+        <div className="flex items-center justify-center gap-1">
+          <Button
+            onClick={() => setViewMode('month')}
+            variant={viewMode === 'month' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'month' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
+            )}
+          >
+            Month
+          </Button>
+          <Button
+            onClick={() => setViewMode('week')}
+            variant={viewMode === 'week' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'week' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
+            )}
+          >
+            Week
+          </Button>
+          <Button
+            onClick={() => setViewMode('list')}
+            variant={viewMode === 'list' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'list' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
+            )}
+          >
+            List
+          </Button>
+        </div>
       </div>
       
-      {/* Calendar display - always show month view */}
-      <div className="grid grid-cols-7 border-b border-gray-200">
-        {/* Calendar header - full day names on desktop, abbreviated on mobile */}
-        {weekdays.map((day, index) => (
-          <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm border-r border-gray-200 last:border-r-0">
-            <span className="hidden sm:inline">{day}</span>
-            <span className="inline sm:hidden">{shortWeekdays[index]}</span>
+      {/* Conditional rendering based on view mode */}
+      {viewMode === 'month' && (
+        <>
+          <div className="grid grid-cols-7 border-b border-gray-200">
+            {/* Calendar header - full day names on desktop, abbreviated on mobile */}
+            {weekdays.map((day, index) => (
+              <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm border-r border-gray-200 last:border-r-0">
+                <span className="hidden sm:inline">{day}</span>
+                <span className="inline sm:hidden">{shortWeekdays[index]}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      
-      {/* Calendar grid */}
-      <div className="grid grid-cols-7">
-        {daysByWeek.map((week, weekIndex) => (
-          week.map((day, dayIndex) => {
-            const dayEvents = getEventsForDay(day);
-            const isCurrentMonth = isSameMonth(day, currentMonth);
-            const isSelected = isSameDay(day, selectedDate);
-            const isToday = isSameDay(day, new Date());
-            
-            return (
-              <div 
-                key={`${weekIndex}-${dayIndex}`}
-                onClick={() => setSelectedDate(day)}
-                className={cn(
-                  "border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
-                  !isCurrentMonth && "bg-gray-100 text-gray-400",
-                  isSelected && "bg-[#003366] bg-opacity-5",
-                  isToday && !isSelected && "font-medium"
-                )}
-              >
-                <div className={cn(
-                  "p-0.5 sm:p-1 text-right",
-                  isSelected && "font-medium text-[#003366]",
-                  isToday && !isSelected && "font-semibold"
-                )}>
-                  {format(day, 'd')}
-                </div>
-                {dayEvents.length > 0 && (
-                  <div className="flex justify-center mt-0 sm:mt-1">
-                    {/* Show event dots on both mobile and desktop */}
-                    <div className="flex flex-wrap justify-center gap-[2px]">
-                      {dayEvents.slice(0, 3).map((event, index) => (
-                        <div 
-                          key={index} 
-                          className={cn(
-                            "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
-                            getEventColorClass(event.type)
-                          )}
-                        />
-                      ))}
+          
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7">
+            {daysByWeek.map((week, weekIndex) => (
+              week.map((day, dayIndex) => {
+                const dayEvents = getEventsForDay(day);
+                const isCurrentMonth = isSameMonth(day, currentMonth);
+                const isSelected = isSameDay(day, selectedDate);
+                const isToday = isSameDay(day, new Date());
+                
+                return (
+                  <div 
+                    key={`${weekIndex}-${dayIndex}`}
+                    onClick={() => setSelectedDate(day)}
+                    className={cn(
+                      "border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
+                      !isCurrentMonth && "bg-gray-100 text-gray-400",
+                      isSelected && "bg-[#003366] bg-opacity-5",
+                      isToday && !isSelected && "font-medium"
+                    )}
+                  >
+                    <div className={cn(
+                      "p-0.5 sm:p-1 text-right",
+                      isSelected && "font-medium text-[#003366]",
+                      isToday && !isSelected && "font-semibold"
+                    )}>
+                      {format(day, 'd')}
                     </div>
-                    {dayEvents.length > 3 && (
-                      <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
+                    {dayEvents.length > 0 && (
+                      <div className="flex justify-center mt-0 sm:mt-1">
+                        {/* Show event dots on both mobile and desktop */}
+                        <div className="flex flex-wrap justify-center gap-[2px]">
+                          {dayEvents.slice(0, 3).map((event, index) => (
+                            <div 
+                              key={index} 
+                              className={cn(
+                                "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
+                                getEventColorClass(event.type)
+                              )}
+                            />
+                          ))}
+                        </div>
+                        {dayEvents.length > 3 && (
+                          <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
-            );
-          })
-        ))}
-      </div>
+                );
+              })
+            ))}
+          </div>
+        </>
+      )}
+
+      {viewMode === 'week' && (
+        <div className="p-4 text-center text-gray-500">
+          <p>Week view coming soon!</p>
+          <p className="text-sm mt-1">Use Month view to see the full calendar</p>
+        </div>
+      )}
+
+      {viewMode === 'list' && (
+        <div className="p-4">
+          <div className="space-y-2">
+            {events
+              .filter(event => {
+                const eventType = event.type as EventType;
+                return eventFilters[eventType as keyof typeof eventFilters];
+              })
+              .slice(0, 10)
+              .map((event) => (
+                <div key={event.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <div className={cn("w-3 h-3 rounded-full mr-3", getEventColorClass(event.type))}></div>
+                    <div>
+                      <p className="font-medium text-gray-800">{event.title}</p>
+                      <p className="text-sm text-gray-600">{format(new Date(event.startTime), 'MMM d, yyyy')}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
       
       {/* Legend - rearranged for mobile */}
       <div className="p-2 sm:p-4">
