@@ -3,11 +3,6 @@ import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterv
 import { Event, EventType } from "@shared/schema";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/useAuth";
-import { Link } from "wouter";
-import { User, LogOut, Settings } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { apiRequest } from "@/lib/queryClient";
 
 interface EventCalendarProps {
   events: Event[];
@@ -23,16 +18,6 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const { user, isAuthenticated, isLoading } = useAuth();
-
-  const handleLogout = async () => {
-    try {
-      await apiRequest("POST", "/api/auth/logout");
-      window.location.reload(); // Refresh to update auth state
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -99,22 +84,13 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   
   // Filter events for the current day
   const getEventsForDay = (day: Date) => {
-    if (!events || !Array.isArray(events)) return [];
-    
     return events.filter(event => {
-      if (!event || !event.type || !event.startTime) return false;
-      
-      // Check if event type matches active filters
+      // Skip events that don't match active filters
       const eventType = event.type as EventType;
-      if (!eventFilters || !eventFilters[eventType]) return false;
+      if (!eventFilters[eventType as keyof typeof eventFilters]) return false;
       
-      // Check if event is on the same day
-      try {
-        const eventDate = new Date(event.startTime);
-        return isSameDay(eventDate, day);
-      } catch {
-        return false;
-      }
+      const eventDate = new Date(event.startTime);
+      return isSameDay(eventDate, day);
     });
   };
   
@@ -157,64 +133,16 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             <i className="ri-arrow-right-s-line text-gray-700 text-lg sm:text-xl"></i>
           </Button>
         </div>
-        <div className="flex items-center gap-2">
-          <Button 
-            variant="link" 
-            onClick={goToToday}
-            className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
-          >
-            Today
-          </Button>
-          
-          {!isAuthenticated ? (
-            <Link href="/login">
-              <Button 
-                size="sm"
-                className="bg-[#003366] hover:bg-[#002244] text-white text-xs px-3 py-1.5 h-auto"
-              >
-                <User className="w-3 h-3 mr-1" />
-                <span className="hidden sm:inline">Sign In</span>
-                <span className="sm:hidden">Login</span>
-              </Button>
-            </Link>
-          ) : (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-2 p-2 h-auto">
-                  <div className="text-xs text-gray-600 hidden sm:block">
-                    Hi, {user?.firstName}!
-                  </div>
-                  <div className="w-6 h-6 bg-[#003366] text-white rounded-full flex items-center justify-center text-xs font-semibold">
-                    {user?.firstName?.[0]?.toUpperCase()}
-                  </div>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <div className="px-2 py-1.5 text-sm">
-                  <div className="font-medium">{user?.firstName} {user?.lastName}</div>
-                  <div className="text-xs text-gray-500">{user?.email}</div>
-                  <div className="text-xs text-gray-500 capitalize">{user?.role}</div>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer" onClick={() => window.alert('Profile page coming soon!')}>
-                  <Settings className="w-4 h-4 mr-2" />
-                  View Profile
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem 
-                  className="cursor-pointer text-red-600 focus:text-red-600"
-                  onClick={handleLogout}
-                >
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Sign Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-        </div>
+        <Button 
+          variant="link" 
+          onClick={goToToday}
+          className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
+        >
+          Today
+        </Button>
       </div>
       
-      <div className="calendar-grid grid grid-cols-7 border-b border-gray-200">
+      <div className="calendar-grid grid border-b border-gray-200">
         {/* Calendar header - full day names on desktop, abbreviated on mobile */}
         {weekdays.map((day, index) => (
           <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm">

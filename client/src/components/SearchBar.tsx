@@ -116,7 +116,7 @@ const SearchBar = () => {
     }
   }, [isOpen]);
 
-  // Search functionality with useMemo to prevent infinite loops
+  // Search functionality
   useEffect(() => {
     if (!searchQuery.trim()) {
       setResults([]);
@@ -126,23 +126,21 @@ const SearchBar = () => {
 
     const query = searchQuery.toLowerCase();
     
-    // Search events safely
+    // Search events
     const eventResults: SearchResult[] = events
-      ? events
-          .filter((event: Event) => 
-            event.title?.toLowerCase().includes(query) ||
-            event.description?.toLowerCase().includes(query) ||
-            event.type?.toLowerCase().includes(query)
-          )
-          .map((event: Event) => ({
-            id: `event-${event.id}`,
-            title: event.title || 'Untitled Event',
-            description: event.description || `${event.type} event`,
-            type: "event" as const,
-            url: `/`,
-            date: event.startTime ? new Date(event.startTime).toISOString() : new Date().toISOString()
-          }))
-      : [];
+      .filter((event: Event) => 
+        event.title.toLowerCase().includes(query) ||
+        event.description?.toLowerCase().includes(query) ||
+        event.type.toLowerCase().includes(query)
+      )
+      .map((event: Event) => ({
+        id: `event-${event.id}`,
+        title: event.title,
+        description: event.description || `${event.type} event`,
+        type: "event" as const,
+        url: `/`,
+        date: event.startTime.toString()
+      }));
 
     // Search static content
     const pageResults = staticContent.filter(item =>
@@ -153,7 +151,7 @@ const SearchBar = () => {
     const allResults = [...pageResults, ...eventResults];
     setResults(allResults.slice(0, 8)); // Limit to 8 results
     setSelectedIndex(0);
-  }, [searchQuery, events?.length]);
+  }, [searchQuery, events]);
 
   // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -209,7 +207,7 @@ const SearchBar = () => {
             placeholder="Search events, pages, and resources..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => handleKeyDown(e as any)}
             className="flex-1 outline-none text-gray-900 placeholder-gray-500"
           />
           <button

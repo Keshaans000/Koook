@@ -8,21 +8,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SearchBar from "./SearchBar";
-import { useAuth } from "@/hooks/useAuth";
-import { apiRequest } from "@/lib/queryClient";
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const { user, isAuthenticated } = useAuth();
-
-  const handleLogout = async () => {
-    try {
-      await apiRequest("POST", "/api/auth/logout");
-      window.location.reload();
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
   
   return (
     <header className="bg-[#003366] shadow-md z-20 relative overflow-hidden sticky top-0">
@@ -71,60 +59,40 @@ const Header = () => {
           <SearchBar />
           
           {/* Notifications button */}
-          <button 
-            onClick={() => alert('🏆 DECA Updates:\n\n• ICDC 2025 3rd Place Winners!\n• Spring competitions start Feb 15\n• Practice exams available on DECAhive\n• Next meeting: Jan 15 in Room 256\n• Fundraiser ends Jan 31\n\nGreat work Trojans! 💙💛')}
-            className="text-white p-2 rounded-full hover:bg-blue-900 relative" 
-            aria-label="Notifications"
-          >
+          <button className="text-white p-2 rounded-full hover:bg-blue-900 relative" aria-label="Notifications">
             <i className="ri-notification-3-line text-xl"></i>
             <span className="absolute -top-1 -right-1 bg-[#E63946] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
           </button>
           
           {/* User profile */}
-          {!isAuthenticated ? (
-            <Link href="/login">
+          <Sheet>
+            <SheetTrigger asChild>
               <div className="h-8 w-8 rounded-full bg-[#FFD700] bg-opacity-20 text-white flex items-center justify-center border border-[#FFD700] border-opacity-30 cursor-pointer">
                 <i className="ri-user-line"></i>
               </div>
-            </Link>
-          ) : (
-            <Sheet>
-              <SheetTrigger asChild>
-                <div className="h-8 w-8 rounded-full bg-[#FFD700] bg-opacity-20 text-white flex items-center justify-center border border-[#FFD700] border-opacity-30 cursor-pointer">
-                  {user?.firstName?.[0]?.toUpperCase() || <i className="ri-user-line"></i>}
-                </div>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <div className="py-6">
-                  <h2 className="text-lg font-bold mb-6">User Profile</h2>
-                  <div className="space-y-4">
-                    <div className="flex justify-center">
-                      <div className="h-20 w-20 rounded-full bg-[#003366] text-white flex items-center justify-center text-3xl">
-                        {user?.firstName?.[0]?.toUpperCase() || <i className="ri-user-line"></i>}
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <h3 className="font-semibold">{user?.firstName} {user?.lastName}</h3>
-                      <p className="text-sm text-gray-500">{user?.email}</p>
-                      <p className="text-sm text-gray-500 capitalize">{user?.role} • Wayzata High School</p>
-                    </div>
-                    <div className="pt-4 space-y-2">
-                      <Link href="/profile">
-                        <Button className="w-full bg-[#003366]">View Profile</Button>
-                      </Link>
-                      <Button 
-                        variant="outline" 
-                        className="w-full text-[#E63946] border-[#E63946]"
-                        onClick={handleLogout}
-                      >
-                        Logout
-                      </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="py-6">
+                <h2 className="text-lg font-bold mb-6">User Profile</h2>
+                <div className="space-y-4">
+                  <div className="flex justify-center">
+                    <div className="h-20 w-20 rounded-full bg-[#003366] text-white flex items-center justify-center text-3xl">
+                      <i className="ri-user-line"></i>
                     </div>
                   </div>
+                  <div className="text-center">
+                    <h3 className="font-semibold">DECA Member</h3>
+                    <p className="text-sm text-gray-500">Wayzata High School</p>
+                  </div>
+                  <div className="pt-4 space-y-2">
+                    <Button className="w-full bg-[#003366]">View Profile</Button>
+                    <Button variant="outline" className="w-full">Settings</Button>
+                    <Button variant="outline" className="w-full text-[#E63946] border-[#E63946]">Logout</Button>
+                  </div>
                 </div>
-              </SheetContent>
-            </Sheet>
-          )}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>

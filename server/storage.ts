@@ -1,14 +1,9 @@
-import { events, type Event, type InsertEvent, users, type User, type InsertUser, userEvents, type UserEvent, type InsertUserEvent } from "@shared/schema";
-import { db } from "./db";
-import { eq, and, gte, lte } from "drizzle-orm";
-import bcrypt from "bcryptjs";
+import { events, type Event, type InsertEvent, users, type User, type InsertUser } from "@shared/schema";
 
 export interface IStorage {
-  // User authentication operations
+  getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
-  getUserByEmail(email: string): Promise<User | undefined>;
-  createUser(user: InsertUser & { password: string }): Promise<User>;
-  verifyPassword(username: string, password: string): Promise<User | null>;
+  createUser(user: InsertUser): Promise<User>;
   
   getAllEvents(): Promise<Event[]>;
   getEvent(id: number): Promise<Event | undefined>;
@@ -16,120 +11,6 @@ export interface IStorage {
   createEvent(event: InsertEvent): Promise<Event>;
   updateEvent(id: number, event: Partial<InsertEvent>): Promise<Event | undefined>;
   deleteEvent(id: number): Promise<boolean>;
-  
-  // Personal events operations
-  getUserEvents(userId: number): Promise<UserEvent[]>;
-  createUserEvent(userId: number, event: InsertUserEvent): Promise<UserEvent>;
-  updateUserEvent(userId: number, eventId: number, event: Partial<InsertUserEvent>): Promise<UserEvent | undefined>;
-  deleteUserEvent(userId: number, eventId: number): Promise<boolean>;
-}
-
-export class DatabaseStorage implements IStorage {
-  // User authentication operations
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user;
-  }
-
-  async getUserByEmail(email: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.email, email));
-    return user;
-  }
-
-  async createUser(userData: InsertUser & { password: string }): Promise<User> {
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
-    
-    const [user] = await db
-      .insert(users)
-      .values({
-        ...userData,
-        password: hashedPassword,
-      })
-      .returning();
-    
-    return user;
-  }
-
-  async verifyPassword(username: string, password: string): Promise<User | null> {
-    const user = await this.getUserByUsername(username);
-    if (!user) return null;
-    
-    const isValid = await bcrypt.compare(password, user.password);
-    return isValid ? user : null;
-  }
-
-  // Event operations
-  async getAllEvents(): Promise<Event[]> {
-    return await db.select().from(events);
-  }
-
-  async getEvent(id: number): Promise<Event | undefined> {
-    const [event] = await db.select().from(events).where(eq(events.id, id));
-    return event;
-  }
-
-  async getEventsByDateRange(startDate: Date, endDate: Date): Promise<Event[]> {
-    return await db
-      .select()
-      .from(events)
-      .where(and(
-        gte(events.startTime, startDate),
-        lte(events.startTime, endDate)
-      ));
-  }
-
-  async createEvent(eventData: InsertEvent): Promise<Event> {
-    const [event] = await db
-      .insert(events)
-      .values(eventData)
-      .returning();
-    
-    return event;
-  }
-
-  async updateEvent(id: number, eventData: Partial<InsertEvent>): Promise<Event | undefined> {
-    const [event] = await db
-      .update(events)
-      .set(eventData)
-      .where(eq(events.id, id))
-      .returning();
-    
-    return event;
-  }
-
-  async deleteEvent(id: number): Promise<boolean> {
-    const result = await db.delete(events).where(eq(events.id, id));
-    return result.rowCount ? result.rowCount > 0 : false;
-  }
-
-  // Personal events operations - only visible to the user who created them
-  async getUserEvents(userId: number): Promise<UserEvent[]> {
-    return await db.select().from(userEvents).where(eq(userEvents.userId, userId));
-  }
-
-  async createUserEvent(userId: number, eventData: InsertUserEvent): Promise<UserEvent> {
-    const [userEvent] = await db
-      .insert(userEvents)
-      .values({ ...eventData, userId })
-      .returning();
-    return userEvent;
-  }
-
-  async updateUserEvent(userId: number, eventId: number, eventData: Partial<InsertUserEvent>): Promise<UserEvent | undefined> {
-    const [userEvent] = await db
-      .update(userEvents)
-      .set(eventData)
-      .where(and(eq(userEvents.id, eventId), eq(userEvents.userId, userId)))
-      .returning();
-    return userEvent;
-  }
-
-  async deleteUserEvent(userId: number, eventId: number): Promise<boolean> {
-    const result = await db
-      .delete(userEvents)
-      .where(and(eq(userEvents.id, eventId), eq(userEvents.userId, userId)));
-    return result.rowCount ? result.rowCount > 0 : false;
-  }
 }
 
 export class MemStorage implements IStorage {
@@ -298,4 +179,4 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();
