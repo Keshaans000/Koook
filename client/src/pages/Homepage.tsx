@@ -42,33 +42,118 @@ const Homepage = () => {
         </CardContent>
       </Card>
 
-      {/* About DECA */}
+      {/* Membership & Participation Details */}
+      <Card className="shadow-lg">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-user-add-line mr-3 text-[#2C7BE5]"></i>
+            Membership & Participation
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-[#003366] mb-2">Eligibility Requirements</h3>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>• Enrollment in a business department class for the year of participation</li>
+                  <li>• Meet Wayzata Public Schools Extra-Curricular Eligibility Requirements</li>
+                </ul>
+              </div>
+              
+              <div className="bg-green-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-[#003366] mb-2">Season & Meetings</h3>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>• <strong>Season:</strong> School year (September-May)</li>
+                  <li>• <strong>Meetings:</strong> Once a month on Wednesday evenings or Thursday mornings</li>
+                  <li>• <strong>Locations:</strong> Forum Rooms, A143, A148, or Culinary Express</li>
+                  <li>• Additional meetings before competitions</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-yellow-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-[#003366] mb-2">Participation Costs</h3>
+                <div className="text-sm text-gray-700 space-y-2">
+                  <p><strong>Base Fee: $175</strong></p>
+                  <ul className="list-disc list-inside ml-4 space-y-1">
+                    <li>$55 School fee</li>
+                    <li>$35 DECA fee</li>
+                    <li>$85 District fee</li>
+                  </ul>
+                  <p className="text-xs text-gray-600">
+                    Additional fees for conferences (FLC, CRLC, SCDC, ICDC) as applicable
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="font-semibold text-[#003366] mb-2">Chapter Size</h3>
+                <p className="text-2xl font-bold text-[#003366]">~180 Members</p>
+                <p className="text-sm text-gray-600">Average number of active DECA members</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Competition Schedule & Recognition */}
       <Card className="shadow-lg">
         <CardContent className="p-6">
           <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
             <i className="ri-trophy-line mr-3 text-[#E63946]"></i>
-            What is DECA?
+            Competitions & Recognition
           </h2>
-          <div className="text-gray-700 space-y-3">
-            <p>
-              DECA (Distributive Education Clubs of America) is an association of marketing students 
-              that prepares emerging leaders and entrepreneurs for careers in marketing, finance, 
-              hospitality, and management.
-            </p>
-            <p>
-              <strong>Our Mission:</strong> To prepare emerging leaders and entrepreneurs in marketing, 
-              finance, hospitality and management in high schools and colleges around the globe.
-            </p>
-            <div className="bg-blue-50 p-4 rounded-lg mt-4">
-              <h3 className="font-semibold text-[#003366] mb-2">DECA Competitive Events Include:</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>Marketing Management</li>
-                <li>Business Finance</li>
-                <li>Hospitality & Tourism</li>
-                <li>Entrepreneurship</li>
-                <li>Business Administration</li>
-                <li>Personal Financial Literacy</li>
-              </ul>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-[#003366] mb-3">Competition Timeline</h3>
+              <div className="space-y-3">
+                <div className="flex items-center p-3 bg-blue-50 rounded-lg">
+                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</div>
+                  <div>
+                    <p className="font-medium">District Competition</p>
+                    <p className="text-sm text-gray-600">January at Wayzata High School</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center p-3 bg-green-50 rounded-lg">
+                  <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</div>
+                  <div>
+                    <p className="font-medium">State Competition</p>
+                    <p className="text-sm text-gray-600">March in Minneapolis</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center p-3 bg-purple-50 rounded-lg">
+                  <div className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">3</div>
+                  <div>
+                    <p className="font-medium">International Competition</p>
+                    <p className="text-sm text-gray-600">April (locations vary)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-[#003366] mb-3">Lettering Criteria</h3>
+              <div className="bg-yellow-50 p-4 rounded-lg">
+                <p className="text-sm text-gray-700 mb-2">Students can letter in DECA by achieving <strong>any</strong> of the following:</p>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li>• Complete all volunteering requirements by District competition</li>
+                  <li>• Compete at District and qualify for State</li>
+                  <li>• Score 80+ on District competition test</li>
+                  <li>• Qualify for International competition</li>
+                </ul>
+              </div>
+              
+              <div className="mt-4 bg-gradient-to-r from-[#FFD700] to-yellow-400 p-4 rounded-lg text-center">
+                <h4 className="font-bold text-[#003366] mb-2">DECA Sashes</h4>
+                <p className="text-sm text-[#003366]">Awarded for leadership, dedication, and perseverance:</p>
+                <ul className="text-xs text-[#003366] mt-2 space-y-1">
+                  <li>• 4-year competing member</li>
+                  <li>• ICDC competitor</li>
+                  <li>• Wayzata DECA Officer</li>
+                </ul>
+              </div>
             </div>
           </div>
         </CardContent>
