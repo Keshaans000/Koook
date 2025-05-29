@@ -85,8 +85,8 @@ function App() {
     }
   }
 
-  // Show sidebar for all pages except homepage
-  const showSidebar = location !== '/';
+  // Show sidebar for all pages
+  const showSidebar = true;
 
   return (
     <QueryClientProvider client={queryClient}>
