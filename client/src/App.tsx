@@ -15,6 +15,8 @@ import DecaHelp from "@/pages/DecaHelp";
 import Meetings from "@/pages/Meetings";
 import Deadlines from "@/pages/Deadlines";
 import TeacherCorner from "@/pages/TeacherCorner";
+import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
