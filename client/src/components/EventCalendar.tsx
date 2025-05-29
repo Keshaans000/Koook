@@ -18,7 +18,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [viewMode, setViewMode] = useState<'month' | 'week' | 'list'>('month');
+  const [viewMode, setViewMode] = useState<'month' | 'list'>('month');
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -153,21 +153,10 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             size="sm"
             className={cn(
               "text-xs px-3 py-1.5",
-              viewMode === 'month' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
+              viewMode === 'month' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
             )}
           >
             Month
-          </Button>
-          <Button
-            onClick={() => setViewMode('week')}
-            variant={viewMode === 'week' ? 'default' : 'outline'}
-            size="sm"
-            className={cn(
-              "text-xs px-3 py-1.5",
-              viewMode === 'week' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
-            )}
-          >
-            Week
           </Button>
           <Button
             onClick={() => setViewMode('list')}
@@ -175,7 +164,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             size="sm"
             className={cn(
               "text-xs px-3 py-1.5",
-              viewMode === 'list' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
+              viewMode === 'list' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
             )}
           >
             List
@@ -250,12 +239,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         </>
       )}
 
-      {viewMode === 'week' && (
-        <div className="p-4 text-center text-gray-500">
-          <p>Week view coming soon!</p>
-          <p className="text-sm mt-1">Use Month view to see the full calendar</p>
-        </div>
-      )}
+
 
       {viewMode === 'list' && (
         <div className="p-4">
