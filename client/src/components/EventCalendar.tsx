@@ -148,7 +148,10 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         {/* View mode buttons */}
         <div className="flex items-center justify-center gap-1">
           <Button
-            onClick={() => setViewMode('month')}
+            onClick={() => {
+              console.log('Month button clicked');
+              setViewMode('month');
+            }}
             variant={viewMode === 'month' ? 'default' : 'outline'}
             size="sm"
             className={cn(
@@ -159,7 +162,10 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             Month
           </Button>
           <Button
-            onClick={() => setViewMode('list')}
+            onClick={() => {
+              console.log('List button clicked');
+              setViewMode('list');
+            }}
             variant={viewMode === 'list' ? 'default' : 'outline'}
             size="sm"
             className={cn(
