@@ -31,10 +31,10 @@ const MobileNav = () => {
             </div>
           </Link>
           
-          <Link href="/deadlines">
-            <div className={`flex flex-col items-center py-2 px-3 ${location === "/deadlines" ? "text-[#E63946] font-medium" : "text-gray-600"}`}>
-              <i className="ri-alarm-line text-xl"></i>
-              <span className="text-xs mt-1">Deadlines</span>
+          <Link href="/calendar">
+            <div className={`flex flex-col items-center py-2 px-3 ${location === "/calendar" ? "text-[#E63946] font-medium" : "text-gray-600"}`}>
+              <i className="ri-calendar-line text-xl"></i>
+              <span className="text-xs mt-1">Calendar</span>
             </div>
           </Link>
           
@@ -76,17 +76,17 @@ const MobileNav = () => {
                     </div>
                   </Link>
                   
+                  <Link href="/student-volunteering" onClick={() => setIsMenuOpen(false)}>
+                    <div className={`flex flex-col items-center p-3 rounded-lg ${location === "/student-volunteering" ? "bg-blue-50 text-[#003366]" : "bg-gray-50 text-gray-700"}`}>
+                      <i className="ri-hand-heart-line text-2xl mb-1"></i>
+                      <span className="text-xs text-center">Volunteering</span>
+                    </div>
+                  </Link>
+                  
                   <Link href="/about" onClick={() => setIsMenuOpen(false)}>
                     <div className={`flex flex-col items-center p-3 rounded-lg ${location === "/about" ? "bg-blue-50 text-[#003366]" : "bg-gray-50 text-gray-700"}`}>
                       <i className="ri-information-line text-2xl mb-1"></i>
                       <span className="text-xs text-center">About</span>
-                    </div>
-                  </Link>
-                  
-                  <Link href="/manage" onClick={() => setIsMenuOpen(false)}>
-                    <div className={`flex flex-col items-center p-3 rounded-lg ${location === "/manage" ? "bg-blue-50 text-[#003366]" : "bg-gray-50 text-gray-700"}`}>
-                      <i className="ri-settings-line text-2xl mb-1"></i>
-                      <span className="text-xs text-center">Manage</span>
                     </div>
                   </Link>
                   
