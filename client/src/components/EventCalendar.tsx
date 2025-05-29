@@ -3,6 +3,9 @@ import { format, addMonths, subMonths, startOfMonth, endOfMonth, eachDayOfInterv
 import { Event, EventType } from "@shared/schema";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { Link } from "wouter";
+import { User, Calendar } from "lucide-react";
 
 interface EventCalendarProps {
   events: Event[];
@@ -18,6 +21,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const { user, isAuthenticated, isLoading } = useAuth();
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -133,13 +137,37 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             <i className="ri-arrow-right-s-line text-gray-700 text-lg sm:text-xl"></i>
           </Button>
         </div>
-        <Button 
-          variant="link" 
-          onClick={goToToday}
-          className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
-        >
-          Today
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button 
+            variant="link" 
+            onClick={goToToday}
+            className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
+          >
+            Today
+          </Button>
+          
+          {!isAuthenticated ? (
+            <Link href="/login">
+              <Button 
+                size="sm"
+                className="bg-[#003366] hover:bg-[#002244] text-white text-xs px-3 py-1.5 h-auto"
+              >
+                <User className="w-3 h-3 mr-1" />
+                <span className="hidden sm:inline">Sign In</span>
+                <span className="sm:hidden">Login</span>
+              </Button>
+            </Link>
+          ) : (
+            <div className="flex items-center gap-2">
+              <div className="text-xs text-gray-600 hidden sm:block">
+                Hi, {user?.firstName}!
+              </div>
+              <div className="w-6 h-6 bg-[#003366] text-white rounded-full flex items-center justify-center text-xs font-semibold">
+                {user?.firstName?.[0]?.toUpperCase()}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
       
       <div className="calendar-grid grid border-b border-gray-200">

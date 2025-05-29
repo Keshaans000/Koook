@@ -63,8 +63,30 @@ export const events = pgTable("events", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+// Personal events that users can create for themselves
+export const userEvents = pgTable("user_events", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  title: varchar("title", { length: 100 }).notNull(),
+  description: text("description"),
+  location: varchar("location", { length: 100 }),
+  startTime: timestamp("start_time").notNull(),
+  endTime: timestamp("end_time").notNull(),
+  type: varchar("type", { length: 20 }).notNull(),
+  isPrivate: boolean("is_private").default(true),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const insertEventSchema = createInsertSchema(events)
   .omit({ id: true, createdAt: true })
+  .extend({
+    type: z.enum(eventTypes),
+    startTime: z.coerce.date(),
+    endTime: z.coerce.date(),
+  });
+
+export const insertUserEventSchema = createInsertSchema(userEvents)
+  .omit({ id: true, createdAt: true, userId: true })
   .extend({
     type: z.enum(eventTypes),
     startTime: z.coerce.date(),
@@ -76,5 +98,7 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertEvent = z.infer<typeof insertEventSchema>;
 export type Event = typeof events.$inferSelect;
+export type UserEvent = typeof userEvents.$inferSelect;
+export type InsertUserEvent = z.infer<typeof insertUserEventSchema>;
 export type LoginData = z.infer<typeof loginSchema>;
 export type SignupData = z.infer<typeof signupSchema>;
