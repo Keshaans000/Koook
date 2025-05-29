@@ -48,6 +48,8 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={HomeWrapper} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <Route path="/manage" component={EventManagement} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
