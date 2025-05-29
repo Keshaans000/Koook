@@ -19,7 +19,9 @@ export interface HomeProps {
   };
 }
 
-const Home = ({ eventFilters = { competition: true, meeting: true, deadline: true, social: true } }: HomeProps) => {
+const Home = ({ eventFilters }: HomeProps) => {
+  // Use default filters if none provided
+  const activeFilters = eventFilters || { competition: true, meeting: true, deadline: true, social: true };
   const [selectedDate, setSelectedDate] = useState(new Date());
   
   const { data: events = [], isLoading, error } = useQuery<Event[]>({
@@ -102,7 +104,7 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
               events={events} 
               selectedDate={selectedDate} 
               setSelectedDate={setSelectedDate} 
-              eventFilters={eventFilters}
+              eventFilters={activeFilters}
             />
           </div>
           
@@ -110,7 +112,7 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
             selectedDate={selectedDate} 
             setSelectedDate={setSelectedDate} 
             events={events}
-            eventFilters={eventFilters}
+            eventFilters={activeFilters}
           />
         </div>
         

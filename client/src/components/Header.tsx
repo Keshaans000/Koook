@@ -72,7 +72,7 @@ const Header = () => {
           
           {/* Notifications button */}
           <button 
-            onClick={() => alert('Notifications feature coming soon! You will be notified about upcoming events and deadlines.')}
+            onClick={() => alert('🏆 DECA Updates:\n\n• ICDC 2025 3rd Place Winners!\n• Spring competitions start Feb 15\n• Practice exams available on DECAhive\n• Next meeting: Jan 15 in Room 256\n• Fundraiser ends Jan 31\n\nGreat work Trojans! 💙💛')}
             className="text-white p-2 rounded-full hover:bg-blue-900 relative" 
             aria-label="Notifications"
           >
