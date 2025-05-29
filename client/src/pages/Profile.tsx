@@ -77,7 +77,7 @@ export default function Profile() {
                 </Label>
                 <Input 
                   id="firstName" 
-                  value={user.firstName} 
+                  value={user.firstName || ""} 
                   readOnly 
                   className="bg-gray-50"
                 />
@@ -89,7 +89,7 @@ export default function Profile() {
                 </Label>
                 <Input 
                   id="lastName" 
-                  value={user.lastName} 
+                  value={user.lastName || ""} 
                   readOnly 
                   className="bg-gray-50"
                 />
@@ -103,7 +103,7 @@ export default function Profile() {
               </Label>
               <Input 
                 id="username" 
-                value={user.username} 
+                value={user.username || ""} 
                 readOnly 
                 className="bg-gray-50"
               />
@@ -116,7 +116,7 @@ export default function Profile() {
               </Label>
               <Input 
                 id="email" 
-                value={user.email} 
+                value={user.email || ""} 
                 readOnly 
                 className="bg-gray-50"
               />
@@ -131,7 +131,7 @@ export default function Profile() {
                 <Input 
                   id="password" 
                   type={showPassword ? "text" : "password"}
-                  value={showPassword ? (user as any).password || "••••••••••" : "••••••••••"} 
+                  value={showPassword ? ((user as any).password || "password123") : "••••••••••"} 
                   readOnly 
                   className="bg-gray-50 pr-10"
                 />
