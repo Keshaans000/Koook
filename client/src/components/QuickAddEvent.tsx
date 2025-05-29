@@ -42,6 +42,34 @@ type FormValues = z.infer<typeof formSchema>;
 const QuickAddEvent = ({ onSuccess, defaultDate = new Date() }: QuickAddEventProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isTeacherAuthenticated, setIsTeacherAuthenticated] = useState(false);
+  const [teacherPassword, setTeacherPassword] = useState("");
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
+
+  const handleTeacherLogin = () => {
+    // Simple password check (in production, this should be more secure)
+    if (teacherPassword === "WayzataDECA2025") {
+      setIsTeacherAuthenticated(true);
+      setShowPasswordPrompt(false);
+      toast({
+        title: "Access granted",
+        description: "You can now add events to the calendar.",
+      });
+    } else {
+      toast({
+        title: "Access denied",
+        description: "Incorrect password. Please contact Mr. Kimbler for access.",
+        variant: "destructive",
+      });
+    }
+    setTeacherPassword("");
+  };
+
+  const handleAddEventClick = () => {
+    if (!isTeacherAuthenticated) {
+      setShowPasswordPrompt(true);
+    }
+  };
   
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -116,10 +144,69 @@ const QuickAddEvent = ({ onSuccess, defaultDate = new Date() }: QuickAddEventPro
     }
   };
   
+  if (showPasswordPrompt) {
+    return (
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-800 flex items-center">
+            <i className="ri-lock-line mr-2 text-[#E63946]"></i>
+            Teacher Access Required
+          </h2>
+        </div>
+        <div className="p-4">
+          <p className="text-gray-600 mb-4">
+            Only teachers can add events to the calendar. Please enter the teacher password to continue.
+          </p>
+          <div className="space-y-3">
+            <Input
+              type="password"
+              placeholder="Enter teacher password"
+              value={teacherPassword}
+              onChange={(e) => setTeacherPassword(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleTeacherLogin()}
+            />
+            <div className="flex gap-2">
+              <Button onClick={handleTeacherLogin} className="bg-[#003366] hover:bg-[#004080]">
+                <i className="ri-login-circle-line mr-2"></i>
+                Access Event Management
+              </Button>
+              <Button variant="outline" onClick={() => setShowPasswordPrompt(false)}>
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isTeacherAuthenticated) {
+    return (
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-800">Quick Add Event</h2>
+        </div>
+        <div className="p-4 text-center">
+          <i className="ri-lock-line text-4xl text-gray-400 mb-3"></i>
+          <p className="text-gray-600 mb-4">
+            Event management is restricted to teachers only.
+          </p>
+          <Button onClick={handleAddEventClick} className="bg-[#003366] hover:bg-[#004080]">
+            <i className="ri-key-line mr-2"></i>
+            Teacher Login
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
       <div className="p-4 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-800">Quick Add Event</h2>
+        <h2 className="text-lg font-semibold text-gray-800 flex items-center">
+          <i className="ri-check-line mr-2 text-[#28A745]"></i>
+          Quick Add Event (Teacher Access)
+        </h2>
       </div>
       <div className="p-4">
         <Form {...form}>

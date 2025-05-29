@@ -18,6 +18,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [viewMode, setViewMode] = useState<'month' | 'week' | 'list'>('month');
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -110,36 +111,76 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
   
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-      <div className="p-2 sm:p-4 flex items-center justify-between border-b border-gray-200">
-        <div className="flex items-center gap-1 sm:space-x-2">
+      <div className="p-2 sm:p-4 border-b border-gray-200">
+        {/* Top row with navigation and view buttons */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-1 sm:space-x-2">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={prevMonth}
+              className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
+            >
+              <i className="ri-arrow-left-s-line text-gray-700 text-lg sm:text-xl"></i>
+            </Button>
+            <h2 className="text-sm sm:text-lg font-semibold text-gray-800">
+              {format(currentMonth, 'MMM yyyy')}
+              <span className="hidden sm:inline"> {format(currentMonth, 'MMMM').slice(3)}</span>
+            </h2>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={nextMonth}
+              className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
+            >
+              <i className="ri-arrow-right-s-line text-gray-700 text-lg sm:text-xl"></i>
+            </Button>
+          </div>
           <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={prevMonth}
-            className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
+            variant="link" 
+            onClick={goToToday}
+            className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
           >
-            <i className="ri-arrow-left-s-line text-gray-700 text-lg sm:text-xl"></i>
-          </Button>
-          <h2 className="text-sm sm:text-lg font-semibold text-gray-800">
-            {format(currentMonth, 'MMM yyyy')}
-            <span className="hidden sm:inline"> {format(currentMonth, 'MMMM').slice(3)}</span>
-          </h2>
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={nextMonth}
-            className="p-1 sm:p-1.5 rounded-lg hover:bg-gray-100 h-8 w-8"
-          >
-            <i className="ri-arrow-right-s-line text-gray-700 text-lg sm:text-xl"></i>
+            Today
           </Button>
         </div>
-        <Button 
-          variant="link" 
-          onClick={goToToday}
-          className="text-xs sm:text-sm text-[#003366] font-medium hover:underline p-0 sm:p-2 h-auto"
-        >
-          Today
-        </Button>
+        
+        {/* View mode buttons */}
+        <div className="flex items-center justify-center gap-1">
+          <Button
+            onClick={() => setViewMode('month')}
+            variant={viewMode === 'month' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'month' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
+            )}
+          >
+            Month
+          </Button>
+          <Button
+            onClick={() => setViewMode('week')}
+            variant={viewMode === 'week' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'week' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
+            )}
+          >
+            Week
+          </Button>
+          <Button
+            onClick={() => setViewMode('list')}
+            variant={viewMode === 'list' ? 'default' : 'outline'}
+            size="sm"
+            className={cn(
+              "text-xs px-3 py-1.5",
+              viewMode === 'list' ? 'bg-[#003366] text-white' : 'text-gray-600 border-gray-300'
+            )}
+          >
+            List
+          </Button>
+        </div>
       </div>
       
       <div className="calendar-grid grid border-b border-gray-200">
