@@ -92,6 +92,17 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* Smooth transitions for all interactive elements */
+  button, .hover\\:bg-gray-50, .hover\\:bg-blue-50, .hover\\:bg-gray-100 {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid #003366;
+    outline-offset: 2px;
+  }
   
   @media (max-width: 768px) {
     .calendar-day {

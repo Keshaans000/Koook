@@ -22,6 +22,7 @@ const SearchBar = () => {
 
   const { data: events = [] } = useQuery<Event[]>({
     queryKey: ["/api/events"],
+    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
   // Static searchable content
