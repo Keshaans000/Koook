@@ -159,41 +159,7 @@ const Homepage = () => {
         </CardContent>
       </Card>
 
-      {/* About Wayzata DECA */}
-      <Card className="shadow-lg">
-        <CardContent className="p-6">
-          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
-            <i className="ri-team-line mr-3 text-[#28A745]"></i>
-            About Wayzata DECA
-          </h2>
-          <div className="text-gray-700 space-y-3">
-            <p>
-              Wayzata DECA is one of Minnesota's premier DECA chapters, consistently achieving 
-              excellence at district, state, and international competitions. Our chapter is 
-              dedicated to developing the next generation of business leaders.
-            </p>
-            <p>
-              <strong>Our Achievements:</strong>
-            </p>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>ICDC 2025: 3rd Place in Integrated Marketing Campaign</li>
-              <li>Multiple State Championship qualifiers annually</li>
-              <li>District Competition winners in various categories</li>
-              <li>Outstanding chapter recognition at state level</li>
-            </ul>
-            <p>
-              <strong>Chapter Activities:</strong>
-            </p>
-            <ul className="list-disc list-inside space-y-1 ml-4">
-              <li>Weekly meetings and preparation sessions</li>
-              <li>Business case study practice</li>
-              <li>Role-play and presentation workshops</li>
-              <li>Community service projects</li>
-              <li>Networking events with local businesses</li>
-            </ul>
-          </div>
-        </CardContent>
-      </Card>
+
 
       {/* Website Information */}
       <Card className="shadow-lg bg-gradient-to-r from-gray-50 to-blue-50">
