@@ -18,7 +18,7 @@ interface EventCalendarProps {
 
 const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: EventCalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [viewMode, setViewMode] = useState<'month' | 'week' | 'list'>('month');
+  const [viewMode, setViewMode] = useState<'month' | 'list'>('month');
   
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
@@ -158,17 +158,6 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
             Month
           </Button>
           <Button
-            onClick={() => setViewMode('week')}
-            variant={viewMode === 'week' ? 'default' : 'outline'}
-            size="sm"
-            className={cn(
-              "text-xs px-3 py-1.5",
-              viewMode === 'week' ? 'bg-[#003366] text-white hover:bg-[#003366]' : 'text-gray-600 border-gray-300 hover:bg-gray-50'
-            )}
-          >
-            Week
-          </Button>
-          <Button
             onClick={() => setViewMode('list')}
             variant={viewMode === 'list' ? 'default' : 'outline'}
             size="sm"
@@ -249,12 +238,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         </>
       )}
 
-      {viewMode === 'week' && (
-        <div className="p-4 text-center text-gray-500">
-          <p>Week view coming soon!</p>
-          <p className="text-sm mt-1">Use Month view to see the full calendar</p>
-        </div>
-      )}
+
 
       {viewMode === 'list' && (
         <div className="p-4">
