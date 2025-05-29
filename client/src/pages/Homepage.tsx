@@ -133,43 +133,14 @@ const Homepage = () => {
         </CardContent>
       </Card>
 
-      {/* Competition Schedule & Recognition */}
+      {/* Lettering & Recognition */}
       <Card className="shadow-lg">
         <CardContent className="p-6">
           <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
             <i className="ri-trophy-line mr-3 text-[#E63946]"></i>
-            Competitions & Recognition
+            Lettering & Recognition
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-semibold text-[#003366] mb-3">Competition Timeline</h3>
-              <div className="space-y-3">
-                <div className="flex items-center p-3 bg-blue-50 rounded-lg">
-                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</div>
-                  <div>
-                    <p className="font-medium">District Competition</p>
-                    <p className="text-sm text-gray-600">January at Wayzata High School</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center p-3 bg-green-50 rounded-lg">
-                  <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</div>
-                  <div>
-                    <p className="font-medium">State Competition</p>
-                    <p className="text-sm text-gray-600">March in Minneapolis</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center p-3 bg-purple-50 rounded-lg">
-                  <div className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">3</div>
-                  <div>
-                    <p className="font-medium">International Competition</p>
-                    <p className="text-sm text-gray-600">April (locations vary)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
             <div>
               <h3 className="font-semibold text-[#003366] mb-3">Lettering Criteria</h3>
               <div className="bg-yellow-50 p-4 rounded-lg">
@@ -181,9 +152,12 @@ const Homepage = () => {
                   <li>• Qualify for International competition</li>
                 </ul>
               </div>
-              
-              <div className="mt-4 bg-gradient-to-r from-[#FFD700] to-yellow-400 p-4 rounded-lg text-center">
-                <h4 className="font-bold text-[#003366] mb-2">DECA Sashes</h4>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-[#003366] mb-3">DECA Sashes</h3>
+              <div className="bg-gradient-to-r from-[#FFD700] to-yellow-400 p-4 rounded-lg text-center">
+                <h4 className="font-bold text-[#003366] mb-2">Special Recognition</h4>
                 <p className="text-sm text-[#003366]">Awarded for leadership, dedication, and perseverance:</p>
                 <ul className="text-xs text-[#003366] mt-2 space-y-1">
                   <li>• 4-year competing member</li>
