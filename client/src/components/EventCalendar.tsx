@@ -183,88 +183,64 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
         </div>
       </div>
       
-      {/* Google Calendar style grid */}
-      <div className="calendar-container">
-        {/* Days of week header */}
-        <div className="grid grid-cols-7 border-b border-gray-200 bg-gray-50">
-          {weekdays.map((day, index) => (
-            <div key={index} className="p-3 text-center text-sm font-medium text-gray-700 border-r border-gray-200 last:border-r-0">
-              <span className="hidden sm:inline">{day}</span>
-              <span className="inline sm:hidden">{shortWeekdays[index]}</span>
-            </div>
-          ))}
-        </div>
+      <div className="calendar-grid grid border-b border-gray-200">
+        {/* Calendar header - full day names on desktop, abbreviated on mobile */}
+        {weekdays.map((day, index) => (
+          <div key={index} className="text-gray-600 font-medium text-center py-2 sm:py-3 text-xs sm:text-sm">
+            <span className="hidden sm:inline">{day}</span>
+            <span className="inline sm:hidden">{shortWeekdays[index]}</span>
+          </div>
+        ))}
         
-        {/* Calendar days grid */}
-        <div className="grid grid-cols-7 border-l border-gray-200">
-          {daysByWeek.map((week, weekIndex) => (
-            week.map((day, dayIndex) => {
-              const dayEvents = getEventsForDay(day);
-              const isCurrentMonth = isSameMonth(day, currentMonth);
-              const isSelected = isSameDay(day, selectedDate);
-              const isToday = isSameDay(day, new Date());
-              
-              return (
-                <div 
-                  key={`${weekIndex}-${dayIndex}`}
-                  onClick={() => setSelectedDate(day)}
-                  className={cn(
-                    "relative border-r border-b border-gray-200 last:border-r-0 cursor-pointer transition-colors",
-                    "min-h-[120px] hover:bg-blue-50",
-                    !isCurrentMonth && "bg-gray-50",
-                    isSelected && "bg-blue-100 border-blue-300",
-                    isToday && !isSelected && "bg-yellow-50"
-                  )}
-                >
-                  {/* Day number */}
-                  <div className="p-2">
-                    <div className={cn(
-                      "w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium",
-                      isToday && "bg-[#003366] text-white",
-                      !isToday && isCurrentMonth && "text-gray-900",
-                      !isToday && !isCurrentMonth && "text-gray-400",
-                      isSelected && !isToday && "bg-blue-600 text-white"
-                    )}>
-                      {format(day, 'd')}
+        {/* Calendar grid */}
+        {daysByWeek.map((week, weekIndex) => (
+          week.map((day, dayIndex) => {
+            const dayEvents = getEventsForDay(day);
+            const isCurrentMonth = isSameMonth(day, currentMonth);
+            const isSelected = isSameDay(day, selectedDate);
+            const isToday = isSameDay(day, new Date());
+            
+            return (
+              <div 
+                key={`${weekIndex}-${dayIndex}`}
+                onClick={() => setSelectedDate(day)}
+                className={cn(
+                  "calendar-day border-t border-r last:border-r-0 border-gray-200 p-0.5 sm:p-1 cursor-pointer min-h-[40px] sm:min-h-[60px]",
+                  !isCurrentMonth && "bg-gray-100 text-gray-400",
+                  isSelected && "bg-[#003366] bg-opacity-5",
+                  isToday && !isSelected && "font-medium"
+                )}
+              >
+                <div className={cn(
+                  "p-0.5 sm:p-1 text-right",
+                  isSelected && "font-medium text-[#003366]",
+                  isToday && !isSelected && "font-semibold"
+                )}>
+                  {format(day, 'd')}
+                </div>
+                {dayEvents.length > 0 && (
+                  <div className="flex justify-center mt-0 sm:mt-1">
+                    {/* Show event dots on both mobile and desktop */}
+                    <div className="flex flex-wrap justify-center gap-[2px]">
+                      {dayEvents.slice(0, 3).map((event, index) => (
+                        <div 
+                          key={index} 
+                          className={cn(
+                            "w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full", 
+                            getEventColorClass(event.type)
+                          )}
+                        />
+                      ))}
                     </div>
-                  </div>
-                  
-                  {/* Events for this day */}
-                  <div className="px-1 pb-1 space-y-1">
-                    {dayEvents.slice(0, 3).map((event, index) => (
-                      <div 
-                        key={event.id}
-                        className={cn(
-                          "text-xs px-2 py-1 rounded text-white font-medium truncate cursor-pointer",
-                          "hover:opacity-80 transition-opacity",
-                          event.type === 'competition' && "bg-[#003366]",
-                          event.type === 'meeting' && "bg-[#2C7BE5]",
-                          event.type === 'deadline' && "bg-[#E63946]",
-                          event.type === 'social' && "bg-[#FFD700] text-gray-800"
-                        )}
-                        title={`${event.title} - ${event.description || ''}`}
-                      >
-                        {event.title}
-                      </div>
-                    ))}
                     {dayEvents.length > 3 && (
-                      <div className="text-xs text-gray-500 px-2 py-1">
-                        +{dayEvents.length - 3} more
-                      </div>
+                      <div className="text-[10px] sm:text-xs text-gray-500 ml-1">+{dayEvents.length - 3}</div>
                     )}
                   </div>
-                  
-                  {/* Today indicator */}
-                  {isToday && (
-                    <div className="absolute top-1 right-1">
-                      <div className="w-2 h-2 bg-[#FFD700] rounded-full"></div>
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          ))}
-        </div>
+                )}
+              </div>
+            );
+          })
+        ))}
       </div>
       
       {/* Legend - rearranged for mobile */}
