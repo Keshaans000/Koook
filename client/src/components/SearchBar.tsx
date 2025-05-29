@@ -28,6 +28,20 @@ const SearchBar = () => {
   // Static searchable content
   const staticContent: SearchResult[] = [
     {
+      id: "homepage",
+      title: "Wayzata DECA Homepage",
+      description: "Main page with chapter information, membership, and resources",
+      type: "page",
+      url: "/"
+    },
+    {
+      id: "wayzata-deca",
+      title: "Wayzata DECA",
+      description: "Wayzata High School DECA Chapter homepage",
+      type: "page",
+      url: "/"
+    },
+    {
       id: "team",
       title: "DECA Leadership Team",
       description: "Meet our 2025-2026 officers and team members",
