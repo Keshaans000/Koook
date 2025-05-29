@@ -494,6 +494,44 @@ const Team = () => {
             </div>
           </div>
         </div>
+
+        {/* Tech Support Card - Ansh Kesharwani */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#6C63FF] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#6C63FF] to-[#5A52E3]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#6C63FF] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">AK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Ansh Kesharwani</h3>
+              <span className="ml-2 bg-[#6C63FF] text-white text-xs px-2 py-0.5 rounded-full">Website Creator & Tech Support</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">Website Developer & Technical Support</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-code-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Website Development</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-computer-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Technical Support</span>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-settings-3-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Platform Maintenance</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       
 
