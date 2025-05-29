@@ -1,9 +1,14 @@
 import { events, type Event, type InsertEvent, users, type User, type InsertUser } from "@shared/schema";
+import { db } from "./db";
+import { eq, and, gte, lte } from "drizzle-orm";
+import bcrypt from "bcryptjs";
 
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
+  // User authentication operations
   getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getUserByEmail(email: string): Promise<User | undefined>;
+  createUser(user: InsertUser & { password: string }): Promise<User>;
+  verifyPassword(username: string, password: string): Promise<User | null>;
   
   getAllEvents(): Promise<Event[]>;
   getEvent(id: number): Promise<Event | undefined>;
@@ -11,6 +16,85 @@ export interface IStorage {
   createEvent(event: InsertEvent): Promise<Event>;
   updateEvent(id: number, event: Partial<InsertEvent>): Promise<Event | undefined>;
   deleteEvent(id: number): Promise<boolean>;
+}
+
+export class DatabaseStorage implements IStorage {
+  // User authentication operations
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user;
+  }
+
+  async createUser(userData: InsertUser & { password: string }): Promise<User> {
+    const hashedPassword = await bcrypt.hash(userData.password, 10);
+    
+    const [user] = await db
+      .insert(users)
+      .values({
+        ...userData,
+        password: hashedPassword,
+      })
+      .returning();
+    
+    return user;
+  }
+
+  async verifyPassword(username: string, password: string): Promise<User | null> {
+    const user = await this.getUserByUsername(username);
+    if (!user) return null;
+    
+    const isValid = await bcrypt.compare(password, user.password);
+    return isValid ? user : null;
+  }
+
+  // Event operations
+  async getAllEvents(): Promise<Event[]> {
+    return await db.select().from(events);
+  }
+
+  async getEvent(id: number): Promise<Event | undefined> {
+    const [event] = await db.select().from(events).where(eq(events.id, id));
+    return event;
+  }
+
+  async getEventsByDateRange(startDate: Date, endDate: Date): Promise<Event[]> {
+    return await db
+      .select()
+      .from(events)
+      .where(and(
+        gte(events.startTime, startDate),
+        lte(events.startTime, endDate)
+      ));
+  }
+
+  async createEvent(eventData: InsertEvent): Promise<Event> {
+    const [event] = await db
+      .insert(events)
+      .values(eventData)
+      .returning();
+    
+    return event;
+  }
+
+  async updateEvent(id: number, eventData: Partial<InsertEvent>): Promise<Event | undefined> {
+    const [event] = await db
+      .update(events)
+      .set(eventData)
+      .where(eq(events.id, id))
+      .returning();
+    
+    return event;
+  }
+
+  async deleteEvent(id: number): Promise<boolean> {
+    const result = await db.delete(events).where(eq(events.id, id));
+    return result.rowCount ? result.rowCount > 0 : false;
+  }
 }
 
 export class MemStorage implements IStorage {
@@ -179,4 +263,4 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
