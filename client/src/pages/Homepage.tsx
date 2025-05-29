@@ -1,224 +1,180 @@
-import { Link } from "wouter";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import AnnouncementsBanner from "@/components/AnnouncementsBanner";
 
 const Homepage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-      <AnnouncementsBanner />
-      
-      {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#003366] to-[#004080] text-white py-20">
-        {/* Decorative elements */}
-        <div className="absolute -right-20 top-0 h-full w-96 bg-[#FFD700] opacity-10 transform rotate-12"></div>
-        <div className="absolute -left-32 -bottom-16 h-32 w-80 bg-[#FFD700] opacity-10 rounded-full"></div>
-        <div className="absolute right-[30%] -bottom-20 h-32 w-32 bg-[#E63946] opacity-10 rounded-full"></div>
-        <div className="absolute left-[20%] -top-10 h-28 w-28 bg-[#2C7BE5] opacity-10 rounded-full"></div>
-        
-        {/* Trophy decorations */}
-        <div className="absolute right-[15%] top-8 text-[#FFD700] opacity-20">
-          <i className="ri-trophy-fill text-6xl"></i>
+    <div className="space-y-6">
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-[#003366] to-[#004080] text-white p-8 rounded-lg">
+        <div className="flex items-center mb-4">
+          <i className="ri-home-4-line text-4xl text-[#FFD700] mr-4"></i>
+          <h1 className="text-3xl font-bold">Welcome to Wayzata DECA</h1>
         </div>
-        <div className="absolute left-[10%] top-12 text-[#FFD700] opacity-20">
-          <i className="ri-medal-line text-5xl"></i>
-        </div>
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Welcome to <span className="text-[#FFD700]">Wayzata DECA</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
-              Prepare • Compete • Excel in Marketing, Finance, and Business
+        <p className="text-blue-100 text-lg">
+          Your gateway to business excellence, leadership development, and competitive success.
+        </p>
+      </div>
+
+      {/* About Wayzata High School */}
+      <Card className="shadow-lg">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-school-line mr-3 text-[#2C7BE5]"></i>
+            About Wayzata High School
+          </h2>
+          <div className="text-gray-700 space-y-3">
+            <p>
+              Wayzata High School is located in Plymouth, Minnesota, and serves the Wayzata School District. 
+              Known for academic excellence and outstanding extracurricular programs, Wayzata High School 
+              has been consistently ranked among the top high schools in Minnesota.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Link href="/home">
-                <Button 
-                  size="lg"
-                  className="bg-[#FFD700] text-[#003366] hover:bg-[#FFC000] font-semibold px-8 py-3 text-lg"
-                >
-                  <i className="ri-calendar-line mr-2"></i>
-                  View Calendar & Events
-                </Button>
-              </Link>
-              <Link href="/current-winners">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-[#003366] font-semibold px-8 py-3 text-lg"
-                >
-                  <i className="ri-trophy-fill mr-2"></i>
-                  See Our Winners
-                </Button>
-              </Link>
+            <p>
+              Our school is home to over 3,000 students and offers a comprehensive curriculum with 
+              Advanced Placement courses, International Baccalaureate programs, and numerous 
+              career-focused pathways including business and entrepreneurship.
+            </p>
+            <p>
+              <strong>Address:</strong> 4955 Peony Lane N, Plymouth, MN 55446<br />
+              <strong>Established:</strong> 1997<br />
+              <strong>Mascot:</strong> Trojans<br />
+              <strong>Colors:</strong> Navy Blue and Gold
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* About DECA */}
+      <Card className="shadow-lg">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-trophy-line mr-3 text-[#E63946]"></i>
+            What is DECA?
+          </h2>
+          <div className="text-gray-700 space-y-3">
+            <p>
+              DECA (Distributive Education Clubs of America) is an association of marketing students 
+              that prepares emerging leaders and entrepreneurs for careers in marketing, finance, 
+              hospitality, and management.
+            </p>
+            <p>
+              <strong>Our Mission:</strong> To prepare emerging leaders and entrepreneurs in marketing, 
+              finance, hospitality and management in high schools and colleges around the globe.
+            </p>
+            <div className="bg-blue-50 p-4 rounded-lg mt-4">
+              <h3 className="font-semibold text-[#003366] mb-2">DECA Competitive Events Include:</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Marketing Management</li>
+                <li>Business Finance</li>
+                <li>Hospitality & Tourism</li>
+                <li>Entrepreneurship</li>
+                <li>Business Administration</li>
+                <li>Personal Financial Literacy</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
-        {/* Key Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 text-center">
-              <div className="text-4xl mb-3">🏆</div>
-              <h3 className="font-bold text-lg mb-2">ICDC Winners</h3>
-              <p className="text-blue-100 text-sm">3rd Place in Integrated Marketing</p>
-              <Link href="/current-winners">
-                <Button size="sm" variant="secondary" className="mt-3 bg-white text-blue-600 hover:bg-blue-50">
-                  Learn More
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white border-0 hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 text-center">
-              <div className="text-4xl mb-3">👥</div>
-              <h3 className="font-bold text-lg mb-2">Leadership Team</h3>
-              <p className="text-green-100 text-sm">Meet our 2025-2026 officers</p>
-              <Link href="/team">
-                <Button size="sm" variant="secondary" className="mt-3 bg-white text-green-600 hover:bg-green-50">
-                  Meet the Team
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0 hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 text-center">
-              <div className="text-4xl mb-3">📚</div>
-              <h3 className="font-bold text-lg mb-2">DECA Help</h3>
-              <p className="text-purple-100 text-sm">Resources & competition tips</p>
-              <Link href="/deca-help">
-                <Button size="sm" variant="secondary" className="mt-3 bg-white text-purple-600 hover:bg-purple-50">
-                  Get Help
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-to-br from-orange-500 to-orange-600 text-white border-0 hover:shadow-lg transition-shadow">
-            <CardContent className="p-6 text-center">
-              <div className="text-4xl mb-3">📅</div>
-              <h3 className="font-bold text-lg mb-2">Upcoming Events</h3>
-              <p className="text-orange-100 text-sm">Competitions & meetings</p>
-              <Link href="/home">
-                <Button 
-                  size="sm" 
-                  variant="secondary" 
-                  className="mt-3 bg-white text-orange-600 hover:bg-orange-50"
-                >
-                  View Calendar
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Latest Updates */}
-          <Card className="shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-[#003366] mb-4 flex items-center">
-                <i className="ri-notification-3-line mr-2 text-[#E63946]"></i>
-                Latest Updates
-              </h3>
-              <div className="space-y-4">
-                <div className="border-l-4 border-[#FFD700] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-800">ICDC 2025 Results</h4>
-                  <p className="text-gray-600 text-sm">Congratulations to our 3rd place winners in Integrated Marketing!</p>
-                  <span className="text-xs text-gray-500">Recently</span>
-                </div>
-                <div className="border-l-4 border-blue-400 pl-4 py-2">
-                  <h4 className="font-semibold text-gray-800">Leadership Team Updated</h4>
-                  <p className="text-gray-600 text-sm">Meet our new 2025-2026 officers and team members.</p>
-                  <span className="text-xs text-gray-500">This week</span>
-                </div>
-                <div className="border-l-4 border-green-400 pl-4 py-2">
-                  <h4 className="font-semibold text-gray-800">Competition Resources Added</h4>
-                  <p className="text-gray-600 text-sm">New DECA help section with study guides and tips.</p>
-                  <span className="text-xs text-gray-500">This week</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Quick Links */}
-          <Card className="shadow-lg">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-[#003366] mb-4 flex items-center">
-                <i className="ri-links-line mr-2 text-[#2C7BE5]"></i>
-                Quick Links
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                <Link href="/competitions">
-                  <Button variant="outline" className="w-full justify-start h-auto py-3">
-                    <i className="ri-trophy-line mr-2 text-[#E63946]"></i>
-                    <span className="text-left">
-                      <div className="font-medium">Competitions</div>
-                      <div className="text-xs text-gray-500">Upcoming events</div>
-                    </span>
-                  </Button>
-                </Link>
-                <Link href="/deadlines">
-                  <Button variant="outline" className="w-full justify-start h-auto py-3">
-                    <i className="ri-alarm-line mr-2 text-[#FFD700]"></i>
-                    <span className="text-left">
-                      <div className="font-medium">Deadlines</div>
-                      <div className="text-xs text-gray-500">Important dates</div>
-                    </span>
-                  </Button>
-                </Link>
-                <Link href="/meetings">
-                  <Button variant="outline" className="w-full justify-start h-auto py-3">
-                    <i className="ri-group-line mr-2 text-[#2C7BE5]"></i>
-                    <span className="text-left">
-                      <div className="font-medium">Meetings</div>
-                      <div className="text-xs text-gray-500">Weekly schedule</div>
-                    </span>
-                  </Button>
-                </Link>
-                <Link href="/teacher-corner">
-                  <Button variant="outline" className="w-full justify-start h-auto py-3">
-                    <i className="ri-user-star-line mr-2 text-[#28A745]"></i>
-                    <span className="text-left">
-                      <div className="font-medium">Teacher Corner</div>
-                      <div className="text-xs text-gray-500">Instructor resources</div>
-                    </span>
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Featured Section */}
-        <Card className="shadow-lg bg-gradient-to-r from-[#003366] to-[#004080] text-white">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to Excel in DECA?</h3>
-            <p className="text-blue-100 mb-6 text-lg">
-              Join Wayzata DECA and develop your business, marketing, and leadership skills while competing at the highest levels.
+      {/* About Wayzata DECA */}
+      <Card className="shadow-lg">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-team-line mr-3 text-[#28A745]"></i>
+            About Wayzata DECA
+          </h2>
+          <div className="text-gray-700 space-y-3">
+            <p>
+              Wayzata DECA is one of Minnesota's premier DECA chapters, consistently achieving 
+              excellence at district, state, and international competitions. Our chapter is 
+              dedicated to developing the next generation of business leaders.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/about">
-                <Button size="lg" className="bg-[#FFD700] text-[#003366] hover:bg-[#FFC000] font-semibold">
-                  Learn About DECA
-                </Button>
-              </Link>
-              <a href="https://www.instagram.com/wayzatadeca/" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#003366] font-semibold">
-                  <i className="ri-instagram-line mr-2"></i>
-                  Follow Us
-                </Button>
-              </a>
+            <p>
+              <strong>Our Achievements:</strong>
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-4">
+              <li>ICDC 2025: 3rd Place in Integrated Marketing Campaign</li>
+              <li>Multiple State Championship qualifiers annually</li>
+              <li>District Competition winners in various categories</li>
+              <li>Outstanding chapter recognition at state level</li>
+            </ul>
+            <p>
+              <strong>Chapter Activities:</strong>
+            </p>
+            <ul className="list-disc list-inside space-y-1 ml-4">
+              <li>Weekly meetings and preparation sessions</li>
+              <li>Business case study practice</li>
+              <li>Role-play and presentation workshops</li>
+              <li>Community service projects</li>
+              <li>Networking events with local businesses</li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Website Information */}
+      <Card className="shadow-lg bg-gradient-to-r from-gray-50 to-blue-50">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-code-line mr-3 text-[#6366F1]"></i>
+            About This Website
+          </h2>
+          <div className="text-gray-700 space-y-3">
+            <p>
+              This website was created to serve as a comprehensive platform for the Wayzata DECA chapter, 
+              providing members, advisors, and the community with easy access to important information, 
+              resources, and updates.
+            </p>
+            <div className="bg-white p-4 rounded-lg border-l-4 border-[#6366F1]">
+              <h3 className="font-semibold text-[#003366] mb-2">Website Features:</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Interactive event calendar with competition dates and deadlines</li>
+                <li>Team information and leadership profiles</li>
+                <li>DECA resources and study materials</li>
+                <li>Meeting schedules and important announcements</li>
+                <li>Current winners and achievement showcase</li>
+                <li>Teacher corner with instructor resources</li>
+              </ul>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <div className="bg-[#003366] text-white p-4 rounded-lg text-center">
+              <p className="text-lg font-semibold mb-2">
+                <i className="ri-user-star-line mr-2"></i>
+                Website Created By
+              </p>
+              <p className="text-[#FFD700] text-xl font-bold">Ansh Kesharwani</p>
+              <p className="text-blue-200 text-sm">
+                Wayzata DECA Member & Web Developer
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Contact Information */}
+      <Card className="shadow-lg">
+        <CardContent className="p-6">
+          <h2 className="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+            <i className="ri-contacts-line mr-3 text-[#E63946]"></i>
+            Contact Information
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-[#003366] mb-2">Wayzata DECA Chapter</h3>
+              <p className="text-gray-700 text-sm space-y-1">
+                <span className="block">📍 Wayzata High School</span>
+                <span className="block">📧 Contact through school advisors</span>
+                <span className="block">📱 Follow us on Instagram: @wayzatadeca</span>
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#003366] mb-2">Meeting Times</h3>
+              <p className="text-gray-700 text-sm space-y-1">
+                <span className="block">🗓️ Weekly meetings</span>
+                <span className="block">⏰ Check calendar for specific times</span>
+                <span className="block">📍 Room assignments posted in announcements</span>
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

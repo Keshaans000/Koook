@@ -19,6 +19,18 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
         <nav>
           <ul className="space-y-2">
             <li>
+              <Link href="/homepage">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/homepage" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-home-4-line text-xl"></i>
+                  <span>Homepage</span>
+                </div>
+              </Link>
+            </li>
+            <li>
               <Link href="/">
                 <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
                   location === "/" 
