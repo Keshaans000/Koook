@@ -96,10 +96,7 @@ const DayEventsView = ({ selectedDate, setSelectedDate, events, eventFilters }: 
               <i className="ri-calendar-line text-4xl text-[#003366] opacity-40"></i>
             </div>
             <p className="font-medium">No events scheduled for this day</p>
-            <p className="text-sm mt-1 mb-4">Select another day or add a new event</p>
-            <Button variant="outline" className="border-[#003366] text-[#003366]">
-              <i className="ri-add-line mr-1"></i> Add Event
-            </Button>
+            <p className="text-sm mt-1">Select another day to view events</p>
           </div>
         )}
       </div>
