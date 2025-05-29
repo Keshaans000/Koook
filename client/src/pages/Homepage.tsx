@@ -4,14 +4,51 @@ const Homepage = () => {
   return (
     <div className="space-y-6">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-[#003366] to-[#004080] text-white p-8 rounded-lg">
-        <div className="flex items-center mb-4">
-          <i className="ri-home-4-line text-4xl text-[#FFD700] mr-4"></i>
-          <h1 className="text-3xl font-bold">Welcome to Wayzata DECA</h1>
+      <div className="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFD700] opacity-10 rounded-full transform translate-x-32 -translate-y-32"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#E63946] opacity-10 rounded-full transform -translate-x-24 translate-y-24"></div>
+        
+        {/* Trophy decorations */}
+        <div className="absolute top-4 right-8 text-[#FFD700] opacity-20">
+          <i className="ri-trophy-fill text-5xl"></i>
         </div>
-        <p className="text-blue-100 text-lg">
-          Your gateway to business excellence, leadership development, and competitive success.
-        </p>
+        <div className="absolute bottom-4 left-8 text-[#FFD700] opacity-20">
+          <i className="ri-medal-line text-4xl"></i>
+        </div>
+        
+        <div className="relative z-10">
+          <div className="flex items-center mb-6">
+            <div className="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mr-6">
+              <i className="ri-home-4-line text-5xl text-[#FFD700]"></i>
+            </div>
+            <div>
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
+                Welcome to 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFC000]">
+                  Wayzata DECA
+                </span>
+              </h1>
+              <div className="w-32 h-1 bg-gradient-to-r from-[#FFD700] to-[#FFC000] rounded-full"></div>
+            </div>
+          </div>
+          <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-4xl">
+            🚀 Your gateway to <span className="text-[#FFD700] font-semibold">business excellence</span>, 
+            <span className="text-[#FFD700] font-semibold"> leadership development</span>, and 
+            <span className="text-[#FFD700] font-semibold"> competitive success</span> 🏆
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+              🎯 180+ Active Members
+            </div>
+            <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+              🥉 ICDC 2025 Winners
+            </div>
+            <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+              📈 Premier Minnesota Chapter
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* About Wayzata High School */}
