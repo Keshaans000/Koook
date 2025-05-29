@@ -8,9 +8,21 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SearchBar from "./SearchBar";
+import { useAuth } from "@/hooks/useAuth";
+import { apiRequest } from "@/lib/queryClient";
 
 const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const { user, isAuthenticated } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await apiRequest("POST", "/api/auth/logout");
+      window.location.reload();
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
   
   return (
     <header className="bg-[#003366] shadow-md z-20 relative overflow-hidden sticky top-0">
@@ -65,34 +77,49 @@ const Header = () => {
           </button>
           
           {/* User profile */}
-          <Sheet>
-            <SheetTrigger asChild>
+          {!isAuthenticated ? (
+            <Link href="/login">
               <div className="h-8 w-8 rounded-full bg-[#FFD700] bg-opacity-20 text-white flex items-center justify-center border border-[#FFD700] border-opacity-30 cursor-pointer">
                 <i className="ri-user-line"></i>
               </div>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <div className="py-6">
-                <h2 className="text-lg font-bold mb-6">User Profile</h2>
-                <div className="space-y-4">
-                  <div className="flex justify-center">
-                    <div className="h-20 w-20 rounded-full bg-[#003366] text-white flex items-center justify-center text-3xl">
-                      <i className="ri-user-line"></i>
+            </Link>
+          ) : (
+            <Sheet>
+              <SheetTrigger asChild>
+                <div className="h-8 w-8 rounded-full bg-[#FFD700] bg-opacity-20 text-white flex items-center justify-center border border-[#FFD700] border-opacity-30 cursor-pointer">
+                  {user?.firstName?.[0]?.toUpperCase() || <i className="ri-user-line"></i>}
+                </div>
+              </SheetTrigger>
+              <SheetContent side="right">
+                <div className="py-6">
+                  <h2 className="text-lg font-bold mb-6">User Profile</h2>
+                  <div className="space-y-4">
+                    <div className="flex justify-center">
+                      <div className="h-20 w-20 rounded-full bg-[#003366] text-white flex items-center justify-center text-3xl">
+                        {user?.firstName?.[0]?.toUpperCase() || <i className="ri-user-line"></i>}
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <h3 className="font-semibold">{user?.firstName} {user?.lastName}</h3>
+                      <p className="text-sm text-gray-500">{user?.email}</p>
+                      <p className="text-sm text-gray-500 capitalize">{user?.role} • Wayzata High School</p>
+                    </div>
+                    <div className="pt-4 space-y-2">
+                      <Button className="w-full bg-[#003366]" onClick={() => alert('Profile page coming soon!')}>View Profile</Button>
+                      <Button variant="outline" className="w-full" onClick={() => alert('Settings coming soon!')}>Settings</Button>
+                      <Button 
+                        variant="outline" 
+                        className="w-full text-[#E63946] border-[#E63946]"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </Button>
                     </div>
                   </div>
-                  <div className="text-center">
-                    <h3 className="font-semibold">DECA Member</h3>
-                    <p className="text-sm text-gray-500">Wayzata High School</p>
-                  </div>
-                  <div className="pt-4 space-y-2">
-                    <Button className="w-full bg-[#003366]">View Profile</Button>
-                    <Button variant="outline" className="w-full">Settings</Button>
-                    <Button variant="outline" className="w-full text-[#E63946] border-[#E63946]">Logout</Button>
-                  </div>
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          )}
         </div>
       </div>
     </header>
