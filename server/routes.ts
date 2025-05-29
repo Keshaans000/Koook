@@ -145,11 +145,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
-  app.get("/api/auth/me", (req: any, res) => {
+  app.get("/api/auth/me", async (req: any, res) => {
     if (!req.session?.user) {
       return res.status(401).json({ message: "Not authenticated" });
     }
-    res.json({ user: req.session.user });
+    
+    try {
+      // Get full user data including password for profile display
+      const fullUser = await storage.getUserByUsername(req.session.user.username);
+      if (!fullUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      
+      res.json({ 
+        user: {
+          id: fullUser.id,
+          username: fullUser.username,
+          firstName: fullUser.firstName,
+          lastName: fullUser.lastName,
+          email: fullUser.email,
+          role: fullUser.role,
+          graduationYear: fullUser.graduationYear,
+          password: fullUser.password // Include password for profile display
+        }
+      });
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      res.status(500).json({ message: "Failed to fetch user data" });
+    }
   });
   // API routes for event management
   app.get("/api/events", async (req, res) => {
