@@ -123,8 +123,7 @@ const EventCalendar = ({ events, selectedDate, setSelectedDate, eventFilters }: 
               <i className="ri-arrow-left-s-line text-gray-700 text-lg sm:text-xl"></i>
             </Button>
             <h2 className="text-sm sm:text-lg font-semibold text-gray-800">
-              {format(currentMonth, 'MMM yyyy')}
-              <span className="hidden sm:inline"> {format(currentMonth, 'MMMM').slice(3)}</span>
+              {format(currentMonth, 'MMMM yyyy')}
             </h2>
             <Button 
               variant="ghost" 
