@@ -17,9 +17,9 @@ const Homepage = () => {
           <i className="ri-medal-line text-4xl"></i>
         </div>
         
-        <div className="relative z-10">
-          <div className="flex items-center mb-6">
-            <div className="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mr-6">
+        <div className="relative z-10 text-center">
+          <div className="flex flex-col items-center mb-6">
+            <div className="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mb-4">
               <i className="ri-home-4-line text-5xl text-[#FFD700]"></i>
             </div>
             <div>

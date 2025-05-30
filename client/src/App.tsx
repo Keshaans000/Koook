@@ -60,6 +60,10 @@ function Router() {
       <Route path="/meetings" component={Meetings} />
       <Route path="/student-volunteering" component={StudentVolunteering} />
       <Route path="/teacher-corner" component={TeacherCorner} />
+      <Route path="/sponsorships" component={Sponsorships} />
+      <Route path="/grants-donations" component={GrantsDonations} />
+      <Route path="/judging" component={Judging} />
+      <Route path="/additional-resources" component={AdditionalResources} />
       <Route component={NotFound} />
     </Switch>
   );
