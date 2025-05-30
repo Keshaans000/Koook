@@ -7,6 +7,7 @@ import image5 from "@assets/image_1748642234960.png";
 import image6 from "@assets/image_1748643084004.png";
 import image7 from "@assets/image_1748643122791.png";
 import image8 from "@assets/image_1748646682074.png";
+import image9 from "@assets/image_1748646993320.png";
 
 const Homepage = () => {
   return (
@@ -23,7 +24,7 @@ const Homepage = () => {
               <img src={image6} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="relative overflow-hidden">
-              <img src={image1} alt="" className="w-full h-full object-cover" />
+              <img src={image9} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="relative overflow-hidden">
               <img src={image7} alt="" className="w-full h-full object-cover" />
@@ -97,8 +98,8 @@ const Homepage = () => {
           />
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
             <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-              <h3 className="font-bold text-3xl mb-3">Our ICDC Competitors This Year</h3>
-              <p className="text-xl">58 Qualified Students Ready to Compete at Nationals</p>
+              <h3 className="font-bold text-3xl mb-3">Our ICDC Competitors 2025</h3>
+              <p className="text-xl">58 Students Who Competed at Nationals</p>
             </div>
           </div>
         </div>
