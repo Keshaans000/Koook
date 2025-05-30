@@ -6,6 +6,7 @@ import image4 from "@assets/image_1748641994054.png";
 import image5 from "@assets/image_1748642234960.png";
 import image6 from "@assets/image_1748643084004.png";
 import image7 from "@assets/image_1748643122791.png";
+import image8 from "@assets/image_1748646682074.png";
 
 const Homepage = () => {
   return (
@@ -83,9 +84,9 @@ const Homepage = () => {
         
       </div>
 
-      {/* Team Photo Gallery */}
+      {/* DECA Moments Gallery */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-[#003366] mb-6 text-center">Meet Our Team</h2>
+        <h2 className="text-2xl font-bold text-[#003366] mb-6 text-center">DECA Moments</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="relative group">
             <img 
@@ -117,14 +118,14 @@ const Homepage = () => {
 
           <div className="relative group">
             <img 
-              src={image7} 
-              alt="ICDC Competition Winners" 
+              src={image8} 
+              alt="ICDC Winners with Glass Trophy" 
               className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
               <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg mb-2">ICDC Competition Winners</h3>
-                <p className="text-sm">Celebrating Our Champions</p>
+                <h3 className="font-bold text-lg mb-2">ICDC Winners</h3>
+                <p className="text-sm">Glass Trophy Champions</p>
               </div>
             </div>
           </div>
