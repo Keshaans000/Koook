@@ -192,23 +192,7 @@ const Homepage = () => {
         </CardContent>
       </Card>
 
-      {/* DECA Quote */}
-      <Card className="shadow-lg bg-gradient-to-r from-[#003366] to-[#2C7BE5] text-white">
-        <CardContent className="p-8 text-center">
-          <div className="text-6xl mb-4 opacity-20">
-            <i className="ri-double-quotes-l"></i>
-          </div>
-          <blockquote className="text-xl md:text-2xl font-light italic mb-6 leading-relaxed">
-            "I believe that the rendering of useful service is the common duty of mankind and that only in the purifying fire of sacrifice is the dross of selfishness consumed and the greatness of the human soul set free."
-          </blockquote>
-          <div className="text-lg font-semibold">
-            — David Rockefeller
-          </div>
-          <div className="text-sm opacity-75 mt-2">
-            Inspirational Leader & Business Visionary
-          </div>
-        </CardContent>
-      </Card>
+
 
       {/* Quick Info Cards */}
       <div className="grid md:grid-cols-2 gap-6">
