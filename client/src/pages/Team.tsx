@@ -189,6 +189,48 @@ const Team = () => {
           </div>
         </div>
 
+        {/* Technology Support Card - Ansh */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-20 h-20">
+            <div className="absolute top-0 right-0 w-full h-full bg-[#20B2AA] opacity-5 transform rotate-45"></div>
+          </div>
+          <div className="relative">
+            <div className="h-24 bg-gradient-to-r from-[#20B2AA] to-[#008B8B]"></div>
+            <div className="absolute top-12 left-6">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
+                <div className="w-full h-full bg-[#20B2AA] rounded-full flex items-center justify-center text-white">
+                  <span className="text-2xl font-bold">AK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="p-6 pt-16">
+            <div className="flex items-center mb-1">
+              <h3 className="font-bold text-lg text-gray-800">Ansh Kesharwani</h3>
+              <span className="ml-2 bg-[#20B2AA] text-white text-xs px-2 py-0.5 rounded-full">Technology Director</span>
+            </div>
+            <p className="text-gray-600 text-sm mb-4">Website Creator & Technology Support - Contact him if you need help with issues with the website</p>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <i className="ri-mail-line text-[#003366] mr-2"></i>
+                <a href="mailto:Keshaans000@isd284.com" className="text-[#003366] hover:underline text-sm">
+                  Keshaans000@isd284.com
+                </a>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-phone-line text-[#003366] mr-2"></i>
+                <a href="tel:651-382-5377" className="text-[#003366] hover:underline text-sm">
+                  651-382-5377
+                </a>
+              </div>
+              <div className="flex items-center">
+                <i className="ri-code-line text-[#003366] mr-2"></i>
+                <span className="text-gray-700 text-sm">Full Stack Development</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Officer Card - Aman (VP Membership) */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
           <div className="absolute top-0 right-0 w-20 h-20">
@@ -495,47 +537,7 @@ const Team = () => {
           </div>
         </div>
 
-        {/* Technology Support Card - Ansh */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-20 h-20">
-            <div className="absolute top-0 right-0 w-full h-full bg-[#20B2AA] opacity-5 transform rotate-45"></div>
-          </div>
-          <div className="relative">
-            <div className="h-24 bg-gradient-to-r from-[#20B2AA] to-[#008B8B]"></div>
-            <div className="absolute top-12 left-6">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-1 shadow-md">
-                <div className="w-full h-full bg-[#20B2AA] rounded-full flex items-center justify-center text-white">
-                  <span className="text-2xl font-bold">AK</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="p-6 pt-16">
-            <div className="flex items-center mb-1">
-              <h3 className="font-bold text-lg text-gray-800">Ansh Kesharwani</h3>
-              <span className="ml-2 bg-[#20B2AA] text-white text-xs px-2 py-0.5 rounded-full">Technology Support</span>
-            </div>
-            <p className="text-gray-600 text-sm mb-4">Website Creator & Technology Support - Contact him if you need help with issues with the website</p>
-            <div className="space-y-2">
-              <div className="flex items-center">
-                <i className="ri-mail-line text-[#003366] mr-2"></i>
-                <a href="mailto:Keshaans000@isd284.com" className="text-[#003366] hover:underline text-sm">
-                  Keshaans000@isd284.com
-                </a>
-              </div>
-              <div className="flex items-center">
-                <i className="ri-phone-line text-[#003366] mr-2"></i>
-                <a href="tel:651-382-5377" className="text-[#003366] hover:underline text-sm">
-                  651-382-5377
-                </a>
-              </div>
-              <div className="flex items-center">
-                <i className="ri-code-s-slash-line text-[#003366] mr-2"></i>
-                <span className="text-gray-700 text-sm">Web Development & Support</span>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
       
 

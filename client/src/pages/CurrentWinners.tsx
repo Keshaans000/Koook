@@ -148,8 +148,8 @@ const CurrentWinners = () => {
         
         <Card className="text-center">
           <CardContent className="p-6">
-            <div className="text-3xl font-bold text-[#003366] mb-2">1st</div>
-            <p className="text-gray-600">State Qualifying</p>
+            <div className="text-3xl font-bold text-[#003366] mb-2">2nd</div>
+            <p className="text-gray-600">State Placement</p>
           </CardContent>
         </Card>
         
