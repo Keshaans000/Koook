@@ -180,13 +180,13 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                         <span>DECA Help</span>
                       </div>
                     </Link>
-                    <Link href="/additional-resources">
+                    <Link href="/deca-advice">
                       <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
-                        location === "/additional-resources" 
+                        location === "/deca-advice" 
                           ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                           : "hover:bg-gray-50 text-gray-600"
                       }`}>
-                        <span>Additional Resources</span>
+                        <span>DECA Advice</span>
                       </div>
                     </Link>
                   </div>

@@ -19,7 +19,7 @@ import TeacherCorner from "@/pages/TeacherCorner";
 import Sponsorships from "@/pages/Sponsorships";
 import GrantsDonations from "@/pages/GrantsDonations";
 import Judging from "@/pages/Judging";
-import AdditionalResources from "@/pages/AdditionalResources";
+import DecaAdvice from "@/pages/DecaAdvice";
 import LockerRoom from "@/pages/LockerRoom";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
@@ -64,7 +64,7 @@ function Router() {
       <Route path="/sponsorships" component={Sponsorships} />
       <Route path="/grants-donations" component={GrantsDonations} />
       <Route path="/judging" component={Judging} />
-      <Route path="/additional-resources" component={AdditionalResources} />
+      <Route path="/deca-advice" component={DecaAdvice} />
       <Route path="/locker-room" component={LockerRoom} />
       <Route component={NotFound} />
     </Switch>
