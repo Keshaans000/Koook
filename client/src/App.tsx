@@ -20,6 +20,7 @@ import Sponsorships from "@/pages/Sponsorships";
 import GrantsDonations from "@/pages/GrantsDonations";
 import Judging from "@/pages/Judging";
 import AdditionalResources from "@/pages/AdditionalResources";
+import LockerRoom from "@/pages/LockerRoom";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -64,6 +65,7 @@ function Router() {
       <Route path="/grants-donations" component={GrantsDonations} />
       <Route path="/judging" component={Judging} />
       <Route path="/additional-resources" component={AdditionalResources} />
+      <Route path="/locker-room" component={LockerRoom} />
       <Route component={NotFound} />
     </Switch>
   );
