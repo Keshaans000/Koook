@@ -8,21 +8,41 @@ import image5 from "@assets/image_1748642234960.png";
 const Homepage = () => {
   return (
     <div className="space-y-6">
-      {/* Header Section */}
-      <div className="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFD700] opacity-10 rounded-full transform translate-x-32 -translate-y-32"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#E63946] opacity-10 rounded-full transform -translate-x-24 translate-y-24"></div>
+      {/* Header Section with Background Images */}
+      <div className="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-[600px]">
+        {/* Background Images */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="grid grid-cols-5 h-full">
+            <div className="relative overflow-hidden">
+              <img src={image1} alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative overflow-hidden">
+              <img src={image2} alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative overflow-hidden">
+              <img src={image5} alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative overflow-hidden">
+              <img src={image3} alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative overflow-hidden">
+              <img src={image4} alt="" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+        
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/80 via-[#004080]/70 to-[#2C7BE5]/80"></div>
         
         {/* Trophy decorations */}
-        <div className="absolute top-4 right-8 text-[#FFD700] opacity-20">
+        <div className="absolute top-4 right-8 text-[#FFD700] opacity-20 z-10">
           <i className="ri-trophy-fill text-5xl"></i>
         </div>
-        <div className="absolute bottom-4 left-8 text-[#FFD700] opacity-20">
+        <div className="absolute bottom-4 left-8 text-[#FFD700] opacity-20 z-10">
           <i className="ri-medal-line text-4xl"></i>
         </div>
         
-        <div className="relative z-10 text-center">
+        <div className="relative z-20 text-center flex flex-col justify-center min-h-[550px]">
           <div className="flex flex-col items-center mb-6">
             <div className="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mb-4">
               <i className="ri-home-4-line text-5xl text-[#FFD700]"></i>
@@ -34,7 +54,7 @@ const Homepage = () => {
                   Wayzata DECA
                 </span>
               </h1>
-              <div className="w-32 h-1 bg-gradient-to-r from-[#FFD700] to-[#FFC000] rounded-full"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-[#FFD700] to-[#FFC000] rounded-full mx-auto"></div>
             </div>
           </div>
           
@@ -58,86 +78,47 @@ const Homepage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Image Gallery */}
-      <div className="mb-8">
-        {/* Featured ICDC Competitors */}
-        <div className="mb-6">
-          <div className="relative group">
-            <img 
-              src={image5} 
-              alt="Our ICDC Competitors This Year" 
-              className="w-full h-64 object-cover rounded-lg shadow-lg transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
-              <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-2xl mb-2">Our ICDC Competitors This Year</h3>
-                <p className="text-lg">58 Qualified Students Ready to Compete</p>
-              </div>
-            </div>
-          </div>
-        </div>
         
-        {/* Individual Photos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="relative group">
-            <img 
-              src={image1} 
-              alt="Previous ICDC Winners" 
-              className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
-              <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg mb-2">Previous ICDC Winners</h3>
-                <p className="text-sm">Prohitt Ram Kumar, Aman Agrawal, Sricharan Kanajam</p>
+        {/* Accessible Image Overlay */}
+        <div className="absolute bottom-4 right-4 z-30">
+          <div className="flex space-x-2">
+            <div className="group relative">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+                <img src={image1} alt="Previous ICDC Winners" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Previous ICDC Winners
               </div>
             </div>
-          </div>
-
-          <div className="relative group">
-            <img 
-              src={image2} 
-              alt="Mr. Kimbler our advisor" 
-              className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
-              <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg">Mr. Kimbler</h3>
-                <p className="text-sm">Our Advisor</p>
+            <div className="group relative">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+                <img src={image2} alt="Mr. Kimbler" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Mr. Kimbler - Our Advisor
               </div>
             </div>
-          </div>
-
-          <div className="relative group">
-            <img 
-              src={image3} 
-              alt="Our VP Wren Park" 
-              className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
-              <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg">Wren Park</h3>
-                <p className="text-sm">Our VP</p>
+            <div className="group relative">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+                <img src={image3} alt="Wren Park" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Wren Park - Our VP
               </div>
             </div>
-          </div>
-
-          <div className="relative group">
-            <img 
-              src={image4} 
-              alt="Our President Sajana Guruprasad" 
-              className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
-              <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg">Sajana Guruprasad</h3>
-                <p className="text-sm">Our President</p>
+            <div className="group relative">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+                <img src={image4} alt="Sajana Guruprasad" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Sajana Guruprasad - Our President
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
 
       {/* About Wayzata High School */}
       <Card className="shadow-lg">
