@@ -152,6 +152,15 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                         <span>Calendar</span>
                       </div>
                     </Link>
+                    <Link href="/competitions">
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
+                        location === "/competitions" 
+                          ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}>
+                        <span>Competitions</span>
+                      </div>
+                    </Link>
                     <Link href="/events-category">
                       <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
                         location === "/events-category" 
@@ -159,6 +168,15 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                           : "hover:bg-gray-50 text-gray-600"
                       }`}>
                         <span>Event Categories</span>
+                      </div>
+                    </Link>
+                    <Link href="/deca-help">
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
+                        location === "/deca-help" 
+                          ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}>
+                        <span>DECA Help</span>
                       </div>
                     </Link>
                     <Link href="/additional-resources">
@@ -176,18 +194,6 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
             </li>
 
             {/* Individual pages */}
-            <li>
-              <Link href="/competitions">
-                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/competitions" 
-                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}>
-                  <i className="ri-trophy-line text-xl"></i>
-                  <span>Competitions</span>
-                </div>
-              </Link>
-            </li>
             <li>
               <Link href="/meetings">
                 <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
@@ -209,18 +215,6 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                 }`}>
                   <i className="ri-hand-heart-line text-xl"></i>
                   <span>Student Volunteering</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link href="/deca-help">
-                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/deca-help" 
-                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}>
-                  <i className="ri-question-answer-line text-xl"></i>
-                  <span>DECA Help</span>
                 </div>
               </Link>
             </li>
