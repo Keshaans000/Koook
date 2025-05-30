@@ -233,6 +233,12 @@ const Homepage = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Website Credit */}
+      <div className="text-center py-4 text-sm text-gray-600 border-t border-gray-200">
+        <p>Website created by <span className="font-semibold text-[#003366]">Ansh Kesharwani</span></p>
+        <p className="text-xs mt-1">Built with React, TypeScript, and Tailwind CSS</p>
+      </div>
     </div>
   );
 };
