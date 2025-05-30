@@ -1,4 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
+import image1 from "@assets/image_1748641905529.png";
+import image2 from "@assets/image_1748641924221.png";
+import image3 from "@assets/image_1748641954170.png";
+import image4 from "@assets/image_1748641994054.png";
 
 const Homepage = () => {
   return (
@@ -49,6 +53,65 @@ const Homepage = () => {
             </div>
             <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
               📈 Premier Minnesota Chapter
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Image Gallery */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="relative group">
+          <img 
+            src={image1} 
+            alt="Previous ICDC Winners" 
+            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+              <h3 className="font-bold text-lg mb-2">Previous ICDC Winners</h3>
+              <p className="text-sm">Prohitt Ram Kumar, Aman Agrawal, Sricharan Kanajam</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative group">
+          <img 
+            src={image2} 
+            alt="Mr. Kimbler our advisor" 
+            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+              <h3 className="font-bold text-lg">Mr. Kimbler</h3>
+              <p className="text-sm">Our Advisor</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative group">
+          <img 
+            src={image3} 
+            alt="Our VP Wren Park" 
+            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+              <h3 className="font-bold text-lg">Wren Park</h3>
+              <p className="text-sm">Our VP</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative group">
+          <img 
+            src={image4} 
+            alt="Our President Sajana Guruprasad" 
+            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+              <h3 className="font-bold text-lg">Sajana Guruprasad</h3>
+              <p className="text-sm">Our President</p>
             </div>
           </div>
         </div>
