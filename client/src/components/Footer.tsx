@@ -29,9 +29,14 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center pb-16 md:pb-0">
           {/* Copyright section */}
-          <div className="flex items-center text-gray-600 text-sm mb-3 md:mb-0 text-center md:text-left">
-            <span className="text-[#003366] font-medium mr-1">DECA</span>
-            &copy; {new Date().getFullYear()} Wayzata DECA. All rights reserved.
+          <div className="flex flex-col items-center md:items-start text-gray-600 text-sm mb-3 md:mb-0 text-center md:text-left">
+            <div className="flex items-center mb-1">
+              <span className="text-[#003366] font-medium mr-1">DECA</span>
+              &copy; {new Date().getFullYear()} Wayzata DECA. All rights reserved.
+            </div>
+            <div className="text-xs text-gray-500">
+              Website created by <span className="font-semibold text-[#003366]">Ansh Kesharwani</span> • Built with React, TypeScript, and Tailwind CSS
+            </div>
           </div>
           
           {/* Links section */}
