@@ -41,8 +41,11 @@ const Homepage = () => {
             <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
               🎯 180+ Active Members
             </div>
-            <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-              🥉 ICDC 2025 Winners
+            <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+              🏆 100+ State Qualifiers
+            </div>
+            <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+              🥇 58 ICDC Qualifiers
             </div>
             <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
               📈 Premier Minnesota Chapter
