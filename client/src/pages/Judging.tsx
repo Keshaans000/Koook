@@ -89,6 +89,131 @@ export default function Judging() {
         </div>
       </div>
 
+      <div className="mb-8">
+        <h2 className="text-2xl font-semibold text-[#003366] mb-6">Competition Day Schedule</h2>
+        
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+              <i className="ri-sun-line text-yellow-600 mr-2"></i>
+              AM Events
+            </h3>
+            <div className="space-y-3 text-gray-700">
+              <div className="flex items-start">
+                <i className="ri-time-line text-blue-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>8:00 AM</strong> - Judge Check In (B204 - 2nd Floor Forum Room)
+                </div>
+              </div>
+              <div className="flex items-start">
+                <i className="ri-time-line text-blue-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>8:15 AM</strong> - Judge Orientation
+                </div>
+              </div>
+              <div className="flex items-start">
+                <i className="ri-time-line text-blue-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>8:30 AM</strong> - Judges to booths (gyms)
+                </div>
+              </div>
+              <div className="flex items-start">
+                <i className="ri-time-line text-blue-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>9:00 AM</strong> - Presentations Start
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-4 pt-4 border-t border-blue-200">
+              <h4 className="font-medium text-gray-800 mb-2">Event Categories:</h4>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• Individual Series (Sports & Entertainment Only)</li>
+                <li>• Team Decision Making (Buying & Merch, Entre, Finance, Hospitality, Marketing Mgmt, Sports, Travel)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+              <i className="ri-sun-fill text-orange-600 mr-2"></i>
+              PM Events
+            </h3>
+            <div className="space-y-3 text-gray-700">
+              <div className="flex items-start">
+                <i className="ri-time-line text-orange-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>12:30 PM</strong> - Judge Check In (B204 - 2nd Floor Forum Room)
+                </div>
+              </div>
+              <div className="flex items-start">
+                <i className="ri-time-line text-orange-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>1:00 PM</strong> - Judges to booths (gyms)
+                </div>
+              </div>
+              <div className="flex items-start">
+                <i className="ri-time-line text-orange-600 mt-1 mr-2"></i>
+                <div>
+                  <strong>1:30 PM</strong> - Presentations Start
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-4 pt-4 border-t border-orange-200">
+              <h4 className="font-medium text-gray-800 mb-2">Event Categories:</h4>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• International Business Plan</li>
+                <li>• Professional Selling</li>
+                <li>• Integrated Marketing Plan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+            <i className="ri-shield-user-line text-green-600 mr-2"></i>
+            Chaperone Information
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 className="font-medium text-gray-800 mb-2">Morning Shift</h4>
+              <p className="text-gray-700">7:45 AM - 12:00 PM (Report to C122)</p>
+            </div>
+            <div>
+              <h4 className="font-medium text-gray-800 mb-2">Afternoon Shift</h4>
+              <p className="text-gray-700">12:00 PM - 4:30 PM (Report to C122)</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+          <h3 className="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+            <i className="ri-lightbulb-line text-yellow-600 mr-2"></i>
+            Judge Tips
+          </h3>
+          <ul className="space-y-2 text-gray-700">
+            <li className="flex items-start">
+              <i className="ri-check-line text-green-600 mt-1 mr-2"></i>
+              <span>Sample role plays are provided for practice (from previous years - not current competition materials)</span>
+            </li>
+            <li className="flex items-start">
+              <i className="ri-check-line text-green-600 mt-1 mr-2"></i>
+              <span>Arrive 15 minutes early for check-in and orientation</span>
+            </li>
+            <li className="flex items-start">
+              <i className="ri-check-line text-green-600 mt-1 mr-2"></i>
+              <span>Bring business attire and comfortable shoes for moving between booths</span>
+            </li>
+            <li className="flex items-start">
+              <i className="ri-check-line text-green-600 mt-1 mr-2"></i>
+              <span>Check-in location: B204 - 2nd Floor Forum Room for all sessions</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div className="bg-[#003366] text-white rounded-lg p-8">
         <h2 className="text-2xl font-bold mb-4">Become a Judge</h2>
         <p className="mb-6">

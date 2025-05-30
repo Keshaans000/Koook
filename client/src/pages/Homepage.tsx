@@ -11,7 +11,7 @@ const Homepage = () => {
       {/* Header Section with Background Images */}
       <div className="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-[600px]">
         {/* Background Images */}
-        <div className="absolute inset-0 opacity-15">
+        <div className="absolute inset-0 opacity-40">
           <div className="grid grid-cols-5 h-full">
             <div className="relative overflow-hidden">
               <img src={image1} alt="" className="w-full h-full object-cover" />
@@ -32,7 +32,7 @@ const Homepage = () => {
         </div>
         
         {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/80 via-[#004080]/70 to-[#2C7BE5]/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#003366]/40 via-[#004080]/30 to-[#2C7BE5]/40"></div>
         
         {/* Trophy decorations */}
         <div className="absolute top-4 right-8 text-[#FFD700] opacity-20 z-10">
@@ -81,36 +81,36 @@ const Homepage = () => {
         
         {/* Accessible Image Overlay */}
         <div className="absolute bottom-4 right-4 z-30">
-          <div className="flex space-x-2">
+          <div className="flex space-x-3">
             <div className="group relative">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-white/70 cursor-pointer shadow-lg">
                 <img src={image1} alt="Previous ICDC Winners" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Previous ICDC Winners
               </div>
             </div>
             <div className="group relative">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-white/70 cursor-pointer shadow-lg">
                 <img src={image2} alt="Mr. Kimbler" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Mr. Kimbler - Our Advisor
               </div>
             </div>
             <div className="group relative">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-white/70 cursor-pointer shadow-lg">
                 <img src={image3} alt="Wren Park" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Wren Park - Our VP
               </div>
             </div>
             <div className="group relative">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/50 cursor-pointer">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-3 border-white/70 cursor-pointer shadow-lg">
                 <img src={image4} alt="Sajana Guruprasad" className="w-full h-full object-cover" />
               </div>
-              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              <div className="absolute bottom-full right-0 mb-2 px-3 py-2 bg-black/90 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Sajana Guruprasad - Our President
               </div>
             </div>
