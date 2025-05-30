@@ -24,13 +24,13 @@ const Homepage = () => {
               <img src={image6} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="relative overflow-hidden">
-              <img src={image9} alt="" className="w-full h-full object-cover" />
+              <img src={image1} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="relative overflow-hidden">
               <img src={image7} alt="" className="w-full h-full object-cover" />
             </div>
             <div className="relative overflow-hidden">
-              <img src={image4} alt="" className="w-full h-full object-cover" />
+              <img src={image9} alt="" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
