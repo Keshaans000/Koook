@@ -143,6 +143,24 @@ const Homepage = () => {
         </div>
       </div>
 
+      {/* DECA Moments */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-[#003366] mb-6 text-center">DECA Moments</h2>
+        <div className="relative group mb-6">
+          <img 
+            src={image5} 
+            alt="Our ICDC Competitors This Year" 
+            className="w-full h-80 object-cover rounded-lg shadow-lg transition-transform group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+              <h3 className="font-bold text-3xl mb-3">Our ICDC Competitors This Year</h3>
+              <p className="text-xl">58 Qualified Students Ready to Compete at Nationals</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* About Wayzata High School */}
       <Card className="shadow-lg">
         <CardContent className="p-6">
