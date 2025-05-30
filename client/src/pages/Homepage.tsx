@@ -65,10 +65,10 @@ const Homepage = () => {
           </p>
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-              🎯 180+ Active Members
+              🎯 350 Active Members
             </div>
             <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-              🏆 100+ State Qualifiers
+              🏆 250 State Qualifiers
             </div>
             <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
               🥇 58 ICDC Qualifiers
