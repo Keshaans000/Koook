@@ -109,12 +109,12 @@ const Homepage = () => {
           <div className="relative group">
             <img 
               src={image6} 
-              alt="Mr. Kimbler and Mr. Jacklitch our advisors at Orlando" 
+              alt="Mr. Kimbler and Ms. Jacklitch our advisors at Orlando" 
               className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
               <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
-                <h3 className="font-bold text-lg mb-2">Mr. Kimbler & Mr. Jacklitch</h3>
+                <h3 className="font-bold text-lg mb-2">Mr. Kimbler & Ms. Jacklitch</h3>
                 <p className="text-sm">Our Advisors at Orlando</p>
               </div>
             </div>
