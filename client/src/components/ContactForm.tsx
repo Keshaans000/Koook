@@ -106,12 +106,22 @@ export default function ContactForm({ formType }: ContactFormProps) {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
-        method: 'POST',
-        body: formData
-      });
+      // Send to both email addresses
+      const promises = [
+        fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
+          method: 'POST',
+          body: formData
+        }),
+        fetch('https://formsubmit.co/Keshaans000@isd284.com', {
+          method: 'POST',
+          body: formData
+        })
+      ];
 
-      if (response.ok) {
+      const responses = await Promise.all(promises);
+      const allSuccessful = responses.every(response => response.ok);
+
+      if (allSuccessful) {
         toast({
           title: "Success!",
           description: "Your inquiry has been sent successfully. We'll get back to you soon!",
