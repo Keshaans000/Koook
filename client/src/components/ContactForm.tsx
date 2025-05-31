@@ -405,7 +405,7 @@ export default function ContactForm({ formType }: ContactFormProps) {
               name="budgetTier"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Estimated Sponsorship Budget or Tier of Interest *</FormLabel>
+                  <FormLabel>Estimated {formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Budget or Tier of Interest *</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
