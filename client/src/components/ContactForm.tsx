@@ -87,53 +87,41 @@ export default function ContactForm({ formType }: ContactFormProps) {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Create FormData for FormSubmit
-    const formData = new FormData();
-    formData.append('organization_name', data.organizationName);
-    formData.append('industry_type', data.industryType);
-    formData.append('business_website', data.businessWebsite || '');
-    formData.append('social_media', data.socialMediaHandles || '');
-    formData.append('contact_name', data.fullName);
-    formData.append('contact_title', data.title || '');
-    formData.append('email', data.email);
-    formData.append('phone', data.phone || '');
-    formData.append('interest', data.interest);
-    formData.append('benefits', data.sponsorshipBenefits.join(', '));
-    formData.append('budget_tier', data.budgetTier);
-    formData.append('form_type', formType);
-    formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
-    formData.append('_captcha', 'false');
-
     setIsSubmitting(true);
+    
+    // Create mailto links as a reliable fallback
+    const subject = `New ${formType} inquiry from ${data.organizationName}`;
+    const body = `
+Organization: ${data.organizationName}
+Industry: ${data.industryType}
+Website: ${data.businessWebsite || 'Not provided'}
+Social Media: ${data.socialMediaHandles || 'Not provided'}
+
+Contact Name: ${data.fullName}
+Title: ${data.title || 'Not provided'}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+
+Interest: ${data.interest}
+Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
+Budget Tier: ${data.budgetTier}
+    `.trim();
+
+    const mailtoLink = `mailto:wayzata.deca@gmail.com,Keshaans000@isd284.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
     try {
-      // Send to both email addresses
-      const promises = [
-        fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
-          method: 'POST',
-          body: formData
-        }),
-        fetch('https://formsubmit.co/Keshaans000@isd284.com', {
-          method: 'POST',
-          body: formData
-        })
-      ];
-
-      const responses = await Promise.all(promises);
-      const allSuccessful = responses.every(response => response.ok);
-
-      if (allSuccessful) {
-        toast({
-          title: "Success!",
-          description: "Your inquiry has been sent successfully. We'll get back to you soon!",
-        });
-        form.reset();
-      } else {
-        throw new Error("Failed to send");
-      }
+      // Open the default email client
+      window.location.href = mailtoLink;
+      
+      toast({
+        title: "Email Client Opened",
+        description: "Your default email application has opened with the form details. Please send the email to complete your inquiry.",
+      });
+      form.reset();
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to send your inquiry. Please try again.",
+        title: "Please Copy Information",
+        description: "Please manually send an email to wayzata.deca@gmail.com and Keshaans000@isd284.com with your inquiry details.",
         variant: "destructive",
       });
     } finally {
