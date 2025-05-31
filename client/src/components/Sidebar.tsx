@@ -228,30 +228,6 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
 
             {/* Individual pages */}
             <li>
-              <Link href="/meetings">
-                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/meetings" 
-                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}>
-                  <i className="ri-team-line text-xl"></i>
-                  <span>Meetings</span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link href="/student-volunteering">
-                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
-                  location === "/student-volunteering" 
-                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                    : "hover:bg-gray-100 text-gray-700"
-                }`}>
-                  <i className="ri-hand-heart-line text-xl"></i>
-                  <span>Student Volunteering</span>
-                </div>
-              </Link>
-            </li>
-            <li>
               <Link href="/teacher-corner">
                 <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
                   location === "/teacher-corner" 
