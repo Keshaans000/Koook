@@ -123,7 +123,7 @@ export default function ContactForm({ formType }: ContactFormProps) {
     try {
       // Use Web3Forms for reliable email delivery
       const formData = new FormData();
-      formData.append('access_key', '50a78595-e9fd-45ed-b860-898d5eaf6ace');
+      formData.append('access_key', 'fd1929ef-7f8d-4551-ae99-45aa464c1c33');
       formData.append('subject', `New ${formType} inquiry from ${data.organizationName}`);
       formData.append('from_name', data.fullName);
       formData.append('email', data.email);
