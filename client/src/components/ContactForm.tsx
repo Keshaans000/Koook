@@ -121,21 +121,43 @@ export default function ContactForm({ formType }: ContactFormProps) {
     setIsSubmitting(true);
     
     try {
-      // First try our SendGrid API
-      const response = await fetch('/api/contact', {
+      // Use Web3Forms for reliable email delivery
+      const formData = new FormData();
+      formData.append('access_key', 'fd1929ef-7f8d-4551-ae99-45aa464c1c33');
+      formData.append('subject', `New ${formType} inquiry from ${data.organizationName}`);
+      formData.append('from_name', data.fullName);
+      formData.append('email', data.email);
+      
+      // Add all form fields to the email
+      const emailBody = `
+Business Information:
+Organization: ${data.organizationName}
+Industry: ${data.industryType}
+Website: ${data.businessWebsite || 'Not provided'}
+Social Media: ${data.socialMediaHandles || 'Not provided'}
+
+Contact Information:
+Name: ${data.fullName}
+Title: ${data.title || 'Not provided'}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+
+Interest Details:
+Interest: ${data.interest}
+Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
+Budget Tier: ${data.budgetTier}
+      `;
+      
+      formData.append('message', emailBody);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...data,
-          formType
-        }),
+        body: formData
       });
 
       const result = await response.json();
 
-      if (response.ok && result.success) {
+      if (result.success) {
         toast({
           title: "Inquiry Sent Successfully!",
           description: "Your inquiry has been sent to our team. We'll get back to you soon.",
@@ -144,8 +166,7 @@ export default function ContactForm({ formType }: ContactFormProps) {
         return;
       }
       
-      // If SendGrid fails, fall back to FormSubmit.co service
-      throw new Error('Primary email service unavailable');
+      throw new Error('Email service unavailable');
       
     } catch (error) {
       console.log('Primary email service failed, using backup method...');
