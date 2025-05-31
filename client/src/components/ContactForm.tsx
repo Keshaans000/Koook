@@ -150,44 +150,54 @@ export default function ContactForm({ formType }: ContactFormProps) {
     } catch (error) {
       console.log('Primary email service failed, using backup method...');
       
-      // Backup submission using FormSubmit.co
-      try {
-        const formData = new FormData();
-        formData.append('_to', 'wayzata.deca@gmail.com,keshaans000@isd284.com');
-        formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
-        formData.append('_template', 'table');
-        formData.append('_captcha', 'false');
-        
-        // Add all form fields
-        Object.entries(data).forEach(([key, value]) => {
-          if (Array.isArray(value)) {
-            formData.append(key, value.join(', '));
-          } else if (value) {
-            formData.append(key, value.toString());
-          }
-        });
-        
-        const backupResponse = await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
-          method: 'POST',
-          body: formData
-        });
+      // Direct Gmail backup method
+      const subject = `New ${formType} inquiry from ${data.organizationName}`;
+      const body = `
+Business Information:
+Organization: ${data.organizationName}
+Industry: ${data.industryType}
+Website: ${data.businessWebsite || 'Not provided'}
+Social Media: ${data.socialMediaHandles || 'Not provided'}
 
-        if (backupResponse.ok) {
+Contact Information:
+Name: ${data.fullName}
+Title: ${data.title || 'Not provided'}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+
+Interest Details:
+Interest: ${data.interest}
+Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
+Budget Tier: ${data.budgetTier}
+      `.trim();
+
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com,keshaans000@isd284.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      try {
+        window.open(gmailLink, '_blank');
+        toast({
+          title: "Gmail Opened",
+          description: "Gmail has opened with your inquiry details. Please send the email to complete your submission to both wayzata.deca@gmail.com and keshaans000@isd284.com",
+        });
+        form.reset();
+      } catch {
+        // Copy to clipboard as final fallback
+        const emailInfo = `TO: wayzata.deca@gmail.com, keshaans000@isd284.com\nSUBJECT: ${subject}\n\n${body}`;
+        
+        try {
+          await navigator.clipboard.writeText(emailInfo);
           toast({
-            title: "Inquiry Sent Successfully!",
-            description: "Your inquiry has been submitted and will be delivered to our team.",
+            title: "Email Details Copied",
+            description: "Your inquiry details have been copied to clipboard. Please paste into your email and send to wayzata.deca@gmail.com and keshaans000@isd284.com",
           });
           form.reset();
-        } else {
-          throw new Error('Backup service also failed');
+        } catch {
+          toast({
+            title: "Please Email Directly",
+            description: "Please send your inquiry directly to wayzata.deca@gmail.com and keshaans000@isd284.com with the form details.",
+            variant: "destructive",
+          });
         }
-      } catch (backupError) {
-        console.error('Both email services failed:', backupError);
-        toast({
-          title: "Submission Issue",
-          description: "Please send your inquiry directly to wayzata.deca@gmail.com or keshaans000@isd284.com",
-          variant: "destructive",
-        });
       }
     } finally {
       setIsSubmitting(false);
