@@ -192,30 +192,30 @@ Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
 Budget Tier: ${data.budgetTier}
       `.trim();
 
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com,keshaans000@isd284.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
       try {
         window.open(gmailLink, '_blank');
         toast({
           title: "Gmail Opened",
-          description: "Gmail has opened with your inquiry details. Please send the email to complete your submission to both wayzata.deca@gmail.com and keshaans000@isd284.com",
+          description: "Gmail has opened with your inquiry details. Please send the email to complete your submission.",
         });
         form.reset();
       } catch {
         // Copy to clipboard as final fallback
-        const emailInfo = `TO: wayzata.deca@gmail.com, keshaans000@isd284.com\nSUBJECT: ${subject}\n\n${body}`;
+        const emailInfo = `TO: wayzata.deca@gmail.com\nSUBJECT: ${subject}\n\n${body}`;
         
         try {
           await navigator.clipboard.writeText(emailInfo);
           toast({
             title: "Email Details Copied",
-            description: "Your inquiry details have been copied to clipboard. Please paste into your email and send to wayzata.deca@gmail.com and keshaans000@isd284.com",
+            description: "Your inquiry details have been copied to clipboard. Please paste into your email and send to wayzata.deca@gmail.com",
           });
           form.reset();
         } catch {
           toast({
             title: "Please Email Directly",
-            description: "Please send your inquiry directly to wayzata.deca@gmail.com and keshaans000@isd284.com with the form details.",
+            description: "Please send your inquiry directly to wayzata.deca@gmail.com with the form details.",
             variant: "destructive",
           });
         }

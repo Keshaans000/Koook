@@ -26,7 +26,7 @@ export async function sendContactEmail(formData: ContactFormData): Promise<boole
     const benefitsList = formData.sponsorshipBenefits.join(', ');
     
     const msg = {
-      to: ['wayzata.deca@gmail.com', 'keshaans000@isd284.com'],
+      to: 'wayzata.deca@gmail.com',
       from: 'wayzata.deca@gmail.com', // Using the actual email address
       subject: `New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry from ${formData.organizationName}`,
       html: `
