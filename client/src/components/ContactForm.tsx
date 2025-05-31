@@ -144,26 +144,59 @@ Budget Tier: ${data.budgetTier}
       
       form.reset();
     } catch (error) {
-      // Fallback: Show email information for manual copying
+      // Multiple fallback options to ensure nothing is lost
       const emailInfo = `
-Please send an email to: ${emailAddress}
-Subject: ${subject}
+TO: ${emailAddress}
+SUBJECT: ${subject}
 
 ${body}
       `;
       
-      navigator.clipboard?.writeText(emailInfo).then(() => {
+      // Try to copy to clipboard first
+      if (navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(emailInfo);
+          toast({
+            title: "Email Details Copied",
+            description: "The email details have been copied to your clipboard. Please paste them into your email app and send.",
+          });
+        } catch {
+          showManualInstructions();
+        }
+      } else {
+        showManualInstructions();
+      }
+      
+      function showManualInstructions() {
+        // Create a temporary textarea to show the email content
+        const textarea = document.createElement('textarea');
+        textarea.value = emailInfo;
+        textarea.style.position = 'fixed';
+        textarea.style.top = '50%';
+        textarea.style.left = '50%';
+        textarea.style.transform = 'translate(-50%, -50%)';
+        textarea.style.width = '80%';
+        textarea.style.height = '60%';
+        textarea.style.zIndex = '10000';
+        textarea.style.backgroundColor = 'white';
+        textarea.style.border = '2px solid #333';
+        textarea.style.padding = '20px';
+        textarea.style.fontSize = '14px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        
         toast({
-          title: "Email Details Copied",
-          description: "The email details have been copied to your clipboard. Please paste them into your email app.",
+          title: "Copy This Email Content",
+          description: "Select all the text in the box that appeared and copy it to send manually. Close the box when done.",
         });
-      }).catch(() => {
-        toast({
-          title: "Please Send Email Manually",
-          description: `Please send an email to ${emailAddress} with the form details.`,
-          variant: "destructive",
-        });
-      });
+        
+        // Remove the textarea after 30 seconds
+        setTimeout(() => {
+          if (document.body.contains(textarea)) {
+            document.body.removeChild(textarea);
+          }
+        }, 30000);
+      }
     } finally {
       setIsSubmitting(false);
     }
