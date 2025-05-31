@@ -156,6 +156,7 @@ Budget Tier: ${data.budgetTier}
       });
 
       const result = await response.json();
+      console.log('Web3Forms response:', result);
 
       if (result.success) {
         toast({
@@ -166,60 +167,16 @@ Budget Tier: ${data.budgetTier}
         return;
       }
       
-      throw new Error('Email service unavailable');
+      console.error('Web3Forms error:', result);
+      throw new Error(`Web3Forms failed: ${result.message || 'Unknown error'}`);
       
     } catch (error) {
-      console.log('Primary email service failed, using backup method...');
-      
-      // Direct Gmail backup method
-      const subject = `New ${formType} inquiry from ${data.organizationName}`;
-      const body = `
-Business Information:
-Organization: ${data.organizationName}
-Industry: ${data.industryType}
-Website: ${data.businessWebsite || 'Not provided'}
-Social Media: ${data.socialMediaHandles || 'Not provided'}
-
-Contact Information:
-Name: ${data.fullName}
-Title: ${data.title || 'Not provided'}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-
-Interest Details:
-Interest: ${data.interest}
-Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
-Budget Tier: ${data.budgetTier}
-      `.trim();
-
-      const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      try {
-        window.open(gmailLink, '_blank');
-        toast({
-          title: "Gmail Opened",
-          description: "Gmail has opened with your inquiry details. Please send the email to complete your submission.",
-        });
-        form.reset();
-      } catch {
-        // Copy to clipboard as final fallback
-        const emailInfo = `TO: wayzata.deca@gmail.com\nSUBJECT: ${subject}\n\n${body}`;
-        
-        try {
-          await navigator.clipboard.writeText(emailInfo);
-          toast({
-            title: "Email Details Copied",
-            description: "Your inquiry details have been copied to clipboard. Please paste into your email and send to wayzata.deca@gmail.com",
-          });
-          form.reset();
-        } catch {
-          toast({
-            title: "Please Email Directly",
-            description: "Please send your inquiry directly to wayzata.deca@gmail.com with the form details.",
-            variant: "destructive",
-          });
-        }
-      }
+      console.error('Web3Forms submission failed:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an issue with the email service. Please contact wayzata.deca@gmail.com directly.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
