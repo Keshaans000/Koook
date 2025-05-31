@@ -70,6 +70,48 @@ const SearchBar = () => {
       url: "/deca-help"
     },
     {
+      id: "deca-advice",
+      title: "DECAcheive",
+      description: "Study guides, flashcards, and competition resources",
+      type: "page",
+      url: "/deca-advice"
+    },
+    {
+      id: "sponsorships",
+      title: "Sponsorships",
+      description: "Partnership opportunities and sponsor information",
+      type: "page",
+      url: "/sponsorships"
+    },
+    {
+      id: "grants-donations",
+      title: "Grants & Donations",
+      description: "Financial support and donation opportunities",
+      type: "page",
+      url: "/grants-donations"
+    },
+    {
+      id: "judging",
+      title: "Judging",
+      description: "Competition judging schedule and information",
+      type: "page",
+      url: "/judging"
+    },
+    {
+      id: "student-volunteering",
+      title: "Student Volunteering",
+      description: "Volunteer opportunities and community service",
+      type: "page",
+      url: "/student-volunteering"
+    },
+    {
+      id: "locker-room",
+      title: "Locker Room",
+      description: "Member resources and exclusive content",
+      type: "page",
+      url: "/locker-room"
+    },
+    {
       id: "meetings",
       title: "Meetings",
       description: "DECA meeting schedules and information",
