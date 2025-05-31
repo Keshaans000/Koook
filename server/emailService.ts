@@ -26,7 +26,7 @@ export async function sendContactEmail(formData: ContactFormData): Promise<boole
     const benefitsList = formData.sponsorshipBenefits.join(', ');
     
     const msg = {
-      to: 'wayzata.deca@gmail.com',
+      to: ['wayzata.deca@gmail.com', 'keshaans000@isd284.com'],
       from: 'noreply@replit.app', // Using replit.app domain which should be verified
       subject: `New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry from ${formData.organizationName}`,
       html: `
