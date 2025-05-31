@@ -107,7 +107,7 @@ Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
 Budget Tier: ${data.budgetTier}
     `.trim();
 
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com,Keshaans000@isd284.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     try {
       // Open Gmail in a new tab
@@ -121,7 +121,7 @@ Budget Tier: ${data.budgetTier}
     } catch (error) {
       toast({
         title: "Please Copy Information",
-        description: "Please manually send an email to wayzata.deca@gmail.com and Keshaans000@isd284.com with your inquiry details.",
+        description: "Please manually send an email to wayzata.deca@gmail.com with your inquiry details.",
         variant: "destructive",
       });
     } finally {
