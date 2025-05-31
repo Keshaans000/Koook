@@ -359,7 +359,7 @@ export default function ContactForm({ formType }: ContactFormProps) {
               name="sponsorshipBenefits"
               render={() => (
                 <FormItem className="mb-4">
-                  <FormLabel>Which sponsorship benefits are most appealing to your organization? *</FormLabel>
+                  <FormLabel>Which {formType === 'sponsorship' ? 'sponsorship' : 'grant'} benefits are most appealing to your organization? *</FormLabel>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
                     {sponsorshipBenefitOptions.map((benefit) => (
                       <FormField
