@@ -107,15 +107,15 @@ Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
 Budget Tier: ${data.budgetTier}
     `.trim();
 
-    const mailtoLink = `mailto:wayzata.deca@gmail.com,Keshaans000@isd284.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com,Keshaans000@isd284.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     try {
-      // Open the default email client
-      window.location.href = mailtoLink;
+      // Open Gmail in a new tab
+      window.open(gmailLink, '_blank');
       
       toast({
-        title: "Email Client Opened",
-        description: "Your default email application has opened with the form details. Please send the email to complete your inquiry.",
+        title: "Gmail Opened",
+        description: "Gmail has opened in a new tab with your inquiry details. Please send the email to complete your submission.",
       });
       form.reset();
     } catch (error) {
