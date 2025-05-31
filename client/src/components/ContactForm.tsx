@@ -122,73 +122,76 @@ export default function ContactForm({ formType }: ContactFormProps) {
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="organizationName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Organization/Business Name *</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter organization name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="industryType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Industry Type *</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <div>
+            <h3 className="text-lg font-medium text-gray-800 mb-4">Business Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="organizationName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Organization/Business Name *</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select industry type" />
-                      </SelectTrigger>
+                      <Input placeholder="Enter organization name" {...field} />
                     </FormControl>
-                    <SelectContent>
-                      {industryOptions.map((industry) => (
-                        <SelectItem key={industry} value={industry}>
-                          {industry}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="businessWebsite"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Business Website</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://www.example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="socialMediaHandles"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Social Media Handles</FormLabel>
-                  <FormControl>
-                    <Input placeholder="@company, LinkedIn, etc." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="industryType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Industry Type *</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select industry type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {industryOptions.map((industry) => (
+                          <SelectItem key={industry} value={industry}>
+                            {industry}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="businessWebsite"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Business Website</FormLabel>
+                    <FormControl>
+                      <Input placeholder="https://www.example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="socialMediaHandles"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Social Media Handles</FormLabel>
+                    <FormControl>
+                      <Input placeholder="@company, LinkedIn, etc." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
 
           {/* Primary Contact Information */}
