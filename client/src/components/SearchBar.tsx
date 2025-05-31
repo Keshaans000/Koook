@@ -246,8 +246,8 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-start justify-center pt-20">
-      <div className="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl mx-4 overflow-hidden">
+    <div className="fixed inset-0 z-[9999] bg-black bg-opacity-75 flex items-start justify-center pt-20 backdrop-blur-sm">
+      <div className="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl mx-4 overflow-hidden relative z-[10000]">
         {/* Search Input */}
         <div className="flex items-center border-b border-gray-200 px-4 py-3">
           <i className="ri-search-line text-gray-400 mr-3"></i>
