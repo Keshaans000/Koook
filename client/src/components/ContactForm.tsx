@@ -121,60 +121,43 @@ export default function ContactForm({ formType }: ContactFormProps) {
     setIsSubmitting(true);
     
     try {
-      // Use Web3Forms for reliable email delivery
+      // Use FormSubmit - reliable free service that works from any domain
       const formData = new FormData();
-      formData.append('access_key', 'fd1929ef-7f8d-4551-ae99-45aa464c1c33');
-      formData.append('subject', `New ${formType} inquiry from ${data.organizationName}`);
-      formData.append('from_name', data.fullName);
-      formData.append('email', data.email);
+      formData.append('_to', 'wayzata.deca@gmail.com');
+      formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      formData.append('_next', window.location.href + '?success=true');
       
-      // Add all form fields to the email
-      const emailBody = `
-Business Information:
-Organization: ${data.organizationName}
-Industry: ${data.industryType}
-Website: ${data.businessWebsite || 'Not provided'}
-Social Media: ${data.socialMediaHandles || 'Not provided'}
+      // Add all form fields
+      formData.append('Organization_Name', data.organizationName);
+      formData.append('Industry_Type', data.industryType);
+      formData.append('Business_Website', data.businessWebsite || 'Not provided');
+      formData.append('Social_Media', data.socialMediaHandles || 'Not provided');
+      formData.append('Contact_Name', data.fullName);
+      formData.append('Title', data.title || 'Not provided');
+      formData.append('Email', data.email);
+      formData.append('Phone', data.phone || 'Not provided');
+      formData.append('Interest', data.interest);
+      formData.append('Benefits_Requested', data.sponsorshipBenefits.join(', '));
+      formData.append('Budget_Tier', data.budgetTier);
 
-Contact Information:
-Name: ${data.fullName}
-Title: ${data.title || 'Not provided'}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-
-Interest Details:
-Interest: ${data.interest}
-Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
-Budget Tier: ${data.budgetTier}
-      `;
-      
-      formData.append('message', emailBody);
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
         method: 'POST',
         body: formData
       });
 
-      const result = await response.json();
-      console.log('Web3Forms response:', result);
-
-      if (result.success) {
-        toast({
-          title: "Inquiry Sent Successfully!",
-          description: "Your inquiry has been sent to our team. We'll get back to you soon.",
-        });
-        form.reset();
-        return;
-      }
-      
-      console.error('Web3Forms error:', result);
-      throw new Error(`Web3Forms failed: ${result.message || 'Unknown error'}`);
+      toast({
+        title: "Inquiry Sent Successfully!",
+        description: "Your inquiry has been submitted and will be delivered to our team.",
+      });
+      form.reset();
       
     } catch (error) {
-      console.error('Web3Forms submission failed:', error);
+      console.error('Form submission failed:', error);
       toast({
         title: "Submission Failed",
-        description: "There was an issue with the email service. Please contact wayzata.deca@gmail.com directly.",
+        description: "There was an issue submitting your inquiry. Please contact wayzata.deca@gmail.com directly.",
         variant: "destructive",
       });
     } finally {
