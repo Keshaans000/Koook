@@ -96,6 +96,11 @@ export default function GrantsDonations() {
           </div>
         </div>
       </div>
+
+      {/* Contact Form */}
+      <div className="mt-8">
+        <ContactForm formType="grants" />
+      </div>
     </div>
   );
 }
