@@ -27,7 +27,7 @@ export async function sendContactEmail(formData: ContactFormData): Promise<boole
     
     const msg = {
       to: ['wayzata.deca@gmail.com', 'keshaans000@isd284.com'],
-      from: 'noreply@replit.app', // Using replit.app domain which should be verified
+      from: 'wayzata.deca@gmail.com', // Using the actual email address
       subject: `New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry from ${formData.organizationName}`,
       html: `
         <h2>New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry</h2>
@@ -60,6 +60,9 @@ export async function sendContactEmail(formData: ContactFormData): Promise<boole
     return true;
   } catch (error) {
     console.error('SendGrid email error:', error);
+    if (error.response && error.response.body && error.response.body.errors) {
+      console.error('SendGrid error details:', error.response.body.errors);
+    }
     return false;
   }
 }

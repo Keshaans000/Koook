@@ -121,6 +121,7 @@ export default function ContactForm({ formType }: ContactFormProps) {
     setIsSubmitting(true);
     
     try {
+      // First try our SendGrid API
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -140,16 +141,54 @@ export default function ContactForm({ formType }: ContactFormProps) {
           description: "Your inquiry has been sent to our team. We'll get back to you soon.",
         });
         form.reset();
-      } else {
-        throw new Error(result.message || 'Failed to send inquiry');
+        return;
       }
+      
+      // If SendGrid fails, fall back to FormSubmit.co service
+      throw new Error('Primary email service unavailable');
+      
     } catch (error) {
-      console.error('Email submission error:', error);
-      toast({
-        title: "Submission Failed",
-        description: "There was an issue sending your inquiry. Please try again or contact us directly at wayzata.deca@gmail.com",
-        variant: "destructive",
-      });
+      console.log('Primary email service failed, using backup method...');
+      
+      // Backup submission using FormSubmit.co
+      try {
+        const formData = new FormData();
+        formData.append('_to', 'wayzata.deca@gmail.com,keshaans000@isd284.com');
+        formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
+        formData.append('_template', 'table');
+        formData.append('_captcha', 'false');
+        
+        // Add all form fields
+        Object.entries(data).forEach(([key, value]) => {
+          if (Array.isArray(value)) {
+            formData.append(key, value.join(', '));
+          } else if (value) {
+            formData.append(key, value.toString());
+          }
+        });
+        
+        const backupResponse = await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (backupResponse.ok) {
+          toast({
+            title: "Inquiry Sent Successfully!",
+            description: "Your inquiry has been submitted and will be delivered to our team.",
+          });
+          form.reset();
+        } else {
+          throw new Error('Backup service also failed');
+        }
+      } catch (backupError) {
+        console.error('Both email services failed:', backupError);
+        toast({
+          title: "Submission Issue",
+          description: "Please send your inquiry directly to wayzata.deca@gmail.com or keshaans000@isd284.com",
+          variant: "destructive",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
