@@ -1,4 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import image1 from "@assets/image_1748641905529.png";
 import image2 from "@assets/image_1748641924221.png";
 import image3 from "@assets/image_1748641954170.png";
@@ -10,6 +13,17 @@ import image8 from "@assets/image_1748646682074.png";
 import image9 from "@assets/image_1748646993320.png";
 
 const Homepage = () => {
+  const [showSupportOptions, setShowSupportOptions] = useState(false);
+  const { toast } = useToast();
+
+  const handleSupportClick = () => {
+    setShowSupportOptions(true);
+    toast({
+      title: "Support DECA",
+      description: "Wayzata DECA is a 501(c)(3) organization, meaning we are a non-profit organization. Your contributions may be tax-deductible.",
+    });
+  };
+
   return (
     <div className="space-y-6">
       {/* Header Section with Background Images */}
@@ -83,6 +97,35 @@ const Homepage = () => {
           </div>
         </div>
         
+      </div>
+
+      {/* Support DECA Button */}
+      <div className="text-center">
+        <Button 
+          onClick={handleSupportClick}
+          className="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFC000] hover:to-[#FF8C00] text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          <i className="ri-heart-line mr-2"></i>
+          Support DECA
+          <i className="ri-heart-line ml-2"></i>
+        </Button>
+        
+        {showSupportOptions && (
+          <div className="mt-4 flex justify-center gap-4">
+            <Button 
+              onClick={() => window.location.href = '/sponsorships'}
+              className="bg-[#003366] hover:bg-[#004080] text-white px-6 py-2"
+            >
+              Sponsorships
+            </Button>
+            <Button 
+              onClick={() => window.location.href = '/grants-donations'}
+              className="bg-[#2C7BE5] hover:bg-[#1E5BB8] text-white px-6 py-2"
+            >
+              Grants & Donations
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* DECA Moments */}
