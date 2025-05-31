@@ -189,37 +189,41 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                         <span>DECAcheive</span>
                       </div>
                     </Link>
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            </li>
-
-            {/* Online Trojan Tab */}
-            <li>
-              <Collapsible open={onlineTrojanOpen} onOpenChange={setOnlineTrojanOpen}>
-                <CollapsibleTrigger asChild>
-                  <div className="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100 text-gray-700 cursor-pointer">
-                    <div className="flex items-center space-x-3">
-                      <i className="ri-computer-line text-xl"></i>
-                      <span>Online Trojan</span>
-                    </div>
-                    <i className={`ri-arrow-${onlineTrojanOpen ? 'up' : 'down'}-s-line text-lg`}></i>
-                  </div>
-                </CollapsibleTrigger>
-                <CollapsibleContent>
-                  <div className="ml-8 space-y-1 mt-1">
-                    <Link href="/locker-room">
+                    <Link href="/meetings">
                       <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
-                        location === "/locker-room" 
+                        location === "/meetings" 
                           ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                           : "hover:bg-gray-50 text-gray-600"
                       }`}>
-                        <span>Locker Room</span>
+                        <span>Meetings</span>
+                      </div>
+                    </Link>
+                    <Link href="/student-volunteering">
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
+                        location === "/student-volunteering" 
+                          ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}>
+                        <span>Student Volunteering</span>
                       </div>
                     </Link>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
+            </li>
+
+            {/* Locker Room - Direct Link */}
+            <li>
+              <Link href="/locker-room">
+                <div className={`flex items-center space-x-3 px-4 py-3 rounded-lg ${
+                  location === "/locker-room" 
+                    ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                    : "hover:bg-gray-100 text-gray-700"
+                }`}>
+                  <i className="ri-computer-line text-xl"></i>
+                  <span>Locker Room</span>
+                </div>
+              </Link>
             </li>
 
             {/* Individual pages */}

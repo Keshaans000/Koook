@@ -1,6 +1,17 @@
 export default function GrantsDonations() {
   return (
     <div className="max-w-4xl mx-auto p-6">
+      {/* 501(c)(3) Notice */}
+      <div className="bg-[#003366] text-white p-4 rounded-lg mb-6">
+        <div className="flex items-center">
+          <i className="ri-information-line text-xl mr-3"></i>
+          <p className="font-medium">
+            Wayzata DECA is a 501(c)(3) organization, meaning we are a non-profit organization. 
+            Your contributions may be tax-deductible.
+          </p>
+        </div>
+      </div>
+
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#003366] mb-4">Grants & Donations</h1>
         <p className="text-gray-600 text-lg">

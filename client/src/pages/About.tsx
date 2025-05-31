@@ -69,12 +69,12 @@ const About = () => {
           <i className="ri-award-fill text-8xl text-[#003366]"></i>
         </div>
         
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 relative z-10">Be The One</h2>
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 relative z-10">Go the Extra</h2>
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 relative z-10">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-2/3">
               <p className="text-gray-700 mb-4">
-                <span className="font-bold text-[#003366]">Be The One</span> is DECA's inspirational call to action, 
+                <span className="font-bold text-[#003366]">Go the Extra</span> is DECA's inspirational call to action, 
                 challenging each member to step up and make a difference. It's about embodying the entrepreneurial 
                 and leadership spirit that defines DECA.
               </p>
@@ -84,19 +84,19 @@ const About = () => {
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
                   <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
-                  <span>Be the one to inspire others through your achievements and character</span>
+                  <span>Go the extra mile to inspire others through your achievements and character</span>
                 </li>
                 <li className="flex items-start">
                   <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
-                  <span>Be the one to innovate new ideas and solutions in business</span>
+                  <span>Go the extra step to innovate new ideas and solutions in business</span>
                 </li>
                 <li className="flex items-start">
                   <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
-                  <span>Be the one to take initiative in your chapter and community</span>
+                  <span>Go the extra distance to take initiative in your chapter and community</span>
                 </li>
                 <li className="flex items-start">
                   <div className="text-[#FFD700] mr-2 mt-1"><i className="ri-checkbox-circle-fill"></i></div>
-                  <span>Be the one who makes a lasting impact in your DECA journey</span>
+                  <span>Go the extra effort to make a lasting impact in your DECA journey</span>
                 </li>
               </ul>
               <p className="text-gray-700">
