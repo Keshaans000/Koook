@@ -87,11 +87,28 @@ export default function ContactForm({ formType }: ContactFormProps) {
   });
 
   const onSubmit = async (data: ContactFormData) => {
+    // Create FormData for FormSubmit
+    const formData = new FormData();
+    formData.append('organization_name', data.organizationName);
+    formData.append('industry_type', data.industryType);
+    formData.append('business_website', data.businessWebsite || '');
+    formData.append('social_media', data.socialMediaHandles || '');
+    formData.append('contact_name', data.fullName);
+    formData.append('contact_title', data.title || '');
+    formData.append('email', data.email);
+    formData.append('phone', data.phone || '');
+    formData.append('interest', data.interest);
+    formData.append('benefits', data.sponsorshipBenefits.join(', '));
+    formData.append('budget_tier', data.budgetTier);
+    formData.append('form_type', formType);
+    formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
+    formData.append('_captcha', 'false');
+
     setIsSubmitting(true);
     try {
-      const response = await apiRequest("POST", "/api/contact", {
-        ...data,
-        formType
+      const response = await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
+        method: 'POST',
+        body: formData
       });
 
       if (response.ok) {
