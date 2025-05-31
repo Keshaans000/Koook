@@ -58,10 +58,10 @@ const industryOptions = [
 ];
 
 const budgetOptions = [
-  "Under $100",
-  "$100–$250",
-  "$250–$500",
-  "$500+",
+  "Under $1,000",
+  "$1,000–$3,000",
+  "$3,000–$5,000",
+  "$5,000+",
   "Not sure yet, please send more information"
 ];
 
