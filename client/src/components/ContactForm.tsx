@@ -89,7 +89,6 @@ export default function ContactForm({ formType }: ContactFormProps) {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    // Create mailto links as a reliable fallback
     const subject = `New ${formType} inquiry from ${data.organizationName}`;
     const body = `
 Organization: ${data.organizationName}
@@ -107,22 +106,63 @@ Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
 Budget Tier: ${data.budgetTier}
     `.trim();
 
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=wayzata.deca@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const emailAddress = 'wayzata.deca@gmail.com';
+    
+    // Try multiple email options for maximum compatibility
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const outlookLink = `https://outlook.live.com/mail/0/deeplink/compose?to=${emailAddress}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const yahooLink = `https://compose.mail.yahoo.com/?to=${emailAddress}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     try {
-      // Open Gmail in a new tab
-      window.open(gmailLink, '_blank');
+      // Detect mobile devices
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       
-      toast({
-        title: "Gmail Opened",
-        description: "Gmail has opened in a new tab with your inquiry details. Please send the email to complete your submission.",
-      });
+      if (isMobile) {
+        // On mobile, use mailto for better app integration
+        window.location.href = mailtoLink;
+        toast({
+          title: "Email App Opening",
+          description: "Your email app is opening with the inquiry details. Please send the email to complete your submission.",
+        });
+      } else {
+        // On desktop, try Gmail first, then fallback to mailto
+        try {
+          window.open(gmailLink, '_blank');
+          toast({
+            title: "Email Client Opened",
+            description: "An email composer has opened with your inquiry details. Please send the email to complete your submission.",
+          });
+        } catch {
+          window.location.href = mailtoLink;
+          toast({
+            title: "Email Client Opening",
+            description: "Your default email application is opening with the inquiry details. Please send the email to complete your submission.",
+          });
+        }
+      }
+      
       form.reset();
     } catch (error) {
-      toast({
-        title: "Please Copy Information",
-        description: "Please manually send an email to wayzata.deca@gmail.com with your inquiry details.",
-        variant: "destructive",
+      // Fallback: Show email information for manual copying
+      const emailInfo = `
+Please send an email to: ${emailAddress}
+Subject: ${subject}
+
+${body}
+      `;
+      
+      navigator.clipboard?.writeText(emailInfo).then(() => {
+        toast({
+          title: "Email Details Copied",
+          description: "The email details have been copied to your clipboard. Please paste them into your email app.",
+        });
+      }).catch(() => {
+        toast({
+          title: "Please Send Email Manually",
+          description: `Please send an email to ${emailAddress} with the form details.`,
+          variant: "destructive",
+        });
       });
     } finally {
       setIsSubmitting(false);
