@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
-import type { Event } from "@shared/schema";
 
 interface SearchResult {
   id: string;
@@ -12,152 +11,112 @@ interface SearchResult {
   date?: string;
 }
 
-const SearchBar = () => {
+interface SearchBarProps {
+  className?: string;
+}
+
+const SearchBar = ({ className = "" }: SearchBarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [, setLocation] = useLocation();
   const searchRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  const { data: events = [] } = useQuery<Event[]>({
+  const { data: events = [] } = useQuery({
     queryKey: ["/api/events"],
-    staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
-  // Static searchable content
-  const staticContent: SearchResult[] = [
-    {
-      id: "homepage",
-      title: "Wayzata DECA Homepage",
-      description: "Main page with chapter information, membership, and resources",
-      type: "page",
-      url: "/"
-    },
-    {
-      id: "team",
-      title: "DECA Leadership Team",
-      description: "Meet our 2025-2026 officers and team members",
-      type: "page",
-      url: "/team"
-    },
-    {
-      id: "current-winners",
-      title: "Current Winners",
-      description: "ICDC 2025 3rd place winners in Integrated Marketing",
-      type: "page",
-      url: "/current-winners"
-    },
-    {
-      id: "competitions",
-      title: "Competitions",
-      description: "Upcoming DECA competitions and deadlines",
-      type: "page",
-      url: "/competitions"
-    },
-    {
-      id: "events-category",
-      title: "Event Categories",
-      description: "Browse events by category and type",
-      type: "page",
-      url: "/events-category"
-    },
-    {
-      id: "deca-help",
-      title: "DECA Help",
-      description: "Resources, tips, and competition guides",
-      type: "page",
-      url: "/deca-help"
-    },
-    {
-      id: "deca-advice",
-      title: "DECAcheive",
-      description: "Study guides, flashcards, and competition resources",
-      type: "page",
-      url: "/deca-advice"
-    },
-    {
-      id: "sponsorships",
-      title: "Sponsorships",
-      description: "Partnership opportunities and sponsor information",
-      type: "page",
-      url: "/sponsorships"
-    },
-    {
-      id: "grants-donations",
-      title: "Grants & Donations",
-      description: "Financial support and donation opportunities",
-      type: "page",
-      url: "/grants-donations"
-    },
-    {
-      id: "judging",
-      title: "Judging",
-      description: "Competition judging schedule and information",
-      type: "page",
-      url: "/judging"
-    },
-    {
-      id: "student-volunteering",
-      title: "Student Volunteering",
-      description: "Volunteer opportunities and community service",
-      type: "page",
-      url: "/student-volunteering"
-    },
-    {
-      id: "locker-room",
-      title: "Locker Room",
-      description: "Member resources and exclusive content",
-      type: "page",
-      url: "/locker-room"
-    },
-    {
-      id: "meetings",
-      title: "Meetings",
-      description: "DECA meeting schedules and information",
-      type: "page",
-      url: "/meetings"
-    },
-    {
-      id: "deadlines",
-      title: "Deadlines",
-      description: "Important DECA deadlines and due dates",
-      type: "page",
-      url: "/deadlines"
-    },
-    {
-      id: "about",
-      title: "About DECA",
-      description: "Learn about DECA and our mission",
-      type: "page",
-      url: "/about"
-    },
-    {
-      id: "teacher-corner",
-      title: "Teacher's Corner",
-      description: "Resources and tools for teachers",
-      type: "page",
-      url: "/teacher-corner"
-    }
-  ];
+  // Create search results
+  const results = searchQuery.trim()
+    ? [
+        // Event results
+        ...events
+          .filter((event: any) => 
+            event.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            event.description?.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map((event: any) => ({
+            id: `event-${event.id}`,
+            title: event.title,
+            description: event.description,
+            type: "event" as const,
+            url: `/`,
+            date: event.date,
+          })),
+        
+        // Page results
+        ...[
+          { title: "Home", description: "Main dashboard with events and announcements", url: "/" },
+          { title: "About", description: "Learn about Wayzata DECA", url: "/about" },
+          { title: "Team", description: "Meet our officers and members", url: "/team" },
+          { title: "Competitions", description: "View upcoming competitions and events", url: "/competitions" },
+          { title: "Current Winners", description: "See our latest achievements and awards", url: "/current-winners" },
+          { title: "Meetings", description: "General meetings and schedules", url: "/meetings" },
+          { title: "Deadlines", description: "Important dates and deadlines", url: "/deadlines" },
+          { title: "Student Volunteering", description: "Volunteer opportunities for students", url: "/student-volunteering" },
+          { title: "Teacher Corner", description: "Resources and information for teachers", url: "/teacher-corner" },
+          { title: "Event Management", description: "Manage and create events", url: "/event-management" },
+          { title: "DECA Advice", description: "Tips and advice for DECA success", url: "/deca-advice" },
+          { title: "DECAcheive", description: "Study resources and materials", url: "/deca-advice" },
+          { title: "Grants & Donations", description: "Information about funding opportunities", url: "/grants-donations" },
+          { title: "Sponsorships", description: "Partnership and sponsorship information", url: "/sponsorships" },
+          { title: "Judging", description: "Information about judging opportunities", url: "/judging" },
+          { title: "Locker Room", description: "Member resources and materials", url: "/locker-room" },
+        ]
+          .filter(page => 
+            page.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            page.description.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map(page => ({
+            id: `page-${page.url}`,
+            title: page.title,
+            description: page.description,
+            type: "page" as const,
+            url: page.url,
+          })),
 
-  // Keyboard shortcut to open search
+        // Resource results
+        ...[
+          { title: "Official DECA Guide", description: "Comprehensive guide to DECA competitions", url: "/deca-advice" },
+          { title: "Study Materials", description: "Flashcards and practice tests", url: "/deca-advice" },
+          { title: "Google Drive Resources", description: "Shared files and documents", url: "/deca-advice" },
+          { title: "Practice Exams", description: "Test preparation materials", url: "/deca-advice" },
+          { title: "Competition Poster", description: "Event information and guidelines", url: "/deca-advice" },
+        ]
+          .filter(resource => 
+            resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            resource.description.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map(resource => ({
+            id: `resource-${resource.title}`,
+            title: resource.title,
+            description: resource.description,
+            type: "resource" as const,
+            url: resource.url,
+          })),
+      ].slice(0, 8)
+    : [];
+
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      if (e.key === "/" && !isOpen) {
         e.preventDefault();
         setIsOpen(true);
-      }
-      if (e.key === "Escape") {
+      } else if (e.key === "Escape" && isOpen) {
         setIsOpen(false);
         setSearchQuery("");
         setSelectedIndex(0);
+      } else if (e.metaKey && e.key === "k") {
+        e.preventDefault();
+        setIsOpen(!isOpen);
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isOpen]);
 
   // Focus search input when opened
   useEffect(() => {
@@ -166,88 +125,64 @@ const SearchBar = () => {
     }
   }, [isOpen]);
 
-  // Search functionality
+  // Reset selected index when results change
   useEffect(() => {
-    if (!searchQuery.trim()) {
-      setResults([]);
-      setSelectedIndex(0);
-      return;
-    }
-
-    const query = searchQuery.toLowerCase();
-    
-    // Search static content first (prioritize homepage for site searches)
-    const pageResults = staticContent.filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query)
-    );
-
-    // Search events
-    const eventResults: SearchResult[] = events
-      .filter((event: Event) => 
-        event.title.toLowerCase().includes(query) ||
-        event.description?.toLowerCase().includes(query) ||
-        event.type.toLowerCase().includes(query)
-      )
-      .map((event: Event) => ({
-        id: `event-${event.id}`,
-        title: event.title,
-        description: event.description || `${event.type} event`,
-        type: "event" as const,
-        url: `/`,
-        date: new Date(event.startTime).toLocaleDateString()
-      }));
-
-    const allResults = [...pageResults, ...eventResults];
-    setResults(allResults.slice(0, 8)); // Limit to 8 results
     setSelectedIndex(0);
-  }, [searchQuery, events]);
+  }, [results]);
 
-  // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isOpen) return;
-
     if (e.key === "ArrowDown") {
       e.preventDefault();
-      setSelectedIndex(prev => Math.min(prev + 1, results.length - 1));
+      setSelectedIndex(prev => (prev + 1) % results.length);
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      setSelectedIndex(prev => Math.max(prev - 1, 0));
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      if (results[selectedIndex]) {
-        handleResultClick(results[selectedIndex]);
-      }
+      setSelectedIndex(prev => (prev - 1 + results.length) % results.length);
+    } else if (e.key === "Enter" && results[selectedIndex]) {
+      handleResultClick(results[selectedIndex]);
     }
   };
 
   const handleResultClick = (result: SearchResult) => {
+    setLocation(result.url);
     setIsOpen(false);
     setSearchQuery("");
     setSelectedIndex(0);
-    // Navigate to the result
-    window.location.href = result.url;
   };
 
   if (!isOpen) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-500 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+        className={`flex items-center bg-white/10 hover:bg-white/20 text-white/70 hover:text-white px-4 py-2 rounded-lg transition-all duration-200 border border-white/20 hover:border-white/30 ${className}`}
       >
-        <i className="ri-search-line"></i>
-        <span>Search...</span>
-        <div className="hidden sm:flex items-center space-x-1 text-xs">
-          <kbd className="px-1.5 py-0.5 bg-white border border-gray-300 rounded text-gray-600">⌘</kbd>
-          <kbd className="px-1.5 py-0.5 bg-white border border-gray-300 rounded text-gray-600">K</kbd>
+        <i className="ri-search-line mr-2"></i>
+        <span className="text-sm">Search...</span>
+        <div className="hidden sm:flex items-center space-x-1 text-xs ml-auto">
+          <kbd className="px-1.5 py-0.5 bg-white/20 border border-white/30 rounded text-white/80">⌘</kbd>
+          <kbd className="px-1.5 py-0.5 bg-white/20 border border-white/30 rounded text-white/80">K</kbd>
         </div>
       </button>
     );
   }
 
   return (
-    <div className="fixed inset-0 z-[99999] bg-black bg-opacity-90 flex items-start justify-center pt-20" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
-      <div className="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl mx-4 overflow-hidden relative z-[100000]">
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-90 flex items-start justify-center pt-20" 
+      style={{ 
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        zIndex: 999999 
+      }}
+      onClick={() => setIsOpen(false)}
+    >
+      <div 
+        className="bg-white rounded-xl shadow-2xl border border-gray-200 w-full max-w-2xl mx-4 overflow-hidden" 
+        style={{ zIndex: 9999999 }}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Search Input */}
         <div className="flex items-center border-b border-gray-200 px-4 py-3">
           <i className="ri-search-line text-gray-400 mr-3"></i>
