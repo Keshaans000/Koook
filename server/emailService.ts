@@ -27,7 +27,7 @@ export async function sendContactEmail(formData: ContactFormData): Promise<boole
     
     const msg = {
       to: 'wayzata.deca@gmail.com',
-      from: 'noreply@wayzatadeca.org', // This should be a verified sender in SendGrid
+      from: 'noreply@replit.app', // Using replit.app domain which should be verified
       subject: `New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry from ${formData.organizationName}`,
       html: `
         <h2>New ${formData.formType === 'sponsorship' ? 'Sponsorship' : 'Grant'} Inquiry</h2>

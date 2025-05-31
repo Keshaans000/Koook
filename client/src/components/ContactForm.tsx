@@ -120,56 +120,39 @@ export default function ContactForm({ formType }: ContactFormProps) {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
-    const subject = `New ${formType} inquiry from ${data.organizationName}`;
-    const body = `
-Organization: ${data.organizationName}
-Industry: ${data.industryType}
-Website: ${data.businessWebsite || 'Not provided'}
-Social Media: ${data.socialMediaHandles || 'Not provided'}
-
-Contact Name: ${data.fullName}
-Title: ${data.title || 'Not provided'}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-
-Interest: ${data.interest}
-Benefits Requested: ${data.sponsorshipBenefits.join(', ')}
-Budget Tier: ${data.budgetTier}
-    `.trim();
-
-    const emailAddress = 'wayzata.deca@gmail.com';
-    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    const emailInfo = `TO: ${emailAddress}
-SUBJECT: ${subject}
-
-${body}`;
-
-    // For Safari and browsers without email apps - always use web Gmail first
     try {
-      window.open(gmailLink, '_blank');
-      toast({
-        title: "Gmail Opened",
-        description: "Gmail has opened in a new tab with your inquiry details. Please send the email to complete your submission.",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          formType
+        }),
       });
-      form.reset();
-    } catch (error) {
-      // If Gmail fails, copy to clipboard and show instructions
-      try {
-        await navigator.clipboard.writeText(emailInfo);
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         toast({
-          title: "Email Details Copied",
-          description: "Gmail couldn't open, but your inquiry details have been copied. Please paste them into any email service and send to wayzata.deca@gmail.com",
+          title: "Inquiry Sent Successfully!",
+          description: "Your inquiry has been sent to our team. We'll get back to you soon.",
         });
         form.reset();
-      } catch {
-        // Final fallback - show the text for manual copying
-        showManualInstructions(emailInfo);
-        form.reset();
+      } else {
+        throw new Error(result.message || 'Failed to send inquiry');
       }
+    } catch (error) {
+      console.error('Email submission error:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an issue sending your inquiry. Please try again or contact us directly at wayzata.deca@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    setIsSubmitting(false);
   };
 
   return (
