@@ -86,6 +86,37 @@ export default function ContactForm({ formType }: ContactFormProps) {
     },
   });
 
+  const showManualInstructions = (emailInfo: string) => {
+    // Create a temporary textarea to show the email content
+    const textarea = document.createElement('textarea');
+    textarea.value = emailInfo;
+    textarea.style.position = 'fixed';
+    textarea.style.top = '50%';
+    textarea.style.left = '50%';
+    textarea.style.transform = 'translate(-50%, -50%)';
+    textarea.style.width = '80%';
+    textarea.style.height = '60%';
+    textarea.style.zIndex = '10000';
+    textarea.style.backgroundColor = 'white';
+    textarea.style.border = '2px solid #333';
+    textarea.style.padding = '20px';
+    textarea.style.fontSize = '14px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    
+    toast({
+      title: "Copy This Email Content",
+      description: "Select all the text in the box that appeared and copy it to send manually. Close the box when done.",
+    });
+    
+    // Remove the textarea after 30 seconds
+    setTimeout(() => {
+      if (document.body.contains(textarea)) {
+        document.body.removeChild(textarea);
+      }
+    }, 30000);
+  };
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     
@@ -107,99 +138,38 @@ Budget Tier: ${data.budgetTier}
     `.trim();
 
     const emailAddress = 'wayzata.deca@gmail.com';
-    
-    // Try multiple email options for maximum compatibility
-    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailAddress}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const outlookLink = `https://outlook.live.com/mail/0/deeplink/compose?to=${emailAddress}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const yahooLink = `https://compose.mail.yahoo.com/?to=${emailAddress}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
-    try {
-      // Detect mobile devices
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      
-      if (isMobile) {
-        // On mobile, use mailto for better app integration
-        window.location.href = mailtoLink;
-        toast({
-          title: "Email App Opening",
-          description: "Your email app is opening with the inquiry details. Please send the email to complete your submission.",
-        });
-      } else {
-        // On desktop, try Gmail first, then fallback to mailto
-        try {
-          window.open(gmailLink, '_blank');
-          toast({
-            title: "Email Client Opened",
-            description: "An email composer has opened with your inquiry details. Please send the email to complete your submission.",
-          });
-        } catch {
-          window.location.href = mailtoLink;
-          toast({
-            title: "Email Client Opening",
-            description: "Your default email application is opening with the inquiry details. Please send the email to complete your submission.",
-          });
-        }
-      }
-      
-      form.reset();
-    } catch (error) {
-      // Multiple fallback options to ensure nothing is lost
-      const emailInfo = `
-TO: ${emailAddress}
+    const emailInfo = `TO: ${emailAddress}
 SUBJECT: ${subject}
 
-${body}
-      `;
-      
-      // Try to copy to clipboard first
-      if (navigator.clipboard) {
-        try {
-          await navigator.clipboard.writeText(emailInfo);
-          toast({
-            title: "Email Details Copied",
-            description: "The email details have been copied to your clipboard. Please paste them into your email app and send.",
-          });
-        } catch {
-          showManualInstructions();
-        }
-      } else {
-        showManualInstructions();
-      }
-      
-      function showManualInstructions() {
-        // Create a temporary textarea to show the email content
-        const textarea = document.createElement('textarea');
-        textarea.value = emailInfo;
-        textarea.style.position = 'fixed';
-        textarea.style.top = '50%';
-        textarea.style.left = '50%';
-        textarea.style.transform = 'translate(-50%, -50%)';
-        textarea.style.width = '80%';
-        textarea.style.height = '60%';
-        textarea.style.zIndex = '10000';
-        textarea.style.backgroundColor = 'white';
-        textarea.style.border = '2px solid #333';
-        textarea.style.padding = '20px';
-        textarea.style.fontSize = '14px';
-        document.body.appendChild(textarea);
-        textarea.select();
-        
+${body}`;
+
+    // For Safari and browsers without email apps - always use web Gmail first
+    try {
+      window.open(gmailLink, '_blank');
+      toast({
+        title: "Gmail Opened",
+        description: "Gmail has opened in a new tab with your inquiry details. Please send the email to complete your submission.",
+      });
+      form.reset();
+    } catch (error) {
+      // If Gmail fails, copy to clipboard and show instructions
+      try {
+        await navigator.clipboard.writeText(emailInfo);
         toast({
-          title: "Copy This Email Content",
-          description: "Select all the text in the box that appeared and copy it to send manually. Close the box when done.",
+          title: "Email Details Copied",
+          description: "Gmail couldn't open, but your inquiry details have been copied. Please paste them into any email service and send to wayzata.deca@gmail.com",
         });
-        
-        // Remove the textarea after 30 seconds
-        setTimeout(() => {
-          if (document.body.contains(textarea)) {
-            document.body.removeChild(textarea);
-          }
-        }, 30000);
+        form.reset();
+      } catch {
+        // Final fallback - show the text for manual copying
+        showManualInstructions(emailInfo);
+        form.reset();
       }
-    } finally {
-      setIsSubmitting(false);
     }
+    
+    setIsSubmitting(false);
   };
 
   return (
