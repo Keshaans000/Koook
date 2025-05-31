@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 
@@ -174,7 +175,7 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
     );
   }
 
-  return (
+  const searchModal = (
     <div 
       className="fixed inset-0 bg-black flex items-start justify-center pt-20" 
       style={{ 
@@ -183,8 +184,11 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
         left: 0, 
         right: 0, 
         bottom: 0, 
-        zIndex: 999999,
-        opacity: 0.98
+        zIndex: 2147483647,
+        backgroundColor: '#000000',
+        isolation: 'isolate',
+        transform: 'translateZ(0)',
+        willChange: 'transform'
       }}
       onClick={() => setIsOpen(false)}
     >
@@ -297,6 +301,8 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
       </div>
     </div>
   );
+
+  return createPortal(searchModal, document.body);
 };
 
 export default SearchBar;
