@@ -122,7 +122,10 @@ function App() {
           <Footer />
           {/* Mobile navigation only visible on small screens */}
           <div className="block md:hidden">
-            <MobileNav />
+            <MobileNav 
+              eventFilters={eventFilters}
+              toggleFilter={toggleFilter}
+            />
           </div>
         </div>
         <Toaster />
