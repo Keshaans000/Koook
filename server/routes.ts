@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { sendContactEmail } from "./emailService";
 import { z } from "zod";
 import { insertEventSchema } from "@shared/schema";
 
@@ -111,6 +112,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(204).end();
     } catch (error) {
       res.status(500).json({ message: "Failed to delete event" });
+    }
+  });
+
+  // Contact form submission route
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const contactSchema = z.object({
+        organizationName: z.string().min(1),
+        industryType: z.string().min(1),
+        businessWebsite: z.string().optional(),
+        socialMediaHandles: z.string().optional(),
+        fullName: z.string().min(1),
+        title: z.string().optional(),
+        email: z.string().email(),
+        phone: z.string().optional(),
+        interest: z.string().min(1),
+        sponsorshipBenefits: z.array(z.string()),
+        budgetTier: z.string().min(1),
+        formType: z.enum(['sponsorship', 'grants'])
+      });
+
+      const validatedData = contactSchema.parse(req.body);
+      const emailSent = await sendContactEmail(validatedData);
+
+      if (emailSent) {
+        res.json({ success: true, message: "Your inquiry has been sent successfully!" });
+      } else {
+        res.status(500).json({ success: false, message: "Failed to send email. Please try again." });
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      res.status(400).json({ success: false, message: "Invalid form data." });
     }
   });
 

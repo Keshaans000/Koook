@@ -1,3 +1,5 @@
+import ContactForm from "@/components/ContactForm";
+
 export default function Sponsorships() {
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -76,6 +78,11 @@ export default function Sponsorships() {
             <span>(952) 745-5000</span>
           </div>
         </div>
+      </div>
+
+      {/* Contact Form */}
+      <div className="mt-8">
+        <ContactForm formType="sponsorship" />
       </div>
     </div>
   );
