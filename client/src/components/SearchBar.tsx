@@ -35,13 +35,6 @@ const SearchBar = () => {
       url: "/"
     },
     {
-      id: "wayzata-deca",
-      title: "Wayzata DECA",
-      description: "Wayzata High School DECA Chapter homepage",
-      type: "page",
-      url: "/"
-    },
-    {
       id: "team",
       title: "DECA Leadership Team",
       description: "Meet our 2025-2026 officers and team members",
