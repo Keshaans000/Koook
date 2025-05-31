@@ -31,7 +31,7 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
   const results = searchQuery.trim()
     ? [
         // Event results
-        ...events
+        ...(events as any[])
           .filter((event: any) => 
             event.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
             event.description?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -118,11 +118,20 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Focus search input when opened
+  // Focus search input when opened and prevent body scroll
   useEffect(() => {
-    if (isOpen && searchRef.current) {
-      searchRef.current.focus();
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      if (searchRef.current) {
+        searchRef.current.focus();
+      }
+    } else {
+      document.body.style.overflow = 'unset';
     }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isOpen]);
 
   // Reset selected index when results change
@@ -167,14 +176,15 @@ const SearchBar = ({ className = "" }: SearchBarProps) => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-90 flex items-start justify-center pt-20" 
+      className="fixed inset-0 bg-black flex items-start justify-center pt-20" 
       style={{ 
         position: 'fixed', 
         top: 0, 
         left: 0, 
         right: 0, 
         bottom: 0, 
-        zIndex: 999999 
+        zIndex: 999999,
+        opacity: 0.98
       }}
       onClick={() => setIsOpen(false)}
     >
