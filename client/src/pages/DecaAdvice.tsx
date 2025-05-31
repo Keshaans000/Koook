@@ -14,7 +14,7 @@ const DecaAdvice = () => {
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-gray-800 mb-2 flex items-center">
             <i className="ri-lightbulb-line text-[#FFD700] mr-3"></i>
-            DECA Advice
+            DECAcheive
           </h1>
           <p className="text-gray-600">
             Essential tips, study guides, and resources to help you succeed in DECA competitions

@@ -186,7 +186,7 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                           ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
                           : "hover:bg-gray-50 text-gray-600"
                       }`}>
-                        <span>DECA Advice</span>
+                        <span>DECAcheive</span>
                       </div>
                     </Link>
                   </div>
