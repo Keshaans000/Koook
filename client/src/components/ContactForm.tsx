@@ -121,37 +121,62 @@ export default function ContactForm({ formType }: ContactFormProps) {
     setIsSubmitting(true);
     
     try {
-      // Use FormSubmit - reliable free service that works from any domain
-      const formData = new FormData();
-      formData.append('_to', 'wayzata.deca@gmail.com');
-      formData.append('_subject', `New ${formType} inquiry from ${data.organizationName}`);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      formData.append('_next', window.location.href + '?success=true');
+      // Create a hidden form and submit it to avoid CORS issues
+      const form = document.createElement('form');
+      form.action = 'https://formsubmit.co/wayzata.deca@gmail.com';
+      form.method = 'POST';
+      form.style.display = 'none';
       
-      // Add all form fields
-      formData.append('Organization_Name', data.organizationName);
-      formData.append('Industry_Type', data.industryType);
-      formData.append('Business_Website', data.businessWebsite || 'Not provided');
-      formData.append('Social_Media', data.socialMediaHandles || 'Not provided');
-      formData.append('Contact_Name', data.fullName);
-      formData.append('Title', data.title || 'Not provided');
-      formData.append('Email', data.email);
-      formData.append('Phone', data.phone || 'Not provided');
-      formData.append('Interest', data.interest);
-      formData.append('Benefits_Requested', data.sponsorshipBenefits.join(', '));
-      formData.append('Budget_Tier', data.budgetTier);
-
-      await fetch('https://formsubmit.co/wayzata.deca@gmail.com', {
-        method: 'POST',
-        body: formData
+      const fields = {
+        '_subject': `New ${formType} inquiry from ${data.organizationName}`,
+        '_template': 'table',
+        '_captcha': 'false',
+        '_autoresponse': 'Thank you for your inquiry! We will get back to you soon.',
+        'Organization_Name': data.organizationName,
+        'Industry_Type': data.industryType,
+        'Business_Website': data.businessWebsite || 'Not provided',
+        'Social_Media': data.socialMediaHandles || 'Not provided',
+        'Contact_Name': data.fullName,
+        'Title': data.title || 'Not provided',
+        'Email': data.email,
+        'Phone': data.phone || 'Not provided',
+        'Interest': data.interest,
+        'Benefits_Requested': data.sponsorshipBenefits.join(', '),
+        'Budget_Tier': data.budgetTier
+      };
+      
+      Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
       });
+      
+      document.body.appendChild(form);
+      
+      // Submit the form in a hidden iframe to avoid page redirect
+      const iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+      
+      form.target = 'hidden_iframe';
+      form.submit();
+      
+      // Clean up
+      setTimeout(() => {
+        document.body.removeChild(form);
+        document.body.removeChild(iframe);
+      }, 1000);
 
       toast({
         title: "Inquiry Sent Successfully!",
         description: "Your inquiry has been submitted and will be delivered to our team.",
       });
-      form.reset();
+      
+      // Reset the React form
+      document.querySelector('form[data-contact-form]')?.reset();
       
     } catch (error) {
       console.error('Form submission failed:', error);
