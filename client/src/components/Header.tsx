@@ -55,6 +55,28 @@ const Header = () => {
         </div>
         
         <div className="flex items-center gap-2 sm:gap-4">
+          {/* Social Media Links */}
+          <div className="hidden sm:flex items-center gap-2">
+            <a 
+              href="https://www.instagram.com/wayzatadeca/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 rounded-full hover:bg-blue-900 transition-colors"
+              aria-label="Follow us on Instagram"
+            >
+              <i className="ri-instagram-line text-xl"></i>
+            </a>
+            <a 
+              href="https://www.facebook.com/wayzata.deca.16/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white p-2 rounded-full hover:bg-blue-900 transition-colors"
+              aria-label="Follow us on Facebook"
+            >
+              <i className="ri-facebook-line text-xl"></i>
+            </a>
+          </div>
+          
           {/* Command+K Style Search */}
           <SearchBar />
           
