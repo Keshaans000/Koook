@@ -81,6 +81,29 @@ const Homepage = () => {
             <span className="text-[#FFD700] font-semibold"> leadership development</span>, and 
             <span className="text-[#FFD700] font-semibold"> competitive success</span> 🏆
           </p>
+          
+          {/* Social Media Links */}
+          <div className="flex justify-center gap-4 mb-6">
+            <a 
+              href="https://www.instagram.com/wayzatadeca/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+              aria-label="Follow us on Instagram"
+            >
+              <i className="ri-instagram-line text-2xl text-white"></i>
+            </a>
+            <a 
+              href="https://www.facebook.com/wayzata.deca.16/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+              aria-label="Follow us on Facebook"
+            >
+              <i className="ri-facebook-line text-2xl text-white"></i>
+            </a>
+          </div>
+          
           <div className="mt-6 flex flex-wrap gap-3 justify-center">
             <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
               🎯 350 Active Members
