@@ -8,61 +8,100 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .teacher-login { display: none; }
-        .admin-panel { display: none; }
+        .hero-bg { background: linear-gradient(135deg, #003366 0%, #004080 50%, #2C7BE5 100%); }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Wayzata DECA</h1>
-            <nav class="space-x-4">
-                <a href="#home" class="hover:text-yellow-300">Home</a>
-                <a href="#about" class="hover:text-yellow-300">About</a>
-                <a href="#events" class="hover:text-yellow-300">Events</a>
-                <a href="#contact" class="hover:text-yellow-300">Contact</a>
-                <button onclick="showTeacherLogin()" class="bg-yellow-500 px-3 py-1 rounded hover:bg-yellow-600">Teacher Login</button>
-            </nav>
+    <header class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-blue-900">Wayzata DECA</h1>
+                <nav class="space-x-4">
+                    <a href="#home" class="text-blue-600 hover:text-blue-800">Home</a>
+                    <button onclick="showTeacherLogin()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Teacher Portal
+                    </button>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto p-6">
+    <main class="max-w-7xl mx-auto px-4 py-8">
         <!-- Hero Section -->
-        <section id="home" class="text-center py-12 bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg mb-8">
-            <h2 class="text-4xl font-bold mb-4">Welcome to Wayzata DECA</h2>
-            <p class="text-xl mb-6">Your gateway to business excellence, leadership development, and competitive success</p>
-            <div class="flex justify-center gap-4 mb-6">
-                <a href="https://www.instagram.com/wayzatadeca/" target="_blank" class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all">
-                    <i class="ri-instagram-line text-2xl"></i>
-                </a>
-                <a href="https://www.facebook.com/wayzata.deca.16/" target="_blank" class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all">
-                    <i class="ri-facebook-line text-2xl"></i>
-                </a>
+        <div class="hero-bg text-white p-8 rounded-xl shadow-2xl mb-8 relative overflow-hidden">
+            <div class="absolute top-4 right-8 text-yellow-400 opacity-20">
+                <i class="ri-trophy-fill text-5xl"></i>
             </div>
-            <div class="flex flex-wrap gap-3 justify-center">
-                <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                    🎯 350 Active Members
+            <div class="absolute bottom-4 left-8 text-yellow-400 opacity-20">
+                <i class="ri-medal-line text-4xl"></i>
+            </div>
+            
+            <div class="text-center relative z-10">
+                <div class="bg-yellow-400 bg-opacity-20 p-4 rounded-full mb-4 w-20 h-20 mx-auto flex items-center justify-center">
+                    <i class="ri-home-4-line text-4xl text-yellow-400"></i>
                 </div>
-                <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                    🏆 250 State Qualifiers
+                
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Welcome to
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
+                        Wayzata DECA
+                    </span>
+                </h1>
+                
+                <p class="text-lg md:text-xl mb-6 max-w-3xl mx-auto">
+                    Your gateway to <span class="text-yellow-400 font-semibold">business excellence</span>, 
+                    <span class="text-yellow-400 font-semibold">leadership development</span>, and 
+                    <span class="text-yellow-400 font-semibold">competitive success</span>
+                </p>
+                
+                <!-- Social Media Links -->
+                <div class="flex justify-center gap-4 mb-6">
+                    <a href="https://www.instagram.com/wayzatadeca/" target="_blank" 
+                       class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all">
+                        <i class="ri-instagram-line text-2xl text-white"></i>
+                    </a>
+                    <a href="https://www.facebook.com/wayzata.deca.16/" target="_blank"
+                       class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all">
+                        <i class="ri-facebook-line text-2xl text-white"></i>
+                    </a>
                 </div>
-                <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                    🥇 58 ICDC Qualifiers
-                </div>
-                <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                    📈 Premier Minnesota Chapter
+                
+                <!-- Stats -->
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                        350 Active Members
+                    </div>
+                    <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                        250 State Qualifiers
+                    </div>
+                    <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                        58 ICDC Qualifiers
+                    </div>
+                    <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                        Premier Minnesota Chapter
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- Support Button -->
+        <div class="text-center mb-8">
+            <button onclick="showSupportInfo()" 
+                    class="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-300 hover:to-orange-300 text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all">
+                <i class="ri-heart-line mr-2"></i>
+                Support DECA
+                <i class="ri-heart-line ml-2"></i>
+            </button>
+        </div>
 
         <!-- About Section -->
-        <section id="about" class="bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h3 class="text-2xl font-bold text-blue-900 mb-4 flex items-center">
-                <i class="ri-school-line mr-3 text-blue-500"></i>
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4 flex items-center">
+                <i class="ri-school-line mr-3 text-blue-600"></i>
                 About Wayzata High School
-            </h3>
+            </h2>
             <div class="text-gray-700 space-y-3">
                 <p>
                     Wayzata High School is located in Plymouth, Minnesota, and serves the Wayzata School District. 
@@ -75,199 +114,160 @@
                     career-focused pathways including business and entrepreneurship.
                 </p>
                 <p>
-                    <strong>Address:</strong> 4955 Peony Lane N, Plymouth, MN 55446<br />
-                    <strong>Established:</strong> 1997<br />
-                    <strong>Mascot:</strong> Trojans<br />
+                    <strong>Address:</strong> 4955 Peony Lane N, Plymouth, MN 55446<br>
+                    <strong>Established:</strong> 1997<br>
+                    <strong>Mascot:</strong> Trojans<br>
                     <strong>Colors:</strong> Navy Blue and Gold
                 </p>
             </div>
-        </section>
+        </div>
 
-        <!-- Contact Information -->
+        <!-- Contact Info -->
         <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-l-blue-500">
+            <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-l-blue-600">
                 <div class="flex items-start space-x-4">
-                    <div class="bg-blue-100 p-3 rounded-full">
-                        <i class="ri-phone-line text-2xl text-blue-500"></i>
+                    <div class="bg-blue-600 bg-opacity-10 p-3 rounded-full">
+                        <i class="ri-phone-line text-2xl text-blue-600"></i>
                     </div>
                     <div>
                         <h3 class="font-semibold text-blue-900 mb-2">Contact Information</h3>
-                        <p class="text-gray-700 text-sm space-y-1">
-                            <span class="block">📧 wayzatadeca@isd284.org</span>
-                            <span class="block">📞 (952) 745-5000</span>
-                            <span class="block">💻 Technology Support: Ansh Kesharwani</span>
-                            <span class="block">📱 Keshaans000@isd284.com | 651-382-5377</span>
-                        </p>
+                        <div class="text-gray-700 text-sm space-y-1">
+                            <div>wayzatadeca@isd284.org</div>
+                            <div>(952) 745-5000</div>
+                            <div>Technology Support: Ansh Kesharwani</div>
+                            <div>Keshaans000@isd284.com | 651-382-5377</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-l-yellow-500">
+            <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-l-yellow-400">
                 <div class="flex items-start space-x-4">
-                    <div class="bg-yellow-100 p-3 rounded-full">
-                        <i class="ri-calendar-line text-2xl text-yellow-600"></i>
+                    <div class="bg-yellow-400 bg-opacity-10 p-3 rounded-full">
+                        <i class="ri-calendar-line text-2xl text-orange-500"></i>
                     </div>
                     <div>
                         <h3 class="font-semibold text-blue-900 mb-2">Meeting Times</h3>
-                        <p class="text-gray-700 text-sm space-y-1">
-                            <span class="block">🗓️ Weekly meetings</span>
-                            <span class="block">⏰ Check calendar for specific times</span>
-                            <span class="block">📍 Room assignments posted in announcements</span>
-                        </p>
+                        <div class="text-gray-700 text-sm space-y-1">
+                            <div>Weekly meetings</div>
+                            <div>Check calendar for specific times</div>
+                            <div>Room assignments posted in announcements</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Contact Form -->
-        <section id="contact" class="bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h3 class="text-2xl font-bold mb-4 text-blue-900">Contact Us</h3>
-            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-                <input type="hidden" name="access_key" value="fd1929ef-7f8d-4551-ae99-45aa464c1c33">
-                <input type="hidden" name="redirect" value="https://wayzatadeca.org">
-                <input type="hidden" name="subject" value="New Contact Form Submission">
-                <input type="hidden" name="from_name" value="Wayzata DECA Website">
-                
-                <div>
-                    <label class="block text-sm font-medium mb-1">Name</label>
-                    <input type="text" name="name" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
+        <!-- Events Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4">Upcoming Events</h2>
+            <div id="events-list" class="space-y-4">
+                <div class="border-l-4 border-blue-500 pl-4 py-2">
+                    <h3 class="font-semibold text-gray-800">District Competition Preparation</h3>
+                    <p class="text-gray-600 text-sm">Prepare for upcoming district competition</p>
+                    <p class="text-sm text-gray-500">December 15, 2024 at 2:00 PM</p>
+                    <p class="text-sm text-gray-500">Room 150</p>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email" name="email" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Message</label>
-                    <textarea name="message" rows="4" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
-                </div>
-                <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors">
-                    Send Message
-                </button>
-            </form>
-        </section>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white p-6 text-center">
-        <p>&copy; 2025 Wayzata DECA. All rights reserved.</p>
+    <footer class="bg-blue-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Wayzata DECA. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <span>Follow us:</span>
+                <span>Instagram: @wayzatadeca</span>
+                <span>Facebook: wayzata.deca.16</span>
+            </div>
+        </div>
     </footer>
 
     <!-- Teacher Login Modal -->
-    <div class="teacher-login fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
-            <h3 class="text-2xl font-bold mb-4 text-blue-900">Teacher Login</h3>
-            <form onsubmit="return handleTeacherLogin(event)">
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-1">Password</label>
-                    <input type="password" id="teacherPassword" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter teacher password">
+    <div id="teacher-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+            <h2 class="text-2xl font-bold text-center mb-6">Teacher Portal</h2>
+            <form id="teacher-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="teacher-password" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Enter teacher password" required>
                 </div>
-                <div class="flex gap-4">
-                    <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors">
-                        Login
-                    </button>
-                    <button type="button" onclick="hideTeacherLogin()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
-                        Cancel
-                    </button>
-                </div>
+                <div id="login-error" class="text-red-600 text-sm hidden"></div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                    Login
+                </button>
             </form>
+            <button onclick="hideTeacherLogin()" class="w-full mt-4 text-blue-600 hover:text-blue-800">
+                Cancel
+            </button>
         </div>
     </div>
 
-    <!-- Admin Panel -->
-    <div class="admin-panel bg-white p-6 rounded-lg shadow-lg mb-8 border-2 border-green-500">
-        <h3 class="text-2xl font-bold mb-4 text-green-700">Event Management - Teacher Portal</h3>
-        <p class="text-gray-600 mb-4">Add and manage DECA events for students.</p>
-        
-        <form onsubmit="return addEvent(event)" class="space-y-4">
-            <div>
-                <label class="block text-sm font-medium mb-1">Event Title</label>
-                <input type="text" id="eventTitle" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500">
+    <!-- Support Info Modal -->
+    <div id="support-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
+                    <i class="ri-heart-line text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-900 mb-4">Support DECA</h3>
+                <div class="bg-gradient-to-r from-blue-50 to-yellow-50 p-4 rounded-lg mb-6">
+                    <p class="text-gray-700 mb-3">Looking to support our DECA chapter?</p>
+                    <p class="text-lg font-semibold text-blue-900">Please check the sidebar and click "Support DECA"</p>
+                </div>
+                <div class="text-sm text-gray-600 mb-6 space-y-1">
+                    <p>Sponsorship opportunities available</p>
+                    <p>Grants & donations welcome</p>
+                    <p>Help students achieve their goals</p>
+                </div>
+                <button onclick="hideSupportInfo()" 
+                        class="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg">
+                    Got it!
+                </button>
             </div>
-            <div>
-                <label class="block text-sm font-medium mb-1">Description</label>
-                <textarea id="eventDescription" rows="3" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500" placeholder="Event details and important information"></textarea>
-            </div>
-            <div>
-                <label class="block text-sm font-medium mb-1">Date & Time</label>
-                <input type="datetime-local" id="eventDate" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500">
-            </div>
-            <div>
-                <label class="block text-sm font-medium mb-1">Location</label>
-                <input type="text" id="eventLocation" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500" placeholder="Room number or venue">
-            </div>
-            <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
-                Add Event
-            </button>
-        </form>
-        
-        <div class="mt-6 pt-4 border-t">
-            <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors">
-                Logout
-            </button>
         </div>
     </div>
 
     <script>
+        // Teacher Portal Functions
         function showTeacherLogin() {
-            document.querySelector('.teacher-login').style.display = 'flex';
+            document.getElementById('teacher-modal').classList.remove('hidden');
         }
 
         function hideTeacherLogin() {
-            document.querySelector('.teacher-login').style.display = 'none';
+            document.getElementById('teacher-modal').classList.add('hidden');
+            document.getElementById('teacher-password').value = '';
+            document.getElementById('login-error').classList.add('hidden');
         }
 
-        function handleTeacherLogin(event) {
-            event.preventDefault();
-            const password = document.getElementById('teacherPassword').value;
-            
+        function showSupportInfo() {
+            document.getElementById('support-modal').classList.remove('hidden');
+        }
+
+        function hideSupportInfo() {
+            document.getElementById('support-modal').classList.add('hidden');
+        }
+
+        // Teacher login form
+        document.getElementById('teacher-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('teacher-password').value;
             if (password === 'wayzata2024') {
-                document.querySelector('.teacher-login').style.display = 'none';
-                document.querySelector('.admin-panel').style.display = 'block';
-                
-                // Scroll to admin panel
-                document.querySelector('.admin-panel').scrollIntoView({ behavior: 'smooth' });
-                
-                alert('Login successful! You can now manage events.');
+                alert('Login successful! Event management features would be available here.');
+                hideTeacherLogin();
             } else {
-                alert('Incorrect password. Please try again.');
+                document.getElementById('login-error').textContent = 'Incorrect password';
+                document.getElementById('login-error').classList.remove('hidden');
             }
-            
-            document.getElementById('teacherPassword').value = '';
-            return false;
-        }
+        });
 
-        function addEvent(event) {
-            event.preventDefault();
-            const title = document.getElementById('eventTitle').value;
-            const description = document.getElementById('eventDescription').value;
-            const date = document.getElementById('eventDate').value;
-            const location = document.getElementById('eventLocation').value;
-            
-            alert(`Event "${title}" added successfully!\n\nDate: ${new Date(date).toLocaleDateString()}\nLocation: ${location || 'TBD'}`);
-            
-            // Clear form
-            document.getElementById('eventTitle').value = '';
-            document.getElementById('eventDescription').value = '';
-            document.getElementById('eventDate').value = '';
-            document.getElementById('eventLocation').value = '';
-            
-            return false;
-        }
-
-        function logout() {
-            document.querySelector('.admin-panel').style.display = 'none';
-            alert('Logged out successfully!');
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'teacher-modal') hideTeacherLogin();
+            if (e.target.id === 'support-modal') hideSupportInfo();
         });
     </script>
 </body>
