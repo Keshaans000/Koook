@@ -1,58 +1,58 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { GraduationCap, Shield } from "lucide-react";
+import { useState } from "react";
+import { useLocation } from "wouter";
 
 export default function TeacherLogin() {
-  const handleLogin = () => {
-    window.location.href = "/api/login";
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [, setLocation] = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (password === "wayzata2024") {
+      // Store login state
+      localStorage.setItem("teacherLoggedIn", "true");
+      setLocation("/teacher-admin");
+    } else {
+      setError("Incorrect password");
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#003366] to-[#0066CC] flex items-center justify-center p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center space-y-4">
-          <div className="mx-auto w-16 h-16 bg-[#FFD700] rounded-full flex items-center justify-center">
-            <GraduationCap className="w-8 h-8 text-[#003366]" />
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-blue-900">Teacher Admin</h1>
+          <p className="text-gray-600">Sign in to manage DECA events</p>
+          <a href="../" className="inline-block mt-3 text-sm text-gray-500 hover:text-gray-700 transition-colors">
+            ← Back to Website
+          </a>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <CardTitle className="text-2xl font-bold text-[#003366]">Teacher Portal</CardTitle>
-            <CardDescription className="text-gray-600">
-              Sign in to manage DECA events and announcements
-            </CardDescription>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <div className="flex items-center space-x-2 text-blue-800">
-              <Shield className="w-5 h-5" />
-              <span className="font-medium">Secure Authentication</span>
-            </div>
-            <p className="text-blue-700 text-sm mt-1">
-              Login with your school credentials to access the event management system
-            </p>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Teacher Password"
+              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
           </div>
           
-          <Button 
-            onClick={handleLogin}
-            className="w-full bg-[#003366] hover:bg-[#002244] text-white py-3"
-            size="lg"
+          {error && (
+            <div className="text-red-600 text-sm">{error}</div>
+          )}
+          
+          <button 
+            type="submit" 
+            className="w-full bg-blue-900 text-white p-3 rounded-md hover:bg-blue-800 transition-colors"
           >
-            Sign In with School Account
-          </Button>
-          
-          <div className="text-center">
-            <p className="text-sm text-gray-600">
-              Need access? Contact the DECA advisor
-            </p>
-            <a 
-              href="/" 
-              className="text-[#003366] hover:text-[#0066CC] text-sm font-medium"
-            >
-              ← Back to Main Site
-            </a>
-          </div>
-        </CardContent>
-      </Card>
+            Sign In
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

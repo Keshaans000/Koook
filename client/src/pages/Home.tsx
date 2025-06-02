@@ -126,9 +126,24 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
 
   useEffect(() => {
     // Get events from static storage
-    const allEvents = StaticEventStorage.getAllEvents();
-    setEvents(allEvents);
-    setIsLoading(false);
+    const loadEvents = () => {
+      const allEvents = StaticEventStorage.getAllEvents();
+      setEvents(allEvents);
+      setIsLoading(false);
+    };
+    
+    loadEvents();
+    
+    // Refresh events when window gains focus (returning from admin page)
+    const handleFocus = () => {
+      loadEvents();
+    };
+    
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
   
   return (
@@ -167,12 +182,14 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
             <div className="flex gap-2">
               <a 
                 href="./admin.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#003366] hover:bg-[#002244] text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
-                Teacher Login
+                Teacher Portal
               </a>
             </div>
           </div>
