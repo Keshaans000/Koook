@@ -98,6 +98,45 @@ export default function SimpleAdminNew() {
 
   const handleCreateEvent = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!eventForm.title.trim()) {
+      toast({
+        title: "Missing Information", 
+        description: "Please enter an event name.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (!eventForm.startTime) {
+      toast({
+        title: "Missing Information",
+        description: "Please select a date and time.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Validate the date format and that it's in the future
+    const selectedDate = new Date(eventForm.startTime);
+    if (isNaN(selectedDate.getTime())) {
+      toast({
+        title: "Invalid Date",
+        description: "Please select a valid date and time.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (selectedDate < new Date()) {
+      toast({
+        title: "Invalid Date",
+        description: "Please select a future date and time.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     createEventMutation.mutate(eventForm);
   };
 
@@ -156,9 +195,10 @@ export default function SimpleAdminNew() {
             <CardContent>
               <form onSubmit={handleCreateEvent} className="space-y-4">
                 <div>
+                  <label className="block text-sm font-medium mb-2">Event Name</label>
                   <Input
                     type="text"
-                    placeholder="Event Name"
+                    placeholder="Enter event name"
                     value={eventForm.title}
                     onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
                     required
@@ -166,6 +206,7 @@ export default function SimpleAdminNew() {
                 </div>
                 
                 <div>
+                  <label className="block text-sm font-medium mb-2">Date & Time</label>
                   <Input
                     type="datetime-local"
                     value={eventForm.startTime}
@@ -175,10 +216,11 @@ export default function SimpleAdminNew() {
                 </div>
                 
                 <div>
+                  <label className="block text-sm font-medium mb-2">Description</label>
                   <textarea
                     className="w-full p-3 border rounded-md resize-none"
                     rows={4}
-                    placeholder="Event Description"
+                    placeholder="Enter event description"
                     value={eventForm.description}
                     onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
                   />
