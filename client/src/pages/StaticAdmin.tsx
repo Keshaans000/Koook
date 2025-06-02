@@ -92,23 +92,21 @@ export default function StaticAdmin() {
     const eventDate = new Date(eventForm.startTime);
     const endTime = new Date(eventDate.getTime() + (2 * 60 * 60 * 1000));
     
-    const newEvent: StoredEvent = {
-      id: Math.max(...events.map(e => e.id), 0) + 1,
+    const newEvent = StaticEventStorage.addEvent({
       title: eventForm.title,
       description: eventForm.description,
-      startTime: eventDate.toISOString(),
-      endTime: endTime.toISOString(),
+      startTime: eventDate,
+      endTime: endTime,
       type: "meeting",
       organizer: "Teacher",
       location: null,
-      createdAt: new Date().toISOString(),
       imageUrl: null,
       createdBy: null
-    };
+    });
 
-    const updatedEvents = [...events, newEvent];
+    // Refresh the events list
+    const updatedEvents = StaticEventStorage.getAllEvents();
     setEvents(updatedEvents);
-    localStorage.setItem('deca-events', JSON.stringify(updatedEvents));
 
     toast({
       title: "Event Created",
@@ -125,9 +123,11 @@ export default function StaticAdmin() {
 
   const handleDeleteEvent = (eventId: number) => {
     if (confirm("Are you sure you want to delete this event?")) {
-      const updatedEvents = events.filter(event => event.id !== eventId);
+      StaticEventStorage.deleteEvent(eventId);
+      
+      // Refresh the events list
+      const updatedEvents = StaticEventStorage.getAllEvents();
       setEvents(updatedEvents);
-      localStorage.setItem('deca-events', JSON.stringify(updatedEvents));
       
       toast({
         title: "Event Deleted",
