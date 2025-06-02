@@ -1,0 +1,30 @@
+<svg width="200" height="240" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Trophy Base -->
+  <rect x="60" y="200" width="80" height="40" fill="#003366" rx="4"/>
+  <rect x="70" y="190" width="60" height="20" fill="#1a5490" rx="2"/>
+  
+  <!-- Trophy Stem -->
+  <rect x="85" y="160" width="30" height="40" fill="#2a6bb8"/>
+  
+  <!-- Trophy Cup -->
+  <path d="M50 60 L50 140 Q50 160 70 160 L130 160 Q150 160 150 140 L150 60 Z" fill="#FFD700"/>
+  <ellipse cx="100" cy="60" rx="50" ry="8" fill="#FFC000"/>
+  
+  <!-- Trophy Handles -->
+  <path d="M40 80 Q25 80 25 100 Q25 120 40 120" stroke="#FFD700" stroke-width="8" fill="none"/>
+  <path d="M160 80 Q175 80 175 100 Q175 120 160 120" stroke="#FFD700" stroke-width="8" fill="none"/>
+  
+  <!-- DECA Text on Trophy -->
+  <text x="100" y="110" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#003366">DECA</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="85" r="3" fill="#003366"/>
+  <circle cx="85" cy="130" r="2" fill="#003366"/>
+  <circle cx="115" cy="130" r="2" fill="#003366"/>
+  
+  <!-- Shine Effect -->
+  <path d="M65 70 Q75 65 85 70 L85 150 Q75 155 65 150 Z" fill="#FFEC8B" opacity="0.6"/>
+  
+  <!-- Base Engraving -->
+  <text x="100" y="220" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#FFD700">EXCELLENCE</text>
+</svg>
