@@ -23,7 +23,7 @@ export default function SimpleAdminNew() {
   const [eventForm, setEventForm] = useState<EventFormData>({
     title: '',
     description: '',
-    startTime: ''
+    startTime: new Date().toISOString().slice(0, 16)
   });
 
   // Get events
@@ -78,7 +78,7 @@ export default function SimpleAdminNew() {
       setEventForm({
         title: '',
         description: '',
-        startTime: ''
+        startTime: new Date().toISOString().slice(0, 16)
       });
       setShowAddForm(false);
     },
