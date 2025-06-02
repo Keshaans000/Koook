@@ -252,6 +252,47 @@ CONTACT_EMAIL=wayzata.deca@gmail.com
     }
   });
 
+  // Admin authentication routes
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      
+      if (!username || !password) {
+        return res.status(400).json({ message: "Username and password required" });
+      }
+
+      const isValid = validateTeacherCredentials(username, password);
+      
+      if (isValid) {
+        res.json({ success: true, message: "Login successful" });
+      } else {
+        res.status(401).json({ message: "Invalid credentials" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  // Admin event creation
+  app.post("/api/admin/events", async (req, res) => {
+    try {
+      const validation = insertEventSchema.safeParse(req.body);
+      if (!validation.success) {
+        return res.status(400).json({ message: "Invalid event data" });
+      }
+
+      const event = await storage.createEvent({
+        ...validation.data,
+        createdBy: null,
+      });
+      
+      res.status(201).json(event);
+    } catch (error) {
+      console.error("Error creating event:", error);
+      res.status(500).json({ message: "Failed to create event" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

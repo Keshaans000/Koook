@@ -21,6 +21,7 @@ import GrantsDonations from "@/pages/GrantsDonations";
 import Judging from "@/pages/Judging";
 import DecaAdvice from "@/pages/DecaAdvice";
 import LockerRoom from "@/pages/LockerRoom";
+import SimpleAdmin from "@/pages/SimpleAdmin";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -66,6 +67,7 @@ function Router() {
       <Route path="/judging" component={Judging} />
       <Route path="/deca-advice" component={DecaAdvice} />
       <Route path="/locker-room" component={LockerRoom} />
+      <Route path="/admin" component={SimpleAdmin} />
       <Route component={NotFound} />
     </Switch>
   );
