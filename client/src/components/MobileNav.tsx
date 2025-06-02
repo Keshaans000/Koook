@@ -139,24 +139,16 @@ const MobileNav = ({ eventFilters, toggleFilter }: MobileNavProps) => {
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                           <div className="ml-8 space-y-1 mt-1">
-                            <Link href="/sponsorships" onClick={() => setIsMenuOpen(false)}>
-                              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
-                                location === "/sponsorships" 
-                                  ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                                  : "hover:bg-gray-50 text-gray-600"
-                              }`}>
+                            <a href="/sponsorships.html" onClick={() => setIsMenuOpen(false)}>
+                              <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                                 <span>Sponsorships</span>
                               </div>
-                            </Link>
-                            <Link href="/grants-donations" onClick={() => setIsMenuOpen(false)}>
-                              <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
-                                location === "/grants-donations" 
-                                  ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
-                                  : "hover:bg-gray-50 text-gray-600"
-                              }`}>
+                            </a>
+                            <a href="/grants-donations.html" onClick={() => setIsMenuOpen(false)}>
+                              <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                                 <span>Grants & Donations</span>
                               </div>
-                            </Link>
+                            </a>
                             <Link href="/judging" onClick={() => setIsMenuOpen(false)}>
                               <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
                                 location === "/judging" 
