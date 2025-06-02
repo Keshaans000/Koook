@@ -13,11 +13,7 @@ import { apiRequest } from "@/lib/queryClient";
 interface EventFormData {
   title: string;
   description: string;
-  type: string;
   startTime: string;
-  endTime: string;
-  location: string;
-  organizer: string;
 }
 
 export default function SimpleAdmin() {
@@ -30,11 +26,7 @@ export default function SimpleAdmin() {
   const [eventForm, setEventForm] = useState<EventFormData>({
     title: '',
     description: '',
-    type: 'meeting',
-    startTime: '',
-    endTime: '',
-    location: '',
-    organizer: ''
+    startTime: ''
   });
 
   // Get events
@@ -67,10 +59,17 @@ export default function SimpleAdmin() {
   // Create event mutation
   const createEventMutation = useMutation({
     mutationFn: async (data: EventFormData) => {
+      const eventDate = new Date(data.startTime);
+      const endTime = new Date(eventDate.getTime() + (2 * 60 * 60 * 1000)); // Default 2 hours duration
+      
       return apiRequest("POST", "/api/admin/events", {
-        ...data,
-        startTime: new Date(data.startTime),
-        endTime: new Date(data.endTime),
+        title: data.title,
+        description: data.description,
+        type: "meeting",
+        startTime: eventDate,
+        endTime: endTime,
+        location: null,
+        organizer: "Teacher"
       });
     },
     onSuccess: () => {
@@ -82,11 +81,7 @@ export default function SimpleAdmin() {
       setEventForm({
         title: '',
         description: '',
-        type: 'meeting',
-        startTime: '',
-        endTime: '',
-        location: '',
-        organizer: ''
+        startTime: ''
       });
       setShowAddForm(false);
     },
