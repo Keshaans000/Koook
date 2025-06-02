@@ -4,7 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import StaticHome from "@/pages/StaticHome";
+import Home, { HomeProps } from "@/pages/Home";
 import Homepage from "@/pages/Homepage";
 import EventManagement from "@/pages/EventManagement";
 import About from "@/pages/About";
@@ -21,7 +21,7 @@ import GrantsDonations from "@/pages/GrantsDonations";
 import Judging from "@/pages/Judging";
 import DecaAdvice from "@/pages/DecaAdvice";
 import LockerRoom from "@/pages/LockerRoom";
-import StaticTeacherAdmin from "@/pages/StaticTeacherAdmin";
+import StaticAdmin from "@/pages/StaticAdmin";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -30,7 +30,8 @@ import { useState } from "react";
 
 // Route wrapper components
 const HomeWrapper = (props: any) => {
-  return <StaticHome />;
+  const { eventFilters } = useAppState();
+  return <Home eventFilters={eventFilters} />;
 };
 
 // App state context
@@ -49,7 +50,7 @@ const useAppState = () => {
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={StaticHome} />
+      <Route path="/" component={Homepage} />
       <Route path="/calendar" component={HomeWrapper} />
       <Route path="/manage" component={EventManagement} />
       <Route path="/about" component={About} />
@@ -66,7 +67,7 @@ function Router() {
       <Route path="/judging" component={Judging} />
       <Route path="/deca-advice" component={DecaAdvice} />
       <Route path="/locker-room" component={LockerRoom} />
-      <Route path="/admin" component={StaticTeacherAdmin} />
+      <Route path="/admin" component={StaticAdmin} />
       <Route component={NotFound} />
     </Switch>
   );
