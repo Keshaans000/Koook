@@ -207,8 +207,9 @@ export default function SimpleAdminNew() {
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Date & Time</label>
-                  <Input
+                  <input
                     type="datetime-local"
+                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     value={eventForm.startTime}
                     onChange={(e) => setEventForm({ ...eventForm, startTime: e.target.value })}
                     required
