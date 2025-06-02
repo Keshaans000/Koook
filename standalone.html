@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayzata DECA</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Static Event Storage
+        class StaticEventStorage {
+            static getAllEvents() {
+                const events = localStorage.getItem('wayzata-deca-events');
+                return events ? JSON.parse(events) : [
+                    {
+                        id: 1,
+                        title: "District Competition Preparation",
+                        description: "Prepare for upcoming district competition",
+                        startTime: new Date("2024-12-15T14:00:00"),
+                        endTime: new Date("2024-12-15T16:00:00"),
+                        type: "competition",
+                        organizer: "DECA Team",
+                        location: "Room 150",
+                        createdAt: new Date(),
+                        imageUrl: null,
+                        createdBy: "admin"
+                    }
+                ];
+            }
+
+            static saveEvents(events) {
+                localStorage.setItem('wayzata-deca-events', JSON.stringify(events));
+            }
+
+            static addEvent(eventData) {
+                const events = this.getAllEvents();
+                const newEvent = {
+                    ...eventData,
+                    id: Date.now(),
+                    createdAt: new Date()
+                };
+                events.push(newEvent);
+                this.saveEvents(events);
+                return newEvent;
+            }
+
+            static deleteEvent(id) {
+                const events = this.getAllEvents();
+                const filteredEvents = events.filter(event => event.id !== id);
+                this.saveEvents(filteredEvents);
+                return true;
+            }
+        }
+
+        // Main App Component
+        function App() {
+            const [currentPage, setCurrentPage] = useState('home');
+            const [events, setEvents] = useState([]);
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+            useEffect(() => {
+                setEvents(StaticEventStorage.getAllEvents());
+            }, []);
+
+            const loadEvents = () => {
+                setEvents(StaticEventStorage.getAllEvents());
+            };
+
+            // Teacher Login Component
+            function TeacherLogin() {
+                const [password, setPassword] = useState('');
+                const [error, setError] = useState('');
+
+                const handleLogin = () => {
+                    if (password === 'wayzata2024') {
+                        setIsLoggedIn(true);
+                        setCurrentPage('teacher-admin');
+                    } else {
+                        setError('Invalid password');
+                    }
+                };
+
+                return (
+                    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+                        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full">
+                            <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Teacher Portal Login</h2>
+                            <div className="space-y-4">
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Enter password"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    onKeyPress={(e) => e.key === 'Enter' && handleLogin()}
+                                />
+                                {error && <p className="text-red-500 text-sm">{error}</p>}
+                                <button
+                                    onClick={handleLogin}
+                                    className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+                                >
+                                    Login
+                                </button>
+                                <button
+                                    onClick={() => setCurrentPage('home')}
+                                    className="w-full bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400"
+                                >
+                                    Back to Home
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Teacher Admin Component
+            function TeacherAdmin() {
+                const [showForm, setShowForm] = useState(false);
+                const [formData, setFormData] = useState({
+                    title: '',
+                    description: '',
+                    startTime: '',
+                    endTime: '',
+                    location: '',
+                    organizer: '',
+                    type: 'meeting'
+                });
+
+                const handleSubmit = (e) => {
+                    e.preventDefault();
+                    
+                    StaticEventStorage.addEvent({
+                        ...formData,
+                        startTime: new Date(formData.startTime),
+                        endTime: new Date(formData.endTime)
+                    });
+
+                    setFormData({
+                        title: '',
+                        description: '',
+                        startTime: '',
+                        endTime: '',
+                        location: '',
+                        organizer: '',
+                        type: 'meeting'
+                    });
+                    
+                    setShowForm(false);
+                    loadEvents();
+                    alert('Event added successfully!');
+                };
+
+                const deleteEvent = (id) => {
+                    if (confirm('Are you sure you want to delete this event?')) {
+                        StaticEventStorage.deleteEvent(id);
+                        loadEvents();
+                        alert('Event deleted successfully!');
+                    }
+                };
+
+                return (
+                    <div className="min-h-screen bg-gray-50 p-4">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="bg-white rounded-lg shadow p-6 mb-6">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h1 className="text-2xl font-bold text-gray-800">Teacher Portal</h1>
+                                    <div className="space-x-2">
+                                        <button
+                                            onClick={() => setShowForm(!showForm)}
+                                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                        >
+                                            {showForm ? 'Cancel' : 'Add Event'}
+                                        </button>
+                                        <button
+                                            onClick={() => {
+                                                setIsLoggedIn(false);
+                                                setCurrentPage('home');
+                                            }}
+                                            className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700"
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {showForm && (
+                                    <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4 p-4 bg-gray-50 rounded">
+                                        <input
+                                            type="text"
+                                            placeholder="Event Title"
+                                            value={formData.title}
+                                            onChange={(e) => setFormData({...formData, title: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                            required
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Organizer"
+                                            value={formData.organizer}
+                                            onChange={(e) => setFormData({...formData, organizer: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                        />
+                                        <input
+                                            type="datetime-local"
+                                            value={formData.startTime}
+                                            onChange={(e) => setFormData({...formData, startTime: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                            required
+                                        />
+                                        <input
+                                            type="datetime-local"
+                                            value={formData.endTime}
+                                            onChange={(e) => setFormData({...formData, endTime: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                            required
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="Location"
+                                            value={formData.location}
+                                            onChange={(e) => setFormData({...formData, location: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                        />
+                                        <select
+                                            value={formData.type}
+                                            onChange={(e) => setFormData({...formData, type: e.target.value})}
+                                            className="px-3 py-2 border rounded"
+                                        >
+                                            <option value="meeting">Meeting</option>
+                                            <option value="competition">Competition</option>
+                                            <option value="deadline">Deadline</option>
+                                            <option value="social">Social</option>
+                                        </select>
+                                        <textarea
+                                            placeholder="Event Description"
+                                            value={formData.description}
+                                            onChange={(e) => setFormData({...formData, description: e.target.value})}
+                                            className="px-3 py-2 border rounded md:col-span-2"
+                                            rows="3"
+                                            required
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 md:col-span-2"
+                                        >
+                                            Add Event
+                                        </button>
+                                    </form>
+                                )}
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow p-6">
+                                <h2 className="text-xl font-bold mb-4">Manage Events</h2>
+                                <div className="space-y-4">
+                                    {events.map(event => (
+                                        <div key={event.id} className="border rounded p-4 flex justify-between items-start">
+                                            <div>
+                                                <h3 className="font-semibold">{event.title}</h3>
+                                                <p className="text-gray-600">{event.description}</p>
+                                                <p className="text-sm text-gray-500">
+                                                    {new Date(event.startTime).toLocaleString()}
+                                                </p>
+                                                {event.location && (
+                                                    <p className="text-sm text-gray-500">📍 {event.location}</p>
+                                                )}
+                                            </div>
+                                            <button
+                                                onClick={() => deleteEvent(event.id)}
+                                                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Home Component
+            function Home() {
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-white shadow">
+                            <div className="max-w-7xl mx-auto px-4 py-6">
+                                <div className="flex justify-between items-center">
+                                    <h1 className="text-3xl font-bold text-blue-900">Wayzata DECA</h1>
+                                    <nav className="space-x-4">
+                                        <button
+                                            onClick={() => setCurrentPage('home')}
+                                            className="text-blue-600 hover:text-blue-800"
+                                        >
+                                            Home
+                                        </button>
+                                        <button
+                                            onClick={() => setCurrentPage('teacher-login')}
+                                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                        >
+                                            Teacher Portal
+                                        </button>
+                                    </nav>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main className="max-w-7xl mx-auto px-4 py-8">
+                            <div className="text-center mb-12">
+                                <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                                    Go the <span className="text-blue-600">Extra</span>
+                                </h2>
+                                <p className="text-xl text-gray-600">
+                                    Wayzata DECA - Developing Future Business Leaders
+                                </p>
+                            </div>
+
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                                <div className="bg-white rounded-lg shadow p-6">
+                                    <h3 className="text-xl font-semibold mb-4 text-blue-900">Upcoming Events</h3>
+                                    <div className="space-y-3">
+                                        {events.slice(0, 3).map(event => (
+                                            <div key={event.id} className="border-l-4 border-blue-500 pl-4">
+                                                <h4 className="font-medium">{event.title}</h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {new Date(event.startTime).toLocaleDateString()}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow p-6">
+                                    <h3 className="text-xl font-semibold mb-4 text-blue-900">About DECA</h3>
+                                    <p className="text-gray-600">
+                                        DECA prepares emerging leaders and entrepreneurs for careers in marketing, 
+                                        finance, hospitality and management.
+                                    </p>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow p-6">
+                                    <h3 className="text-xl font-semibold mb-4 text-blue-900">Contact</h3>
+                                    <div className="space-y-2 text-sm text-gray-600">
+                                        <p>📧 wayzatadeca@isd284.org</p>
+                                        <p>📞 (952) 745-5000</p>
+                                        <p>💻 Tech Support: Ansh Kesharwani</p>
+                                        <p>📱 651-382-5377</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="text-center">
+                                <button
+                                    onClick={() => alert('Please check the navigation menu for Support DECA options including Sponsorships and Grants & Donations!')}
+                                    className="bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all"
+                                >
+                                    <i className="ri-heart-line mr-2"></i>
+                                    Support DECA
+                                    <i className="ri-heart-line ml-2"></i>
+                                </button>
+                            </div>
+                        </main>
+
+                        <footer className="bg-blue-900 text-white py-8 mt-16">
+                            <div className="max-w-7xl mx-auto px-4 text-center">
+                                <p>&copy; 2024 Wayzata DECA. All rights reserved.</p>
+                                <div className="mt-4 space-x-4">
+                                    <span>Follow us:</span>
+                                    <span>📱 Instagram: @wayzatadeca</span>
+                                    <span>📘 Facebook: wayzata.deca.16</span>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            // Router
+            if (currentPage === 'teacher-login') {
+                return <TeacherLogin />;
+            } else if (currentPage === 'teacher-admin' && isLoggedIn) {
+                return <TeacherAdmin />;
+            } else {
+                return <Home />;
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
