@@ -170,6 +170,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         archive.directory('attached_assets/', 'attached_assets/');
       }
       
+      // Add built static files if they exist
+      if (fs.existsSync('dist/')) {
+        archive.directory('dist/', 'dist/');
+      }
+      
+      // Add any other assets
+      if (fs.existsSync('assets/')) {
+        archive.directory('assets/', 'assets/');
+      }
+      
       // Add config files
       const files = [
         'package.json', 
