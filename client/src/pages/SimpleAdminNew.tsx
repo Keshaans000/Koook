@@ -91,6 +91,33 @@ export default function SimpleAdminNew() {
     },
   });
 
+  // Delete event mutation
+  const deleteEventMutation = useMutation({
+    mutationFn: async (eventId: number) => {
+      return apiRequest("DELETE", `/api/admin/events/${eventId}`);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Event Deleted",
+        description: "The event has been removed successfully.",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/events"] });
+    },
+    onError: () => {
+      toast({
+        title: "Delete Failed",
+        description: "Failed to delete the event. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleDeleteEvent = (eventId: number) => {
+    if (confirm("Are you sure you want to delete this event?")) {
+      deleteEventMutation.mutate(eventId);
+    }
+  };
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     loginMutation.mutate(loginForm);
@@ -253,13 +280,22 @@ export default function SimpleAdminNew() {
             <Card key={event.id}>
               <CardContent className="pt-6">
                 <div className="flex justify-between items-start">
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-lg font-semibold text-[#003366]">{event.title}</h3>
                     <p className="text-sm text-gray-600 mt-1">
                       {new Date(event.startTime).toLocaleDateString()} at {new Date(event.startTime).toLocaleTimeString()}
                     </p>
                     <p className="text-gray-700 mt-2">{event.description}</p>
                   </div>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => handleDeleteEvent(event.id)}
+                    disabled={deleteEventMutation.isPending}
+                    className="ml-4"
+                  >
+                    {deleteEventMutation.isPending ? "Deleting..." : "Delete"}
+                  </Button>
                 </div>
               </CardContent>
             </Card>

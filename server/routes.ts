@@ -293,6 +293,26 @@ CONTACT_EMAIL=wayzata.deca@gmail.com
     }
   });
 
+  // Admin event deletion
+  app.delete("/api/admin/events/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid event ID" });
+      }
+      
+      const success = await storage.deleteEvent(id);
+      if (!success) {
+        return res.status(404).json({ message: "Event not found" });
+      }
+      
+      res.status(204).end();
+    } catch (error) {
+      console.error("Error deleting event:", error);
+      res.status(500).json({ message: "Failed to delete event" });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;
