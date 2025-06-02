@@ -139,12 +139,12 @@ const MobileNav = ({ eventFilters, toggleFilter }: MobileNavProps) => {
                         </CollapsibleTrigger>
                         <CollapsibleContent>
                           <div className="ml-8 space-y-1 mt-1">
-                            <a href="/sponsorships.html" onClick={() => setIsMenuOpen(false)}>
+                            <a href="./sponsorships.html" onClick={() => setIsMenuOpen(false)}>
                               <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                                 <span>Sponsorships</span>
                               </div>
                             </a>
-                            <a href="/grants-donations.html" onClick={() => setIsMenuOpen(false)}>
+                            <a href="./grants-donations.html" onClick={() => setIsMenuOpen(false)}>
                               <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                                 <span>Grants & Donations</span>
                               </div>

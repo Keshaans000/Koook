@@ -98,12 +98,12 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className="ml-8 space-y-1 mt-1">
-                    <a href="/sponsorships.html">
+                    <a href="./sponsorships.html">
                       <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                         <span>Sponsorships</span>
                       </div>
                     </a>
-                    <a href="/grants-donations.html">
+                    <a href="./grants-donations.html">
                       <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
                         <span>Grants & Donations</span>
                       </div>
