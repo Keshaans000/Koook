@@ -150,7 +150,106 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Complete website download endpoint
+  app.get("/download-complete-website", async (req, res) => {
+    try {
+      const archive = archiver('zip', {
+        zlib: { level: 9 }
+      });
 
+      res.attachment('wayzata-deca-complete-updated.zip');
+      archive.pipe(res);
+
+      // Add all source files
+      archive.directory('client/', 'client/');
+      archive.directory('server/', 'server/');
+      archive.directory('shared/', 'shared/');
+      
+      if (fs.existsSync('attached_assets/')) {
+        archive.directory('attached_assets/', 'attached_assets/');
+      }
+      
+      // Add config files
+      const files = [
+        'package.json', 
+        'package-lock.json', 
+        'tsconfig.json', 
+        'vite.config.ts', 
+        'tailwind.config.ts', 
+        'postcss.config.js', 
+        'drizzle.config.ts', 
+        'components.json'
+      ];
+      
+      for (const file of files) {
+        if (fs.existsSync(file)) {
+          archive.file(file, { name: file });
+        }
+      }
+      
+      // Add setup instructions
+      const readme = `# Wayzata DECA Website - Complete Source Code
+
+## Setup Instructions
+1. Extract this ZIP file
+2. Open the folder in Visual Studio Code
+3. Install dependencies: npm install
+4. Start development: npm run dev
+5. Open browser to http://localhost:5000
+
+## Environment Setup
+Create a .env file with:
+WEB3FORMS_ACCESS_KEY=fd1929ef-7f8d-4551-ae99-45aa464c1c33
+
+## Contact Forms
+Forms send emails to: wayzata.deca@gmail.com
+
+## Social Media Links
+- Instagram: https://www.instagram.com/wayzatadeca/
+- Facebook: https://www.facebook.com/wayzata.deca.16/
+
+## Deployment Options
+
+### Option 1: Vercel (Recommended)
+1. Create account at vercel.com
+2. Connect your GitHub repository
+3. Add environment variable: WEB3FORMS_ACCESS_KEY=fd1929ef-7f8d-4551-ae99-45aa464c1c33
+4. Deploy automatically
+
+### Option 2: Netlify
+1. Create account at netlify.com
+2. Drag and drop the built files
+3. Add environment variable in site settings
+4. Deploy
+
+### Option 3: Traditional Web Host
+1. Run npm run build
+2. Upload the dist folder contents to your web host
+3. Ensure environment variables are configured
+
+## Technical Support
+Ansh Kesharwani: Keshaans000@isd284.com | 651-382-5377
+
+Generated: ${new Date().toISOString()}
+Website: wayzatadeca.org
+`;
+      
+      archive.append(readme, { name: 'README.md' });
+      
+      // Add .env template
+      const envTemplate = `# Environment Variables for Wayzata DECA Website
+WEB3FORMS_ACCESS_KEY=fd1929ef-7f8d-4551-ae99-45aa464c1c33
+CONTACT_EMAIL=wayzata.deca@gmail.com
+`;
+      archive.append(envTemplate, { name: '.env.example' });
+      
+      archive.finalize();
+      
+    } catch (error) {
+      console.error("Download error:", error);
+      res.status(500).json({ error: "Download failed" });
+    }
+  });
 
   const httpServer = createServer(app);
 
