@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayzata DECA</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Static Event Storage
+        class StaticEventStorage {
+            static getAllEvents() {
+                const events = localStorage.getItem('wayzata-deca-events');
+                return events ? JSON.parse(events) : [
+                    {
+                        id: 1,
+                        title: "District Competition Preparation",
+                        description: "Prepare for upcoming district competition",
+                        startTime: new Date("2024-12-15T14:00:00"),
+                        endTime: new Date("2024-12-15T16:00:00"),
+                        type: "competition",
+                        organizer: "DECA Team",
+                        location: "Room 150",
+                        createdAt: new Date(),
+                        imageUrl: null,
+                        createdBy: "admin"
+                    }
+                ];
+            }
+
+            static saveEvents(events) {
+                localStorage.setItem('wayzata-deca-events', JSON.stringify(events));
+            }
+
+            static addEvent(eventData) {
+                const events = this.getAllEvents();
+                const newEvent = {
+                    ...eventData,
+                    id: Date.now(),
+                    createdAt: new Date(),
+                    createdBy: "admin"
+                };
+                events.push(newEvent);
+                this.saveEvents(events);
+                return newEvent;
+            }
+
+            static deleteEvent(id) {
+                const events = this.getAllEvents();
+                const filteredEvents = events.filter(event => event.id !== id);
+                this.saveEvents(filteredEvents);
+                return filteredEvents;
+            }
+        }
+
+        function App() {
+            const [currentPage, setCurrentPage] = useState('home');
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+            const [events, setEvents] = useState(StaticEventStorage.getAllEvents());
+
+            // Teacher Login
+            function TeacherLogin() {
+                const [password, setPassword] = useState('');
+                const [error, setError] = useState('');
+
+                const handleLogin = (e) => {
+                    e.preventDefault();
+                    if (password === 'wayzata2024') {
+                        setIsLoggedIn(true);
+                        setCurrentPage('teacher-admin');
+                        setError('');
+                    } else {
+                        setError('Incorrect password');
+                    }
+                };
+
+                return (
+                    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                        <div className="bg-white rounded-lg shadow p-8 max-w-md w-full">
+                            <h2 className="text-2xl font-bold text-center mb-6">Teacher Portal</h2>
+                            <form onSubmit={handleLogin} className="space-y-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        placeholder="Enter teacher password"
+                                        required
+                                    />
+                                </div>
+                                {error && (
+                                    <div className="text-red-600 text-sm">{error}</div>
+                                )}
+                                <button
+                                    type="submit"
+                                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+                                >
+                                    Login
+                                </button>
+                            </form>
+                            <button
+                                onClick={() => setCurrentPage('home')}
+                                className="w-full mt-4 text-blue-600 hover:text-blue-800"
+                            >
+                                Back to Home
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Teacher Admin
+            function TeacherAdmin() {
+                const [showAddEvent, setShowAddEvent] = useState(false);
+                const [formData, setFormData] = useState({
+                    title: '',
+                    description: '',
+                    startTime: '',
+                    endTime: '',
+                    type: 'meeting',
+                    organizer: '',
+                    location: ''
+                });
+
+                const handleLogout = () => {
+                    setIsLoggedIn(false);
+                    setCurrentPage('home');
+                };
+
+                const addEvent = (e) => {
+                    e.preventDefault();
+                    const newEvent = StaticEventStorage.addEvent({
+                        ...formData,
+                        startTime: new Date(formData.startTime),
+                        endTime: new Date(formData.endTime)
+                    });
+                    setEvents(StaticEventStorage.getAllEvents());
+                    setFormData({
+                        title: '',
+                        description: '',
+                        startTime: '',
+                        endTime: '',
+                        type: 'meeting',
+                        organizer: '',
+                        location: ''
+                    });
+                    setShowAddEvent(false);
+                };
+
+                const deleteEvent = (id) => {
+                    StaticEventStorage.deleteEvent(id);
+                    setEvents(StaticEventStorage.getAllEvents());
+                };
+
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-white shadow">
+                            <div className="max-w-7xl mx-auto px-4 py-6">
+                                <div className="flex justify-between items-center">
+                                    <h1 className="text-3xl font-bold text-blue-900">Teacher Admin Panel</h1>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <div className="max-w-7xl mx-auto px-4 py-8">
+                            <div className="grid gap-8">
+                                <div className="bg-white rounded-lg shadow p-6">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <h2 className="text-xl font-bold">Event Management</h2>
+                                        <button
+                                            onClick={() => setShowAddEvent(!showAddEvent)}
+                                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                        >
+                                            {showAddEvent ? 'Cancel' : 'Add Event'}
+                                        </button>
+                                    </div>
+
+                                    {showAddEvent && (
+                                        <form onSubmit={addEvent} className="grid md:grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded">
+                                            <input
+                                                type="text"
+                                                placeholder="Event Title"
+                                                value={formData.title}
+                                                onChange={(e) => setFormData({...formData, title: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                                required
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Organizer"
+                                                value={formData.organizer}
+                                                onChange={(e) => setFormData({...formData, organizer: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                            />
+                                            <input
+                                                type="datetime-local"
+                                                value={formData.startTime}
+                                                onChange={(e) => setFormData({...formData, startTime: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                                required
+                                            />
+                                            <input
+                                                type="datetime-local"
+                                                value={formData.endTime}
+                                                onChange={(e) => setFormData({...formData, endTime: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                                required
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Location"
+                                                value={formData.location}
+                                                onChange={(e) => setFormData({...formData, location: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                            />
+                                            <select
+                                                value={formData.type}
+                                                onChange={(e) => setFormData({...formData, type: e.target.value})}
+                                                className="px-3 py-2 border rounded"
+                                            >
+                                                <option value="meeting">Meeting</option>
+                                                <option value="competition">Competition</option>
+                                                <option value="deadline">Deadline</option>
+                                                <option value="social">Social</option>
+                                            </select>
+                                            <textarea
+                                                placeholder="Event Description"
+                                                value={formData.description}
+                                                onChange={(e) => setFormData({...formData, description: e.target.value})}
+                                                className="px-3 py-2 border rounded md:col-span-2"
+                                                rows="3"
+                                                required
+                                            />
+                                            <button
+                                                type="submit"
+                                                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 md:col-span-2"
+                                            >
+                                                Add Event
+                                            </button>
+                                        </form>
+                                    )}
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow p-6">
+                                    <h2 className="text-xl font-bold mb-4">Manage Events</h2>
+                                    <div className="space-y-4">
+                                        {events.map(event => (
+                                            <div key={event.id} className="border rounded p-4 flex justify-between items-start">
+                                                <div>
+                                                    <h3 className="font-semibold">{event.title}</h3>
+                                                    <p className="text-gray-600">{event.description}</p>
+                                                    <p className="text-sm text-gray-500">
+                                                        {new Date(event.startTime).toLocaleString()}
+                                                    </p>
+                                                    {event.location && (
+                                                        <p className="text-sm text-gray-500">📍 {event.location}</p>
+                                                    )}
+                                                </div>
+                                                <button
+                                                    onClick={() => deleteEvent(event.id)}
+                                                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm"
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            // Home Component with Current Beautiful Design
+            function Home() {
+                const [showSupportPopup, setShowSupportPopup] = useState(false);
+
+                const handleSupportClick = () => {
+                    setShowSupportPopup(true);
+                };
+
+                return (
+                    <div className="min-h-screen bg-gray-50">
+                        <header className="bg-white shadow">
+                            <div className="max-w-7xl mx-auto px-4 py-6">
+                                <div className="flex justify-between items-center">
+                                    <h1 className="text-3xl font-bold text-blue-900">Wayzata DECA</h1>
+                                    <nav className="space-x-4">
+                                        <button
+                                            onClick={() => setCurrentPage('home')}
+                                            className="text-blue-600 hover:text-blue-800"
+                                        >
+                                            Home
+                                        </button>
+                                        <button
+                                            onClick={() => setCurrentPage('teacher-login')}
+                                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                        >
+                                            Teacher Portal
+                                        </button>
+                                    </nav>
+                                </div>
+                            </div>
+                        </header>
+
+                        <main className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+                            {/* Header Section with Background Images */}
+                            <div className="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-600 text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-96">
+                                {/* Overlay gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-blue-800/30 to-blue-600/40"></div>
+                                
+                                {/* Trophy decorations */}
+                                <div className="absolute top-4 right-8 text-yellow-400 opacity-20 z-10">
+                                    <i className="ri-trophy-fill text-5xl"></i>
+                                </div>
+                                <div className="absolute bottom-4 left-8 text-yellow-400 opacity-20 z-10">
+                                    <i className="ri-medal-line text-4xl"></i>
+                                </div>
+                                
+                                <div className="relative z-20 text-center flex flex-col justify-center min-h-80">
+                                    <div className="flex flex-col items-center mb-6">
+                                        <div className="bg-yellow-400 bg-opacity-20 p-4 rounded-full mb-4">
+                                            <i className="ri-home-4-line text-5xl text-yellow-400"></i>
+                                        </div>
+                                        <div>
+                                            <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
+                                                Welcome to 
+                                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-300">
+                                                    Wayzata DECA
+                                                </span>
+                                            </h1>
+                                            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full mx-auto"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed">
+                                        🚀 Your gateway to <span className="text-yellow-400 font-semibold">business excellence</span>, 
+                                        <span className="text-yellow-400 font-semibold"> leadership development</span>, and 
+                                        <span className="text-yellow-400 font-semibold"> competitive success</span> 🏆
+                                    </p>
+                                    
+                                    {/* Social Media Links */}
+                                    <div className="flex justify-center gap-4 mb-6">
+                                        <a 
+                                            href="https://www.instagram.com/wayzatadeca/" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                                            aria-label="Follow us on Instagram"
+                                        >
+                                            <i className="ri-instagram-line text-2xl text-white"></i>
+                                        </a>
+                                        <a 
+                                            href="https://www.facebook.com/wayzata.deca.16/" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                                            aria-label="Follow us on Facebook"
+                                        >
+                                            <i className="ri-facebook-line text-2xl text-white"></i>
+                                        </a>
+                                    </div>
+                                    
+                                    <div className="mt-6 flex flex-wrap gap-3 justify-center">
+                                        <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                                            🎯 350 Active Members
+                                        </div>
+                                        <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                                            🏆 250 State Qualifiers
+                                        </div>
+                                        <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                                            🥇 58 ICDC Qualifiers
+                                        </div>
+                                        <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                                            📈 Premier Minnesota Chapter
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Support DECA Button */}
+                            <div className="text-center">
+                                <button 
+                                    onClick={handleSupportClick}
+                                    className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-300 hover:to-orange-300 text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                                >
+                                    <i className="ri-heart-line mr-2"></i>
+                                    Support DECA
+                                    <i className="ri-heart-line ml-2"></i>
+                                </button>
+                            </div>
+
+                            {/* About Wayzata High School */}
+                            <div className="bg-white rounded-lg shadow-lg p-6">
+                                <h2 className="text-2xl font-bold text-blue-900 mb-4 flex items-center">
+                                    <i className="ri-school-line mr-3 text-blue-600"></i>
+                                    About Wayzata High School
+                                </h2>
+                                <div className="text-gray-700 space-y-3">
+                                    <p>
+                                        Wayzata High School is located in Plymouth, Minnesota, and serves the Wayzata School District. 
+                                        Known for academic excellence and outstanding extracurricular programs, Wayzata High School 
+                                        has been consistently ranked among the top high schools in Minnesota.
+                                    </p>
+                                    <p>
+                                        Our school is home to over 3,000 students and offers a comprehensive curriculum with 
+                                        Advanced Placement courses, International Baccalaureate programs, and numerous 
+                                        career-focused pathways including business and entrepreneurship.
+                                    </p>
+                                    <p>
+                                        <strong>Address:</strong> 4955 Peony Lane N, Plymouth, MN 55446<br />
+                                        <strong>Established:</strong> 1997<br />
+                                        <strong>Mascot:</strong> Trojans<br />
+                                        <strong>Colors:</strong> Navy Blue and Gold
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Quick Info Cards */}
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-l-blue-600">
+                                    <div className="flex items-start space-x-4">
+                                        <div className="bg-blue-600 bg-opacity-10 p-3 rounded-full">
+                                            <i className="ri-phone-line text-2xl text-blue-600"></i>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-blue-900 mb-2">Contact Information</h3>
+                                            <p className="text-gray-700 text-sm space-y-1">
+                                                <span className="block">📧 wayzatadeca@isd284.org</span>
+                                                <span className="block">📞 (952) 745-5000</span>
+                                                <span className="block">💻 Technology Support: Ansh Kesharwani</span>
+                                                <span className="block">📱 Keshaans000@isd284.com | 651-382-5377</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-l-yellow-400">
+                                    <div className="flex items-start space-x-4">
+                                        <div className="bg-yellow-400 bg-opacity-10 p-3 rounded-full">
+                                            <i className="ri-calendar-line text-2xl text-orange-500"></i>
+                                        </div>
+                                        <div>
+                                            <h3 className="font-semibold text-blue-900 mb-2">Meeting Times</h3>
+                                            <p className="text-gray-700 text-sm space-y-1">
+                                                <span className="block">🗓️ Weekly meetings</span>
+                                                <span className="block">⏰ Check calendar for specific times</span>
+                                                <span className="block">📍 Room assignments posted in announcements</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Upcoming Events */}
+                            <div className="bg-white rounded-lg shadow-lg p-6">
+                                <h2 className="text-2xl font-bold text-blue-900 mb-4">Upcoming Events</h2>
+                                <div className="space-y-4">
+                                    {events.slice(0, 5).map(event => (
+                                        <div key={event.id} className="border-l-4 border-blue-500 pl-4 py-2">
+                                            <h3 className="font-semibold text-gray-800">{event.title}</h3>
+                                            <p className="text-gray-600 text-sm">{event.description}</p>
+                                            <p className="text-sm text-gray-500">
+                                                📅 {new Date(event.startTime).toLocaleDateString()} at {new Date(event.startTime).toLocaleTimeString()}
+                                            </p>
+                                            {event.location && (
+                                                <p className="text-sm text-gray-500">📍 {event.location}</p>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Support DECA Popup */}
+                            {showSupportPopup && (
+                                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                                    <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4 relative">
+                                        <div className="text-center">
+                                            {/* Decorative elements */}
+                                            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
+                                                <i className="ri-heart-line text-3xl text-white"></i>
+                                            </div>
+                                            
+                                            {/* Hearts decoration */}
+                                            <div className="flex justify-center space-x-2 mb-4">
+                                                <i className="ri-heart-fill text-red-400 text-lg animate-pulse"></i>
+                                                <i className="ri-heart-fill text-pink-400 text-sm animate-pulse" style={{animationDelay: '0.2s'}}></i>
+                                                <i className="ri-heart-fill text-red-400 text-lg animate-pulse" style={{animationDelay: '0.4s'}}></i>
+                                            </div>
+
+                                            <h3 className="text-2xl font-bold text-blue-900 mb-4">Support DECA</h3>
+                                            
+                                            <div className="bg-gradient-to-r from-blue-50 to-yellow-50 p-4 rounded-lg mb-6">
+                                                <p className="text-gray-700 mb-3">
+                                                    Looking to support our DECA chapter? 
+                                                </p>
+                                                <p className="text-lg font-semibold text-blue-900">
+                                                    📍 Please check the sidebar and click "Support DECA"
+                                                </p>
+                                            </div>
+
+                                            <div className="text-sm text-gray-600 mb-6 space-y-1">
+                                                <p>✨ Sponsorship opportunities available</p>
+                                                <p>💝 Grants & donations welcome</p>
+                                                <p>🏆 Help students achieve their goals</p>
+                                            </div>
+
+                                            <button
+                                                onClick={() => setShowSupportPopup(false)}
+                                                className="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                                            >
+                                                Got it! 
+                                                <i className="ri-arrow-right-line ml-2"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </main>
+
+                        <footer className="bg-blue-900 text-white py-8 mt-16">
+                            <div className="max-w-7xl mx-auto px-4 text-center">
+                                <p>&copy; 2024 Wayzata DECA. All rights reserved.</p>
+                                <div className="mt-4 space-x-4">
+                                    <span>Follow us:</span>
+                                    <span>📱 Instagram: @wayzatadeca</span>
+                                    <span>📘 Facebook: wayzata.deca.16</span>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                );
+            }
+
+            // Router
+            if (currentPage === 'teacher-login') {
+                return <TeacherLogin />;
+            } else if (currentPage === 'teacher-admin' && isLoggedIn) {
+                return <TeacherAdmin />;
+            } else {
+                return <Home />;
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
