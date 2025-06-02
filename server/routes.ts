@@ -257,11 +257,11 @@ CONTACT_EMAIL=wayzata.deca@gmail.com
     try {
       const { username, password } = req.body;
       
-      if (!username || !password) {
-        return res.status(400).json({ message: "Username and password required" });
+      if (!password) {
+        return res.status(400).json({ message: "Password required" });
       }
 
-      const isValid = validateTeacherCredentials(username, password);
+      const isValid = validateTeacherCredentials(username || "teacher", password);
       
       if (isValid) {
         res.json({ success: true, message: "Login successful" });
