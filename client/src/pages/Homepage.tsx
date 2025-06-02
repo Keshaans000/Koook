@@ -16,12 +16,10 @@ const Homepage = () => {
   const [showSupportOptions, setShowSupportOptions] = useState(false);
   const { toast } = useToast();
 
+  const [showSupportPopup, setShowSupportPopup] = useState(false);
+
   const handleSupportClick = () => {
-    setShowSupportOptions(true);
-    toast({
-      title: "Support DECA",
-      description: "Wayzata DECA is a 501(c)(3) organization, meaning we are a non-profit organization. Your contributions may be tax-deductible.",
-    });
+    setShowSupportPopup(true);
   };
 
   return (
@@ -133,22 +131,7 @@ const Homepage = () => {
           <i className="ri-heart-line ml-2"></i>
         </Button>
         
-        {showSupportOptions && (
-          <div className="mt-4 flex justify-center gap-4">
-            <Button 
-              onClick={() => window.location.href = '/sponsorships'}
-              className="bg-[#003366] hover:bg-[#004080] text-white px-6 py-2"
-            >
-              Sponsorships
-            </Button>
-            <Button 
-              onClick={() => window.location.href = '/grants-donations'}
-              className="bg-[#2C7BE5] hover:bg-[#1E5BB8] text-white px-6 py-2"
-            >
-              Grants & Donations
-            </Button>
-          </div>
-        )}
+
       </div>
 
       {/* DECA Moments */}
@@ -300,6 +283,51 @@ const Homepage = () => {
         </Card>
       </div>
 
+      {/* Support DECA Popup */}
+      {showSupportPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4 relative">
+            <div className="text-center">
+              {/* Decorative elements */}
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-[#FFD700] to-[#FFA500] rounded-full flex items-center justify-center">
+                <i className="ri-heart-line text-3xl text-white"></i>
+              </div>
+              
+              {/* Hearts decoration */}
+              <div className="flex justify-center space-x-2 mb-4">
+                <i className="ri-heart-fill text-red-400 text-lg animate-pulse"></i>
+                <i className="ri-heart-fill text-pink-400 text-sm animate-pulse" style={{animationDelay: '0.2s'}}></i>
+                <i className="ri-heart-fill text-red-400 text-lg animate-pulse" style={{animationDelay: '0.4s'}}></i>
+              </div>
+
+              <h3 className="text-2xl font-bold text-[#003366] mb-4">Support DECA</h3>
+              
+              <div className="bg-gradient-to-r from-blue-50 to-yellow-50 p-4 rounded-lg mb-6">
+                <p className="text-gray-700 mb-3">
+                  Looking to support our DECA chapter? 
+                </p>
+                <p className="text-lg font-semibold text-[#003366]">
+                  📍 Please check the sidebar and click "Support DECA"
+                </p>
+              </div>
+
+              <div className="text-sm text-gray-600 mb-6 space-y-1">
+                <p>✨ Sponsorship opportunities available</p>
+                <p>💝 Grants & donations welcome</p>
+                <p>🏆 Help students achieve their goals</p>
+              </div>
+
+              <button
+                onClick={() => setShowSupportPopup(false)}
+                className="bg-gradient-to-r from-[#003366] to-[#2C7BE5] text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Got it! 
+                <i className="ri-arrow-right-line ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );
