@@ -6,7 +6,7 @@ import UpcomingEvents from "@/components/UpcomingEvents";
 import ResourcesCard from "@/components/ResourcesCard";
 import EventReminders from "@/components/EventReminders";
 import AnnouncementsBanner from "@/components/AnnouncementsBanner";
-import TeachersCorner from "@/components/TeachersCorner";
+
 import { StaticEventStorage, type StaticEvent } from "@/lib/staticEventStorage";
 
 export interface HomeProps {
@@ -228,7 +228,6 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
           <UpcomingEvents events={events} eventFilters={eventFilters} />
           
           <ResourcesCard />
-          <TeachersCorner />
           
           {/* Add extra padding at bottom on mobile for the navigation bar */}
           <div className="h-16 md:h-0 block md:hidden"></div>
