@@ -11,22 +11,22 @@
         .section.active { display: block; }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 min-h-screen">
     <!-- Header -->
-    <header class="bg-[#003366] text-white sticky top-0 z-50">
+    <header class="bg-[#003366] text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-3">
                     <h1 class="text-2xl font-bold">Wayzata DECA</h1>
-                    <span class="bg-yellow-400 text-[#003366] px-2 py-1 rounded text-sm font-medium">Go the Extra</span>
+                    <span class="bg-[#FFD700] text-[#003366] px-2 py-1 rounded text-sm font-semibold">Go the Extra</span>
                 </div>
                 <nav class="hidden md:flex space-x-6">
-                    <button onclick="showSection('home')" class="nav-btn hover:text-yellow-300">Home</button>
-                    <button onclick="showSection('sponsorships')" class="nav-btn hover:text-yellow-300">Sponsorships</button>
-                    <button onclick="showSection('grants')" class="nav-btn hover:text-yellow-300">Grants & Donations</button>
-                    <button onclick="showSection('admin')" class="nav-btn hover:text-yellow-300">Teacher Login</button>
+                    <button onclick="showSection('home')" class="hover:text-[#FFD700] transition-colors">Home</button>
+                    <button onclick="showSection('sponsorships')" class="hover:text-[#FFD700] transition-colors">Sponsorships</button>
+                    <button onclick="showSection('grants')" class="hover:text-[#FFD700] transition-colors">Grants & Donations</button>
+                    <button onclick="showSection('admin')" class="hover:text-[#FFD700] transition-colors">Teacher Login</button>
                 </nav>
-                <button onclick="toggleMobileMenu()" class="md:hidden text-white">
+                <button onclick="toggleMobileMenu()" class="md:hidden">
                     <span id="menu-icon">☰</span>
                 </button>
             </div>
@@ -44,21 +44,40 @@
     <section id="home" class="section active">
         <div class="max-w-7xl mx-auto p-6">
             <!-- Hero Section -->
-            <div class="bg-gradient-to-r from-[#003366] to-[#004488] text-white rounded-lg p-8 mb-8">
-                <h1 class="text-4xl font-bold mb-4">Welcome to Wayzata DECA</h1>
-                <p class="text-xl mb-6">Developing future business leaders through competitive events, community service, and professional development.</p>
-                <div class="flex flex-wrap gap-4">
-                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
-                        <h3 class="font-semibold mb-2">📚 Business Education</h3>
-                        <p class="text-sm">Hands-on learning in marketing, finance, hospitality, and entrepreneurship</p>
-                    </div>
-                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
-                        <h3 class="font-semibold mb-2">🏆 Competitions</h3>
-                        <p class="text-sm">Regional, state, and international business competitions</p>
-                    </div>
-                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
-                        <h3 class="font-semibold mb-2">🤝 Networking</h3>
-                        <p class="text-sm">Connect with business professionals and fellow students</p>
+            <div class="relative gradient-bg hero-pattern text-white rounded-2xl p-12 mb-8 overflow-hidden">
+                <div class="floating-shapes">
+                    <div class="shape shape-1 text-6xl">🏆</div>
+                    <div class="shape shape-2 text-4xl">💼</div>
+                    <div class="shape shape-3 text-5xl">📈</div>
+                </div>
+                <div class="relative z-10">
+                    <div class="max-w-4xl">
+                        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Welcome to
+                            <span class="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+                                Wayzata DECA
+                            </span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+                            Developing future business leaders through competitive events, community service, and professional development.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
+                                <div class="text-3xl mb-4">📚</div>
+                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Business Education</h3>
+                                <p class="text-blue-100 text-sm leading-relaxed">Hands-on learning in marketing, finance, hospitality, and entrepreneurship</p>
+                            </div>
+                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
+                                <div class="text-3xl mb-4">🏆</div>
+                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Competitions</h3>
+                                <p class="text-blue-100 text-sm leading-relaxed">Regional, state, and international business competitions</p>
+                            </div>
+                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
+                                <div class="text-3xl mb-4">🤝</div>
+                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Networking</h3>
+                                <p class="text-blue-100 text-sm leading-relaxed">Connect with business professionals and fellow students</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
