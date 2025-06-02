@@ -98,16 +98,24 @@ const Sidebar = ({ eventFilters, toggleFilter }: SidebarProps) => {
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <div className="ml-8 space-y-1 mt-1">
-                    <a href="./sponsorships.html">
-                      <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
+                    <Link href="/sponsorships">
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
+                        location === "/sponsorships" 
+                          ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}>
                         <span>Sponsorships</span>
                       </div>
-                    </a>
-                    <a href="./grants-donations.html">
-                      <div className="flex items-center space-x-3 px-3 py-2 rounded-lg text-sm hover:bg-gray-50 text-gray-600">
+                    </Link>
+                    <Link href="/grants-donations">
+                      <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
+                        location === "/grants-donations" 
+                          ? "bg-[#003366] bg-opacity-10 text-[#003366] font-medium" 
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}>
                         <span>Grants & Donations</span>
                       </div>
-                    </a>
+                    </Link>
                     <Link href="/judging">
                       <div className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-sm ${
                         location === "/judging" 

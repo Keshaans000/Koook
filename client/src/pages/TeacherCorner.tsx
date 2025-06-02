@@ -83,8 +83,17 @@ export default function TeacherCorner() {
     setShowForm(false);
     loadEvents();
     
-    // Show success message
-    alert("Event added successfully!");
+    // Show success message with better styling
+    const successDiv = document.createElement('div');
+    successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2';
+    successDiv.innerHTML = `
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      Event added successfully!
+    `;
+    document.body.appendChild(successDiv);
+    setTimeout(() => document.body.removeChild(successDiv), 3000);
   };
 
   const [deleteConfirm, setDeleteConfirm] = useState<{ show: boolean; eventId: number; eventTitle: string }>({ 
