@@ -24,7 +24,7 @@ export default function SimpleAdmin() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [loginForm, setLoginForm] = useState({ password: '' });
   const [showAddForm, setShowAddForm] = useState(false);
   
   const [eventForm, setEventForm] = useState<EventFormData>({
@@ -45,8 +45,8 @@ export default function SimpleAdmin() {
 
   // Login mutation
   const loginMutation = useMutation({
-    mutationFn: async (credentials: { username: string; password: string }) => {
-      return apiRequest("POST", "/api/admin/login", credentials);
+    mutationFn: async (credentials: { password: string }) => {
+      return apiRequest("POST", "/api/admin/login", { username: "teacher", ...credentials });
     },
     onSuccess: () => {
       setIsLoggedIn(true);
@@ -121,19 +121,10 @@ export default function SimpleAdmin() {
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
                 <Input
-                  type="text"
-                  placeholder="Username"
-                  value={loginForm.username}
-                  onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Teacher Password"
                   value={loginForm.password}
-                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                  onChange={(e) => setLoginForm({ password: e.target.value })}
                   required
                 />
               </div>

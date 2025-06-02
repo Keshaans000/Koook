@@ -9,15 +9,8 @@ const TEACHER_CREDENTIALS = {
 };
 
 export function validateTeacherCredentials(username: string, password: string): boolean {
-  if (username !== TEACHER_CREDENTIALS.username) {
-    return false;
-  }
-  
-  try {
-    return bcrypt.compareSync(password, TEACHER_CREDENTIALS.passwordHash);
-  } catch (error) {
-    return false;
-  }
+  // Simple password-only authentication - password is "wayzata2024"
+  return password === "wayzata2024";
 }
 
 export function hashPassword(password: string): string {
