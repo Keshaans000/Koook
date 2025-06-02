@@ -2,6 +2,9 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { sendContactEmail } from "./emailService";
+import archiver from "archiver";
+import fs from "fs";
+import path from "path";
 import { z } from "zod";
 import { insertEventSchema } from "@shared/schema";
 
@@ -144,6 +147,48 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Contact form error:", error);
       res.status(400).json({ success: false, message: "Invalid form data." });
+    }
+  });
+
+  // Private download endpoint for development use
+  app.get("/api/private-download-website", async (req, res) => {
+    try {
+      const archive = archiver('zip', {
+        zlib: { level: 9 }
+      });
+
+      res.attachment('wayzata-deca-website.zip');
+      archive.pipe(res);
+
+      // Add all source files
+      archive.directory('client/', 'client/');
+      archive.directory('server/', 'server/');
+      archive.directory('shared/', 'shared/');
+      
+      if (fs.existsSync('attached_assets/')) {
+        archive.directory('attached_assets/', 'attached_assets/');
+      }
+      
+      // Add config files
+      const files = ['package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'tailwind.config.ts', 'postcss.config.js', 'drizzle.config.ts', 'components.json', '.replit'];
+      for (const file of files) {
+        if (fs.existsSync(file)) {
+          archive.file(file, { name: file });
+        }
+      }
+      
+      const readme = `# Wayzata DECA Website Files
+
+Complete website export generated on ${new Date().toISOString()}
+
+Setup: npm install && npm run dev
+`;
+      archive.append(readme, { name: 'README.md' });
+      archive.finalize();
+      
+    } catch (error) {
+      console.error("Download error:", error);
+      res.status(500).json({ error: "Download failed" });
     }
   });
 
