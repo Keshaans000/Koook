@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wayzata DECA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         .hidden { display: none; }
         .section { display: none; }
         .section.active { display: block; }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-[#003366] text-white sticky top-0 z-50 shadow-lg">
+    <header class="bg-[#003366] text-white sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-4">
                     <h1 class="text-2xl font-bold">Wayzata DECA</h1>
-                    <span class="bg-[#FFD700] text-[#003366] px-2 py-1 rounded text-sm font-semibold">Go the Extra</span>
+                    <span class="bg-yellow-400 text-[#003366] px-2 py-1 rounded text-sm font-medium">Go the Extra</span>
                 </div>
                 <nav class="hidden md:flex space-x-6">
-                    <button onclick="showSection('home')" class="hover:text-[#FFD700] transition-colors">Home</button>
-                    <button onclick="showSection('sponsorships')" class="hover:text-[#FFD700] transition-colors">Sponsorships</button>
-                    <button onclick="showSection('grants')" class="hover:text-[#FFD700] transition-colors">Grants & Donations</button>
-                    <button onclick="showSection('admin')" class="hover:text-[#FFD700] transition-colors">Teacher Login</button>
+                    <button onclick="showSection('home')" class="nav-btn hover:text-yellow-300">Home</button>
+                    <button onclick="showSection('sponsorships')" class="nav-btn hover:text-yellow-300">Sponsorships</button>
+                    <button onclick="showSection('grants')" class="nav-btn hover:text-yellow-300">Grants & Donations</button>
+                    <button onclick="showSection('admin')" class="nav-btn hover:text-yellow-300">Teacher Login</button>
                 </nav>
-                <button onclick="toggleMobileMenu()" class="md:hidden">
+                <button onclick="toggleMobileMenu()" class="md:hidden text-white">
                     <span id="menu-icon">☰</span>
                 </button>
             </div>
@@ -43,176 +42,50 @@
 
     <!-- HOME SECTION -->
     <section id="home" class="section active">
-        <div class="space-y-6 p-6">
-            <!-- Header Section with Background Images -->
-            <div class="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-[600px]">
-                <!-- Background Images -->
-                <div class="absolute inset-0 opacity-40">
-                    <div class="grid grid-cols-5 h-full">
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80" alt="" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
-                        </div>
-                        <div class="relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="" class="w-full h-full object-cover" />
-                        </div>
+        <div class="max-w-7xl mx-auto p-6">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-[#003366] to-[#004488] text-white rounded-lg p-8 mb-8">
+                <h1 class="text-4xl font-bold mb-4">Welcome to Wayzata DECA</h1>
+                <p class="text-xl mb-6">Developing future business leaders through competitive events, community service, and professional development.</p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                        <h3 class="font-semibold mb-2">📚 Business Education</h3>
+                        <p class="text-sm">Hands-on learning in marketing, finance, hospitality, and entrepreneurship</p>
                     </div>
-                </div>
-                
-                <!-- Overlay gradient -->
-                <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/40 via-[#004080]/30 to-[#2C7BE5]/40"></div>
-                
-                <!-- Trophy decorations -->
-                <div class="absolute top-4 right-8 text-[#FFD700] opacity-20 z-10">
-                    <i class="ri-trophy-fill text-5xl"></i>
-                </div>
-                <div class="absolute bottom-4 left-8 text-[#FFD700] opacity-20 z-10">
-                    <i class="ri-medal-line text-4xl"></i>
-                </div>
-                
-                <div class="relative z-20 text-center flex flex-col justify-center min-h-[550px]">
-                    <div class="flex flex-col items-center mb-6">
-                        <div class="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mb-4">
-                            <i class="ri-home-4-line text-5xl text-[#FFD700]"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-4xl md:text-5xl font-extrabold mb-2">
-                                Welcome to 
-                                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFC000]">
-                                    Wayzata DECA
-                                </span>
-                            </h1>
-                            <div class="w-32 h-1 bg-gradient-to-r from-[#FFD700] to-[#FFC000] rounded-full mx-auto"></div>
-                        </div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                        <h3 class="font-semibold mb-2">🏆 Competitions</h3>
+                        <p class="text-sm">Regional, state, and international business competitions</p>
                     </div>
-                    
-                    <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed">
-                        🚀 Your gateway to <span class="text-[#FFD700] font-semibold">business excellence</span>, 
-                        <span class="text-[#FFD700] font-semibold"> leadership development</span>, and 
-                        <span class="text-[#FFD700] font-semibold"> competitive success</span> 🏆
-                    </p>
-                    
-                    <!-- Social Media Links -->
-                    <div class="flex justify-center gap-4 mb-6">
-                        <a 
-                            href="https://www.instagram.com/wayzatadeca/" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
-                            aria-label="Follow us on Instagram"
-                        >
-                            <i class="ri-instagram-line text-2xl text-white"></i>
-                        </a>
-                        <a 
-                            href="https://www.facebook.com/wayzata.deca.16/" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
-                            aria-label="Follow us on Facebook"
-                        >
-                            <i class="ri-facebook-line text-2xl text-white"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="mt-6 flex flex-wrap gap-3 justify-center">
-                        <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                            🎯 350 Active Members
-                        </div>
-                        <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                            🏆 250 State Qualifiers
-                        </div>
-                        <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                            🥇 58 ICDC Qualifiers
-                        </div>
-                        <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                            📈 Premier Minnesota Chapter
-                        </div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                        <h3 class="font-semibold mb-2">🤝 Networking</h3>
+                        <p class="text-sm">Connect with business professionals and fellow students</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Support DECA Button -->
-            <div class="text-center">
-                <button 
-                    onclick="showSupportOptions()"
-                    class="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFC000] hover:to-[#FF8C00] text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
-                >
-                    <i class="ri-heart-line mr-2"></i>
-                    Support DECA
-                    <i class="ri-heart-line ml-2"></i>
-                </button>
-                
-                <div id="support-options" class="hidden mt-4 flex justify-center gap-4">
-                    <button 
-                        onclick="showSection('sponsorships')"
-                        class="bg-[#003366] hover:bg-[#004080] text-white px-6 py-2 rounded-lg transition-colors"
-                    >
-                        Sponsorships
-                    </button>
-                    <button 
-                        onclick="showSection('grants')"
-                        class="bg-[#2C7BE5] hover:bg-[#1E5BB8] text-white px-6 py-2 rounded-lg transition-colors"
-                    >
-                        Grants & Donations
+            <!-- Events Calendar -->
+            <div class="bg-white rounded-lg shadow-sm border p-6 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-[#003366]">Upcoming Events</h2>
+                    <button onclick="showSection('admin')" class="bg-[#003366] text-white px-4 py-2 rounded hover:bg-[#004488]">
+                        Teacher Login
                     </button>
                 </div>
-            </div>
-
-            <!-- Key Features Grid -->
-            <div class="grid md:grid-cols-3 gap-6 mt-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-[#FFD700]">
-                    <div class="text-center mb-4">
-                        <i class="ri-lightbulb-line text-4xl text-[#FFD700] mb-2"></i>
-                        <h3 class="text-xl font-bold text-[#003366]">Innovation</h3>
-                    </div>
-                    <p class="text-gray-600 text-center">Developing creative solutions and entrepreneurial thinking for tomorrow's business challenges.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-[#2C7BE5]">
-                    <div class="text-center mb-4">
-                        <i class="ri-team-line text-4xl text-[#2C7BE5] mb-2"></i>
-                        <h3 class="text-xl font-bold text-[#003366]">Leadership</h3>
-                    </div>
-                    <p class="text-gray-600 text-center">Building strong leaders through hands-on experience and professional development opportunities.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-[#FFD700]">
-                    <div class="text-center mb-4">
-                        <i class="ri-trophy-line text-4xl text-[#FFD700] mb-2"></i>
-                        <h3 class="text-xl font-bold text-[#003366]">Excellence</h3>
-                    </div>
-                    <p class="text-gray-600 text-center">Striving for the highest standards in competition, academics, and community service.</p>
+                <div id="events-container" class="space-y-4">
+                    <!-- Events will be loaded here -->
                 </div>
             </div>
 
-            <!-- Recent Achievements -->
-            <div class="bg-gradient-to-r from-[#003366] to-[#2C7BE5] text-white p-8 rounded-xl shadow-lg">
-                <h2 class="text-3xl font-bold text-center mb-6">🏆 Recent Achievements</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="text-center bg-white bg-opacity-10 p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-[#FFD700]">1st Place</div>
-                        <div class="text-sm">State Competition</div>
-                    </div>
-                    <div class="text-center bg-white bg-opacity-10 p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-[#FFD700]">58</div>
-                        <div class="text-sm">ICDC Qualifiers</div>
-                    </div>
-                    <div class="text-center bg-white bg-opacity-10 p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-[#FFD700]">250</div>
-                        <div class="text-sm">State Qualifiers</div>
-                    </div>
-                    <div class="text-center bg-white bg-opacity-10 p-4 rounded-lg">
-                        <div class="text-2xl font-bold text-[#FFD700]">Premier</div>
-                        <div class="text-sm">Chapter Status</div>
-                    </div>
+            <!-- Social Media -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-xl font-semibold text-[#003366] mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/wayzatadeca" target="_blank" class="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">
+                        📸 Instagram @wayzatadeca
+                    </a>
+                    <a href="https://www.facebook.com/wayzata.deca.16" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        📘 Facebook
+                    </a>
                 </div>
             </div>
         </div>
@@ -221,143 +94,188 @@
     <!-- SPONSORSHIPS SECTION -->
     <section id="sponsorships" class="section">
         <div class="max-w-4xl mx-auto p-6">
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold text-[#003366] mb-4">Partner with Wayzata DECA</h1>
-                    <p class="text-xl text-gray-600">Join us in developing the next generation of business leaders</p>
+            <!-- 501(c)(3) Notice -->
+            <div class="bg-[#003366] text-white p-4 rounded-lg mb-6">
+                <div class="flex items-center">
+                    <span class="text-xl mr-3">ℹ️</span>
+                    <p class="font-medium">
+                        Wayzata DECA is a 501(c)(3) organization. Your contributions may be tax-deductible.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-[#003366] mb-4">Sponsorships</h1>
+                <p class="text-gray-600 text-lg">
+                    Partner with Wayzata DECA to support student development and business education.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-[#003366] mb-4">Why Sponsor DECA?</h2>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span>
+                            Support future business leaders and entrepreneurs
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span>
+                            Gain visibility within the business education community
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span>
+                            Connect with motivated students for internships and recruitment
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-600 mr-2">✓</span>
+                            Demonstrate corporate social responsibility
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-gradient-to-br from-[#003366] to-[#2C7BE5] text-white p-6 rounded-xl">
-                        <h3 class="text-2xl font-bold mb-4">Why Sponsor Us?</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-center"><i class="ri-check-line text-[#FFD700] mr-2"></i>Reach 350+ students and families</li>
-                            <li class="flex items-center"><i class="ri-check-line text-[#FFD700] mr-2"></i>Support future business leaders</li>
-                            <li class="flex items-center"><i class="ri-check-line text-[#FFD700] mr-2"></i>Tax-deductible contributions</li>
-                            <li class="flex items-center"><i class="ri-check-line text-[#FFD700] mr-2"></i>Brand visibility at events</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-xl">
-                        <h3 class="text-2xl font-bold text-[#003366] mb-4">Sponsorship Benefits</h3>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-center"><i class="ri-star-line text-[#FFD700] mr-2"></i>Website recognition</li>
-                            <li class="flex items-center"><i class="ri-star-line text-[#FFD700] mr-2"></i>Social media features</li>
-                            <li class="flex items-center"><i class="ri-star-line text-[#FFD700] mr-2"></i>Event signage</li>
-                            <li class="flex items-center"><i class="ri-star-line text-[#FFD700] mr-2"></i>Networking opportunities</li>
-                        </ul>
+                <div class="bg-white rounded-lg shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-[#003366] mb-4">Sponsorship Levels</h2>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h3 class="font-medium text-gray-800">Gold Sponsor - $1,000+</h3>
+                            <p class="text-sm text-gray-600">Logo on materials, event recognition</p>
+                        </div>
+                        <div class="border-l-4 border-gray-400 pl-4">
+                            <h3 class="font-medium text-gray-800">Silver Sponsor - $500+</h3>
+                            <p class="text-sm text-gray-600">Name recognition, event mentions</p>
+                        </div>
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h3 class="font-medium text-gray-800">Bronze Sponsor - $250+</h3>
+                            <p class="text-sm text-gray-600">Recognition in materials</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <form action="https://formsubmit.co/wayzata.deca@gmail.com" method="POST" class="space-y-6">
-                    <input type="hidden" name="_subject" value="Sponsorship Inquiry - Wayzata DECA">
-                    <input type="hidden" name="form_type" value="sponsorship">
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-xl font-semibold text-[#003366] mb-4">Sponsorship Inquiry</h3>
+                <form action="https://formsubmit.co/fd1929ef-7f8d-4551-ae99-45aa464c1c33" method="POST" class="space-y-4">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://wayzatadeca.org">
+                    <input type="hidden" name="_subject" value="New Sponsorship Inquiry">
+                    <input type="hidden" name="formType" value="sponsorship">
+
+                    <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Organization Name *</label>
-                            <input type="text" name="organization_name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Organization Name</label>
+                            <input type="text" name="organizationName" required class="w-full p-3 border rounded-md">
                         </div>
-                        
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Industry Type *</label>
-                            <input type="text" name="industry_type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Contact Person</label>
+                            <input type="text" name="fullName" required class="w-full p-3 border rounded-md">
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Name *</label>
-                            <input type="text" name="contact_name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full p-3 border rounded-md">
                         </div>
-                        
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                            <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Phone</label>
+                            <input type="tel" name="phone" class="w-full p-3 border rounded-md">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Sponsorship Interest *</label>
-                        <select name="sponsorship_interest" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                        <label class="block text-sm font-medium mb-2">Sponsorship Level Interest</label>
+                        <select name="interest" required class="w-full p-3 border rounded-md">
                             <option value="">Select sponsorship level</option>
-                            <option value="bronze">Bronze Sponsor ($500-$999)</option>
-                            <option value="silver">Silver Sponsor ($1,000-$2,499)</option>
-                            <option value="gold">Gold Sponsor ($2,500-$4,999)</option>
-                            <option value="platinum">Platinum Sponsor ($5,000+)</option>
-                            <option value="custom">Custom Sponsorship</option>
+                            <option value="gold-sponsor">Gold Sponsor ($1,000+)</option>
+                            <option value="silver-sponsor">Silver Sponsor ($500+)</option>
+                            <option value="bronze-sponsor">Bronze Sponsor ($250+)</option>
+                            <option value="general-inquiry">General Inquiry</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
-                        <textarea name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent" placeholder="Tell us about your sponsorship goals..."></textarea>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea name="message" rows="4" class="w-full p-3 border rounded-md" placeholder="Tell us about your sponsorship interests..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFC000] hover:to-[#FF8C00] text-black font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        <i class="ri-send-plane-line mr-2"></i>
-                        Submit Sponsorship Inquiry
+                    <button type="submit" class="w-full bg-[#003366] text-white py-3 px-6 rounded-md hover:bg-[#004488] transition-colors">
+                        Send Sponsorship Inquiry
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- GRANTS & DONATIONS SECTION -->
+    <!-- GRANTS SECTION -->
     <section id="grants" class="section">
         <div class="max-w-4xl mx-auto p-6">
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold text-[#003366] mb-4">Support Our Mission</h1>
-                    <p class="text-xl text-gray-600">Help us provide opportunities for all students to succeed</p>
+            <div class="bg-[#003366] text-white p-4 rounded-lg mb-6">
+                <div class="flex items-center">
+                    <span class="text-xl mr-3">ℹ️</span>
+                    <p class="font-medium">
+                        Wayzata DECA is a 501(c)(3) organization. Your donations may be tax-deductible.
+                    </p>
                 </div>
+            </div>
 
-                <div class="bg-gradient-to-r from-[#2C7BE5] to-[#003366] text-white p-6 rounded-xl mb-8">
-                    <h3 class="text-2xl font-bold mb-4">📋 501(c)(3) Non-Profit Organization</h3>
-                    <p class="text-lg">Wayzata DECA is a registered non-profit organization. Your contributions are tax-deductible and directly support student scholarships, competition fees, and educational resources.</p>
-                </div>
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-[#003366] mb-4">Grants & Donations</h1>
+                <p class="text-gray-600 text-lg">
+                    Support Wayzata DECA students through grants and donations that make a lasting impact.
+                </p>
+            </div>
 
-                <form action="https://formsubmit.co/wayzata.deca@gmail.com" method="POST" class="space-y-6">
-                    <input type="hidden" name="_subject" value="Grant/Donation Inquiry - Wayzata DECA">
-                    <input type="hidden" name="form_type" value="grants">
-                    
-                    <div class="grid md:grid-cols-2 gap-6">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-xl font-semibold text-[#003366] mb-4">Grant & Donation Inquiry</h3>
+                <form action="https://formsubmit.co/fd1929ef-7f8d-4551-ae99-45aa464c1c33" method="POST" class="space-y-4">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://wayzatadeca.org">
+                    <input type="hidden" name="_subject" value="New Grant/Donation Inquiry">
+                    <input type="hidden" name="formType" value="grants">
+
+                    <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                            <input type="text" name="full_name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Organization/Individual Name</label>
+                            <input type="text" name="organizationName" required class="w-full p-3 border rounded-md">
                         </div>
-                        
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                            <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
+                            <label class="block text-sm font-medium mb-2">Contact Person</label>
+                            <input type="text" name="fullName" required class="w-full p-3 border rounded-md">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full p-3 border rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Phone</label>
+                            <input type="tel" name="phone" class="w-full p-3 border rounded-md">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Organization (if applicable)</label>
-                        <input type="text" name="organization" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Contribution Type *</label>
-                        <select name="contribution_type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                            <option value="">Select contribution type</option>
-                            <option value="general_donation">General Donation</option>
-                            <option value="student_scholarship">Student Scholarship Fund</option>
-                            <option value="competition_fees">Competition Fee Support</option>
-                            <option value="equipment_resources">Equipment & Resources</option>
-                            <option value="grant_opportunity">Grant Opportunity</option>
+                        <label class="block text-sm font-medium mb-2">Type of Support</label>
+                        <select name="interest" required class="w-full p-3 border rounded-md">
+                            <option value="">Select support type</option>
+                            <option value="educational-grant">Educational Grant</option>
+                            <option value="competition-grant">Competition Grant</option>
+                            <option value="scholarship-fund">Scholarship Fund</option>
+                            <option value="general-donation">General Donation</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
-                        <textarea name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent" placeholder="Please describe your contribution or grant opportunity..."></textarea>
+                        <label class="block text-sm font-medium mb-2">Message</label>
+                        <textarea name="message" rows="4" class="w-full p-3 border rounded-md" placeholder="Tell us about your grant or donation interests..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-[#2C7BE5] to-[#003366] hover:from-[#1E5BB8] hover:to-[#004080] text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                        <i class="ri-heart-line mr-2"></i>
-                        Submit Contribution Inquiry
+                    <button type="submit" class="w-full bg-[#003366] text-white py-3 px-6 rounded-md hover:bg-[#004488] transition-colors">
+                        Send Grant/Donation Inquiry
                     </button>
                 </form>
             </div>
@@ -366,107 +284,141 @@
 
     <!-- ADMIN SECTION -->
     <section id="admin" class="section">
-        <div class="max-w-4xl mx-auto p-6">
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <!-- Login Form -->
-                <div id="login-form">
-                    <div class="text-center mb-8">
-                        <h1 class="text-3xl font-bold text-[#003366] mb-4">Teacher Login</h1>
-                        <p class="text-gray-600">Enter password to access event management</p>
+        <div id="admin-login" class="min-h-screen flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
+                <div class="text-center mb-6">
+                    <h1 class="text-2xl font-bold text-[#003366]">Teacher Admin</h1>
+                    <p class="text-gray-600">Sign in to manage DECA events</p>
+                </div>
+                <form id="login-form" class="space-y-4">
+                    <div>
+                        <input
+                            type="password"
+                            id="admin-password"
+                            placeholder="Teacher Password"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
                     </div>
-                    
-                    <div class="max-w-md mx-auto">
-                        <div class="mb-6">
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                            <input type="password" id="admin-password" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                        </div>
-                        <button onclick="loginAdmin()" class="w-full bg-[#003366] hover:bg-[#004080] text-white font-bold py-3 px-6 rounded-lg transition-colors">
-                            <i class="ri-login-box-line mr-2"></i>
-                            Login
-                        </button>
-                    </div>
+                    <button type="submit" class="w-full bg-[#003366] text-white p-3 rounded-md hover:bg-[#004488] transition-colors">
+                        Sign In
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="admin-panel" class="hidden min-h-screen p-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-3xl font-bold text-[#003366]">Event Management</h1>
+                    <button id="admin-logout" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300">
+                        Logout
+                    </button>
                 </div>
 
-                <!-- Admin Panel -->
-                <div id="admin-panel" class="hidden">
-                    <div class="text-center mb-8">
-                        <h1 class="text-3xl font-bold text-[#003366] mb-4">Event Management</h1>
-                        <p class="text-gray-600">Add and manage DECA events</p>
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold">Add New Event</h2>
+                        <button id="toggle-event-form" class="bg-[#003366] text-white px-4 py-2 rounded-md hover:bg-[#004488]">
+                            Add Event
+                        </button>
                     </div>
-
-                    <!-- Add Event Form -->
-                    <div class="bg-gray-50 p-6 rounded-lg mb-8">
-                        <h3 class="text-xl font-bold text-[#003366] mb-4">Add New Event</h3>
-                        <form onsubmit="addEvent(event)" class="space-y-4">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Event Title *</label>
-                                    <input type="text" id="event-title" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Event Type *</label>
-                                    <select id="event-type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                                        <option value="competition">Competition</option>
-                                        <option value="meeting">Meeting</option>
-                                        <option value="deadline">Deadline</option>
-                                        <option value="social">Social</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Date & Time *</label>
-                                    <input type="datetime-local" id="event-datetime" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
-                                    <input type="text" id="event-location" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Description *</label>
-                                <textarea id="event-description" required rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2C7BE5] focus:border-transparent"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFC000] hover:to-[#FF8C00] text-black font-bold py-3 px-6 rounded-lg transition-all duration-300">
-                                <i class="ri-add-line mr-2"></i>
-                                Add Event
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Event List -->
-                    <div>
-                        <h3 class="text-xl font-bold text-[#003366] mb-4">Current Events</h3>
-                        <div id="admin-events-list" class="space-y-4">
-                            <!-- Events will be loaded here -->
+                    <form id="add-event-form" class="hidden space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Event Name</label>
+                            <input type="text" id="event-title" required class="w-full p-3 border rounded-md">
                         </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Date & Time</label>
+                            <input type="datetime-local" id="event-datetime" required class="w-full p-3 border rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Description</label>
+                            <textarea id="event-description" rows="3" class="w-full p-3 border rounded-md"></textarea>
+                        </div>
+                        <div class="flex gap-2">
+                            <button type="button" id="cancel-event-form" class="px-4 py-2 border rounded-md hover:bg-gray-50">Cancel</button>
+                            <button type="submit" class="bg-[#003366] text-white px-4 py-2 rounded-md hover:bg-[#004488]">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-xl font-semibold mb-4">Existing Events (<span id="admin-event-count">0</span>)</h2>
+                    <div id="admin-events-list" class="space-y-4">
+                        <!-- Events will be loaded here -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="bg-[#003366] text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2025 Wayzata DECA. All rights reserved.</p>
+            <p class="mt-2">Supporting student excellence in business education</p>
+        </div>
+    </footer>
+
     <script>
         // Static Event Storage
         class StaticEventStorage {
-            static getEvents() {
-                const events = localStorage.getItem('wayzata-deca-events');
-                return events ? JSON.parse(events) : [];
+            static getAllEvents() {
+                const stored = localStorage.getItem('deca-events');
+                if (stored) {
+                    return JSON.parse(stored).map(event => ({
+                        ...event,
+                        startTime: new Date(event.startTime),
+                        endTime: new Date(event.endTime),
+                        createdAt: new Date(event.createdAt)
+                    }));
+                }
+                
+                // Default events
+                const defaultEvents = [
+                    {
+                        id: 1,
+                        title: "District Competition Preparation",
+                        description: "Final preparation session for the upcoming district competition.",
+                        startTime: new Date("2025-06-10T09:00:00"),
+                        endTime: new Date("2025-06-10T15:00:00"),
+                        type: "competition",
+                        organizer: "Ms. Johnson",
+                        location: "Room 156",
+                        createdAt: new Date(),
+                        imageUrl: null,
+                        createdBy: null
+                    },
+                    {
+                        id: 2,
+                        title: "Be The One - DECA Kickoff",
+                        description: "Annual motivational kickoff event for all DECA members.",
+                        startTime: new Date("2025-06-15T14:00:00"),
+                        endTime: new Date("2025-06-15T16:00:00"),
+                        type: "meeting",
+                        organizer: "DECA Executive Team",
+                        location: "School Auditorium",
+                        createdAt: new Date(),
+                        imageUrl: null,
+                        createdBy: null
+                    }
+                ];
+                
+                this.saveEvents(defaultEvents);
+                return defaultEvents;
             }
 
             static saveEvents(events) {
-                localStorage.setItem('wayzata-deca-events', JSON.stringify(events));
+                localStorage.setItem('deca-events', JSON.stringify(events));
             }
 
             static addEvent(eventData) {
-                const events = this.getEvents();
+                const events = this.getAllEvents();
                 const newEvent = {
-                    id: Date.now(),
+                    id: Math.max(...events.map(e => e.id), 0) + 1,
                     ...eventData,
-                    createdAt: new Date().toISOString()
+                    createdAt: new Date()
                 };
                 events.push(newEvent);
                 this.saveEvents(events);
@@ -474,116 +426,180 @@
             }
 
             static deleteEvent(id) {
-                const events = this.getEvents();
-                const filteredEvents = events.filter(event => event.id !== id);
-                this.saveEvents(filteredEvents);
-                return true;
+                const events = this.getAllEvents();
+                const filtered = events.filter(event => event.id !== id);
+                this.saveEvents(filtered);
+                return filtered.length < events.length;
             }
         }
 
-        // Navigation functions
+        // Navigation
         function showSection(sectionName) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => section.classList.remove('active'));
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
             
+            // Show selected section
             document.getElementById(sectionName).classList.add('active');
             
+            // Close mobile menu
             document.getElementById('mobile-menu').classList.add('hidden');
-            document.getElementById('menu-icon').textContent = '☰';
+            
+            // Load events if showing home
+            if (sectionName === 'home') {
+                loadEvents();
+            }
+            
+            // Reset admin login if showing admin
+            if (sectionName === 'admin') {
+                document.getElementById('admin-login').style.display = 'flex';
+                document.getElementById('admin-panel').classList.add('hidden');
+            }
         }
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('menu-icon');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                icon.textContent = '✕';
-            } else {
-                menu.classList.add('hidden');
-                icon.textContent = '☰';
-            }
+            menu.classList.toggle('hidden');
         }
 
-        function showSupportOptions() {
-            const options = document.getElementById('support-options');
-            options.classList.toggle('hidden');
-        }
-
-        // Admin functions
-        function loginAdmin() {
-            const password = document.getElementById('admin-password').value;
-            if (password === 'wayzata2024') {
-                document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('admin-panel').classList.remove('hidden');
-                loadAdminEvents();
-            } else {
-                alert('Incorrect password');
-            }
-        }
-
-        function addEvent(event) {
-            event.preventDefault();
-            
-            const eventData = {
-                title: document.getElementById('event-title').value,
-                type: document.getElementById('event-type').value,
-                startTime: document.getElementById('event-datetime').value,
-                endTime: document.getElementById('event-datetime').value,
-                location: document.getElementById('event-location').value || null,
-                description: document.getElementById('event-description').value,
-                organizer: 'Wayzata DECA'
-            };
-
-            StaticEventStorage.addEvent(eventData);
-            showToast('Event added successfully!', 'success');
-            
-            // Clear form
-            document.getElementById('event-title').value = '';
-            document.getElementById('event-location').value = '';
-            document.getElementById('event-description').value = '';
-            
-            loadAdminEvents();
-        }
-
-        function loadAdminEvents() {
-            const events = StaticEventStorage.getEvents();
-            const container = document.getElementById('admin-events-list');
+        // Events display
+        function loadEvents() {
+            const events = StaticEventStorage.getAllEvents();
+            const container = document.getElementById('events-container');
             
             if (events.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center">No events yet. Add your first event above.</p>';
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">No events scheduled.</p>';
                 return;
             }
 
             container.innerHTML = events.map(event => `
-                <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
                     <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full ${getEventTypeColor(event.type)}">${event.type}</span>
-                                <h4 class="font-semibold text-gray-900">${event.title}</h4>
-                            </div>
-                            <p class="text-sm text-gray-600 mb-2">${event.description}</p>
-                            <div class="text-xs text-gray-500">
-                                <span>📅 ${new Date(event.startTime).toLocaleDateString()}</span>
-                                ${event.location ? `<span class="ml-4">📍 ${event.location}</span>` : ''}
-                            </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-[#003366]">${event.title}</h3>
+                            <p class="text-sm text-gray-600">
+                                ${event.startTime.toLocaleDateString()} at ${event.startTime.toLocaleTimeString()}
+                            </p>
+                            <p class="text-gray-700 mt-2">${event.description}</p>
+                            ${event.location ? `<p class="text-sm text-gray-500 mt-1">📍 ${event.location}</p>` : ''}
                         </div>
-                        <button onclick="deleteEvent(${event.id})" class="text-red-500 hover:text-red-700 p-1">
-                            <i class="ri-delete-bin-line"></i>
-                        </button>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">${event.type}</span>
                     </div>
                 </div>
             `).join('');
         }
 
-        function getEventTypeColor(type) {
-            const colors = {
-                competition: 'bg-red-100 text-red-800',
-                meeting: 'bg-blue-100 text-blue-800',
-                deadline: 'bg-yellow-100 text-yellow-800',
-                social: 'bg-green-100 text-green-800'
-            };
-            return colors[type] || 'bg-gray-100 text-gray-800';
+        // Admin functionality
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const password = document.getElementById('admin-password').value;
+            
+            if (password === 'wayzata2024') {
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').classList.remove('hidden');
+                loadAdminEvents();
+                showToast('Login successful!', 'success');
+            } else {
+                showToast('Invalid password. Please try again.', 'error');
+            }
+        });
+
+        document.getElementById('admin-logout').addEventListener('click', () => {
+            document.getElementById('admin-login').style.display = 'flex';
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('admin-password').value = '';
+        });
+
+        document.getElementById('toggle-event-form').addEventListener('click', () => {
+            const form = document.getElementById('add-event-form');
+            const button = document.getElementById('toggle-event-form');
+            
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                button.textContent = 'Cancel';
+            } else {
+                form.classList.add('hidden');
+                button.textContent = 'Add Event';
+            }
+        });
+
+        document.getElementById('cancel-event-form').addEventListener('click', () => {
+            document.getElementById('add-event-form').classList.add('hidden');
+            document.getElementById('toggle-event-form').textContent = 'Add Event';
+            document.getElementById('add-event-form').reset();
+        });
+
+        document.getElementById('add-event-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('event-title').value;
+            const datetime = document.getElementById('event-datetime').value;
+            const description = document.getElementById('event-description').value;
+
+            if (!title.trim() || !datetime) {
+                showToast('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            const eventDate = new Date(datetime);
+            if (eventDate < new Date()) {
+                showToast('Please select a future date and time.', 'error');
+                return;
+            }
+
+            const endTime = new Date(eventDate.getTime() + (2 * 60 * 60 * 1000));
+
+            StaticEventStorage.addEvent({
+                title: title,
+                description: description,
+                startTime: eventDate,
+                endTime: endTime,
+                type: "meeting",
+                organizer: "Teacher",
+                location: null,
+                imageUrl: null,
+                createdBy: null
+            });
+
+            showToast('Event created successfully!', 'success');
+            document.getElementById('add-event-form').reset();
+            document.getElementById('add-event-form').classList.add('hidden');
+            document.getElementById('toggle-event-form').textContent = 'Add Event';
+            loadAdminEvents();
+            loadEvents(); // Refresh home events too
+        });
+
+        function loadAdminEvents() {
+            const events = StaticEventStorage.getAllEvents();
+            document.getElementById('admin-event-count').textContent = events.length;
+            
+            const container = document.getElementById('admin-events-list');
+            
+            if (events.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">No events created yet.</p>';
+                return;
+            }
+
+            container.innerHTML = events.map(event => `
+                <div class="bg-gray-50 p-4 rounded-md">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-lg font-semibold text-[#003366]">${event.title}</h3>
+                            <p class="text-sm text-gray-600">
+                                ${event.startTime.toLocaleDateString()} at ${event.startTime.toLocaleTimeString()}
+                            </p>
+                            <p class="text-gray-700 mt-2">${event.description}</p>
+                        </div>
+                        <button
+                            onclick="deleteEvent(${event.id})"
+                            class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 text-sm"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function deleteEvent(id) {
@@ -591,6 +607,7 @@
                 StaticEventStorage.deleteEvent(id);
                 showToast('Event deleted successfully!', 'success');
                 loadAdminEvents();
+                loadEvents(); // Refresh home events too
             }
         }
 
@@ -611,6 +628,7 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            loadEvents();
             // Set default datetime to now
             const now = new Date();
             now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
