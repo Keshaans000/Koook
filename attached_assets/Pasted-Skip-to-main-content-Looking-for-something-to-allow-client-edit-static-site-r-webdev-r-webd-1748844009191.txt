@@ -1,0 +1,471 @@
+Skip to main content
+Looking for something to allow client edit static site. : r/webdev
+
+
+r/webdev
+Current search is within r/webdev
+
+Remove r/webdev filter and expand search to all of Reddit
+Search in r/webdev
+Advertise on Reddit
+
+Open chat
+Create
+Create post
+Open inbox
+
+User Avatar
+Expand user menu
+Skip to NavigationSkip to Right Sidebar
+
+Back
+r/webdev icon
+Go to webdev
+r/webdev
+•
+2 yr. ago
+earthhworms
+
+Looking for something to allow client edit static site.
+Hello everybody,
+
+I'm new to this field, so forgive me if this may be a redundant question.
+
+I am asking for some help looking for something that will allow my client to edit a website made with HTML and CSS. My case may be a little specific, but I'm looking for something that will allow the client to edit a particular tag from the HTML file directly.
+
+For example, if my client wanted to edit an existing <p> tag, they would be able to through a UI that they can access. I'm looking for something that perhaps will allow me to add an ID to a certain tag, and allow my client to edit that tag.
+
+So let's say I have a paragraph tag, and it's describing the company's mission. Maybe something that can target the paragraph tag, and make it so that editing that tag is fair game;
+
+<p id="allowUserEditing"> 
+    Our company's mission is to deliver high quality and tasty food to the San Franciso area!
+</p>
+Something along these lines. As long as it allows the user to edit existing content from HTML files, I'm happy.
+
+The extent of my research has been a couple of hours of web surfing, and from what I have heard, people recommend a 'CMS'. Maybe I've misunderstood it from lack of knowledge, but most CMS's don't allow the editing of HTML files like this. Furthermore, it seems a lot of them require static site generators. It appears to me that these are better for blogs than editing existing content.
+
+Since I have already developed this website, I want to be able to add this to a hand-made website that is already made. I want to be able to give the client what they want, and I want to put the effort into making it work.
+
+If this is something that sounds ridiculous, let me know. Any help is appreciated.
+
+Thank you.
+
+
+Upvote
+9
+
+Downvote
+
+15
+Go to comments
+
+
+Share
+Share
+Join the conversation
+Sort by:
+
+Best
+
+Search Comments
+Expand comment search
+Comments Section
+jr_on_yt
+•
+2y ago
+TLDR; this request completely changes the kind site that they have. They should be prepared to pay for many hours of work, and you should be prepared to work many hours. Use a CMS
+
+I want to be able to give the client what they want,
+
+What the client wants is a system for managing content. So a Content Management System (CMS) is exactly what you're looking for.
+
+Frankly what you want doesn't and cannot exist. If all you have is static html pages, the only way for the client to change what's there is to go into the file on the server and change the text.
+
+In order to handle this request you will need these at minimum: a server-side processes to handle logins, requests, data storage, file updates, and file rendering. At bare fucking minimum.
+
+If you go with a cms, you basically scrap a lot of what's already written.
+
+If you really, really, really, really want to keep what's already there, you could write a php service to handle client logins, a very simple set of pages where they can edit the text content, and then store that in a database (sqlite should suffice). Before you do that, though, you should read up on best practice of storing password, handling login credentials, etc. The basic security stuff at least.
+
+Edit: WordPress is a popular CMS and if you're new to CMSs, I'd suggest starting there.
+
+
+
+Upvote
+6
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+
+[deleted]
+•
+2y ago
+earthhworms
+OP
+•
+2y ago
+Interesting, thank you for your clear and concise answer, I'll most likely talk to my client and see what we can work out.
+
+If they want it made on a CMS, I'll probably end up redoing the site. Creating a PHP service seems like a little too much work, but I'll still look into it.
+
+Thank you again.
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+jr_on_yt
+•
+2y ago
+No problem, stranger. Good luck out there
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+u/rivenjg avatar
+rivenjg
+•
+2y ago
+just create an edit page in php that grabs the content part of the html file and then when the user is done and submits the form it overwrites. you don't need a db or anything.
+
+
+Upvote
+3
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+infj-t
+•
+2y ago
+Depending on the architecture of your site you could use a headless CMS like Storyblok to keep the pages as they are, but you will need jS knowledge to implement it properly. Alternatively you could rebuild the site using aCMS platform, but those are often slow and clunky IMO.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+u/r_bluehost avatar
+r_bluehost
+•
+Promoted
+
+Bluehost is giving you a free domain for the first year. 🤯 Get started now. 👇
+Learn More
+bluehost.com
+Thumbnail image: Bluehost is giving you a free domain for the first year. 🤯 Get started now. 👇
+vskand
+•
+2y ago
+If you already have your website ready (with multiple pages I assume?) I would suggest MODX.
+
+Of course this is not helpful but I cannot write everything in a comment.
+
+If you are interested, have a server that runs php and can create a db, I am willing to help you set it up (for free).
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+earthhworms
+OP
+•
+2y ago
+Thanks for your reply, and your kindness to offer help!
+
+If you don't mind me asking, how hard would you say it is to do something like this?
+
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+vskand
+•
+2y ago
+For you? A lot.
+
+For me? 3-4 hours including the server setup.
+
+(I don't mean it in a bad way, I just have experience on MODX)
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+u/maryy29033 avatar
+maryy29033
+•
+1y ago
+Check out Surreal CMS - it's basically an overlay for static sites that allows them to be edited from the front end. It's kind of a pain to use, IMO, but some of our clients like it. https://www.surrealcms.com/
+
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+u/maryy29033 avatar
+maryy29033
+•
+1y ago
+You connect in the settings using an FTP connection. It's not hard, just unwieldy when you're using to making quick edits via FTP.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+u/One-Reflection9329 avatar
+One-Reflection9329
+•
+9mo ago
+You're wrong jr_on_yt. Surrealcms.com does exactly what r/webdev is looking for.
+
+
+Upvote
+2
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+cabiwabi
+•
+2y ago
+Check out netlify CMS. You can build a login area for your client and let them change the sections of the website you specify.
+
+Documentation is good, it's free and pretty quick to set up
+
+Designed to work with static sites, I've used it before with 11ty and Next.js also
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+codecrux
+•
+2y ago
+Please check the Atri framework built for this very use case. Here is the GitHub repo https://github.com/Atri-Labs/atrilabs-engine
+
+You can write NextJS like code and then sprinkle CanvasZone components that allows other users to drag drop components visually.
+
+Here is the concept video https://youtu.be/eTsAzQi95Pg
+
+
+Upvote
+1
+
+Downvote
+
+Reply
+reply
+
+Award
+
+Share
+Share
+
+Community Info Section
+r/webdev
+Join
+webdev: reddit for web developers
+A community dedicated to all things web development: both front-end and back-end. For more design-related questions, try /r/web_design.
+
+Show more
+Created Jan 25, 2009
+Public
+3M
+Members
+340
+ Online
+Top 1%
+Rank by size 
+User flair
+u/Born-Airport-2967 avatar
+Born-Airport-2967
+Community Bookmarks
+Discord
+Twitter
+YouTube
+FAQs
+Promoted
+
+sidebar promoted post thumbnail
+Rules
+1
+No vague support questions about WYSIWYG editors or other software.
+2
+No memes, screenshots, and jokes
+3
+No self-promotion
+4
+No commercial promotions/solicitations
+5
+No soliciting feedback not on Saturday
+6
+Assistance Questions Guidelines
+7
+Career/Getting Started Questions
+Showoff Saturdays
+Work on something and want to share it? Showoff Saturdays are for you! Make a new post on Saturday and tag it [Showoff Saturday] and watch the views rise.
+
+Sharing your project, portfolio, or any other content that you want to either show off or request feedback on is limited to Showoff Saturday. If you post such content on any other day, it will be removed.
+
+Links
+Discord server
+Discord server
+Twitter account
+Twitter account
+YouTube channel
+YouTube channel
+Related Communites
+r/web_design icon
+r/web_design
+921,696 members
+r/SaaS icon
+r/SaaS
+309,419 members
+Moderators
+Message Mods
+u/snissn 
+expert
+u/julian88888888 
+emoji:snoo_dealwithit: Moderator
+Julian
+u/aflashyrhetoric avatar
+u/aflashyrhetoric 
+front-end
+u/so_much_reddit_T-T avatar
+u/so_much_reddit_T-T 
+emoji:snoo_dealwithit: Moderator
+u/AutoModerator avatar
+u/AutoModerator
+u/CherryJimbo
+James Ross
+u/notcaffeinefree avatar
+u/notcaffeinefree
+u/duckballista
+u/Gurgen 
+emoji:snoo_dealwithit: Moderator
+View all moderators
+Promoted
+
+sidebar promoted post thumbnail
+Reddit Rules
+Privacy Policy
+User Agreement
+Reddit, Inc. © 2025. All rights reserved.
+
+Collapse Navigation
