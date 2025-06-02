@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wayzata DECA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .teacher-login { display: none; }
+        .admin-panel { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Wayzata DECA</h1>
+            <nav class="space-x-4">
+                <a href="#home" class="hover:text-yellow-300">Home</a>
+                <a href="#about" class="hover:text-yellow-300">About</a>
+                <a href="#events" class="hover:text-yellow-300">Events</a>
+                <a href="#contact" class="hover:text-yellow-300">Contact</a>
+                <button onclick="showTeacherLogin()" class="bg-yellow-500 px-3 py-1 rounded">Teacher Login</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <!-- Hero Section -->
+        <section id="home" class="text-center py-12 bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg mb-8">
+            <h2 class="text-4xl font-bold mb-4">Welcome to Wayzata DECA</h2>
+            <p class="text-xl mb-6">Your gateway to business excellence and leadership development</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://www.instagram.com/wayzatadeca/" target="_blank" class="text-2xl hover:text-yellow-300">
+                    <i class="ri-instagram-line"></i>
+                </a>
+                <a href="https://www.facebook.com/wayzata.deca.16/" target="_blank" class="text-2xl hover:text-yellow-300">
+                    <i class="ri-facebook-line"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-3xl font-bold text-blue-900">350</h3>
+                <p class="text-gray-600">Active Members</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-3xl font-bold text-blue-900">250</h3>
+                <p class="text-gray-600">State Qualifiers</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 class="text-3xl font-bold text-blue-900">58</h3>
+                <p class="text-gray-600">ICDC Qualifiers</p>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                <input type="hidden" name="access_key" value="fd1929ef-7f8d-4551-ae99-45aa464c1c33">
+                <input type="hidden" name="redirect" value="https://wayzatadeca.org">
+                <input type="hidden" name="subject" value="New Contact Form Submission">
+                <input type="hidden" name="from_name" value="Wayzata DECA Website">
+                
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <input type="text" name="name" required class="w-full p-3 border rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <input type="email" name="email" required class="w-full p-3 border rounded-lg">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Message</label>
+                    <textarea name="message" rows="4" required class="w-full p-3 border rounded-lg"></textarea>
+                </div>
+                <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800">
+                    Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Teacher Login Modal -->
+    <div class="teacher-login fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-4">Teacher Login</h3>
+            <form onsubmit="return handleTeacherLogin(event)">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Password</label>
+                    <input type="password" id="teacherPassword" class="w-full p-3 border rounded-lg" placeholder="Enter teacher password">
+                </div>
+                <div class="flex gap-4">
+                    <button type="submit" class="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800">
+                        Login
+                    </button>
+                    <button type="button" onclick="hideTeacherLogin()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel bg-white p-6 rounded-lg shadow-lg mb-8">
+        <h3 class="text-2xl font-bold mb-4">Event Management</h3>
+        <form onsubmit="return addEvent(event)" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Event Title</label>
+                <input type="text" id="eventTitle" required class="w-full p-3 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Description</label>
+                <textarea id="eventDescription" rows="3" class="w-full p-3 border rounded-lg"></textarea>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Date</label>
+                <input type="datetime-local" id="eventDate" required class="w-full p-3 border rounded-lg">
+            </div>
+            <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700">
+                Add Event
+            </button>
+        </form>
+        
+        <button onclick="logout()" class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+            Logout
+        </button>
+    </div>
+
+    <script>
+        function showTeacherLogin() {
+            document.querySelector('.teacher-login').style.display = 'flex';
+        }
+
+        function hideTeacherLogin() {
+            document.querySelector('.teacher-login').style.display = 'none';
+        }
+
+        function handleTeacherLogin(event) {
+            event.preventDefault();
+            const password = document.getElementById('teacherPassword').value;
+            
+            if (password === 'wayzata2024') {
+                document.querySelector('.teacher-login').style.display = 'none';
+                document.querySelector('.admin-panel').style.display = 'block';
+                alert('Login successful! You can now manage events.');
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+            
+            return false;
+        }
+
+        function addEvent(event) {
+            event.preventDefault();
+            const title = document.getElementById('eventTitle').value;
+            const description = document.getElementById('eventDescription').value;
+            const date = document.getElementById('eventDate').value;
+            
+            alert(`Event "${title}" added successfully!`);
+            
+            // Clear form
+            document.getElementById('eventTitle').value = '';
+            document.getElementById('eventDescription').value = '';
+            document.getElementById('eventDate').value = '';
+            
+            return false;
+        }
+
+        function logout() {
+            document.querySelector('.admin-panel').style.display = 'none';
+            alert('Logged out successfully!');
+        }
+    </script>
+</body>
+</html>
