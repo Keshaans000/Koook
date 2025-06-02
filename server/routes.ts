@@ -150,14 +150,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Private download endpoint for development use
-  app.get("/api/private-download-website", async (req, res) => {
+  // Complete website download endpoint
+  app.get("/download-complete-website", async (req, res) => {
     try {
       const archive = archiver('zip', {
         zlib: { level: 9 }
       });
 
-      res.attachment('wayzata-deca-website.zip');
+      res.attachment('wayzata-deca-complete-website.zip');
       archive.pipe(res);
 
       // Add all source files
@@ -170,20 +170,58 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Add config files
-      const files = ['package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts', 'tailwind.config.ts', 'postcss.config.js', 'drizzle.config.ts', 'components.json', '.replit'];
+      const files = [
+        'package.json', 
+        'package-lock.json', 
+        'tsconfig.json', 
+        'vite.config.ts', 
+        'tailwind.config.ts', 
+        'postcss.config.js', 
+        'drizzle.config.ts', 
+        'components.json'
+      ];
+      
       for (const file of files) {
         if (fs.existsSync(file)) {
           archive.file(file, { name: file });
         }
       }
       
-      const readme = `# Wayzata DECA Website Files
+      // Add setup instructions
+      const readme = `# Wayzata DECA Website - Complete Source Code
 
-Complete website export generated on ${new Date().toISOString()}
+## Setup Instructions
+1. Extract this ZIP file
+2. Open the folder in Visual Studio Code
+3. Install dependencies: npm install
+4. Start development: npm run dev
+5. Open browser to http://localhost:5000
 
-Setup: npm install && npm run dev
+## Environment Setup
+Create a .env file with:
+WEB3FORMS_ACCESS_KEY=fd1929ef-7f8d-4551-ae99-45aa464c1c33
+
+## Contact Forms
+Forms send emails to: wayzata.deca@gmail.com
+
+## Social Media Links
+- Instagram: https://www.instagram.com/wayzatadeca/
+- Facebook: https://www.facebook.com/wayzata.deca.16/
+
+## Technical Support
+Ansh Kesharwani: Keshaans000@isd284.com | 651-382-5377
+
+Generated: ${new Date().toISOString()}
 `;
+      
       archive.append(readme, { name: 'README.md' });
+      
+      // Add .env template
+      const envTemplate = `# Environment Variables for Wayzata DECA Website
+WEB3FORMS_ACCESS_KEY=fd1929ef-7f8d-4551-ae99-45aa464c1c33
+`;
+      archive.append(envTemplate, { name: '.env' });
+      
       archive.finalize();
       
     } catch (error) {
