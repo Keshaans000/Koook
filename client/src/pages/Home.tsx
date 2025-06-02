@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import EventCalendar from "@/components/EventCalendar";
 import DayEventsView from "@/components/DayEventsView";
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -119,7 +120,11 @@ const staticEvents: Event[] = [
 
 const Home = ({ eventFilters = { competition: true, meeting: true, deadline: true, social: true } }: HomeProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const events = staticEvents;
+  
+  // Load events from database
+  const { data: events = [], isLoading } = useQuery({
+    queryKey: ["/api/events"],
+  });
   
   return (
     <>
@@ -144,13 +149,28 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
         </div>
         
         <div className="relative z-10">
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-800">Events Calendar</h1>
-            <div className="ml-2 bg-[#FFD700] bg-opacity-20 rounded-full px-2 py-0.5 text-xs text-[#003366] font-medium border border-[#FFD700] border-opacity-30">
-              DECA 2025
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center">
+                <h1 className="text-2xl font-bold text-gray-800">Events Calendar</h1>
+                <div className="ml-2 bg-[#FFD700] bg-opacity-20 rounded-full px-2 py-0.5 text-xs text-[#003366] font-medium border border-[#FFD700] border-opacity-30">
+                  DECA 2025
+                </div>
+              </div>
+              <p className="text-gray-600 mt-1">Stay updated with all Wayzata DECA events and deadlines</p>
+            </div>
+            <div className="flex gap-2">
+              <a 
+                href="/admin"
+                className="bg-[#003366] hover:bg-[#002244] text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Teacher Login
+              </a>
             </div>
           </div>
-          <p className="text-gray-600 mt-1">Stay updated with all Wayzata DECA events and deadlines</p>
         </div>
 
       </div>
