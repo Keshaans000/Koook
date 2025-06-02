@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import EventCalendar from "@/components/EventCalendar";
 import DayEventsView from "@/components/DayEventsView";
 import UpcomingEvents from "@/components/UpcomingEvents";
@@ -7,7 +6,7 @@ import ResourcesCard from "@/components/ResourcesCard";
 import EventReminders from "@/components/EventReminders";
 import AnnouncementsBanner from "@/components/AnnouncementsBanner";
 import TeachersCorner from "@/components/TeachersCorner";
-import { Event } from "@shared/schema";
+import { StaticEventStorage, type StaticEvent } from "@/lib/staticEventStorage";
 
 export interface HomeProps {
   eventFilters?: {
@@ -121,56 +120,14 @@ const staticEvents: Event[] = [
 const Home = ({ eventFilters = { competition: true, meeting: true, deadline: true, social: true } }: HomeProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   
-  // Load events from localStorage for static deployment
-  const [events, setEvents] = useState<any[]>([]);
+  // Load events from static storage
+  const [events, setEvents] = useState<StaticEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Load events from localStorage
-    const storedEvents = localStorage.getItem('deca-events');
-    if (storedEvents) {
-      const parsedEvents = JSON.parse(storedEvents);
-      // Convert string dates back to Date objects
-      const eventsWithDates = parsedEvents.map((event: any) => ({
-        ...event,
-        startTime: new Date(event.startTime),
-        endTime: new Date(event.endTime),
-        createdAt: event.createdAt ? new Date(event.createdAt) : null
-      }));
-      setEvents(eventsWithDates);
-    } else {
-      // Initialize with default events if none exist
-      const defaultEvents = [
-        {
-          id: 1,
-          title: "District Competition Preparation",
-          description: "Join the final preparation session for the upcoming district competition. Bring your presentation materials.",
-          startTime: new Date("2025-06-02T09:00:00.000Z"),
-          endTime: new Date("2025-06-02T15:00:00.000Z"),
-          type: "competition",
-          organizer: "Ms. Johnson",
-          location: "Room 156",
-          createdAt: new Date(),
-          imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80",
-          createdBy: null
-        },
-        {
-          id: 2,
-          title: "Be The One",
-          description: "DECA's annual motivational kickoff - Elevate your DECA experience and prepare to be the difference-maker in this year's competitions.",
-          startTime: new Date("2025-06-05T14:00:00.000Z"),
-          endTime: new Date("2025-06-05T16:00:00.000Z"),
-          type: "meeting",
-          organizer: "DECA Executive Team",
-          location: "School Auditorium",
-          createdAt: new Date(),
-          imageUrl: "https://glass-award.com/cdn/shop/products/bz-1_1024x1024.jpg?v=1571710249",
-          createdBy: null
-        }
-      ];
-      setEvents(defaultEvents);
-      localStorage.setItem('deca-events', JSON.stringify(defaultEvents));
-    }
+    // Get events from static storage
+    const allEvents = StaticEventStorage.getAllEvents();
+    setEvents(allEvents);
     setIsLoading(false);
   }, []);
   

@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { StaticEventStorage, type StaticEvent } from "@/lib/staticEventStorage";
 
 interface EventFormData {
   title: string;
@@ -10,25 +11,13 @@ interface EventFormData {
   startTime: string;
 }
 
-interface StoredEvent {
-  id: number;
-  title: string;
-  description: string;
-  startTime: string;
-  endTime: string;
-  type: string;
-  organizer: string;
-  location: string | null;
-  createdAt: string;
-  imageUrl: string | null;
-  createdBy: string | null;
-}
+
 
 export default function StaticAdmin() {
   const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState("");
-  const [events, setEvents] = useState<StoredEvent[]>([]);
+  const [events, setEvents] = useState<StaticEvent[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   
   const [eventForm, setEventForm] = useState<EventFormData>({
@@ -37,44 +26,10 @@ export default function StaticAdmin() {
     startTime: new Date().toISOString().slice(0, 16)
   });
 
-  // Load events from localStorage
+  // Load events from static storage
   useEffect(() => {
-    const storedEvents = localStorage.getItem('deca-events');
-    if (storedEvents) {
-      setEvents(JSON.parse(storedEvents));
-    } else {
-      // Initialize with default events
-      const defaultEvents: StoredEvent[] = [
-        {
-          id: 1,
-          title: "District Competition Preparation",
-          description: "Join the final preparation session for the upcoming district competition. Bring your presentation materials.",
-          startTime: "2025-06-02T09:00:00.000Z",
-          endTime: "2025-06-02T15:00:00.000Z",
-          type: "competition",
-          organizer: "Ms. Johnson",
-          location: "Room 156",
-          createdAt: new Date().toISOString(),
-          imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80",
-          createdBy: null
-        },
-        {
-          id: 2,
-          title: "Be The One",
-          description: "DECA's annual motivational kickoff - Elevate your DECA experience and prepare to be the difference-maker in this year's competitions.",
-          startTime: "2025-06-05T14:00:00.000Z",
-          endTime: "2025-06-05T16:00:00.000Z",
-          type: "meeting",
-          organizer: "DECA Executive Team",
-          location: "School Auditorium",
-          createdAt: new Date().toISOString(),
-          imageUrl: "https://glass-award.com/cdn/shop/products/bz-1_1024x1024.jpg?v=1571710249",
-          createdBy: null
-        }
-      ];
-      setEvents(defaultEvents);
-      localStorage.setItem('deca-events', JSON.stringify(defaultEvents));
-    }
+    const allEvents = StaticEventStorage.getAllEvents();
+    setEvents(allEvents);
   }, []);
 
   const handleLogin = (e: React.FormEvent) => {
