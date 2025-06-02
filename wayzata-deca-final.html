@@ -12,7 +12,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
         .bg-gradient-custom { background: linear-gradient(135deg, #003366 0%, #004080 50%, #2C7BE5 100%); }
-        .deca-placeholder { background: linear-gradient(45deg, #0066cc, #3399ff); }
     </style>
 </head>
 <body>
@@ -20,6 +19,19 @@
 
     <script type="text/babel">
         const { useState, useEffect } = React;
+
+        // Image URLs for production (using base64 or external links)
+        const imageAssets = {
+            image1: "./assets/image_1748641905529.png",
+            image2: "./assets/image_1748641924221.png", 
+            image3: "./assets/image_1748641954170.png",
+            image4: "./assets/image_1748641994054.png",
+            image5: "./assets/image_1748642234960.png",
+            image6: "./assets/image_1748643084004.png",
+            image7: "./assets/image_1748643122791.png",
+            image8: "./assets/image_1748646682074.png",
+            image9: "./assets/image_1748646993320.png"
+        };
 
         // Static Event Storage
         class StaticEventStorage {
@@ -296,7 +308,7 @@
                 );
             }
 
-            // Home Component
+            // Home Component - Modern Beautiful Design
             function Home() {
                 const [showSupportPopup, setShowSupportPopup] = useState(false);
 
@@ -329,19 +341,33 @@
                         </header>
 
                         <main className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+                            {/* Hero Section with Background Images */}
                             <div className="relative bg-gradient-custom text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-96">
+                                {/* Background Images Grid */}
                                 <div className="absolute inset-0 opacity-40">
                                     <div className="grid grid-cols-5 h-full">
-                                        <div className="deca-placeholder"></div>
-                                        <div className="deca-placeholder"></div>
-                                        <div className="deca-placeholder"></div>
-                                        <div className="deca-placeholder"></div>
-                                        <div className="deca-placeholder"></div>
+                                        <div className="relative overflow-hidden">
+                                            <img src={imageAssets.image3} alt="" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="relative overflow-hidden">
+                                            <img src={imageAssets.image6} alt="" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="relative overflow-hidden">
+                                            <img src={imageAssets.image1} alt="" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="relative overflow-hidden">
+                                            <img src={imageAssets.image7} alt="" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="relative overflow-hidden">
+                                            <img src={imageAssets.image9} alt="" className="w-full h-full object-cover" />
+                                        </div>
                                     </div>
                                 </div>
                                 
+                                {/* Overlay gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-blue-800/30 to-blue-600/40"></div>
                                 
+                                {/* Trophy decorations */}
                                 <div className="absolute top-4 right-8 text-yellow-400 opacity-20 z-10">
                                     <i className="ri-trophy-fill text-5xl"></i>
                                 </div>
@@ -366,17 +392,19 @@
                                     </div>
                                     
                                     <p className="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed">
-                                        Your gateway to <span className="text-yellow-400 font-semibold">business excellence</span>, 
+                                        🚀 Your gateway to <span className="text-yellow-400 font-semibold">business excellence</span>, 
                                         <span className="text-yellow-400 font-semibold"> leadership development</span>, and 
-                                        <span className="text-yellow-400 font-semibold"> competitive success</span>
+                                        <span className="text-yellow-400 font-semibold"> competitive success</span> 🏆
                                     </p>
                                     
+                                    {/* Social Media Links */}
                                     <div className="flex justify-center gap-4 mb-6">
                                         <a 
                                             href="https://www.instagram.com/wayzatadeca/" 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                                            aria-label="Follow us on Instagram"
                                         >
                                             <i className="ri-instagram-line text-2xl text-white"></i>
                                         </a>
@@ -385,6 +413,7 @@
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             className="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                                            aria-label="Follow us on Facebook"
                                         >
                                             <i className="ri-facebook-line text-2xl text-white"></i>
                                         </a>
@@ -392,21 +421,22 @@
                                     
                                     <div className="mt-6 flex flex-wrap gap-3 justify-center">
                                         <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                                            350 Active Members
+                                            🎯 350 Active Members
                                         </div>
                                         <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                                            250 State Qualifiers
+                                            🏆 250 State Qualifiers
                                         </div>
                                         <div className="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
-                                            58 ICDC Qualifiers
+                                            🥇 58 ICDC Qualifiers
                                         </div>
                                         <div className="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
-                                            Premier Minnesota Chapter
+                                            📈 Premier Minnesota Chapter
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            {/* Support DECA Button */}
                             <div className="text-center">
                                 <button 
                                     onClick={handleSupportClick}
@@ -418,6 +448,86 @@
                                 </button>
                             </div>
 
+                            {/* DECA Moments */}
+                            <div className="mb-8">
+                                <h2 className="text-2xl font-bold text-blue-900 mb-6 text-center">DECA Moments</h2>
+                                
+                                {/* Large group photo */}
+                                <div className="relative group mb-6">
+                                    <img 
+                                        src={imageAssets.image5} 
+                                        alt="Our ICDC Competitors This Year" 
+                                        className="w-full h-80 object-cover rounded-lg shadow-lg transition-transform group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                        <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                                            <h3 className="font-bold text-3xl mb-3">Our ICDC Competitors 2025</h3>
+                                            <p className="text-xl">58 Students Who Competed at Nationals</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Individual photos grid */}
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div className="relative group">
+                                        <img 
+                                            src={imageAssets.image6} 
+                                            alt="Mr. Kimbler and Ms. Jacklitch our advisors at Orlando" 
+                                            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                                                <h3 className="font-bold text-lg mb-2">Mr. Kimbler & Ms. Jacklitch</h3>
+                                                <p className="text-sm">Our Advisors at Orlando</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative group">
+                                        <img 
+                                            src={imageAssets.image4} 
+                                            alt="Our President Sajana Guruprasad" 
+                                            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                                                <h3 className="font-bold text-lg">Sajana Guruprasad</h3>
+                                                <p className="text-sm">Our President</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative group">
+                                        <img 
+                                            src={imageAssets.image8} 
+                                            alt="ICDC Winners with Glass Trophy" 
+                                            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                                                <h3 className="font-bold text-lg mb-2">ICDC Winners</h3>
+                                                <p className="text-sm">Glass Trophy Champions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative group">
+                                        <img 
+                                            src={imageAssets.image2} 
+                                            alt="Mr. Kimbler our advisor" 
+                                            className="w-full h-48 object-cover rounded-lg shadow-md transition-transform group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 rounded-lg flex items-center justify-center">
+                                            <div className="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                                                <h3 className="font-bold text-lg">Mr. Kimbler</h3>
+                                                <p className="text-sm">Our Advisor</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* About Wayzata High School */}
                             <div className="bg-white rounded-lg shadow-lg p-6">
                                 <h2 className="text-2xl font-bold text-blue-900 mb-4 flex items-center">
                                     <i className="ri-school-line mr-3 text-blue-600"></i>
@@ -443,6 +553,7 @@
                                 </div>
                             </div>
 
+                            {/* Quick Info Cards */}
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="bg-white rounded-lg shadow-lg p-6 border-l-4 border-l-blue-600">
                                     <div className="flex items-start space-x-4">
@@ -452,10 +563,10 @@
                                         <div>
                                             <h3 className="font-semibold text-blue-900 mb-2">Contact Information</h3>
                                             <p className="text-gray-700 text-sm space-y-1">
-                                                <span className="block">wayzatadeca@isd284.org</span>
-                                                <span className="block">(952) 745-5000</span>
-                                                <span className="block">Technology Support: Ansh Kesharwani</span>
-                                                <span className="block">Keshaans000@isd284.com | 651-382-5377</span>
+                                                <span className="block">📧 wayzatadeca@isd284.org</span>
+                                                <span className="block">📞 (952) 745-5000</span>
+                                                <span className="block">💻 Technology Support: Ansh Kesharwani</span>
+                                                <span className="block">📱 Keshaans000@isd284.com | 651-382-5377</span>
                                             </p>
                                         </div>
                                     </div>
@@ -469,15 +580,16 @@
                                         <div>
                                             <h3 className="font-semibold text-blue-900 mb-2">Meeting Times</h3>
                                             <p className="text-gray-700 text-sm space-y-1">
-                                                <span className="block">Weekly meetings</span>
-                                                <span className="block">Check calendar for specific times</span>
-                                                <span className="block">Room assignments posted in announcements</span>
+                                                <span className="block">🗓️ Weekly meetings</span>
+                                                <span className="block">⏰ Check calendar for specific times</span>
+                                                <span className="block">📍 Room assignments posted in announcements</span>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            {/* Upcoming Events */}
                             <div className="bg-white rounded-lg shadow-lg p-6">
                                 <h2 className="text-2xl font-bold text-blue-900 mb-4">Upcoming Events</h2>
                                 <div className="space-y-4">
@@ -486,10 +598,10 @@
                                             <h3 className="font-semibold text-gray-800">{event.title}</h3>
                                             <p className="text-gray-600 text-sm">{event.description}</p>
                                             <p className="text-sm text-gray-500">
-                                                {new Date(event.startTime).toLocaleDateString()} at {new Date(event.startTime).toLocaleTimeString()}
+                                                📅 {new Date(event.startTime).toLocaleDateString()} at {new Date(event.startTime).toLocaleTimeString()}
                                             </p>
                                             {event.location && (
-                                                <p className="text-sm text-gray-500">{event.location}</p>
+                                                <p className="text-sm text-gray-500">📍 {event.location}</p>
                                             )}
                                         </div>
                                     ))}
@@ -497,12 +609,19 @@
                             </div>
                         </main>
 
+                        {/* Support DECA Popup */}
                         {showSupportPopup && (
                             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                                 <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-4 relative">
                                     <div className="text-center">
                                         <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
                                             <i className="ri-heart-line text-3xl text-white"></i>
+                                        </div>
+                                        
+                                        <div className="flex justify-center space-x-2 mb-4">
+                                            <i className="ri-heart-fill text-red-400 text-lg animate-pulse"></i>
+                                            <i className="ri-heart-fill text-pink-400 text-sm animate-pulse" style={{animationDelay: '0.2s'}}></i>
+                                            <i className="ri-heart-fill text-red-400 text-lg animate-pulse" style={{animationDelay: '0.4s'}}></i>
                                         </div>
 
                                         <h3 className="text-2xl font-bold text-blue-900 mb-4">Support DECA</h3>
@@ -512,21 +631,22 @@
                                                 Looking to support our DECA chapter? 
                                             </p>
                                             <p className="text-lg font-semibold text-blue-900">
-                                                Please check the sidebar and click "Support DECA"
+                                                📍 Please check the sidebar and click "Support DECA"
                                             </p>
                                         </div>
 
                                         <div className="text-sm text-gray-600 mb-6 space-y-1">
-                                            <p>Sponsorship opportunities available</p>
-                                            <p>Grants & donations welcome</p>
-                                            <p>Help students achieve their goals</p>
+                                            <p>✨ Sponsorship opportunities available</p>
+                                            <p>💝 Grants & donations welcome</p>
+                                            <p>🏆 Help students achieve their goals</p>
                                         </div>
 
                                         <button
                                             onClick={() => setShowSupportPopup(false)}
                                             className="bg-gradient-to-r from-blue-900 to-blue-600 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                                         >
-                                            Got it!
+                                            Got it! 
+                                            <i className="ri-arrow-right-line ml-2"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -538,8 +658,8 @@
                                 <p>&copy; 2024 Wayzata DECA. All rights reserved.</p>
                                 <div className="mt-4 space-x-4">
                                     <span>Follow us:</span>
-                                    <span>Instagram: @wayzatadeca</span>
-                                    <span>Facebook: wayzata.deca.16</span>
+                                    <span>📱 Instagram: @wayzatadeca</span>
+                                    <span>📘 Facebook: wayzata.deca.16</span>
                                 </div>
                             </div>
                         </footer>
@@ -547,6 +667,7 @@
                 );
             }
 
+            // Router
             if (currentPage === 'teacher-login') {
                 return <TeacherLogin />;
             } else if (currentPage === 'teacher-admin' && isLoggedIn) {
