@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import EventCalendar from "@/components/EventCalendar";
 import DayEventsView from "@/components/DayEventsView";
 import UpcomingEvents from "@/components/UpcomingEvents";
-import QuickAddEvent from "@/components/QuickAddEvent";
 import ResourcesCard from "@/components/ResourcesCard";
 import EventReminders from "@/components/EventReminders";
 import AnnouncementsBanner from "@/components/AnnouncementsBanner";
@@ -19,29 +17,109 @@ export interface HomeProps {
   };
 }
 
+// Static events data for the calendar
+const staticEvents: Event[] = [
+  {
+    id: 1,
+    title: "District Competition Preparation",
+    description: "Final preparation session for the upcoming district DECA competition. Review presentation materials and practice roleplays.",
+    startTime: new Date("2025-01-15T15:30:00"),
+    endTime: new Date("2025-01-15T17:00:00"),
+    location: "Room 204",
+    type: "competition",
+    organizer: "Wayzata DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 2,
+    title: "Chapter Meeting",
+    description: "Monthly chapter meeting to discuss upcoming events and competition results.",
+    startTime: new Date("2025-01-10T07:00:00"),
+    endTime: new Date("2025-01-10T07:45:00"),
+    location: "Cafeteria",
+    type: "meeting",
+    organizer: "Wayzata DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 3,
+    title: "State Competition Registration Deadline",
+    description: "Final deadline to register for state DECA competition. Submit all required forms and fees.",
+    startTime: new Date("2025-01-20T23:59:00"),
+    endTime: new Date("2025-01-20T23:59:00"),
+    location: "Online",
+    type: "deadline",
+    organizer: "Minnesota DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 4,
+    title: "DECA Social Night",
+    description: "Team building event with games, food, and DECA trivia. All members welcome!",
+    startTime: new Date("2025-01-25T18:00:00"),
+    endTime: new Date("2025-01-25T20:00:00"),
+    location: "School Commons",
+    type: "social",
+    organizer: "Wayzata DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 5,
+    title: "Business Plan Workshop",
+    description: "Workshop on developing effective business plans for DECA competitions.",
+    startTime: new Date("2025-02-05T15:30:00"),
+    endTime: new Date("2025-02-05T17:00:00"),
+    location: "Room 150",
+    type: "competition",
+    organizer: "Wayzata DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 6,
+    title: "District Competition",
+    description: "District DECA competition at Minneapolis Convention Center. Good luck to all participants!",
+    startTime: new Date("2025-02-15T08:00:00"),
+    endTime: new Date("2025-02-15T17:00:00"),
+    location: "Minneapolis Convention Center",
+    type: "competition",
+    organizer: "Minnesota DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 7,
+    title: "Fundraising Meeting",
+    description: "Planning session for upcoming fundraising events and sponsor outreach.",
+    startTime: new Date("2025-02-01T07:00:00"),
+    endTime: new Date("2025-02-01T07:45:00"),
+    location: "Room 204",
+    type: "meeting",
+    organizer: "Wayzata DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  },
+  {
+    id: 8,
+    title: "State Competition",
+    description: "Minnesota DECA State Career Development Conference. Represent Wayzata with pride!",
+    startTime: new Date("2025-03-10T08:00:00"),
+    endTime: new Date("2025-03-10T17:00:00"),
+    location: "Minneapolis Convention Center",
+    type: "competition",
+    organizer: "Minnesota DECA",
+    imageUrl: null,
+    createdAt: new Date()
+  }
+];
+
 const Home = ({ eventFilters = { competition: true, meeting: true, deadline: true, social: true } }: HomeProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  
-  const { data: events = [], isLoading, error } = useQuery<Event[]>({
-    queryKey: ['/api/events'],
-  });
-  
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#003366]"></div>
-      </div>
-    );
-  }
-  
-  if (error) {
-    return (
-      <div className="bg-red-50 text-red-800 p-4 rounded-lg">
-        <h3 className="text-lg font-semibold">Error loading events</h3>
-        <p>{(error as Error).message || "Please try again later."}</p>
-      </div>
-    );
-  }
+  const events = staticEvents;
   
   return (
     <>
@@ -106,17 +184,7 @@ const Home = ({ eventFilters = { competition: true, meeting: true, deadline: tru
         
         {/* Sidebar content */}
         <div className="lg:w-1/4">
-          {/* Mobile order: QuickAddEvent first, then resources */}
-          <div className="block lg:hidden mb-4">
-            <QuickAddEvent defaultDate={selectedDate} />
-          </div>
-          
           <UpcomingEvents events={events} eventFilters={eventFilters} />
-          
-          {/* Desktop order: QuickAddEvent after upcoming events */}
-          <div className="hidden lg:block">
-            <QuickAddEvent defaultDate={selectedDate} />
-          </div>
           
           <ResourcesCard />
           <TeachersCorner />
