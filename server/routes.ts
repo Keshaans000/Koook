@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { sendContactEmail } from "./emailService";
+import { validateTeacherCredentials } from "./adminAuth";
 import archiver from "archiver";
 import fs from "fs";
 import path from "path";
