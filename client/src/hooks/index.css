@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 216 100% 20%; /* DECA Blue #003366 */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 60 100% 42%; /* DECA Gold #FFD700 */
+  --secondary-foreground: 215 25% 27%;
+  --accent: 217 74% 53%; /* DECA Light Blue #2C7BE5 */
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 72% 56%; /* DECA Red #E63946 */
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 215 25% 27%;
+  --radius: 0.5rem;
+  
+  /* Chart colors for events */
+  --chart-1: 216 100% 20%; /* Competition - DECA Blue */
+  --chart-2: 217 74% 53%; /* Meeting - DECA Light Blue */
+  --chart-3: 0 72% 56%; /* Deadline - DECA Red */
+  --chart-4: 60 100% 42%; /* Social - DECA Gold */
+  --chart-5: 215 25% 27%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 216 100% 20%; /* DECA Blue #003366 */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 60 100% 42%; /* DECA Gold #FFD700 */
+  --secondary-foreground: 215 25% 27%;
+  --accent: 217 74% 53%; /* DECA Light Blue #2C7BE5 */
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 72% 56%; /* DECA Red #E63946 */
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 215 25% 27%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-50 text-foreground;
+  }
+}
+
+@layer components {
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto repeat(6, 1fr);
+  }
+  
+  .calendar-day {
+    aspect-ratio: 1.25/1;
+  }
+  
+  .event-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 1px;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button, .hover\\:bg-gray-50, .hover\\:bg-blue-50, .hover\\:bg-gray-100 {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid #003366;
+    outline-offset: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .calendar-day {
+      aspect-ratio: 1/1;
+    }
+  }
+}
