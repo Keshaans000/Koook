@@ -42,43 +42,122 @@
 
     <!-- HOME SECTION -->
     <section id="home" class="section active">
-        <div class="max-w-7xl mx-auto p-6">
-            <!-- Hero Section -->
-            <div class="relative gradient-bg hero-pattern text-white rounded-2xl p-12 mb-8 overflow-hidden">
-                <div class="floating-shapes">
-                    <div class="shape shape-1 text-6xl">🏆</div>
-                    <div class="shape shape-2 text-4xl">💼</div>
-                    <div class="shape shape-3 text-5xl">📈</div>
-                </div>
-                <div class="relative z-10">
-                    <div class="max-w-4xl">
-                        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Welcome to
-                            <span class="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">
-                                Wayzata DECA
-                            </span>
-                        </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
-                            Developing future business leaders through competitive events, community service, and professional development.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-6">
-                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
-                                <div class="text-3xl mb-4">📚</div>
-                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Business Education</h3>
-                                <p class="text-blue-100 text-sm leading-relaxed">Hands-on learning in marketing, finance, hospitality, and entrepreneurship</p>
-                            </div>
-                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
-                                <div class="text-3xl mb-4">🏆</div>
-                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Competitions</h3>
-                                <p class="text-blue-100 text-sm leading-relaxed">Regional, state, and international business competitions</p>
-                            </div>
-                            <div class="bg-white bg-opacity-15 backdrop-blur-sm rounded-xl p-6 card-hover border border-white border-opacity-20">
-                                <div class="text-3xl mb-4">🤝</div>
-                                <h3 class="font-bold text-lg mb-3 text-yellow-300">Networking</h3>
-                                <p class="text-blue-100 text-sm leading-relaxed">Connect with business professionals and fellow students</p>
-                            </div>
+        <div class="space-y-6">
+            <!-- Header Section with Background Images -->
+            <div class="relative bg-gradient-to-r from-[#003366] via-[#004080] to-[#2C7BE5] text-white p-8 rounded-xl shadow-2xl overflow-hidden min-h-[600px]">
+                <!-- Background Images -->
+                <div class="absolute inset-0 opacity-40">
+                    <div class="grid grid-cols-5 h-full">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80" alt="" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="" class="w-full h-full object-cover" />
                         </div>
                     </div>
+                </div>
+                
+                <!-- Overlay gradient -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/40 via-[#004080]/30 to-[#2C7BE5]/40"></div>
+                
+                <!-- Trophy decorations -->
+                <div class="absolute top-4 right-8 text-[#FFD700] opacity-20 z-10">
+                    <span class="text-5xl">🏆</span>
+                </div>
+                <div class="absolute bottom-4 left-8 text-[#FFD700] opacity-20 z-10">
+                    <span class="text-4xl">🥇</span>
+                </div>
+                
+                <div class="relative z-20 text-center flex flex-col justify-center min-h-[550px]">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="bg-[#FFD700] bg-opacity-20 p-4 rounded-full mb-4">
+                            <span class="text-5xl text-[#FFD700]">🏠</span>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-extrabold mb-2">
+                                Welcome to 
+                                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] to-[#FFC000]">
+                                    Wayzata DECA
+                                </span>
+                            </h1>
+                            <div class="w-32 h-1 bg-gradient-to-r from-[#FFD700] to-[#FFC000] rounded-full mx-auto"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-lg md:text-xl mb-4 max-w-3xl mx-auto leading-relaxed">
+                        🚀 Your gateway to <span class="text-[#FFD700] font-semibold">business excellence</span>, 
+                        <span class="text-[#FFD700] font-semibold"> leadership development</span>, and 
+                        <span class="text-[#FFD700] font-semibold"> competitive success</span> 🏆
+                    </p>
+                    
+                    <!-- Social Media Links -->
+                    <div class="flex justify-center gap-4 mb-6">
+                        <a 
+                            href="https://www.instagram.com/wayzatadeca/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                        >
+                            <span class="text-2xl text-white">📷</span>
+                        </a>
+                        <a 
+                            href="https://www.facebook.com/wayzata.deca.16/" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
+                        >
+                            <span class="text-2xl text-white">📘</span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-6 flex flex-wrap gap-3 justify-center">
+                        <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                            🎯 350 Active Members
+                        </div>
+                        <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                            🏆 250 State Qualifiers
+                        </div>
+                        <div class="bg-white bg-opacity-10 px-6 py-3 rounded-full text-lg font-bold">
+                            🥇 58 ICDC Qualifiers
+                        </div>
+                        <div class="bg-white bg-opacity-10 px-4 py-2 rounded-full text-sm font-medium">
+                            📈 Premier Minnesota Chapter
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support DECA Button -->
+            <div class="text-center">
+                <button 
+                    onclick="showSupportOptions()"
+                    class="bg-gradient-to-r from-[#FFD700] to-[#FFA500] hover:from-[#FFC000] hover:to-[#FF8C00] text-black font-bold py-4 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                    ❤️ Support DECA ❤️
+                </button>
+                
+                <div id="support-options" class="hidden mt-4 flex justify-center gap-4">
+                    <button 
+                        onclick="showSection('sponsorships')"
+                        class="bg-[#003366] hover:bg-[#004080] text-white px-6 py-2 rounded-lg transition-colors"
+                    >
+                        Sponsorships
+                    </button>
+                    <button 
+                        onclick="showSection('grants')"
+                        class="bg-[#2C7BE5] hover:bg-[#1E5BB8] text-white px-6 py-2 rounded-lg transition-colors"
+                    >
+                        Grants & Donations
+                    </button>
                 </div>
             </div>
 
